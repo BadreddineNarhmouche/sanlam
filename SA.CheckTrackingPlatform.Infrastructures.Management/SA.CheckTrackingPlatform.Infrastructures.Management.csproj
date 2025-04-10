@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Configurations>Debug;Development;Staging;PreProduction;Production</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Staging|AnyCPU'">
+    <Optimize>True</Optimize>
+    <NoWarn>1701;1702;CA1416;CS8600;CS8601;CS8602;CS8603;CS8604;CS8618;</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PreProduction|AnyCPU'">
+    <Optimize>True</Optimize>
+    <NoWarn>1701;1702;CA1416;CS8600;CS8601;CS8602;CS8603;CS8604;CS8618;</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Production|AnyCPU'">
+    <Optimize>True</Optimize>
+    <NoWarn>1701;1702;CA1416;CS8600;CS8601;CS8602;CS8603;CS8604;CS8618;</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;CA1416;CS8600;CS8601;CS8602;CS8603;CS8604;CS8618;</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Development|AnyCPU'">
+    <NoWarn>1701;1702;CA1416;CS8600;CS8601;CS8602;CS8603;CS8604;CS8618;</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SA.CheckTrackingPlatform.Contexts.Management\SA.CheckTrackingPlatform.Contexts.Management.csproj" />
+    <ProjectReference Include="..\SA.CheckTrackingPlatform.Domains.Management\SA.CheckTrackingPlatform.Domains.Management.csproj" />
+    <ProjectReference Include="..\SA.CheckTrackingPlatform.ServiceEngines.Management\SA.CheckTrackingPlatform.ServiceEngines.Management.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="SA.Framework.Core">
+      <HintPath>..\Libraries\SA.Framework.Core\SA.Framework.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

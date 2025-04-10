@@ -1,0 +1,198 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Configurations>Debug;Development;Staging;PreProduction;Production</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Staging|AnyCPU'">
+    <Optimize>True</Optimize>
+    <NoWarn>1701;1702;CA1416;CS8600;CS8601;CS8602;CS8603;CS8604;CS8618;</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PreProduction|AnyCPU'">
+    <Optimize>True</Optimize>
+    <NoWarn>1701;1702;CA1416;CS8600;CS8601;CS8602;CS8603;CS8604;CS8618;</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Production|AnyCPU'">
+    <Optimize>True</Optimize>
+    <NoWarn>1701;1702;CA1416;CS8600;CS8601;CS8602;CS8603;CS8604;CS8618;</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;CA1416;CS8600;CS8601;CS8602;CS8603;CS8604;CS8618;</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Development|AnyCPU'">
+    <NoWarn>1701;1702;CA1416;CS8600;CS8601;CS8602;CS8603;CS8604;CS8618;</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="4.3.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+    <PackageReference Include="MimeKit" Version="4.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="SA.Framework.Core">
+      <HintPath>..\Libraries\SA.Framework.Core\SA.Framework.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\DocumentNames.Designer.cs">
+      <DependentUpon>DocumentNames.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Resources\DocumentTitles.Designer.cs">
+      <DependentUpon>DocumentTitles.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Resources\Canvases\SheetNames.Designer.cs">
+      <DependentUpon>SheetNames.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Resources\Canvases\BodyLabels.Designer.cs">
+      <DependentUpon>BodyLabels.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Resources\Canvases\BodyValidationWarningMessages.Designer.cs">
+      <DependentUpon>BodyValidationWarningMessages.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Resources\Canvases\HeadItemLabels.Designer.cs">
+      <DependentUpon>HeadItemLabels.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Resources\Canvases\HeadItemValues.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>HeadItemValues.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\InternalUserStatusCodeLabels.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>InternalUserStatusCodeLabels.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Messages\InformationMessages.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>InformationMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Messages\WarningMessages.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>WarningMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Notifications\Bodies.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Bodies.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Notifications\Subjects.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Subjects.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\DucumentTypeCodeLabels.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DucumentTypeCodeLabels.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\QuittancePaymentStatusCodeLabels.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>QuittancePaymentStatusCodeLabels.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Resource1.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\DocumentNames.resx">
+      <LastGenOutput>DocumentNames.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\DocumentTitles.resx">
+      <LastGenOutput>DocumentTitles.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Canvases\SheetNames.resx">
+      <LastGenOutput>SheetNames.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Canvases\BodyLabels.resx">
+      <LastGenOutput>BodyLabels.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Canvases\BodyValidationWarningMessages.resx">
+      <LastGenOutput>BodyValidationWarningMessages.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Canvases\HeadItemLabels.resx">
+      <LastGenOutput>HeadItemLabels.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Canvases\HeadItemValues.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>HeadItemValues.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\InternalUserStatusCodeLabels.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>InternalUserStatusCodeLabels.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Messages\InformationMessages.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>InformationMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Messages\WarningMessages.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>WarningMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Notifications\Bodies.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Bodies.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Notifications\Subjects.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Subjects.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\DucumentTypeCodeLabels.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DucumentTypeCodeLabels.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\QuittancePaymentStatusCodeLabels.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>QuittancePaymentStatusCodeLabels.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Resource1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Rotativa\Windows\wkhtmltoimage.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Rotativa\Windows\wkhtmltopdf.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Rotativa\Windows\wkhtmltox.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

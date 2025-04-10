@@ -1,0 +1,71 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Configurations>Debug;Development;Staging;PreProduction;Production</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Staging|AnyCPU'">
+    <Optimize>True</Optimize>
+    <NoWarn>1701;1702;CA1416;CS8600;CS8601;CS8602;CS8603;CS8604;CS8618;</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PreProduction|AnyCPU'">
+    <Optimize>True</Optimize>
+    <NoWarn>1701;1702;CA1416;CS8600;CS8601;CS8602;CS8603;CS8604;CS8618;</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Production|AnyCPU'">
+    <Optimize>True</Optimize>
+    <NoWarn>1701;1702;CA1416;CS8600;CS8601;CS8602;CS8603;CS8604;CS8618;</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;CA1416;CS8600;CS8601;CS8602;CS8603;CS8604;CS8618;</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Development|AnyCPU'">
+    <NoWarn>1701;1702;CA1416;CS8600;CS8601;CS8602;CS8603;CS8604;CS8618;</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="log4net" Version="3.0.3" />
+    <PackageReference Include="MediatR" Version="12.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.26" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.15">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Wkhtmltopdf.NetCore" Version="3.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SA.CheckTrackingPlatform.Infrastructures.Management\SA.CheckTrackingPlatform.Infrastructures.Management.csproj" />
+    <ProjectReference Include="..\SA.CheckTrackingPlatform.ServiceEngines.Management\SA.CheckTrackingPlatform.ServiceEngines.Management.csproj" />
+    <ProjectReference Include="..\SA.CheckTrackingPlatform.Services.Common\SA.CheckTrackingPlatform.Services.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="SA.Framework.Core">
+      <HintPath>..\Libraries\SA.Framework.Core\SA.Framework.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SA.Framework.ServiceEngines">
+      <HintPath>..\Libraries\SA.Framework.ServiceEngines\SA.Framework.ServiceEngines.dll</HintPath>
+    </Reference>
+    <Reference Include="SA.Framework.Services">
+      <HintPath>..\Libraries\SA.Framework.Services\SA.Framework.Services.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="Properties\PublishProfiles\" />
+  </ItemGroup>
+
+</Project>

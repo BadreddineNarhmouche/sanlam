@@ -1,0 +1,36 @@
+sonarqube-check:
+  tags:
+    - gitlab-runner-2
+  image: mcr.microsoft.com/dotnet/sdk:6.0
+  variables:
+    SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  # Defines the location of the analysis task cache
+    GIT_DEPTH: "0"  # Tells git to fetch all the branches of the project, required by the analysis task
+  cache:
+    key: "${CI_JOB_NAME}"
+    paths:
+      - .sonar/cache
+  before_script: 
+      - apt-get update
+      - curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+      - apt-get install -y nodejs
+      - apt-get install -y openjdk-17-jre
+      - dotnet tool install --global dotnet-sonarscanner
+      - apt-get install -y unzip
+
+
+  script:
+      - echo "Analyzing all files..."
+      - export PATH=\"$PATH:$HOME/.dotnet/tools\"
+      - dotnet sonarscanner begin /k:"$SONAR_PROJECT_KEY" /n:"$SONAR_PROJECT_NAME" /d:sonar.host.url="$SONAR_HOST_URL" /d:sonar.login="$SONAR_TOKEN" 
+      - dotnet build || true
+      - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
+      - unzip sonar-scanner-cli-5.0.1.3006-linux.zip -d /opt
+      - export PATH="$PATH:/opt/sonar-scanner-5.0.1.3006-linux/bin"
+      - sonar-scanner -Dsonar.projectKey="$SONAR_PROJECT_KEY" -Dsonar.projectName="$SONAR_PROJECT_NAME" -Dsonar.host.url="$SONAR_HOST_URL" -Dsonar.login="$SONAR_TOKEN" -Dsonar.sources=. -Dsonar.exclusions="**/bin/**,**/obj/**,**/node_modules/**"
+      - dotnet sonarscanner end /d:sonar.login="$SONAR_TOKEN"
+  allow_failure: true
+  only:
+    - main
+
+
+    

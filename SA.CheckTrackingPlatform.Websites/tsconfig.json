@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+      "module": "esnext",
+      "declaration": true,
+      "noImplicitAny": false,
+      "removeComments": true,
+      "noLib": false,
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "target": "esnext",
+      "sourceMap": true,
+      "lib": ["dom", "esnext"],
+      "moduleResolution":"nodenext",
+      "strictNullChecks":true
+    },
+    "exclude": [
+        "node_modules", "dist", "lib", "__tests__", "**/*.test*", "**/*.spec*"
+    ]
+}

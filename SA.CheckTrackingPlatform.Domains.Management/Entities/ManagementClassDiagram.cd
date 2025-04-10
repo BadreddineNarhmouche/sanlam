@@ -1,0 +1,423 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SA.CheckTrackingPlatform.Domains.Management.Entities.DeliverySlip">
+    <Position X="12.75" Y="0.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="PublicDeliverySlipStatus" Type="SA.CheckTrackingPlatform.Domains.Management.Entities.DeliverySlipStatus" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="14.75" Y="2.375" />
+        <Point X="15" Y="2.375" />
+        <Point X="15" Y="6" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.876" Y="1.725" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAgCAgAAAABgAAAAAAIIAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Entities\DeliverySlip.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="PublicDeliverySlipStatus" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SA.CheckTrackingPlatform.Domains.Management.Entities.Quittance">
+    <Position X="18.25" Y="5.25" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="PublicQuittanceStatus" Type="SA.CheckTrackingPlatform.Domains.Management.Entities.QuittanceStatus" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="19.062" Y="5.25" />
+        <Point X="19.062" Y="3.438" />
+        <Point X="18" Y="3.438" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-0.084" Y="-0.333" Height="0.182" Width="2.124" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAQBQAQQAAAAAAIAAAAAAAiAABAUAAAAAAAAAiAAAA=</HashCode>
+      <FileName>Entities\Quittance.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="PublicQuittanceStatus" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SA.CheckTrackingPlatform.Domains.Management.Entities.QuittanceDocument">
+    <Position X="15.5" Y="7" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <InheritanceLine Type="SA.CheckTrackingPlatform.Domains.Management.Common.BaseEntityDocument&lt;TId&gt;" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11.875" Y="8.069" />
+        <Point X="11.875" Y="8.375" />
+        <Point X="15.5" Y="8.375" />
+      </Path>
+    </InheritanceLine>
+    <AssociationLine Name="Quittance" Type="SA.CheckTrackingPlatform.Domains.Management.Entities.Quittance" FixedFromPoint="true">
+      <Path>
+        <Point X="17.5" Y="7.625" />
+        <Point X="18.25" Y="7.625" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-0.1" Y="0.111" Height="0.182" Width="0.898" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="DocumentType" Type="SA.CheckTrackingPlatform.Domains.Management.Entities.DocumentType" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="15.5" Y="8.5" />
+        <Point X="11.222" Y="8.5" />
+        <Point X="11.222" Y="8.5" />
+        <Point X="10.25" Y="8.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.276" Y="-0.287" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="QuittanceTimeline" Type="SA.CheckTrackingPlatform.Domains.Management.Entities.QuittanceTimeline">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-0.916" Y="0.088" Height="0.182" Width="1.63" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAgAAAACAAAAAAAAEAAAAABAAAABAAA=</HashCode>
+      <FileName>Entities\QuittanceDocument.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Quittance" />
+      <Property Name="DocumentType" />
+      <Property Name="QuittanceTimeline" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SA.CheckTrackingPlatform.Domains.Management.Entities.DocumentType">
+    <Position X="8.25" Y="7" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\DocumentType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SA.CheckTrackingPlatform.Domains.Management.Entities.InternalRole">
+    <Position X="6" Y="7" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\InternalRole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SA.CheckTrackingPlatform.Domains.Management.Entities.InternalUser">
+    <Position X="6" Y="0.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="ParentInternalUser" Type="SA.CheckTrackingPlatform.Domains.Management.Entities.InternalUser" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8" Y="1.253" />
+        <Point X="8.595" Y="1.253" />
+        <Point X="8.595" Y="2.529" />
+        <Point X="8" Y="2.529" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.15" Y="0.414" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>QAAAAEAAAAAAAAAAAAAAAAAAAAAAAgQAAAAAAABCAAg=</HashCode>
+      <FileName>Entities\InternalUser.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ParentInternalUser" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SA.CheckTrackingPlatform.Domains.Management.Entities.InternalUserBranchPartner">
+    <Position X="3.25" Y="0.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="InternalUser" Type="SA.CheckTrackingPlatform.Domains.Management.Entities.InternalUser" FixedFromPoint="true">
+      <Path>
+        <Point X="5.5" Y="1.415" />
+        <Point X="6" Y="1.415" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-0.587" Y="-0.255" Height="0.182" Width="1.495" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAgAAIAAAAAAABAAAgAAAA=</HashCode>
+      <FileName>Entities\InternalUserBranchPartner.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="InternalUser" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SA.CheckTrackingPlatform.Domains.Management.Entities.Notification">
+    <Position X="3.25" Y="3" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="NotificationType" Type="SA.CheckTrackingPlatform.Domains.Management.Entities.NotificationType" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.5" Y="5.73" />
+        <Point X="5.74" Y="5.73" />
+        <Point X="5.74" Y="7.842" />
+        <Point X="5.5" Y="7.842" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-0.204" Y="1.008" Height="0.182" Width="1.368" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AQAIAQAAAJAACAAAAIADAAAAAAAAAAAAAADAAAAQAAA=</HashCode>
+      <FileName>Entities\Notification.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="NotificationType" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SA.CheckTrackingPlatform.Domains.Management.Entities.NotificationType">
+    <Position X="3.25" Y="7" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\NotificationType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SA.CheckTrackingPlatform.Domains.Management.Entities.InternalUserInternalRole">
+    <Position X="6" Y="4" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="InternalUser" Type="SA.CheckTrackingPlatform.Domains.Management.Entities.InternalUser">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.414" Y="0.469" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="InternalRole" Type="SA.CheckTrackingPlatform.Domains.Management.Entities.InternalRole">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.526" Y="0.456" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAJAACAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Entities\InternalUserInternalRole.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="InternalUser" />
+      <Property Name="InternalRole" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SA.CheckTrackingPlatform.Domains.Management.Common.BaseEntityDocument&lt;TId&gt;">
+    <Position X="10.75" Y="6" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAIAAAAAAAQAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Common\BaseEntityDocument.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SA.CheckTrackingPlatform.Domains.Management.Entities.DeliverySlipTimeline">
+    <Position X="12.25" Y="3.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="DeliverySlip" Type="SA.CheckTrackingPlatform.Domains.Management.Entities.DeliverySlip" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="12.25" Y="3.75" />
+        <Point X="12.104" Y="3.75" />
+        <Point X="12.104" Y="2.625" />
+        <Point X="12.75" Y="2.625" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-0.416" Y="-0.486" Height="0.182" Width="1.557" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAgAEAAAAAAAAAAAgAAAAAAAAAAAAAACAAAAQAAA=</HashCode>
+      <FileName>Entities\DeliverySlipTimeline.cs</FileName>
+      <NewMemberFileName>Entities\QuittanceTimeline.cs</NewMemberFileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="DeliverySlip" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SA.CheckTrackingPlatform.Domains.Management.Entities.QuittanceTimeline">
+    <Position X="15.5" Y="4.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="Quittance" Type="SA.CheckTrackingPlatform.Domains.Management.Entities.Quittance" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="17.5" Y="4.625" />
+        <Point X="18.562" Y="4.625" />
+        <Point X="18.562" Y="5.25" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-0.298" Y="0.31" Height="0.182" Width="0.815" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAiAAAAAABAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Entities\QuittanceTimeline.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Quittance" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SA.CheckTrackingPlatform.Domains.Management.Entities.DeliverySlipDocument">
+    <Position X="9.75" Y="0.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <InheritanceLine Type="SA.CheckTrackingPlatform.Domains.Management.Common.BaseEntityDocument&lt;TId&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11.062" Y="6" />
+        <Point X="11.062" Y="2.377" />
+      </Path>
+    </InheritanceLine>
+    <AssociationLine Name="DeliverySlip" Type="SA.CheckTrackingPlatform.Domains.Management.Entities.DeliverySlip">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-0.237" Y="0.06" Height="0.182" Width="1.113" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="DocumentType" Type="SA.CheckTrackingPlatform.Domains.Management.Entities.DocumentType" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="10.5" Y="2.377" />
+        <Point X="10.5" Y="4" />
+        <Point X="10.5" Y="4" />
+        <Point X="10.5" Y="7.224" />
+        <Point X="10.25" Y="7.224" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.407" Y="4.083" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="DeliverySlipTimeline" Type="SA.CheckTrackingPlatform.Domains.Management.Entities.DeliverySlipTimeline" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11.625" Y="2.377" />
+        <Point X="11.625" Y="5.312" />
+        <Point X="12.25" Y="5.312" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.1" Y="0.878" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAgAAAAAAIAAAAAAAAAAAAiAAAAQAAA=</HashCode>
+      <FileName>Entities\DeliverySlipDocument.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="DeliverySlip" />
+      <Property Name="DocumentType" />
+      <Property Name="DeliverySlipTimeline" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SA.CheckTrackingPlatform.Domains.Management.Entities.InternalUserDocument">
+    <Position X="8.25" Y="4" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <InheritanceLine Type="SA.CheckTrackingPlatform.Domains.Management.Common.BaseEntityDocument&lt;TId&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="10.75" Y="6.438" />
+        <Point X="10.583" Y="6.437" Type="JumpStart" />
+        <Point X="10.417" Y="6.438" Type="JumpEnd" />
+        <Point X="9.562" Y="6.438" />
+        <Point X="9.562" Y="5.684" />
+      </Path>
+    </InheritanceLine>
+    <AssociationLine Name="InternalUser" Type="SA.CheckTrackingPlatform.Domains.Management.Entities.InternalUser" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="9.188" Y="4" />
+        <Point X="9.188" Y="0.848" />
+        <Point X="8" Y="0.848" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.601" Y="-2.3" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAACAgAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Entities\InternalUserDocument.cs</FileName>
+      <NewMemberFileName>Entities\DeliverySlipDocument.cs</NewMemberFileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="InternalUser" />
+      <Property Name="DocumentType" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SA.CheckTrackingPlatform.Domains.Management.Entities.DeliverySlipStatus">
+    <Position X="13.25" Y="6" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\DeliverySlipStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SA.CheckTrackingPlatform.Domains.Management.Entities.QuittanceStatus">
+    <Position X="16" Y="2.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\QuittanceStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SA.CheckTrackingPlatform.Domains.Management.Entities.QuittanceLine">
+    <Position X="18.25" Y="0.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="Quittance" Type="SA.CheckTrackingPlatform.Domains.Management.Entities.Quittance">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.285" Y="2.108" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAgAAAAAAABAAAACAAg=</HashCode>
+      <FileName>Entities\QuittanceLine.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Quittance" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SA.CheckTrackingPlatform.Domains.Management.Entities.DeliverySlipQuittanceLine">
+    <Position X="15.5" Y="0.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="QuittanceLine" Type="SA.CheckTrackingPlatform.Domains.Management.Entities.QuittanceLine">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-0.357" Y="0.06" Height="0.182" Width="1.202" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="DeliverySlip" Type="SA.CheckTrackingPlatform.Domains.Management.Entities.DeliverySlip">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.074" Y="-0.299" Height="0.182" Width="1.118" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAgAAAAAAAAAASAAAAQAAA=</HashCode>
+      <FileName>Entities\DeliverySlipQuittanceLine.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="QuittanceLine" />
+      <Property Name="DeliverySlip" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

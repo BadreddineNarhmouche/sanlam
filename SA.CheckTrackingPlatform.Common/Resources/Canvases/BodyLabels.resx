@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Date" xml:space="preserve">
+    <value>Année  ( Année de la date d'émission) </value>
+  </data>
+  <data name="PoliceRef" xml:space="preserve">
+    <value>N° POLICE</value>
+  </data>
+  <data name="Assure" xml:space="preserve">
+    <value>ASSURE</value>
+  </data>
+  <data name="AffaireType" xml:space="preserve">
+    <value>Type d'affaire</value>
+  </data>
+  <data name="Ferme" xml:space="preserve">
+    <value>Ferme / Tacite</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Statut</value>
+  </data>
+  <data name="GarantyType" xml:space="preserve">
+    <value>TYPE GARANTIE</value>
+  </data>
+  <data name="Branch" xml:space="preserve">
+    <value>Branche</value>
+  </data>
+  <data name="Intermediare" xml:space="preserve">
+    <value>INTERMEDIAIRE</value>
+  </data>
+  <data name="SanlamQP" xml:space="preserve">
+    <value>Q.P SANLAM</value>
+  </data>
+  <data name="Effet" xml:space="preserve">
+    <value>EFFET</value>
+  </data>
+  <data name="Expir" xml:space="preserve">
+    <value>EXPIR</value>
+  </data>
+  <data name="Prime" xml:space="preserve">
+    <value>PRIME  A 100% </value>
+  </data>
+  <data name="Currrency" xml:space="preserve">
+    <value>Nature devises</value>
+  </data>
+  <data name="PrimeMAD" xml:space="preserve">
+    <value>Prime  A 100 % MAD</value>
+  </data>
+  <data name="PrimeSanlamQP" xml:space="preserve">
+    <value>PRIME QP SAHAM (MAD)</value>
+  </data>
+  <data name="CommissionCompagnie" xml:space="preserve">
+    <value>COMMISSION COMPAGNIE</value>
+  </data>
+  <data name="CommissionCompagnieMAD" xml:space="preserve">
+    <value>Commission compagnie en montant (MAD)</value>
+  </data>
+  <data name="CommissionIntermédiaire" xml:space="preserve">
+    <value>Commission intermédiaire  ( en % )</value>
+  </data>
+  <data name="CommissionIntermédiaireMAD" xml:space="preserve">
+    <value>Commission intermédiaire en montant</value>
+  </data>
+  <data name="Partenaire" xml:space="preserve">
+    <value>PARTENAIRE</value>
+  </data>
+  <data name="ReassureurDirect" xml:space="preserve">
+    <value>REASSUREUR DIRECT</value>
+  </data>
+  <data name="CessionRate" xml:space="preserve">
+    <value>TAUX CESSION/QP Cie</value>
+  </data>
+  <data name="CessionDetails" xml:space="preserve">
+    <value>Détails Cession</value>
+  </data>
+  <data name="DateLimite" xml:space="preserve">
+    <value>Date limite de règlement</value>
+  </data>
+  <data name="WorkFlowStep" xml:space="preserve">
+    <value>Etape workflow réas</value>
+  </data>
+  <data name="DateMission" xml:space="preserve">
+    <value>Date d'émission</value>
+  </data>
+  <data name="MontantEncaisse" xml:space="preserve">
+    <value>Montant encaissé</value>
+  </data>
+  <data name="DateEncaissement" xml:space="preserve">
+    <value>Date encaissement </value>
+  </data>
+  <data name="PrimeNette" xml:space="preserve">
+    <value>Prime nette</value>
+  </data>
+  <data name="Accessoire" xml:space="preserve">
+    <value>Accessoire</value>
+  </data>
+  <data name="PrimeTotale" xml:space="preserve">
+    <value>Prime totale</value>
+  </data>
+  <data name="Commission" xml:space="preserve">
+    <value>Commission </value>
+  </data>
+  <data name="NetPager" xml:space="preserve">
+    <value>Net à Payer</value>
+  </data>
+  <data name="NAPRestant" xml:space="preserve">
+    <value>NAP Restant</value>
+  </data>
+  <data name="Annotations" xml:space="preserve">
+    <value>Annotations</value>
+  </data>
+  <data name="DateAnnotation" xml:space="preserve">
+    <value>Date Annotation </value>
+  </data>
+  <data name="BordereauRef" xml:space="preserve">
+    <value>N Bordereau </value>
+  </data>
+  <data name="MontantBordereau" xml:space="preserve">
+    <value>Montant bordereau</value>
+  </data>
+  <data name="DeviseContrevaleur" xml:space="preserve">
+    <value>Devise contrevaleur</value>
+  </data>
+  <data name="BordereauCreationDate" xml:space="preserve">
+    <value>Date création boredreau </value>
+  </data>
+  <data name="PaymentRef" xml:space="preserve">
+    <value>N° virement </value>
+  </data>
+  <data name="PaymentExeculte" xml:space="preserve">
+    <value>Montant à executé</value>
+  </data>
+  <data name="PaymentCreationDate" xml:space="preserve">
+    <value>Date validation virement</value>
+  </data>
+  <data name="EngagementBase" xml:space="preserve">
+    <value>Base d'engagement</value>
+  </data>
+  <data name="EngagementAmount" xml:space="preserve">
+    <value>Montant d'engagement</value>
+  </data>
+  <data name="EngagementBranch" xml:space="preserve">
+    <value>Part filiale</value>
+  </data>
+  <data name="QuittanceRef" xml:space="preserve">
+    <value>N° Quittance</value>
+  </data>
+  <data name="ChargerSubscriptor" xml:space="preserve">
+    <value>Charger souscripteur</value>
+  </data>
+  <data name="SanlamSharePercentage" xml:space="preserve">
+    <value>Pourcentage des parts de Sanlam</value>
+  </data>
+  <data name="PartnerUserCode" xml:space="preserve">
+    <value>Code intermédiaire</value>
+  </data>
+  <data name="DateRV" xml:space="preserve">
+    <value>DateRV</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+</root>
