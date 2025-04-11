@@ -28,7 +28,7 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
 
         public bool IsSeen { get; set; }
 
-        [ForeignKey(nameof(InternalUser))]
+        [ForeignKey(nameof(InternalUser))] // propriéte de navigation 
         public virtual int? InternalUserId { get; set; }
         public virtual InternalUser? InternalUser { get; set; }
 
