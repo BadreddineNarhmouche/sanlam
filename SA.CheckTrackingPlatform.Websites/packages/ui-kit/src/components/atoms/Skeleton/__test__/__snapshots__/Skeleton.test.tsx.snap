@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Skeleton renders 1`] = `
+<span
+  className="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1n7gpw1-MuiSkeleton-root"
+  style={
+    Object {
+      "height": undefined,
+      "width": undefined,
+    }
+  }
+/>
+`;

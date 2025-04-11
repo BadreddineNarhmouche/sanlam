@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UploadFiles render 1`] = `
+<div
+  className="MuiGrid-root css-vj1n65-MuiGrid-root"
+>
+  <p
+    className="MuiTypography-root MuiTypography-body2 css-12g4ja9-MuiTypography-root"
+  >
+    Documents à uploader ( optionnel )
+  </p>
+  <div
+    className="MuiGrid-root css-6ht9wc-MuiGrid-root"
+    onDragOver={[Function]}
+    onDrop={[Function]}
+    style={
+      Object {
+        "border": "2px dashed #CCCCCC",
+        "borderRadius": "8px",
+      }
+    }
+  >
+    <svg
+      aria-hidden={true}
+      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+      data-testid="UploadIcon"
+      focusable="false"
+      style={
+        Object {
+          "color": "#464E58",
+        }
+      }
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M5 20h14v-2H5v2zm0-10h4v6h6v-6h4l-7-7-7 7z"
+      />
+    </svg>
+    <input
+      multiple={true}
+      onChange={[Function]}
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+      type="file"
+    />
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-81pdxd-MuiButtonBase-root-MuiButton-root"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#E6F1FA",
+          "border": 0,
+          "color": "#0163B8",
+          "height": "24px",
+          "marginBottom": "8px",
+          "marginTop": "8px",
+          "padding": "4px 6px",
+        }
+      }
+      tabIndex={0}
+      type="button"
+    >
+      Joindre les fichiers
+    </button>
+  </div>
+</div>
+`;

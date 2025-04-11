@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TabPanel should render correctly when value !== index 1`] = `
+<div
+  hidden={true}
+  id="tabpanel-0"
+/>
+`;
+
+exports[`TabPanel should render correctly when value === index 1`] = `
+<div
+  hidden={false}
+  id="tabpanel-1"
+/>
+`;

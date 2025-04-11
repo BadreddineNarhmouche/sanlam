@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonGroup render 1`] = `
+<div
+  className="MuiButtonGroup-root MuiButtonGroup-outlined css-iajp3t-MuiButtonGroup-root"
+  role="group"
+/>
+`;

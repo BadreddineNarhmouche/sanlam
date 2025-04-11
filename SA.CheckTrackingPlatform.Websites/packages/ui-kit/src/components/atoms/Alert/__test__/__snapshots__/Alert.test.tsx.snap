@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Alert renders 1`] = `
+<div
+  className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-standardSuccess MuiAlert-standard css-1tpak1i-MuiPaper-root-MuiAlert-root"
+  role="alert"
+>
+  <div
+    className="MuiAlert-message css-1pxa9xg-MuiAlert-message"
+  />
+</div>
+`;

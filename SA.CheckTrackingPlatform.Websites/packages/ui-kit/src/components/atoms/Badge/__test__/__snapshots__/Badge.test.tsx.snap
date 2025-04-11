@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Badge renders 1`] = `
+<span
+  className="MuiBadge-root css-1c32n2y-MuiBadge-root"
+>
+  <span
+    className="MuiBadge-badge MuiBadge-standard MuiBadge-invisible MuiBadge-anchorOriginTopRight MuiBadge-anchorOriginTopRightRectangular MuiBadge-overlapRectangular css-1s52at1-MuiBadge-badge"
+  />
+</span>
+`;

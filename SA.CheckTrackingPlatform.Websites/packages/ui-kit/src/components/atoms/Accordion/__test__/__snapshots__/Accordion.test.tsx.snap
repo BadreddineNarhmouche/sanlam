@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Accordion should render correctly 1`] = `
+<div
+  className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAccordion-root MuiAccordion-rounded MuiAccordion-gutters css-6dih6l-MuiPaper-root-MuiAccordion-root"
+>
+  <div
+    aria-expanded={false}
+    className="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters css-1wcxbmp-MuiButtonBase-root-MuiAccordionSummary-root"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onContextMenu={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    role="button"
+    tabIndex={0}
+  >
+    <div
+      className="MuiAccordionSummary-content MuiAccordionSummary-contentGutters css-o4b71y-MuiAccordionSummary-content"
+    >
+      <p
+        className="MuiTypography-root MuiTypography-body1 css-mbgzrg-MuiTypography-root"
+        style={
+          Object {
+            "fontSize": "24px",
+            "fontWeight": "fontWeightLight",
+            "letterSpacing": "caption.letterSpacing",
+            "lineHeight": "caption.lineHeight",
+          }
+        }
+      >
+        fake-title
+      </p>
+    </div>
+    <div
+      className="MuiAccordionSummary-expandIconWrapper css-yw020d-MuiAccordionSummary-expandIconWrapper"
+    >
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-ci5apu-MuiSvgIcon-root"
+        data-testid="ExpandMoreIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+        />
+      </svg>
+    </div>
+  </div>
+  <div
+    className="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-bz4dnt-MuiCollapse-root"
+    style={
+      Object {
+        "minHeight": "0px",
+      }
+    }
+  >
+    <div
+      className="MuiCollapse-wrapper MuiCollapse-vertical css-smkl36-MuiCollapse-wrapper"
+    >
+      <div
+        className="MuiCollapse-wrapperInner MuiCollapse-vertical css-9l5vo-MuiCollapse-wrapperInner"
+      >
+        <div
+          className="MuiAccordion-region"
+          role="region"
+        >
+          <div
+            className="MuiAccordionDetails-root css-1id2cn7-MuiAccordionDetails-root"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

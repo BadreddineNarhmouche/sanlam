@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TabPanels should render correctly 1`] = `
+<div
+  className="MuiBox-root css-0"
+>
+  <div
+    hidden={true}
+    id="tabpanel-0"
+  />
+</div>
+`;
