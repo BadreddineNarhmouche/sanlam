@@ -37,8 +37,6 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
 
         public virtual ICollection<InternalUserInternalRole> InternalUserInternalRoles { get; set; }
 
-        public virtual ICollection<InternalUserBranchPartner> InternalUserBranchPartners { get; set; }
-
         #endregion Properties
     }
 }
