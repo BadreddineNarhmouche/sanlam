@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.Configuration;
 using SA.CheckTrackingPlatform.Domains.Management.Common;
 using SA.CheckTrackingPlatform.Domains.Management.Entities;
-using SA.CheckTrackingPlatform.Domains.Management.Entities;
 
 namespace SA.CheckTrackingPlatform.Contexts.Management.Application
 {
