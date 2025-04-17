@@ -187,7 +187,6 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Notifications.Comma
                         notificationToCreate.InternalRoleId = request.InternalRoleId.Value;
                     }
                     notificationToCreate.CreatedById = internalUserId;
-                    notificationToCreate.CreatedByFullName = internalUserFullName;
                     notificationToCreate.CreationDate = DateTime.Now;
                     Notification notificationCreated = await notificationCommandRepository.AddAsync(notificationToCreate);
 

@@ -13,8 +13,8 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Mapper
             CreateMap<InternalUser, GetInternalUserByIdResponse>().ReverseMap();
 
             CreateMap<InternalUser, GetAllInternalUsersByCriteriaItem>()
-                .ForMember(destination => destination.StatusCode, option => option.MapFrom(source => source.IsDeactivated.FromInternalUserStatusCode()))
-                .ForMember(destination => destination.StatusLabel, option => option.MapFrom(source => source.IsDeactivated.FromInternalUserStatusCode().ToInternalUserStatusLabel()))
+                //.ForMember(destination => destination.StatusCode, option => option.MapFrom(source => source.IsDeactivated.FromInternalUserStatusCode()))
+                //.ForMember(destination => destination.StatusLabel, option => option.MapFrom(source => source.IsDeactivated.FromInternalUserStatusCode().ToInternalUserStatusLabel()))
                 .ReverseMap();
 
             CreateMap<InternalUser, GetInternalUserByElectronicAddressResponse>()
