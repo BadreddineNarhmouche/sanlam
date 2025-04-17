@@ -1,12 +1,7 @@
-﻿using SA.CheckTrackingPlatform.Domains.Management.Common;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using static System.CoreConstants;
-
+﻿
 namespace SA.CheckTrackingPlatform.Domains.Management.Entities
 {
-    [Table("Notifications", Schema = "notification")]
-    public class Notification : BaseEntity<long>
+    public class Notification
     {
         #region Constructors
 
@@ -18,27 +13,18 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
 
         #region Properties
 
-        [Required(AllowEmptyStrings = false)]
-        [StringLength(StringLengths.Subject)]
+        public int Id { get; set; }
         public virtual string Subject { get; set; }
-
-        [Required(AllowEmptyStrings = false)]
-        [StringLength(StringLengths.Body)]
         public virtual string Body { get; set; }
-
         public bool IsSeen { get; set; }
-
-        [ForeignKey(nameof(InternalUser))]
         public virtual int? InternalUserId { get; set; }
-        public virtual InternalUser? InternalUser { get; set; }
-
-        [ForeignKey(nameof(NotificationType))]
         public virtual short? NotificationTypeId { get; set; }
-        public virtual NotificationType? NotificationType { get; set; }
-
-        [ForeignKey(nameof(InternalRole))]
         public virtual int? InternalRoleId { get; set; }
+
+        // Navigation properties
         public virtual InternalRole? InternalRole { get; set; }
+        public virtual InternalUser? InternalUser { get; set; }
+        public virtual NotificationType? NotificationType { get; set; }
 
         #endregion Properties
     }

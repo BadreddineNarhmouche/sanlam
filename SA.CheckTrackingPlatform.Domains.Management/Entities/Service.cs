@@ -1,10 +1,7 @@
-﻿using SA.CheckTrackingPlatform.Domains.Management.Common;
-using System.ComponentModel.DataAnnotations.Schema;
-
+﻿
 namespace SA.CheckTrackingPlatform.Domains.Management.Entities
 {
-    [Table("Service", Schema = "core")]
-    public class Service : BaseEntity<int>
+    public class Service
     {
         #region Constructors
 

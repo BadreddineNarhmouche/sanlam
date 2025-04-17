@@ -1,10 +1,7 @@
-﻿using SA.CheckTrackingPlatform.Domains.Management.Common;
-using System.ComponentModel.DataAnnotations.Schema;
-
+﻿
 namespace SA.CheckTrackingPlatform.Domains.Management.Entities
 {
-    [Table("Checkes", Schema = "core")]
-    public class Checkes : BaseEntity<int>
+    public class Checkes
     {
         #region Constructors
 
@@ -36,7 +33,6 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
         public Branch Branch { get; set; }
         public Service Service { get; set; }
         public ICollection<Timeline> Timelines { get; set; }
-
 
         #endregion Properties
     }
