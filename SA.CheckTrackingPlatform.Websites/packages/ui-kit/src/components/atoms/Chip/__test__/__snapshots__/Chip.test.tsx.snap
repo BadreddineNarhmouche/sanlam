@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Chip renders 1`] = `
+<div
+  className="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-w66kx-MuiChip-root"
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  style={
+    Object {
+      "chip": Object {
+        "fontSize": " 0.8rem",
+        "padding": "0.3rem, 0.5rem, 0.3rem, 0.5rem",
+      },
+    }
+  }
+>
+  <span
+    className="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+  />
+</div>
+`;

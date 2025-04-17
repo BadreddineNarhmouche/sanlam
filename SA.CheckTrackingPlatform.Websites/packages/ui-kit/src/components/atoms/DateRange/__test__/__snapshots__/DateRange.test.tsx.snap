@@ -1,0 +1,907 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DateRange renders 1`] = `
+<div
+  className="nice-dates"
+>
+  <div
+    className="MuiGrid-root MuiGrid-container css-1vjojc5-MuiGrid-root"
+  >
+    <div
+      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true css-1yjjyqd-MuiGrid-root"
+    >
+      <input
+        className="input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        readOnly={false}
+        style={
+          Object {
+            "border": "1px solid rgb(213 218 225)",
+            "borderRadius": 4,
+            "font": "inherit",
+            "height": "56px",
+            "letterSpacing": "inherit",
+            "padding": "16.5px 14px",
+          }
+        }
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true css-1yjjyqd-MuiGrid-root"
+    >
+      <input
+        className="input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        readOnly={false}
+        style={
+          Object {
+            "border": "1px solid rgb(213 218 225)",
+            "borderRadius": 4,
+            "font": "inherit",
+            "height": "56px",
+            "letterSpacing": "inherit",
+            "padding": "16.5px 14px",
+          }
+        }
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+  <div
+    className="nice-dates-popover"
+  >
+    <div>
+      <div
+        className="nice-dates-navigation"
+      >
+        <a
+          className="nice-dates-navigation_previous"
+          onClick={[Function]}
+          onTouchEnd={[Function]}
+        />
+        <span
+          className="nice-dates-navigation_current"
+        >
+          septembre
+        </span>
+        <a
+          className="nice-dates-navigation_next -disabled"
+          onClick={[Function]}
+          onTouchEnd={[Function]}
+        />
+      </div>
+      <div
+        className="nice-dates-week-header"
+      >
+        <span
+          className="nice-dates-week-header_day"
+        >
+          lun.
+        </span>
+        <span
+          className="nice-dates-week-header_day"
+        >
+          mar.
+        </span>
+        <span
+          className="nice-dates-week-header_day"
+        >
+          mer.
+        </span>
+        <span
+          className="nice-dates-week-header_day"
+        >
+          jeu.
+        </span>
+        <span
+          className="nice-dates-week-header_day"
+        >
+          ven.
+        </span>
+        <span
+          className="nice-dates-week-header_day"
+        >
+          sam.
+        </span>
+        <span
+          className="nice-dates-week-header_day"
+        >
+          dim.
+        </span>
+      </div>
+      <div
+        className="nice-dates-grid"
+        style={
+          Object {
+            "height": 0,
+          }
+        }
+      >
+        <div
+          className="nice-dates-grid_container -origin-top"
+          style={
+            Object {
+              "transform": "translate3d(0, 0px, 0)",
+              "transitionDuration": "500ms",
+            }
+          }
+        >
+          <span
+            className="nice-dates-day -outside"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              28
+            </span>
+          </span>
+          <span
+            className="nice-dates-day -outside"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              29
+            </span>
+          </span>
+          <span
+            className="nice-dates-day -outside"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              30
+            </span>
+          </span>
+          <span
+            className="nice-dates-day -outside"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              31
+            </span>
+          </span>
+          <span
+            className="nice-dates-day"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_month"
+            >
+              sept.
+            </span>
+            <span
+              className="nice-dates-day_date"
+            >
+              1
+            </span>
+          </span>
+          <span
+            className="nice-dates-day"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              2
+            </span>
+          </span>
+          <span
+            className="nice-dates-day"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              3
+            </span>
+          </span>
+          <span
+            className="nice-dates-day"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              4
+            </span>
+          </span>
+          <span
+            className="nice-dates-day"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              5
+            </span>
+          </span>
+          <span
+            className="nice-dates-day"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              6
+            </span>
+          </span>
+          <span
+            className="nice-dates-day"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              7
+            </span>
+          </span>
+          <span
+            className="nice-dates-day"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              8
+            </span>
+          </span>
+          <span
+            className="nice-dates-day"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              9
+            </span>
+          </span>
+          <span
+            className="nice-dates-day"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              10
+            </span>
+          </span>
+          <span
+            className="nice-dates-day"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              11
+            </span>
+          </span>
+          <span
+            className="nice-dates-day"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              12
+            </span>
+          </span>
+          <span
+            className="nice-dates-day"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              13
+            </span>
+          </span>
+          <span
+            className="nice-dates-day"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              14
+            </span>
+          </span>
+          <span
+            className="nice-dates-day"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              15
+            </span>
+          </span>
+          <span
+            className="nice-dates-day"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              16
+            </span>
+          </span>
+          <span
+            className="nice-dates-day"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              17
+            </span>
+          </span>
+          <span
+            className="nice-dates-day"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              18
+            </span>
+          </span>
+          <span
+            className="nice-dates-day"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              19
+            </span>
+          </span>
+          <span
+            className="nice-dates-day"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              20
+            </span>
+          </span>
+          <span
+            className="nice-dates-day"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              21
+            </span>
+          </span>
+          <span
+            className="nice-dates-day -today"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              22
+            </span>
+          </span>
+          <span
+            className="nice-dates-day -disabled"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              23
+            </span>
+          </span>
+          <span
+            className="nice-dates-day -disabled"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              24
+            </span>
+          </span>
+          <span
+            className="nice-dates-day -disabled"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              25
+            </span>
+          </span>
+          <span
+            className="nice-dates-day -disabled"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              26
+            </span>
+          </span>
+          <span
+            className="nice-dates-day -disabled"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              27
+            </span>
+          </span>
+          <span
+            className="nice-dates-day -disabled"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              28
+            </span>
+          </span>
+          <span
+            className="nice-dates-day -disabled"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              29
+            </span>
+          </span>
+          <span
+            className="nice-dates-day -disabled"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              30
+            </span>
+          </span>
+          <span
+            className="nice-dates-day -disabled -outside"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_month"
+            >
+              oct.
+            </span>
+            <span
+              className="nice-dates-day_date"
+            >
+              1
+            </span>
+          </span>
+          <span
+            className="nice-dates-day -disabled -outside"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              2
+            </span>
+          </span>
+          <span
+            className="nice-dates-day -disabled -outside"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              3
+            </span>
+          </span>
+          <span
+            className="nice-dates-day -disabled -outside"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              4
+            </span>
+          </span>
+          <span
+            className="nice-dates-day -disabled -outside"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              5
+            </span>
+          </span>
+          <span
+            className="nice-dates-day -disabled -outside"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              6
+            </span>
+          </span>
+          <span
+            className="nice-dates-day -disabled -outside"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              7
+            </span>
+          </span>
+          <span
+            className="nice-dates-day -disabled -outside"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchEnd={[Function]}
+            style={
+              Object {
+                "height": 0,
+              }
+            }
+          >
+            <span
+              className="nice-dates-day_date"
+            >
+              8
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

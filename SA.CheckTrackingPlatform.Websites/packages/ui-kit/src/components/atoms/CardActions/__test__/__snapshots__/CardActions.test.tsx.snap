@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardActions renders 1`] = `
+<div
+  className="MuiCardActions-root MuiCardActions-spacing css-1t6e9jv-MuiCardActions-root"
+/>
+`;

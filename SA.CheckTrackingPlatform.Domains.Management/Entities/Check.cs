@@ -1,10 +1,7 @@
-﻿using SA.CheckTrackingPlatform.Domains.Management.Common;
-using System.ComponentModel.DataAnnotations.Schema;
-
+﻿
 namespace SA.CheckTrackingPlatform.Domains.Management.Entities
 {
-    [Table("Checkes", Schema = "core")]
-    public class Checkes : BaseEntity<int>
+    public class Checkes
     {
         #region Constructors
 
@@ -16,6 +13,26 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
 
         #region Properties
 
+        public int Id { get; set; }
+        public decimal Amount { get; set; }
+        public int BankId { get; set; }
+        public int BranchId { get; set; }
+        public int ServiceId { get; set; }
+        public DateTime CreationDate { get; set; }
+        public string CheckNumber { get; set; }
+        public string LotNumber { get; set; }
+        public string RecipientName { get; set; }
+        public string SinisterNumber { get; set; }
+        public string AccountNumber { get; set; }
+        public string RegisterOrderNumber { get; set; }
+        public decimal TransactionNumber { get; set; }
+        public string BeneficiaryName { get; set; }
+
+        // Navigation properties
+        public Bank Bank { get; set; }
+        public Branch Branch { get; set; }
+        public Service Service { get; set; }
+        public ICollection<Timeline> Timelines { get; set; }
 
         #endregion Properties
     }

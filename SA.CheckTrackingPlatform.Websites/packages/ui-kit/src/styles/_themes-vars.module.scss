@@ -1,0 +1,68 @@
+// ==============================|| COLORS PALETTE ||============================== //
+
+//base
+$baseMain: #ffffff;
+$baseDark: #000000;
+$baseLight: #e1e1e1;
+$baseGreyMain: #8a929c;
+$baseGreyDark: #464e58;
+$baseGreyLight: #717983;
+$baseGreyLightBackground: #f5f7fa;
+$baseGreyLightBorders: #d5dae1;
+$baseOrangeMain: #f28500;
+
+// primary
+$primaryLight: #e6f1fa;
+$primaryMain: #0075c9;
+$primary100: #e6f1fa;
+$primaryDark: #00194d;
+
+// secondary
+
+// warning
+$warningLight: #fff4e7;
+$warningMain: #ff8c00;
+$warningDark: #f28500;
+$warningDark2: #d86018;
+
+// error
+$errorLight: #fcefec;
+$errorMain: #ff3400;
+
+// success
+$successDark: #0ea800;
+$successLight: #edfdeb;
+
+// ==============================|| JAVASCRIPT ||============================== //
+
+:export {
+  // base
+  baseMain: $baseMain;
+  baseDark: $baseDark;
+  baseLight: $baseLight;
+  baseGreyLight: $baseGreyLight;
+  baseGreyLightBackground: $baseGreyLightBackground;
+  baseGreyLightBorders: $baseGreyLightBorders;
+  baseGreyMain: $baseGreyMain;
+  baseGreyDark: $baseGreyDark;
+
+  // primary
+  primaryLight: $primaryLight;
+  primaryMain: $primaryMain;
+  primaryDark: $primaryDark;
+
+  //warning
+  warningLight: $warningLight;
+  warningMain: $warningMain;
+  warningDark: $warningDark;
+  warningDark2: $warningDark2;
+  primary100: $primary100;
+
+  // error
+  errorLight: $errorLight;
+  errorMain: $errorMain;
+
+  //success
+  successDark: $successDark;
+  successLight: $successLight;
+}

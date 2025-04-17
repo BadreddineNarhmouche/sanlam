@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileListItem renders 1`] = `
+<div
+  className="MuiGrid-root MuiGrid-container css-1fkyx8n-MuiGrid-root"
+  style={
+    Object {
+      "border": "1px solid #D5DAE1",
+      "borderRadius": "8px",
+    }
+  }
+>
+  <div
+    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true css-1vd824g-MuiGrid-root"
+  >
+    <svg
+      aria-hidden={true}
+      className="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-ci5apu-MuiSvgIcon-root"
+      data-testid="LibraryBooksIcon"
+      focusable="false"
+      style={
+        Object {
+          "backgroundColor": "#E6F1FA",
+          "borderRadius": "2px",
+          "height": "32px",
+          "padding": "4px",
+          "width": "32px",
+        }
+      }
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"
+      />
+    </svg>
+  </div>
+  <div
+    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-7 css-uqwprf-MuiGrid-root"
+  >
+    <p
+      className="MuiTypography-root MuiTypography-body2 css-cinda9-MuiTypography-root"
+      style={
+        Object {
+          "color": "base.greyDark",
+          "fontWeight": "500",
+        }
+      }
+    >
+      test-file.txt
+    </p>
+    <p
+      className="MuiTypography-root MuiTypography-body2 css-cinda9-MuiTypography-root"
+      style={
+        Object {
+          "color": "base.greyMain",
+          "fontWeight": "400",
+        }
+      }
+    >
+      0.01
+       KB
+    </p>
+  </div>
+  <div
+    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-auto css-1wrgmsj-MuiGrid-root"
+    style={
+      Object {
+        "textAlign": "right",
+      }
+    }
+  >
+    <button
+      aria-controls="menu-appbar"
+      className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary MuiIconButton-sizeMedium css-1bl98p9-MuiButtonBase-root-MuiIconButton-root"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-ci5apu-MuiSvgIcon-root"
+        data-testid="DeleteIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+        />
+      </svg>
+       
+    </button>
+  </div>
+</div>
+`;

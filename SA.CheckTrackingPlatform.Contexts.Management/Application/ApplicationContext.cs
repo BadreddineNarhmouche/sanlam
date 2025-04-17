@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.Configuration;
 using SA.CheckTrackingPlatform.Domains.Management.Common;
 using SA.CheckTrackingPlatform.Domains.Management.Entities;
-using SA.CheckTrackingPlatform.Domains.Management.Entities;
 
 namespace SA.CheckTrackingPlatform.Contexts.Management.Application
 {
@@ -79,10 +78,14 @@ namespace SA.CheckTrackingPlatform.Contexts.Management.Application
         public DbSet<Checkes> Checkes { get; set; }
         public DbSet<InternalRole> InternalRoles { get; set; }
         public DbSet<InternalUser> InternalUsers { get; set; }
-        public DbSet<InternalUserBranchPartner> InternalUserBranchPartners { get; set; }
         public DbSet<InternalUserInternalRole> InternalUserInternalRoles { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<NotificationType> NotificationTypes { get; set; }
+        public DbSet<Bank> Banks { get; set; }
+        public DbSet<Branch> Branchs { get; set; }
+        public DbSet<Service> Services { get; set; }
+        public DbSet<Status> Statuses { get; set; }
+        public DbSet<Timeline> Timelines { get; set; }
 
         #endregion DbSets
     }

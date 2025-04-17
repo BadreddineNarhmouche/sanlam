@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox renders 1`] = `
+<div
+  className="MuiGrid-root MuiGrid-container css-k6wrnl-MuiGrid-root"
+>
+  <div
+    className="MuiGrid-root css-1o99ckg-MuiGrid-root"
+  >
+    <div
+      className="MuiGrid-root MuiGrid-item css-1cg2u4g-MuiGrid-root"
+      onChange={[Function]}
+      onClick={[Function]}
+    >
+      <p
+        className="MuiTypography-root MuiTypography-body1 css-zrogqb-MuiTypography-root"
+      >
+        label
+      </p>
+    </div>
+  </div>
+</div>
+`;
