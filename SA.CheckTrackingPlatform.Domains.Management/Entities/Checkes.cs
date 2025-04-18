@@ -1,11 +1,11 @@
 ﻿
 namespace SA.CheckTrackingPlatform.Domains.Management.Entities
 {
-    public class Checkes
+    public class Checks
     {
         #region Constructors
 
-        public Checkes() : base()
+        public Checks() : base()
         {
         }
 
