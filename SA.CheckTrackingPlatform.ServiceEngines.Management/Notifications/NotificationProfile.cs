@@ -29,7 +29,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Mapper
                 .ReverseMap();
 
             CreateMap<Notification, UpdateNotificationResponse>()
-                .ForMember(destination => destination.ModificationDate, option => option.MapFrom(source => !source.ModificationDate.HasValue ? string.Empty : source.ModificationDate.Value.ToString()))
+                //.ForMember(destination => destination.ModificationDate, option => option.MapFrom(source => !source.ModificationDate.HasValue ? string.Empty : source.ModificationDate.Value.ToString()))
                 .ReverseMap();
         }
 

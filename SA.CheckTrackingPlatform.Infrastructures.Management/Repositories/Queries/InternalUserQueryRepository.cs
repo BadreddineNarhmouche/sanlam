@@ -63,21 +63,6 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
                     .Where(o => o.ElectronicAddress.Contains(electronicAddress));
             }
 
-            if (fromCreationDate.HasValue)
-            {
-                fromCreationDate = fromCreationDate.Value.From();
-
-                query = query
-                    .Where(o => o.CreationDate >= fromCreationDate.Value);
-            }
-
-            if (toCreationDate.HasValue)
-            {
-                toCreationDate = toCreationDate.Value.To();
-
-                query = query
-                    .Where(o => o.CreationDate <= toCreationDate.Value);
-            }
 
             return await query
                 .AsNoTrackingWithIdentityResolution()

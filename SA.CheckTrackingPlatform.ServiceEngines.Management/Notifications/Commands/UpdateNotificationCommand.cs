@@ -111,9 +111,9 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Notifications.Comma
                     string internalUserFullName = internalUser.FirstName.BuildFullName(internalUser.LastName);
 
                     notificationToUpdate.IsSeen = true;
-                    notificationToUpdate.ModificationDate = DateTime.Now;
-                    notificationToUpdate.ModifiedById = internalUserId;
-                    notificationToUpdate.ModifiedByFullName = internalUserFullName;
+                    //notificationToUpdate.ModificationDate = DateTime.Now;
+                    //notificationToUpdate.ModifiedById = internalUserId;
+                    //notificationToUpdate.ModifiedByFullName = internalUserFullName;
                     Notification notificationUpdated = await notificationCommandRepository.UpdateAsync(notificationToUpdate);
 
                     if (notificationUpdated.IsNotNull())

@@ -41,8 +41,8 @@
     </Compartments>
     <AssociationLine Name="NotificationType" Type="SA.CheckTrackingPlatform.Domains.Management.Entities.NotificationType" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="5.5" Y="5.73" />
-        <Point X="5.74" Y="5.73" />
+        <Point X="5.5" Y="6.092" />
+        <Point X="5.74" Y="6.092" />
         <Point X="5.74" Y="7.842" />
         <Point X="5.5" Y="7.842" />
       </Path>
@@ -51,7 +51,7 @@
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AQAKAQAAAJAACAAAAIABAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <HashCode>QQAKAQAAALAACAAAAIABAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
       <FileName>Entities\Notification.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
