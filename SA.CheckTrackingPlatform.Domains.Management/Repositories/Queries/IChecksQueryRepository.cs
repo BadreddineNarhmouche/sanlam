@@ -10,7 +10,7 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Repositories.Queries
     internal interface IChecksQueryRepository
     {
         #region Methods
-        Task<Checkes> GetByIdAsync(int id);
+        Task<Checks> GetByIdAsync(int id);
         #endregion Methods
     }
 }
