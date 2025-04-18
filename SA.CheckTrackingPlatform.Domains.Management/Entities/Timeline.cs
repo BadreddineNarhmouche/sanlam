@@ -21,7 +21,7 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
         public virtual string CreatedById { get; set; }
 
         // Navigation properties
-        public Checkes Check { get; set; }
+        public Checks Check { get; set; }
         public Status Status { get; set; }
 
 

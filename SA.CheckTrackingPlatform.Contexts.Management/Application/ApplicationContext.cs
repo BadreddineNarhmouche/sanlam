@@ -75,7 +75,7 @@ namespace SA.CheckTrackingPlatform.Contexts.Management.Application
         #endregion Overrided methods       
 
         #region DbSets
-        public DbSet<Checkes> Checkes { get; set; }
+        public DbSet<Checks> Checkes { get; set; }
         public DbSet<InternalRole> InternalRoles { get; set; }
         public DbSet<InternalUser> InternalUsers { get; set; }
         public DbSet<InternalUserInternalRole> InternalUserInternalRoles { get; set; }

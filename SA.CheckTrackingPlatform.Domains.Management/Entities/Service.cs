@@ -18,7 +18,7 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
         public string Label { get; set; }
 
         // Navigation properties
-        public ICollection<Checkes> Checks { get; set; }
+        public ICollection<Checks> Checks { get; set; }
 
 
         #endregion Properties
