@@ -62,7 +62,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Queries
                     return response;
                 }
 
-                if (request.Id <= 0)
+                if (request.Id <= 0 || request.Id.IsNull())
                 {
                     response.IsSuccess = false;
                     response.WarningMessage = WarningMessages.AllCriteriaRequired;
