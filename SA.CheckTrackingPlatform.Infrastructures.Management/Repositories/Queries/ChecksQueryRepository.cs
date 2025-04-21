@@ -39,7 +39,7 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
 
         #region Methods 
 
-        public async void GetByIdAsync(int id)
+        public async Task<Checks> GetByIdAsync(int id)
         {
             //return await Task.Run(async () =>
             //{
@@ -69,6 +69,8 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
 
             //    return quittances;
             //});
+
+            return null;
         }
 
         public async Task<IEnumerable<Checks>> GetByCriteriaAsync(List<int>? ids, List<string>? checkNumbers, int? branchId, int? serviceId, int? bankId, 

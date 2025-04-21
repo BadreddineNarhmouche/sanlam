@@ -11,7 +11,7 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Repositories.Queries
     public interface IChecksQueryRepository : IQueryRepository<Checks>
     {
         #region Methods
-        void GetByIdAsync(int id);
+        Task<Checks> GetByIdAsync(int id);
         Task<IEnumerable<Checks>> GetByCriteriaAsync(List<int>? ids, List<string>? checkNumbers, int? branchId, int? serviceId, int? bankId, string? lotNumber, string? beneficiaryName, int? pageIndex = null, int? pageSize = null);
         #endregion Methods
     }
