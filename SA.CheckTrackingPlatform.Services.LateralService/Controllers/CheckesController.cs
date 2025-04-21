@@ -22,7 +22,7 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
 
         #region Methods
 
-         // Récuperer une chéque par son identifiant        
+         // Récuperer un chéque par son identifiant        
         [HttpGet]
         [Route(nameof(GetById))]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -31,6 +31,7 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
             return await _mediator.Send(query);
         }
 
+        // Récuperer un chéque par des critères
         [HttpGet]
         [Route(nameof(GetAllByCriteria))]
         [ProducesResponseType(StatusCodes.Status200OK)]
