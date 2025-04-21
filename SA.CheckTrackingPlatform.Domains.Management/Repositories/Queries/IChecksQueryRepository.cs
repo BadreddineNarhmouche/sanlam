@@ -8,7 +8,7 @@ using SA.CheckTrackingPlatform.Domains.Management.Entities;
 
 namespace SA.CheckTrackingPlatform.Domains.Management.Repositories.Queries
 {
-    public interface IChecksQueryRepository : IQueryRepository<InternalRole>
+    public interface IChecksQueryRepository : IQueryRepository<Checks>
     {
         #region Methods
         Task<Checks> GetByIdAsync(int id);
