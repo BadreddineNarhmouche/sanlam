@@ -32,7 +32,7 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
         }
 
         [HttpGet]
-        [Route(nameof(GetById))]
+        [Route(nameof(GetAllByCriteria))]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<GetChecksByIdResponse> GetAllByCriteria([FromQuery] GetChecksByIdQuery query)
         {
