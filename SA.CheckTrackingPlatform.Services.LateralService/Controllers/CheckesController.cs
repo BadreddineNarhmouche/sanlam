@@ -31,6 +31,14 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
             return await _mediator.Send(query);
         }
 
+        [HttpGet]
+        [Route(nameof(GetById))]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<GetChecksByIdResponse> GetAllByCriteria([FromQuery] GetChecksByIdQuery query)
+        {
+            return await _mediator.Send(query);
+        }
+
         #endregion Methods
     }
 }

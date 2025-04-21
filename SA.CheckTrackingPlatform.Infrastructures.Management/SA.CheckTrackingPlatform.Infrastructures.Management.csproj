@@ -31,6 +31,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Oracle.ManagedDataAccess" Version="23.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SA.CheckTrackingPlatform.Contexts.Management\SA.CheckTrackingPlatform.Contexts.Management.csproj" />
     <ProjectReference Include="..\SA.CheckTrackingPlatform.Domains.Management\SA.CheckTrackingPlatform.Domains.Management.csproj" />
     <ProjectReference Include="..\SA.CheckTrackingPlatform.ServiceEngines.Management\SA.CheckTrackingPlatform.ServiceEngines.Management.csproj" />
@@ -39,6 +43,9 @@
   <ItemGroup>
     <Reference Include="SA.Framework.Core">
       <HintPath>..\Libraries\SA.Framework.Core\SA.Framework.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SA.Framework.Data">
+      <HintPath>..\Libraries\SA.Framework.Data\SA.Framework.Data.dll</HintPath>
     </Reference>
   </ItemGroup>
 

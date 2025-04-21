@@ -1,4 +1,6 @@
 ﻿
+using System.Data;
+
 namespace SA.CheckTrackingPlatform.Domains.Management.Entities
 {
     public class Checks
@@ -18,7 +20,7 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
         public int BankId { get; set; }
         public int BranchId { get; set; }
         public int ServiceId { get; set; }
-        public DateTime CreationDate { get; set; }
+        public DateTime? CreationDate { get; set; }
         public string CheckNumber { get; set; }
         public string LotNumber { get; set; }
         public string RecipientName { get; set; }
@@ -35,5 +37,37 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
         public ICollection<Timeline> Timelines { get; set; }
 
         #endregion Properties
+
+        public static Checks MapFromDataRowForGetAllByCriteria(DataRow dataRow)
+        {
+            try
+            {
+                return new Checks()
+                {
+                    Id = Convert.ToInt32(dataRow["ID"]),
+                    Amount = Convert.ToDecimal(dataRow["AMOUNT"]),
+                    BankId = Convert.ToInt32(dataRow["BANKID"]),
+                    BranchId = Convert.ToInt32(dataRow["ID"]),
+                    ServiceId = Convert.ToInt32(dataRow["ID"]),
+                    CheckNumber = dataRow["BRANCHLABEL"].ToString(),
+                    CreationDate = dataRow["QUITTANCESTARTDATE"] as DateTime?,
+                    LotNumber = Convert.ToString(dataRow["POLICYIDENTIFIER"]),
+                    RecipientName = dataRow["PRODUCTLABEL"].ToString(),
+                    SinisterNumber = Convert.ToString(dataRow["CLIENTIDENTIFIER"]),
+                    AccountNumber = dataRow["CLIENTNAME"].ToString(),
+                    RegisterOrderNumber = dataRow["INSUREDIDENTIFIER"].ToString(),
+                    BeneficiaryName = dataRow["PARTNERUSERCODE"].ToString(),
+                    TransactionNumber = Convert.ToDecimal(dataRow["AMOUNT"]),
+                    //SanlamSharePercentage = (dataRow["SANLAMSHAREPERCENTAGE"] == DBNull.Value) ? 0 : Convert.ToDouble(dataRow["SANLAMSHAREPERCENTAGE"]),
+                    //PremiumDue = (dataRow["PREMIUMDUE"] == DBNull.Value) ? 0 : Convert.ToDouble(dataRow["PREMIUMDUE"]),
+                };
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
     }
 }

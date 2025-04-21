@@ -46,6 +46,9 @@
     <Reference Include="SA.Framework.Core">
       <HintPath>..\Libraries\SA.Framework.Core\SA.Framework.Core.dll</HintPath>
     </Reference>
+    <Reference Include="SA.Framework.Data">
+      <HintPath>..\Libraries\SA.Framework.Data\SA.Framework.Data.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
