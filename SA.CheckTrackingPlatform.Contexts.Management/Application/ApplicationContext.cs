@@ -1,8 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using SA.CheckTrackingPlatform.Domains.Management.Common;
 using SA.CheckTrackingPlatform.Domains.Management.Entities;
+using Oracle.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.Extensions.Options;
 
 namespace SA.CheckTrackingPlatform.Contexts.Management.Application
 {
@@ -20,7 +22,8 @@ namespace SA.CheckTrackingPlatform.Contexts.Management.Application
         {
         }
 
-        public ApplicationContext(IConfiguration configuration)
+
+        public ApplicationContext(IConfiguration configuration, DbContextOptions<ApplicationContext> options) : base(options)
         {
             this.configuration = configuration;
         }
@@ -28,6 +31,35 @@ namespace SA.CheckTrackingPlatform.Contexts.Management.Application
         #endregion Constructors
 
         #region Overrided methods
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Configure entity relationships, constraints, etc.
+            modelBuilder.Entity<Checks>()
+                .HasOne(o => o.Service)
+                .WithMany()
+                .HasForeignKey(o => o.ServiceId);
+
+            modelBuilder.Entity<Checks>()
+             .HasOne(o => o.Branch)
+             .WithMany()
+             .HasForeignKey(o => o.BranchId);
+
+            modelBuilder.Entity<Checks>()
+             .HasOne(o => o.Bank)
+             .WithMany()
+             .HasForeignKey(o => o.BankId);
+
+            modelBuilder.Entity<Timeline>()
+             .HasOne(o => o.Status)
+             .WithMany()
+             .HasForeignKey(o => o.StatusId);
+
+            modelBuilder.Entity<Timeline>()
+                .Property(c => c.Id)
+                .HasDefaultValueSql("CustomerSequence.NEXTVAL");
+        }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionsBuilder)
         {
