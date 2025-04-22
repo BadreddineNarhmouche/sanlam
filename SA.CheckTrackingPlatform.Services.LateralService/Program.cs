@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SA.CheckTrackingPlatform.Contexts.Management.Application;
@@ -77,6 +78,9 @@ webApplicationBuilder.Services.AddControllers(c =>
 });
 
 webApplicationBuilder.Services.AddDbContext<ApplicationContext>();
+
+webApplicationBuilder.Services.AddDbContext<ApplicationContext>(options =>
+    options.UseOracle(webApplicationBuilder.Configuration.GetConnectionString("OracleDatabase")));
 
 webApplicationBuilder.Services.AddResponseCaching(rc =>
 {
