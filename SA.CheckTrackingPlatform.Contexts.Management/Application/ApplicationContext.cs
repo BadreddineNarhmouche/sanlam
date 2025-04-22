@@ -61,10 +61,10 @@ namespace SA.CheckTrackingPlatform.Contexts.Management.Application
         }
 
 
-        protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionsBuilder)
-        {
-            dbContextOptionsBuilder.UseSqlServer(this.configuration.GetConnectionString("ApplicationDatabase"));
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionsBuilder)
+        //{
+        //    dbContextOptionsBuilder.UseSqlServer(this.configuration.GetConnectionString("ApplicationDatabase"));
+        //}
 
         public override int SaveChanges()
         {
