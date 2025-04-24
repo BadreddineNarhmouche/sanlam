@@ -37,7 +37,7 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Common
         [StringLength(CoreConstants.StringLengths.FullName)]
         public virtual string? ModifiedByFullName { get; set; }
 
-        public virtual bool IsDeactivated { get; set; }
+        public virtual int IsDeactivated { get; set; }
 
         public virtual DateTime? DeactivationDate { get; set; }
 
@@ -47,7 +47,7 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Common
         [StringLength(CoreConstants.StringLengths.FullName)]
         public virtual string? DeactivatedByFullName { get; set; }
 
-        public virtual bool IsDeleted { get; set; }
+        public virtual int IsDeleted { get; set; }
 
         public virtual DateTime? DeletionDate { get; set; }
 

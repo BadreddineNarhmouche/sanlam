@@ -32,39 +32,13 @@ namespace SA.CheckTrackingPlatform.Contexts.Management.Application
 
         #region Overrided methods
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // Configure entity relationships, constraints, etc.
-            modelBuilder.Entity<Checks>()
-                .HasOne(o => o.Service)
-                .WithMany()
-                .HasForeignKey(o => o.ServiceId);
-
-            modelBuilder.Entity<Checks>()
-             .HasOne(o => o.Branch)
-             .WithMany()
-             .HasForeignKey(o => o.BranchId);
-
-            modelBuilder.Entity<Checks>()
-             .HasOne(o => o.Bank)
-             .WithMany()
-             .HasForeignKey(o => o.BankId);
-
-            modelBuilder.Entity<Timeline>()
-             .HasOne(o => o.Status)
-             .WithMany()
-             .HasForeignKey(o => o.StatusId);
-
-            modelBuilder.Entity<Timeline>()
-                .Property(c => c.Id)
-                .HasDefaultValueSql("CustomerSequence.NEXTVAL");
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseOracle(this.configuration.GetConnectionString("OracleDatabase"));
+            }
         }
-
-
-        //protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionsBuilder)
-        //{
-        //    dbContextOptionsBuilder.UseSqlServer(this.configuration.GetConnectionString("ApplicationDatabase"));
-        //}
 
         public override int SaveChanges()
         {
