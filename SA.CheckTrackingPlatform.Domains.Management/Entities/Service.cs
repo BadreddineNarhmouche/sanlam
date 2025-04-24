@@ -5,7 +5,7 @@ using SA.CheckTrackingPlatform.Domains.Management.Common;
 
 namespace SA.CheckTrackingPlatform.Domains.Management.Entities
 {
-    public class Service : BaseEntity<int>
+    public class Service
     {
         #region Constructors
 
@@ -16,6 +16,10 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
         #endregion Constructors
 
         #region Properties
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public virtual short Id { get; protected set; }
         public string Code { get; set; }
         public string Label { get; set; }
 

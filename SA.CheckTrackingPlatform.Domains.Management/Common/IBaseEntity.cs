@@ -16,7 +16,7 @@
 
         public string? ModifiedByFullName { get; set; }
 
-        public bool IsDeactivated { get; set; }
+        public int IsDeactivated { get; set; }
 
         public DateTime? DeactivationDate { get; set; }
 
@@ -24,7 +24,7 @@
 
         public string? DeactivatedByFullName { get; set; }
 
-        public bool IsDeleted { get; set; }
+        public int IsDeleted { get; set; }
 
         public DateTime? DeletionDate { get; set; }
 

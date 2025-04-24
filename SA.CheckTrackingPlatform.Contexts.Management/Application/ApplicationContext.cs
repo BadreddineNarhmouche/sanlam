@@ -67,11 +67,11 @@ namespace SA.CheckTrackingPlatform.Contexts.Management.Application
                     entityEntry.Entity.ModificationDate = DateTime.Now;
                 }
 
-                if (entityEntry.Entity.IsDeactivated)
+                if (entityEntry.Entity.IsDeactivated == 1)
                 {
                     entityEntry.Entity.DeactivationDate = DateTime.Now;
                 }
-                else if (entityEntry.Entity.IsDeleted)
+                else if (entityEntry.Entity.IsDeleted == 1)
                 {
                     entityEntry.Entity.DeletionDate = DateTime.Now;
                 }
