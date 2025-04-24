@@ -5,7 +5,7 @@ using SA.CheckTrackingPlatform.Domains.Management.Common;
 
 namespace SA.CheckTrackingPlatform.Domains.Management.Entities
 {
-    public class NotificationType : BaseEntity<int>
+    public class NotificationType
     {
         #region Constructors
 
@@ -16,8 +16,11 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
         #endregion Constructors
 
         #region Properties
-        public virtual string Code { get; set; }
-        public virtual string Label { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; protected set; }
+        public string Code { get; set; }
+        public string Label { get; set; }
 
         #endregion Properties
     }

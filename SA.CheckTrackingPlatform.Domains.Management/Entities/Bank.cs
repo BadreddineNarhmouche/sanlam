@@ -19,7 +19,7 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public virtual short Id { get; protected set; }
+        public int Id { get; protected set; }
         public string Code { get; set; }
         public string Label { get; set; }
 
