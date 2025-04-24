@@ -1,7 +1,11 @@
 ﻿
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using SA.CheckTrackingPlatform.Domains.Management.Common;
+
 namespace SA.CheckTrackingPlatform.Domains.Management.Entities
 {
-    public class Notification
+    public class Notification : BaseEntity<int>
     {
         #region Constructors
 
@@ -12,17 +16,12 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
         #endregion Constructors
 
         #region Properties
-
-        public int Id { get; set; }
         public virtual string Subject { get; set; }
         public virtual string Body { get; set; }
         public bool IsSeen { get; set; }
         public virtual int? InternalUserId { get; set; }
         public virtual int? NotificationTypeId { get; set; }
         public virtual int? InternalRoleId { get; set; }
-        public DateTime CreationDate { get; set; }
-        public virtual string CreatedById { get; set; }
-
         // Navigation properties
         public virtual InternalRole? InternalRole { get; set; }
         public virtual InternalUser? InternalUser { get; set; }

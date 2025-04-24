@@ -36,8 +36,8 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
 
         public async Task<IEnumerable<InternalUser>> GetAllByCriteriaAsync(string? firstName, string? lastName, string? electronicAddress, string? internalRoleCode, DateTime? fromCreationDate, DateTime? toCreationDate)
         {
-            IQueryable<InternalUser> query = this.applicationContext.InternalUsers
-                .Include(o => o.ParentInternalUser);
+            IQueryable<InternalUser> query = this.applicationContext.InternalUsers;
+               // .Include(o => o.ParentInternalUser);
 
             if (!firstName.IsNullOrWhiteSpace())
             {
@@ -72,8 +72,8 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
         public async Task<InternalUser> GetByElectronicAddressAsync(string electronicAddress)
         {
             InternalUser query = await this.applicationContext.InternalUsers
-                .Include(o => o.InternalUserInternalRoles)
-                .ThenInclude(o => o.InternalRole)
+                //.Include(o => o.InternalUserInternalRoles)
+                //.ThenInclude(o => o.InternalRole)
                 .AsNoTrackingWithIdentityResolution()
                 .SingleOrDefaultAsync(o => o.ElectronicAddress == electronicAddress);
 

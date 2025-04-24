@@ -79,8 +79,8 @@ webApplicationBuilder.Services.AddControllers(c =>
 
 webApplicationBuilder.Services.AddDbContext<ApplicationContext>();
 
-webApplicationBuilder.Services.AddDbContext<ApplicationContext>(options =>
-    options.UseOracle(webApplicationBuilder.Configuration.GetConnectionString("OracleDatabase")));
+//webApplicationBuilder.Services.AddDbContext<ApplicationContext>(options =>
+//    options.UseOracle(webApplicationBuilder.Configuration.GetConnectionString("OracleDatabase")));
 
 webApplicationBuilder.Services.AddResponseCaching(rc =>
 {

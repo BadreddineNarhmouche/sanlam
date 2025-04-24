@@ -1,7 +1,11 @@
 ﻿
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using SA.CheckTrackingPlatform.Domains.Management.Common;
+
 namespace SA.CheckTrackingPlatform.Domains.Management.Entities
 {
-    public class InternalRole
+    public class InternalRole : BaseEntity<int>
     {
         #region Constructors
 
@@ -12,10 +16,12 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
         #endregion Constructors
 
         #region Properties
+        
+        public string Code { get; set; }
+        public string Label { get; set; }
 
-        public int Id { get; set; }
-        public virtual string Code { get; set; }
-        public virtual string Label { get; set; }
+        // Navigation properties
+        public ICollection<InternalUserInternalRole> UserRoles { get; set; }
 
         #endregion Properties
     }

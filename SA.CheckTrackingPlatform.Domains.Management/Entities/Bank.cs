@@ -1,7 +1,11 @@
 ﻿
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using SA.CheckTrackingPlatform.Domains.Management.Common;
+
 namespace SA.CheckTrackingPlatform.Domains.Management.Entities
 {
-    public class Bank
+    public class Bank : BaseEntity<int>
     {
         #region Constructors
 
@@ -12,8 +16,6 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
         #endregion Constructors
 
         #region Properties
-
-        public int Id { get; set; }
         public string Code { get; set; }
         public string Label { get; set; }
 

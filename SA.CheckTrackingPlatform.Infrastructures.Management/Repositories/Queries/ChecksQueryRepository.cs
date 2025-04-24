@@ -1,4 +1,5 @@
-﻿using SA.CheckTrackingPlatform.Contexts.Management.Application;
+﻿using Microsoft.EntityFrameworkCore;
+using SA.CheckTrackingPlatform.Contexts.Management.Application;
 using SA.CheckTrackingPlatform.Domains.Management.Entities;
 using SA.CheckTrackingPlatform.Domains.Management.Repositories.Queries;
 using SA.CheckTrackingPlatform.Infrastructures.Management.Common;
@@ -26,36 +27,11 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
 
         public async Task<Checks> GetByIdAsync(int id)
         {
-            //return await Task.Run(async () =>
-            //{
-            //    Dictionary<string, object> parameters = null;
+            Checks query = await this.applicationContext.Checkes
+                .AsNoTrackingWithIdentityResolution()
+                .SingleOrDefaultAsync(o => o.Id == id);
 
-            //    string commandText = BuildCommandText(CommandTexts.GetAllChecksByCriteria, identifiers,
-            //        null, null, null, null, null, out parameters, pageIndex, pageSize);
-
-            //    List<Checks> checks = new List<Checks>();
-
-            //    OracleConnection oracleConnection = OracleConnectionHelper.GetNew();
-            //    try
-            //    {
-            //        using (DataTable dataTable = DatabaseExecutionHelper.ExecuteQuery(oracleConnection, null, commandText, CommandType.Text, parameters))
-            //        {
-            //            foreach (DataRow dataRow in dataTable.Rows)
-            //            {
-            //                quittances.Add(Quittance.MapFromDataRowForGetAllByIdentifiers(dataRow));
-            //            }
-            //        }
-            //    }
-            //    catch (Exception ex)
-            //    {
-
-            //        throw ex;
-            //    }
-
-            //    return quittances;
-            //});
-
-            return null;
+            return query;
         }
 
         public async Task<IEnumerable<Checks>> GetByCriteriaAsync(List<int>? ids, List<string>? checkNumbers, int? branchId, int? serviceId, int? bankId, string? lotNumber, string? beneficiaryName, int? pageIndex = null, int? pageSize = null)

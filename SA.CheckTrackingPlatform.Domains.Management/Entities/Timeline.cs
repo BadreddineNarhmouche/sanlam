@@ -1,7 +1,11 @@
 ﻿
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using SA.CheckTrackingPlatform.Domains.Management.Common;
+
 namespace SA.CheckTrackingPlatform.Domains.Management.Entities
 {
-    public class Timeline
+    public class Timeline : BaseEntity<int>
     {
         #region Constructors
 
@@ -12,16 +16,12 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
         #endregion Constructors
 
         #region Properties
-
-        public int Id { get; set; }
         public int CheckId { get; set; }
+        public int UserId { get; set; }
         public int StatusId { get; set; }
-        public DateTime CreationDate { get; set; }
         public string ReasonLabel { get; set; }
-        public virtual string CreatedById { get; set; }
-
-        // Navigation properties
         public Checks Check { get; set; }
+        public InternalUser User { get; set; }
         public Status Status { get; set; }
 
 
