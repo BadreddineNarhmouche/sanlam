@@ -27,7 +27,7 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
 
         public async Task<Checks> GetByIdAsync(int id)
         {
-            Checks query = await this.applicationContext.Checkes
+            Checks query = await this.applicationContext.Checks
                 .AsNoTrackingWithIdentityResolution()
                 .SingleOrDefaultAsync(o => o.Id == id);
 
