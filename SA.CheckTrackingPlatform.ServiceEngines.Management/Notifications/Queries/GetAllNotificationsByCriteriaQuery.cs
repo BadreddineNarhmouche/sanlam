@@ -20,7 +20,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Notifications.Queri
 
         public DateTime? ToCreationDate { get; set; }
 
-        public bool? IsSeen { get; set; }
+        public int? IsSeen { get; set; }
 
         public string? InternalRoleCode { get; set; }
 
@@ -144,10 +144,10 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Notifications.Queri
 
                     if (request.IsSeen.HasValue)
                     {
-                        if (request.IsSeen.Value)
+                        if (request.IsSeen == 1)
                         {
                             unseenCount = await notificationQueryRepository.CountAllByCriteriaAsync(request.InternalUserId, notificationType?.Id,
-                            request.FromCreationDate, request.ToCreationDate, false,
+                            request.FromCreationDate, request.ToCreationDate, 0,
                             internalRole?.Id, request.DeliverySlipId, request.QuittanceId);
                         }
                         else
@@ -157,7 +157,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Notifications.Queri
                     }
                     else
                     {
-                        unseenCount = notifications.Count(o => !o.IsSeen);
+                        unseenCount = notifications.Count(o => o.IsSeen != 1);
                     }
 
                     if (!notifications.IsNullOrEmpty())

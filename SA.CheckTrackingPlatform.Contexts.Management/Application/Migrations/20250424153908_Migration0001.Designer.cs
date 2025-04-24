@@ -12,7 +12,7 @@ using SA.CheckTrackingPlatform.Contexts.Management.Application;
 namespace SA.CheckTrackingPlatform.Contexts.Management.Application.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20250424105426_Migration0001")]
+    [Migration("20250424153908_Migration0001")]
     partial class Migration0001
     {
         /// <inheritdoc />
@@ -466,8 +466,8 @@ namespace SA.CheckTrackingPlatform.Contexts.Management.Application.Migrations
                     b.Property<int>("IsDeleted")
                         .HasColumnType("NUMBER(10)");
 
-                    b.Property<bool>("IsSeen")
-                        .HasColumnType("BOOLEAN");
+                    b.Property<int>("IsSeen")
+                        .HasColumnType("NUMBER(10)");
 
                     b.Property<DateTime?>("ModificationDate")
                         .HasColumnType("TIMESTAMP(7)");

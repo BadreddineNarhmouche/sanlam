@@ -11,19 +11,6 @@ namespace SA.CheckTrackingPlatform.Contexts.Management.Application.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(name: "\"Timelines\"");
-            migrationBuilder.DropTable(name: "\"Checkes\"");
-            migrationBuilder.DropTable(name: "\"Notifications\"");
-            migrationBuilder.DropTable(name: "\"InternalUserInternalRoles\"");
-            migrationBuilder.DropTable(name: "\"InternalUsers\"");
-            migrationBuilder.DropTable(name: "\"InternalRoles\"");
-            migrationBuilder.DropTable(name: "\"NotificationTypes\"");
-            migrationBuilder.DropTable(name: "\"Statuses\"");
-            migrationBuilder.DropTable(name: "\"Services\"");
-            migrationBuilder.DropTable(name: "\"Banks\"");
-            migrationBuilder.DropTable(name: "\"Branchs\"");
-            migrationBuilder.DropTable(name: "\"__EFMigrationsHistory\"");
-
             migrationBuilder.CreateTable(
                 name: "Banks",
                 columns: table => new
@@ -199,7 +186,7 @@ namespace SA.CheckTrackingPlatform.Contexts.Management.Application.Migrations
                         .Annotation("Oracle:Identity", "START WITH 1 INCREMENT BY 1"),
                     Subject = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     Body = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
-                    IsSeen = table.Column<bool>(type: "BOOLEAN", nullable: false),
+                    IsSeen = table.Column<int>(type: "NUMBER(10)", nullable: false),
                     InternalUserId = table.Column<int>(type: "NUMBER(10)", nullable: true),
                     NotificationTypeId = table.Column<int>(type: "NUMBER(10)", nullable: true),
                     InternalRoleId = table.Column<int>(type: "NUMBER(10)", nullable: true),
@@ -433,19 +420,6 @@ namespace SA.CheckTrackingPlatform.Contexts.Management.Application.Migrations
 
             migrationBuilder.DropTable(
                 name: "Services");
-
-            //migrationBuilder.DropTable(name: "\"Timelines\"");
-            //migrationBuilder.DropTable(name: "\"Checkes\"");
-            //migrationBuilder.DropTable(name: "\"Notifications\"");
-            //migrationBuilder.DropTable(name: "\"InternalUserInternalRoles\"");
-            //migrationBuilder.DropTable(name: "\"InternalUsers\"");
-            //migrationBuilder.DropTable(name: "\"InternalRoles\"");
-            //migrationBuilder.DropTable(name: "\"NotificationTypes\"");
-            //migrationBuilder.DropTable(name: "\"Statuses\"");
-            //migrationBuilder.DropTable(name: "\"Services\"");
-            //migrationBuilder.DropTable(name: "\"Banks\"");
-            //migrationBuilder.DropTable(name: "\"Branchs\"");
-            //migrationBuilder.DropTable(name: "\"__EFMigrationsHistory\"");
         }
     }
 }

@@ -463,8 +463,8 @@ namespace SA.CheckTrackingPlatform.Contexts.Management.Application.Migrations
                     b.Property<int>("IsDeleted")
                         .HasColumnType("NUMBER(10)");
 
-                    b.Property<bool>("IsSeen")
-                        .HasColumnType("BOOLEAN");
+                    b.Property<int>("IsSeen")
+                        .HasColumnType("NUMBER(10)");
 
                     b.Property<DateTime?>("ModificationDate")
                         .HasColumnType("TIMESTAMP(7)");

@@ -35,7 +35,7 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
             return query;
         }
 
-        public async Task<IEnumerable<Notification>> GetAllByCriteriaAsync(int? internalUserId, int? notificationTypeId, DateTime? fromCreationDate, DateTime? toCreationDate, bool? isSeen, int? internalRoleId, long? deliverySlipId, long? quittanceId, int? pageIndex, int? pageSize)
+        public async Task<IEnumerable<Notification>> GetAllByCriteriaAsync(int? internalUserId, int? notificationTypeId, DateTime? fromCreationDate, DateTime? toCreationDate, int? isSeen, int? internalRoleId, long? deliverySlipId, long? quittanceId, int? pageIndex, int? pageSize)
         {
             IQueryable<Notification> query = this.applicationContext.Notifications
                 .Include(o => o.NotificationType);
@@ -112,7 +112,7 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
         }
 
 
-        public async Task<int> CountAllByCriteriaAsync(int? internalUserId, int? notificationTypeId, DateTime? fromCreationDate, DateTime? toCreationDate, bool? isSeen, int? internalRoleId, long? deliverySlipId, long? quittanceId)
+        public async Task<int> CountAllByCriteriaAsync(int? internalUserId, int? notificationTypeId, DateTime? fromCreationDate, DateTime? toCreationDate, int? isSeen, int? internalRoleId, long? deliverySlipId, long? quittanceId)
         {
             IQueryable<Notification> query = this.applicationContext.Notifications
                 .Include(o => o.NotificationType);

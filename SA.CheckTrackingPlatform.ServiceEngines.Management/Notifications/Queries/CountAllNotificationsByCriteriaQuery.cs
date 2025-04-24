@@ -11,7 +11,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Notifications.Queri
     {
         public int? InternalUserId { get; set; }
 
-        public bool? IsSeen { get; set; }
+        public int? IsSeen { get; set; }
 
         public string? NotificationTypeCode { get; set; }
 

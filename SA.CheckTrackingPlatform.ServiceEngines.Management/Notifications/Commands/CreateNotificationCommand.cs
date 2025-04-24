@@ -169,7 +169,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Notifications.Comma
                     notificationToCreate.NotificationTypeId = notificationType.Id;
                     notificationToCreate.Subject = request.Subject;
                     notificationToCreate.Body = request.Body;
-                    notificationToCreate.IsSeen = false;
+                    notificationToCreate.IsSeen = 0;
                     //if (request.QuittanceId.HasValue)
                     //{
                     //    notificationToCreate.QuittanceId = request.QuittanceId.Value;

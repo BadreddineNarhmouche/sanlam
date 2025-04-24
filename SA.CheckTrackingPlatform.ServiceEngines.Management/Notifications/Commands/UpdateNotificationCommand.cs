@@ -110,7 +110,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Notifications.Comma
                     string internalUserId = internalUser.Id.ToString();
                     string internalUserFullName = internalUser.FirstName.BuildFullName(internalUser.LastName);
 
-                    notificationToUpdate.IsSeen = true;
+                    notificationToUpdate.IsSeen = 1;
                     //notificationToUpdate.ModificationDate = DateTime.Now;
                     //notificationToUpdate.ModifiedById = internalUserId;
                     //notificationToUpdate.ModifiedByFullName = internalUserFullName;

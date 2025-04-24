@@ -18,7 +18,7 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
         #region Properties
         public virtual string Subject { get; set; }
         public virtual string Body { get; set; }
-        public bool IsSeen { get; set; }
+        public int IsSeen { get; set; }
         [ForeignKey(nameof(InternalUser))]
         public virtual int? InternalUserId { get; set; }
         [ForeignKey(nameof(NotificationType))]
