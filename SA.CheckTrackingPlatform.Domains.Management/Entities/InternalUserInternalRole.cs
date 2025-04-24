@@ -16,7 +16,9 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
         #endregion Constructors
 
         #region Properties
+        [ForeignKey(nameof(InternalUser))]
         public int InternalUserId { get; set; }
+        [ForeignKey(nameof(InternalRole))]
         public int InternalRoleId { get; set; }
 
         // Navigation properties

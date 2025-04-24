@@ -19,8 +19,11 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
         public virtual string Subject { get; set; }
         public virtual string Body { get; set; }
         public bool IsSeen { get; set; }
+        [ForeignKey(nameof(InternalUser))]
         public virtual int? InternalUserId { get; set; }
+        [ForeignKey(nameof(NotificationType))]
         public virtual int? NotificationTypeId { get; set; }
+        [ForeignKey(nameof(InternalRole))]
         public virtual int? InternalRoleId { get; set; }
         // Navigation properties
         public virtual InternalRole? InternalRole { get; set; }
