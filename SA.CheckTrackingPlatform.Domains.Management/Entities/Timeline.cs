@@ -16,6 +16,7 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
         #endregion Constructors
 
         #region Properties
+        [ForeignKey(nameof(Check))]
         public int CheckId { get; set; }
         public int UserId { get; set; }
         public int StatusId { get; set; }

@@ -18,8 +18,11 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
 
         #region Properties
         public double Amount { get; set; }
+        [ForeignKey(nameof(Bank))]
         public int BankId { get; set; }
+        [ForeignKey(nameof(Branch))]
         public int BranchId { get; set; }
+        [ForeignKey(nameof(Service))]
         public int ServiceId { get; set; }
         public string CheckNumber { get; set; }
         public string LotNumber { get; set; }
