@@ -1,5 +1,5 @@
 {
-  "name": "@reinsurance/root",
+  "name": "@checkTracking/root",
   "private": true,
   "workspaces": [
     "packages/*",
@@ -10,16 +10,16 @@
     "lerna": "^6.6.2"
   },
   "scripts": {
-    "start:backoffice": "lerna run start --parallel --scope @reinsurance/helpers --scope @reinsurance/backoffice",
-    "start:shared": "cd packages/reinsurance-platform-websites-shared && npm run start",
+    "start:backoffice": "lerna run start --parallel --scope @checkTracking/helpers --scope @checkTracking/backoffice",
+    "start:shared": "cd packages/checkTracking-platform-websites-shared && npm run start",
     "start:ui-kit": "cd packages/ui-kit && npm run start",
-    "build:backoffice": "cd apps/reinsurance-platform-websites-backoffice && npm run build",
-    "build:backoffice:staging": "cd apps/reinsurance-platform-websites-backoffice && npm run build:staging",
-    "build:backoffice:preprod": "cd apps/reinsurance-platform-websites-backoffice && npm run build:preproduction",
-    "build:backoffice:prod": "cd apps/reinsurance-platform-websites-backoffice && npm run build:production",
-    "build:shared": "cd packages/reinsurance-platform-websites-shared && npm run build",
+    "build:backoffice": "cd apps/checkTracking-platform-websites-backoffice && npm run build",
+    "build:backoffice:staging": "cd apps/checkTracking-platform-websites-backoffice && npm run build:staging",
+    "build:backoffice:preprod": "cd apps/checkTracking-platform-websites-backoffice && npm run build:preproduction",
+    "build:backoffice:prod": "cd apps/checkTracking-platform-websites-backoffice && npm run build:production",
+    "build:shared": "cd packages/checkTracking-platform-websites-shared && npm run build",
     "build:ui-kit": "cd packages/ui-kit && npm run build",
-    "build:helpers": "cd packages/reinsurance-platform-websites-helpers && npm run build",
+    "build:helpers": "cd packages/checkTracking-platform-websites-helpers && npm run build",
     "build": "npm run build:helpers && npm run build:ui-kit && npm run build:shared && npm run build:backoffice",
     "eject": "react-scripts eject"
   },
