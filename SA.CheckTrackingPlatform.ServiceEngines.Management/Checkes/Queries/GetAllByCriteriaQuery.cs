@@ -69,17 +69,19 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Queries
 
                 #endregion Validations
 
-                #region Operations
+                #region Operations  
 
                 if (response.IsSuccess)
                 {
-
-                    IEnumerable<Checks> checks = await checksQueryRepository.GetByCriteriaAsync(request.Ids, request.CheckNumbers, request.BranchId, 
+                    //paramétrage count 1 => Non Vide
+                    IEnumerable<Checks> checks = await checksQueryRepository.GetByCriteriaAsync(request.Ids, request.CheckNumbers, request.BranchId,
                         request.ServiceId, request.BankId, request.LotNumber, request.BeneficiaryName);
 
                     if (checks.IsNotNull())
                     {
-                        response = MappingConfiguration.Mapper.Map<GetAllByCriteriaResponse>(checks);
+                        response.Data = MappingConfiguration.Mapper.Map<List<GetAllByCriteriaItem>>(checks);
+                                                // Data reçoit les elements et Mapping avec une list des entitées des checks 
+                           // Car Nous voulons Mapper une liste avec une liste et nous voulons retourner tout les items de checks 
                     }
 
                     response.IsSuccess = true;
