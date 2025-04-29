@@ -1,0 +1,24 @@
+﻿version: "3.9"
+
+services:
+  oracle-db:
+    image: gvenzl/oracle-xe:21-slim
+    container_name: Ouldelhkim-dev
+    restart: unless-stopped
+
+    ports:
+      - "${DB_PORT}:1521"
+      - "5500:5500"
+
+    environment:
+      ORACLE_PASSWORD: ${ORACLE_PASSWORD}     
+      ORACLE_CHARACTERSET: AL32UTF8
+
+    volumes:
+      - oracle_data:/opt/oracle/oradata         
+      - ./init:/container-entrypoint-initdb.d   
+
+    shm_size: 1g
+
+volumes:
+  oracle_data:

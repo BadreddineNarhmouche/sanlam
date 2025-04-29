@@ -1,0 +1,2 @@
+﻿# Ignorer le fichier d'environnement contenant les secrets
+.env
