@@ -1,4 +1,4 @@
-import { GeneralHelper, translate } from '@reinsurance/helpers';
+import { GeneralHelper, translate } from '@checkTracking/helpers';
 import { useField } from 'formik';
 import { useState } from 'react';
 import { injectIntl } from 'react-intl';

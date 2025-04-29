@@ -35,7 +35,7 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
         [HttpGet]
         [Route(nameof(GetAllByCriteria))]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<GetChecksByIdResponse> GetAllByCriteria([FromQuery] GetChecksByIdQuery query)
+        public async Task<GetAllByCriteriaResponse> GetAllByCriteria([FromQuery] GetAllByCriteriaQuery query)
         {
             return await _mediator.Send(query);
         }

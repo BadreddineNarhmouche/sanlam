@@ -12,84 +12,84 @@
     <BuildOutputFolder>$(MSBuildProjectDirectory)\build</BuildOutputFolder>
   </PropertyGroup>
   <ItemGroup>
-    <TypeScriptConfiguration Remove="packages\reinsurance-platform-websites-shared\**" />
+    <TypeScriptConfiguration Remove="packages\checkTracking-platform-websites-shared\**" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="packages\reinsurance-platform-websites-shared\**" />
+    <None Remove="packages\checkTracking-platform-websites-shared\**" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="packages\reinsurance-platform-websites-shared\src\setupTests.ts" />
+    <None Remove="packages\checkTracking-platform-websites-shared\src\setupTests.ts" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="packages\reinsurance-platform-websites-shared\src\reportWebVitals.ts" />
+    <None Remove="packages\checkTracking-platform-websites-shared\src\reportWebVitals.ts" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="packages\reinsurance-platform-websites-shared\src\react-app-env.d.ts" />
+    <None Remove="packages\checkTracking-platform-websites-shared\src\react-app-env.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="packages\reinsurance-platform-websites-shared\src\logo.svg" />
+    <None Remove="packages\checkTracking-platform-websites-shared\src\logo.svg" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="packages\reinsurance-platform-websites-shared\src\index.tsx" />
+    <None Remove="packages\checkTracking-platform-websites-shared\src\index.tsx" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="packages\reinsurance-platform-websites-shared\src\index.css" />
+    <None Remove="packages\checkTracking-platform-websites-shared\src\index.css" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="packages\reinsurance-platform-websites-shared\src\components\Button.tsx" />
+    <None Remove="packages\checkTracking-platform-websites-shared\src\components\Button.tsx" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="packages\reinsurance-platform-websites-shared\src\App.tsx" />
+    <None Remove="packages\checkTracking-platform-websites-shared\src\App.tsx" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="packages\reinsurance-platform-websites-shared\src\App.test.tsx" />
+    <None Remove="packages\checkTracking-platform-websites-shared\src\App.test.tsx" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="packages\reinsurance-platform-websites-shared\src\App.css" />
+    <None Remove="packages\checkTracking-platform-websites-shared\src\App.css" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="packages\reinsurance-platform-websites-shared\README.md" />
+    <None Remove="packages\checkTracking-platform-websites-shared\README.md" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="packages\reinsurance-platform-websites-shared\public\robots.txt" />
+    <None Remove="packages\checkTracking-platform-websites-shared\public\robots.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="packages\reinsurance-platform-websites-shared\public\manifest.json" />
+    <None Remove="packages\checkTracking-platform-websites-shared\public\manifest.json" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="packages\reinsurance-platform-websites-shared\public\logo512.png" />
+    <None Remove="packages\checkTracking-platform-websites-shared\public\logo512.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="packages\reinsurance-platform-websites-shared\public\logo192.png" />
+    <None Remove="packages\checkTracking-platform-websites-shared\public\logo192.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="packages\reinsurance-platform-websites-shared\public\index.html" />
+    <None Remove="packages\checkTracking-platform-websites-shared\public\index.html" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="packages\reinsurance-platform-websites-shared\public\favicon.ico" />
+    <None Remove="packages\checkTracking-platform-websites-shared\public\favicon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="packages\reinsurance-platform-websites-shared\package.json" />
+    <None Remove="packages\checkTracking-platform-websites-shared\package.json" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="packages\reinsurance-platform-websites-shared\.gitignore" />
+    <None Remove="packages\checkTracking-platform-websites-shared\.gitignore" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptConfiguration Remove="packages\reinsurance-platform-websites-shared\tsconfig.json" />
+    <TypeScriptConfiguration Remove="packages\checkTracking-platform-websites-shared\tsconfig.json" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptConfiguration Remove="packages\reinsurance-platform-websites-shared\tsconfig.json" />
+    <TypeScriptConfiguration Remove="packages\checkTracking-platform-websites-shared\tsconfig.json" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="packages\reinsurance-platform-websites-shared\README.md" />
+    <None Remove="packages\checkTracking-platform-websites-shared\README.md" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="packages\reinsurance-platform-websites-shared\package.json" />
+    <None Remove="packages\checkTracking-platform-websites-shared\package.json" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="packages\reinsurance-platform-websites-shared\.gitignore" />
+    <None Remove="packages\checkTracking-platform-websites-shared\.gitignore" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptConfiguration Remove="packages\reinsurance-platform-websites-shared\tsconfig.json" />
+    <TypeScriptConfiguration Remove="packages\checkTracking-platform-websites-shared\tsconfig.json" />
   </ItemGroup>
 </Project>

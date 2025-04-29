@@ -10,6 +10,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses
     {
         
     }
+    // On peut renvoyer moins d'élements 
     public class GetAllByCriteriaItem
     {
         #region Properties 
