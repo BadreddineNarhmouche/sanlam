@@ -248,7 +248,6 @@ webApplicationBuilder.Services.AddTransient<IInternalRoleCommandRepository, Inte
 webApplicationBuilder.Services.AddTransient<IInternalUserCommandRepository, InternalUserCommandRepository>();
 webApplicationBuilder.Services.AddTransient<INotificationCommandRepository, NotificationCommandRepository>();
 webApplicationBuilder.Services.AddTransient<INotificationTypeCommandRepository, NotificationTypeCommandRepository>();
-
 webApplicationBuilder.Services.AddTransient<IInternalRoleQueryRepository, InternalRoleQueryRepository>();
 webApplicationBuilder.Services.AddTransient<IInternalUserQueryRepository, InternalUserQueryRepository>();
 webApplicationBuilder.Services.AddTransient<IChecksQueryRepository , ChecksQueryRepository>();
@@ -256,6 +255,8 @@ webApplicationBuilder.Services.AddTransient<ITimelinesQueryRepository, TimelineQ
 webApplicationBuilder.Services.AddTransient<IBanksQueryRepository, BanksQueryRepository>();
 webApplicationBuilder.Services.AddTransient<IBranchsQueryRepository, BranchsQueryRepository>();
 webApplicationBuilder.Services.AddTransient<IStatusQueryRepository, StatusQueryRepository>();
+
+
 webApplicationBuilder.Services.AddTransient<IInternalUserInternalRoleQueryRepository, InternalUserInternalRoleQueryRepository>();
 webApplicationBuilder.Services.AddTransient<INotificationQueryRepository, NotificationQueryRepository>();
 webApplicationBuilder.Services.AddTransient<INotificationTypeQueryRepository, NotificationTypeQueryRepository>();
