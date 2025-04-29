@@ -13,7 +13,9 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.StatusFolder.Respon
     public class GetByAllItem
     {
         #region Properties 
-        public int Id { get; set; }
+        public int Id { get; protected set; }
+        public string Code { get; set; }
+        public string Label { get; set; }
 
         #endregion
     }
