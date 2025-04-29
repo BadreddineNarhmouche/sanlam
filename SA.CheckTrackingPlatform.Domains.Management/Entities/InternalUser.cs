@@ -1,6 +1,4 @@
 ﻿
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 using SA.CheckTrackingPlatform.Domains.Management.Common;
 
 namespace SA.CheckTrackingPlatform.Domains.Management.Entities

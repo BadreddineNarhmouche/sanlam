@@ -1,11 +1,10 @@
 ﻿
-using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using SA.CheckTrackingPlatform.Domains.Management.Common;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SA.CheckTrackingPlatform.Domains.Management.Entities
 {
-    public class InternalUserInternalRole : BaseEntity<int>
+    public class InternalUserInternalRole
     {
         #region Constructors
 
@@ -16,6 +15,10 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
         #endregion Constructors
 
         #region Properties
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; protected set; }
         [ForeignKey(nameof(InternalUser))]
         public int InternalUserId { get; set; }
         [ForeignKey(nameof(InternalRole))]
