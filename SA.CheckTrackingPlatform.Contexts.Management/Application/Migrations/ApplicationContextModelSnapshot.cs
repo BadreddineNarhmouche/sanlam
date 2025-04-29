@@ -191,61 +191,9 @@ namespace SA.CheckTrackingPlatform.Contexts.Management.Application.Migrations
                         .IsRequired()
                         .HasColumnType("NVARCHAR2(2000)");
 
-                    b.Property<string>("CreatedByFullName")
-                        .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("NVARCHAR2(40)");
-
-                    b.Property<string>("CreatedById")
-                        .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("NVARCHAR2(40)");
-
-                    b.Property<DateTime>("CreationDate")
-                        .HasColumnType("TIMESTAMP(7)");
-
-                    b.Property<string>("DeactivatedByFullName")
-                        .HasMaxLength(40)
-                        .HasColumnType("NVARCHAR2(40)");
-
-                    b.Property<string>("DeactivatedById")
-                        .HasMaxLength(40)
-                        .HasColumnType("NVARCHAR2(40)");
-
-                    b.Property<DateTime?>("DeactivationDate")
-                        .HasColumnType("TIMESTAMP(7)");
-
-                    b.Property<string>("DeletedByFullName")
-                        .HasMaxLength(40)
-                        .HasColumnType("NVARCHAR2(40)");
-
-                    b.Property<string>("DeletedById")
-                        .HasMaxLength(40)
-                        .HasColumnType("NVARCHAR2(40)");
-
-                    b.Property<DateTime?>("DeletionDate")
-                        .HasColumnType("TIMESTAMP(7)");
-
-                    b.Property<int>("IsDeactivated")
-                        .HasColumnType("NUMBER(10)");
-
-                    b.Property<int>("IsDeleted")
-                        .HasColumnType("NUMBER(10)");
-
                     b.Property<string>("Label")
                         .IsRequired()
                         .HasColumnType("NVARCHAR2(2000)");
-
-                    b.Property<DateTime?>("ModificationDate")
-                        .HasColumnType("TIMESTAMP(7)");
-
-                    b.Property<string>("ModifiedByFullName")
-                        .HasMaxLength(40)
-                        .HasColumnType("NVARCHAR2(40)");
-
-                    b.Property<string>("ModifiedById")
-                        .HasMaxLength(40)
-                        .HasColumnType("NVARCHAR2(40)");
 
                     b.HasKey("Id");
 
@@ -337,63 +285,11 @@ namespace SA.CheckTrackingPlatform.Contexts.Management.Application.Migrations
 
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("CreatedByFullName")
-                        .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("NVARCHAR2(40)");
-
-                    b.Property<string>("CreatedById")
-                        .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("NVARCHAR2(40)");
-
-                    b.Property<DateTime>("CreationDate")
-                        .HasColumnType("TIMESTAMP(7)");
-
-                    b.Property<string>("DeactivatedByFullName")
-                        .HasMaxLength(40)
-                        .HasColumnType("NVARCHAR2(40)");
-
-                    b.Property<string>("DeactivatedById")
-                        .HasMaxLength(40)
-                        .HasColumnType("NVARCHAR2(40)");
-
-                    b.Property<DateTime?>("DeactivationDate")
-                        .HasColumnType("TIMESTAMP(7)");
-
-                    b.Property<string>("DeletedByFullName")
-                        .HasMaxLength(40)
-                        .HasColumnType("NVARCHAR2(40)");
-
-                    b.Property<string>("DeletedById")
-                        .HasMaxLength(40)
-                        .HasColumnType("NVARCHAR2(40)");
-
-                    b.Property<DateTime?>("DeletionDate")
-                        .HasColumnType("TIMESTAMP(7)");
-
                     b.Property<int>("InternalRoleId")
                         .HasColumnType("NUMBER(10)");
 
                     b.Property<int>("InternalUserId")
                         .HasColumnType("NUMBER(10)");
-
-                    b.Property<int>("IsDeactivated")
-                        .HasColumnType("NUMBER(10)");
-
-                    b.Property<int>("IsDeleted")
-                        .HasColumnType("NUMBER(10)");
-
-                    b.Property<DateTime?>("ModificationDate")
-                        .HasColumnType("TIMESTAMP(7)");
-
-                    b.Property<string>("ModifiedByFullName")
-                        .HasMaxLength(40)
-                        .HasColumnType("NVARCHAR2(40)");
-
-                    b.Property<string>("ModifiedById")
-                        .HasMaxLength(40)
-                        .HasColumnType("NVARCHAR2(40)");
 
                     b.HasKey("Id");
 

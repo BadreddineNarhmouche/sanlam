@@ -1,6 +1,6 @@
 import { memo, useEffect } from "react";
 import TextField from "@mui/material/TextField";
-import { GeneralHelper } from "@reinsurance/helpers";
+import { GeneralHelper } from "@checkTracking/helpers";
 import { styles } from "./styles";
 
 const TextFieldComponent = (props: any) => {

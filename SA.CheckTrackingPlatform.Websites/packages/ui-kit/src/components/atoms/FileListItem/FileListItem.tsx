@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Grid, IconButton, Icons, Typography, Button } from '../../atoms';
 import styles from './styles';
-import { GeneralHelper } from '@reinsurance/helpers';
+import { GeneralHelper } from '@checkTracking/helpers';
 
 interface FileListItemProps {
   file?: File | null;
