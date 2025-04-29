@@ -1,5 +1,5 @@
 export const frTranslationMessages = {
-    applicationName: "Plateforme de réassurance",
+    applicationName: "Plateforme de suivi des chèques",
     "action.reset": "Réinitialiser",
     "action.filter": "Filtrer",
     "action.expandFilter": "Étendre le filtre",

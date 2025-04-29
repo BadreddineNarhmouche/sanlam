@@ -30,37 +30,25 @@ const AppLayout = () => {
       {
         label: intl.formatMessage({ id: "nav_bar.home_tab" }),
         to: PAGES.HOME,
-        roles: [
-          ROLE.SUBSCRIPTIONS_EXECUTOR,
-          ROLE.SUBSCRIPTIONS_MANAGER,
-          ROLE.RECOVERIES_EXECUTOR,
-          ROLE.RECOVERIES_MANAGER,
-          ROLE.REINSURANCES_EXECUTOR,
-          ROLE.REINSURANCES_MANAGER,
-          ROLE.ACCOUNTING_EXECUTOR,
-          ROLE.ACCOUNTING_MANAGER,
-        ],
-      },
-      {
-        label: intl.formatMessage({ id: "nav_bar.demands_tab" }),
-        to: PAGES.DEMANDS,
+        // roles: [
+        //   ROLE.SUBSCRIPTIONS_EXECUTOR,
+        //   ROLE.SUBSCRIPTIONS_MANAGER,
+        //   ROLE.RECOVERIES_EXECUTOR,
+        //   ROLE.RECOVERIES_MANAGER,
+        //   ROLE.REINSURANCES_EXECUTOR,
+        //   ROLE.REINSURANCES_MANAGER,
+        //   ROLE.ACCOUNTING_EXECUTOR,
+        //   ROLE.ACCOUNTING_MANAGER,
+        // ],
       },
       {
         label: intl.formatMessage({ id: "nav_bar.help_tab" }),
         to: PAGES.HELP,
       },
-      {
-        label: "",
-        to: PAGES.QUITTANCES,
-        isHidden: true,
-      },
     ],
   };
 
   const showNavigationBar = ![
-    PAGES.QUITTANCE_DETAILS,
-    PAGES.DEMANDS_DETAILS,
-    PAGES.DEMANDS_PRODUCER,
     PAGES.NOT_FOUND,
   ].includes(useLocation().pathname);
 
