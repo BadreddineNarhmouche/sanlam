@@ -8,7 +8,7 @@ using SA.CheckTrackingPlatform.ServiceEngines.Management.StatusFolder.Responses;
 
 namespace SA.CheckTrackingPlatform.ServiceEngines.Management.StatusFolder.Queries
 {
-    public class GetStatusByIdQuery : BaseRequest<GetByIdResponse>
+    public class GetStatusByIdQuery : BaseRequest<GetStatusByIdResponse>
     {
         #region properties
 
@@ -18,7 +18,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.StatusFolder.Querie
     }
 
 
-    public class GetStatusByIdQueryHandler : IRequestHandler<GetStatusByIdQuery, GetByIdResponse>
+    public class GetStatusByIdQueryHandler : IRequestHandler<GetStatusByIdQuery, GetStatusByIdResponse>
     {
         #region Fields 
 
@@ -37,13 +37,13 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.StatusFolder.Querie
 
         #region Methods 
 
-        public async Task<GetByIdResponse> Handle(GetStatusByIdQuery request, CancellationToken cancellationToken)
+        public async Task<GetStatusByIdResponse> Handle(GetStatusByIdQuery request, CancellationToken cancellationToken)
         {
             return await ExecutionHelper.Proceed(async () =>
             {
                 #region Declarations
 
-                GetByIdResponse response = new GetByIdResponse();
+                GetStatusByIdResponse response = new GetStatusByIdResponse();
 
                 #endregion Declarations
 
@@ -76,7 +76,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.StatusFolder.Querie
 
                     if (status.IsNotNull())
                     {
-                        response = MappingConfiguration.Mapper.Map<GetByIdResponse>(status);
+                        response = MappingConfiguration.Mapper.Map<GetStatusByIdResponse>(status);
                     }
 
                     response.IsSuccess = true;

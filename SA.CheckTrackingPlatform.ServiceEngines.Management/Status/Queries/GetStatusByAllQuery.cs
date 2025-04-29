@@ -2,13 +2,13 @@
 using SA.CheckTrackingPlatform.Common.Resources.Messages;
 using SA.CheckTrackingPlatform.Domains.Management.Entities;
 using SA.CheckTrackingPlatform.Domains.Management.Repositories.Queries;
-using SA.CheckTrackingPlatform.ServiceEngines.Management.BranchFolder.Responses;
+using SA.CheckTrackingPlatform.ServiceEngines.Management.StatusFolder.Responses;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Mapper;
 using System.Reflection;
 
-namespace SA.CheckTrackingPlatform.ServiceEngines.Management.BranchFolder.Queries
+namespace SA.CheckTrackingPlatform.ServiceEngines.Management.StatusFolder.Queries
 {
-    public class GetByAllQuery : BaseRequest<GetByAllResponse>
+    public class GetStatusByAllQuery : BaseRequest<GetStatusByAllResponse>
     {
         #region properties
 
@@ -16,34 +16,32 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.BranchFolder.Querie
     }
 
 
-    public class GetByAllQueryHandler : IRequestHandler<GetByAllQuery, GetByAllResponse>
+    public class GetByAllQueryHandler : IRequestHandler<GetStatusByAllQuery, GetStatusByAllResponse>
     {
         #region Fields 
 
-        private readonly IBranchsQueryRepository branchsQueryRepository;
-        
-        
+        private readonly IStatusQueryRepository statusQueryRepository;
 
         #endregion Fields 
 
         #region Constructors 
 
-        public GetByAllQueryHandler(IBranchsQueryRepository branchsQueryRepository)
+        public GetByAllQueryHandler(IStatusQueryRepository statusQueryRepository)
         {
-            this.branchsQueryRepository = branchsQueryRepository;
+            this.statusQueryRepository = statusQueryRepository;
         }
 
         #endregion Constructors 
 
         #region Methods 
 
-        public async Task<GetByAllResponse> Handle(GetByAllQuery request, CancellationToken cancellationToken)
+        public async Task<GetStatusByAllResponse> Handle(GetStatusByAllQuery request, CancellationToken cancellationToken)
         {
             return await ExecutionHelper.Proceed(async () =>
             {
                 #region Declarations
 
-                GetByAllResponse response = new GetByAllResponse();
+                GetStatusByAllResponse response = new GetStatusByAllResponse();
 
                 #endregion Declarations
 
@@ -64,15 +62,15 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.BranchFolder.Querie
                 if (response.IsSuccess)
                 {
 
-                    IEnumerable<Branch> Branches = await branchsQueryRepository.GetByAllAsync();
+                    IEnumerable<Status> Statuses = await statusQueryRepository.GetByAllAsync();
 
-                    if (Branches.IsNotNull())
+                    if (Statuses.IsNotNull())
                     {
-                        response.Data = MappingConfiguration.Mapper.Map<IEnumerable<GetByAllItem>>(Branches);
+                        response.Data = MappingConfiguration.Mapper.Map<IEnumerable<GetStatusByAllItem>>(Statuses);
                     }
 
                     response.IsSuccess = true;
-                    response.IsPopulated = Branches.IsNotNull();
+                    response.IsPopulated = Statuses.IsNotNull();
                     response.InformationMessage = InformationMessages.QuerySucceeded;
                 }
                 else

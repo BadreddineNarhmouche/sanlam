@@ -1,47 +1,49 @@
-﻿using MediatR;
+﻿using System.Reflection;
+using MediatR;
 using SA.CheckTrackingPlatform.Common.Resources.Messages;
 using SA.CheckTrackingPlatform.Domains.Management.Entities;
 using SA.CheckTrackingPlatform.Domains.Management.Repositories.Queries;
-using SA.CheckTrackingPlatform.ServiceEngines.Management.StatusFolder.Responses;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Mapper;
-using System.Reflection;
+using SA.CheckTrackingPlatform.ServiceEngines.Management.BranchFolder.Responses;
 
-namespace SA.CheckTrackingPlatform.ServiceEngines.Management.StatusFolder.Queries
+namespace SA.CheckTrackingPlatform.ServiceEngines.Management.BranchFolder.Queries
 {
-    public class GetByAllQuery : BaseRequest<GetByAllResponse>
+    public class GetBanchByIdQuery : BaseRequest<GetBranchByIdResponse>
     {
         #region properties
+
+        public int Id { get; set; }
 
         #endregion Properties 
     }
 
 
-    public class GetByAllQueryHandler : IRequestHandler<GetByAllQuery, GetByAllResponse>
+    public class GetByIdQueryHandler : IRequestHandler<GetBanchByIdQuery, GetBranchByIdResponse>
     {
         #region Fields 
 
-        private readonly IStatusQueryRepository statusQueryRepository;
+        private readonly IBranchsQueryRepository branchsQueryRepository;
 
         #endregion Fields 
 
         #region Constructors 
 
-        public GetByAllQueryHandler(IStatusQueryRepository statusQueryRepository)
+        public GetByIdQueryHandler(IBranchsQueryRepository branchsQueryRepository)
         {
-            this.statusQueryRepository = statusQueryRepository;
+            this.branchsQueryRepository = branchsQueryRepository;
         }
 
         #endregion Constructors 
 
         #region Methods 
 
-        public async Task<GetByAllResponse> Handle(GetByAllQuery request, CancellationToken cancellationToken)
+        public async Task<GetBranchByIdResponse> Handle(GetBanchByIdQuery request, CancellationToken cancellationToken)
         {
             return await ExecutionHelper.Proceed(async () =>
             {
                 #region Declarations
 
-                GetByAllResponse response = new GetByAllResponse();
+                GetBranchByIdResponse response = new GetBranchByIdResponse();
 
                 #endregion Declarations
 
@@ -55,6 +57,14 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.StatusFolder.Querie
                     return response;
                 }
 
+                if (request.Id <= 0 || request.Id.IsNull())
+                {
+                    response.IsSuccess = false;
+                    response.WarningMessage = WarningMessages.AllCriteriaRequired;
+
+                    return response;
+                }
+
                 #endregion Validations
 
                 #region Operations
@@ -62,15 +72,15 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.StatusFolder.Querie
                 if (response.IsSuccess)
                 {
 
-                    IEnumerable<Status> Statuses = await statusQueryRepository.GetByAllAsync();
+                    Branch Branch = await branchsQueryRepository.GetByIdAsync(request.Id);
 
-                    if (Statuses.IsNotNull())
+                    if (Branch.IsNotNull())
                     {
-                        response.Data = MappingConfiguration.Mapper.Map<IEnumerable<GetByAllItem>>(Statuses);
+                        response = MappingConfiguration.Mapper.Map<GetBranchByIdResponse>(Branch);
                     }
 
                     response.IsSuccess = true;
-                    response.IsPopulated = Statuses.IsNotNull();
+                    response.IsPopulated = Branch.IsNotNull();
                     response.InformationMessage = InformationMessages.QuerySucceeded;
                 }
                 else

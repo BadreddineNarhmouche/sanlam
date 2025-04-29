@@ -10,9 +10,9 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.BranchFolder
 
         public BranchsProfile()
         {
-            CreateMap<Branch, GetByIdResponse>().ReverseMap();
+            CreateMap<Branch, GetBranchByIdResponse>().ReverseMap();
 
-            CreateMap<Branch, GetByAllItem>().ReverseMap();
+            CreateMap<Branch, GetBranchByAllItem>().ReverseMap();
         }
 
         #endregion Constructors

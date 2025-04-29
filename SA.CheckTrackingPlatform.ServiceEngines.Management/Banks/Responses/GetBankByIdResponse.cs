@@ -1,7 +1,7 @@
 ﻿
-namespace SA.CheckTrackingPlatform.ServiceEngines.Management.BranchFolder.Responses
+namespace SA.CheckTrackingPlatform.ServiceEngines.Management.BanksFolder.Responses
 {
-    public class GetByIdResponse : BaseResponse<GetByIdResponse>
+    public class GetBankByIdResponse : BaseResponse<GetBankByIdResponse>
     {
         #region Properties 
 

@@ -25,7 +25,7 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
         [HttpGet]
         [Route(nameof(GetStatusById))]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<GetByIdResponse> GetStatusById([FromQuery] GetStatusByIdQuery query)
+        public async Task<GetStatusByIdResponse> GetStatusById([FromQuery] GetStatusByIdQuery query)
         {
             return await _mediator.Send(query);
         }
@@ -33,7 +33,7 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
         [HttpGet]
         [Route(nameof(GetAllStatus))]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<GetByAllResponse> GetAllStatus([FromQuery] GetByAllQuery query)
+        public async Task<GetStatusByAllResponse> GetAllStatus([FromQuery] GetStatusByAllQuery query)
         {
             return await _mediator.Send(query);
         }

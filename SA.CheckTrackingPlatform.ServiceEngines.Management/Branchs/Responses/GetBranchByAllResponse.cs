@@ -2,11 +2,11 @@
 
 namespace SA.CheckTrackingPlatform.ServiceEngines.Management.BranchFolder.Responses
 {
-    public class GetByAllResponse : BaseResponse<IEnumerable<GetByAllItem>>
+    public class GetBranchByAllResponse : BaseResponse<IEnumerable<GetBranchByAllItem>>
     {
         
     }
-    public class GetByAllItem
+    public class GetBranchByAllItem
     {
         #region Properties 
         public int Id { get; set; }
