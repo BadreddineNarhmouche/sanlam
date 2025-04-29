@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes;
+using SA.CheckTrackingPlatform.ServiceEngines.Management.Timelines;
 
 namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Mapper
 {
@@ -18,6 +19,8 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Mapper
                 mc.AddProfile<InternalUserProfile>();
                 mc.AddProfile<NotificationProfile>();
                 mc.AddProfile<ChecksProfile>();
+                mc.AddProfile<TimelineProfile>();
+         
             });
 
             IMapper iMapper = mapperConfiguration.CreateMapper();
