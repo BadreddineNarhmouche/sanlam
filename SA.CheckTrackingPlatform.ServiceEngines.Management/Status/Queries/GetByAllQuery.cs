@@ -11,13 +11,6 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.StatusFolder.Querie
     public class GetByAllQuery : BaseRequest<GetByAllResponse>
     {
         #region properties
-        public List<int>? Ids { get; set; }
-        public List<string>? CheckNumbers { get; set; }
-        public int? BranchId { get; set; }
-        public int? ServiceId { get; set; }
-        public int? BankId { get; set; }
-        public string? LotNumber { get; set; }
-        public string? BeneficiaryName { get; set; }
 
         #endregion Properties 
     }

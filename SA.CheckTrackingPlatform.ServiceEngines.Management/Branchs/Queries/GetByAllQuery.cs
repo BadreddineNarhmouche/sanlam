@@ -2,11 +2,11 @@
 using SA.CheckTrackingPlatform.Common.Resources.Messages;
 using SA.CheckTrackingPlatform.Domains.Management.Entities;
 using SA.CheckTrackingPlatform.Domains.Management.Repositories.Queries;
-using SA.CheckTrackingPlatform.ServiceEngines.Management.BanksFolder.Responses;
+using SA.CheckTrackingPlatform.ServiceEngines.Management.BranchFolder.Responses;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Mapper;
 using System.Reflection;
 
-namespace SA.CheckTrackingPlatform.ServiceEngines.Management.BanksFolder.Queries
+namespace SA.CheckTrackingPlatform.ServiceEngines.Management.BranchFolder.Queries
 {
     public class GetByAllQuery : BaseRequest<GetByAllResponse>
     {
@@ -20,16 +20,17 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.BanksFolder.Queries
     {
         #region Fields 
 
-        private readonly IBanksQueryRepository banksQueryRepository;
+        private readonly IBranchsQueryRepository branchsQueryRepository;
+        
         
 
         #endregion Fields 
 
         #region Constructors 
 
-        public GetByAllQueryHandler(IBanksQueryRepository banksQueryRepository)
+        public GetByAllQueryHandler(IBranchsQueryRepository branchsQueryRepository)
         {
-            this.banksQueryRepository = banksQueryRepository;
+            this.branchsQueryRepository = branchsQueryRepository;
         }
 
         #endregion Constructors 
@@ -63,15 +64,15 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.BanksFolder.Queries
                 if (response.IsSuccess)
                 {
 
-                    IEnumerable<Bank> Bankes = await banksQueryRepository.GetByAllAsync();
+                    IEnumerable<Branch> Branches = await branchsQueryRepository.GetByAllAsync();
 
-                    if (Bankes.IsNotNull())
+                    if (Branches.IsNotNull())
                     {
-                        response.Data = MappingConfiguration.Mapper.Map<IEnumerable<GetByAllItem>>(Bankes);
+                        response.Data = MappingConfiguration.Mapper.Map<IEnumerable<GetByAllItem>>(Branches);
                     }
 
                     response.IsSuccess = true;
-                    response.IsPopulated = Bankes.IsNotNull();
+                    response.IsPopulated = Branches.IsNotNull();
                     response.InformationMessage = InformationMessages.QuerySucceeded;
                 }
                 else
