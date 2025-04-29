@@ -8,7 +8,7 @@ using SA.CheckTrackingPlatform.ServiceEngines.Management.BanksFolder.Responses;
 
 namespace SA.CheckTrackingPlatform.ServiceEngines.Management.BanksFolder.Queries
 {
-    public class GetBankByIdQuery : BaseRequest<GetByIdResponse>
+    public class GetByIdQuery : BaseRequest<GetByIdResponse>
     {
         #region properties
 
@@ -18,7 +18,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.BanksFolder.Queries
     }
 
 
-    public class GetBankByIdQueryHandler : IRequestHandler<GetBankByIdQuery, GetByIdResponse>
+    public class GetByIdQueryHandler : IRequestHandler<GetByIdQuery, GetByIdResponse>
     {
         #region Fields 
 
@@ -28,7 +28,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.BanksFolder.Queries
 
         #region Constructors 
 
-        public GetBankByIdQueryHandler(IBanksQueryRepository banksQueryRepository)
+        public GetByIdQueryHandler(IBanksQueryRepository banksQueryRepository)
         {
             this.banksQueryRepository = banksQueryRepository;
         }
@@ -37,7 +37,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.BanksFolder.Queries
 
         #region Methods 
 
-        public async Task<GetByIdResponse> Handle(GetBankByIdQuery request, CancellationToken cancellationToken)
+        public async Task<GetByIdResponse> Handle(GetByIdQuery request, CancellationToken cancellationToken)
         {
             return await ExecutionHelper.Proceed(async () =>
             {
