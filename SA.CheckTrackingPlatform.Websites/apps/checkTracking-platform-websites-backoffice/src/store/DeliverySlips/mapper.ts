@@ -1,4 +1,4 @@
-import {  TreatReinsuranceDeliverySlipItem, TreatAccountingDeliverySlipItem, QuittanceLine } from '@checkTracking/helpers';
+import {  GetAllDeliverySlipsByCriteriaItem, TreatReinsuranceDeliverySlipItem, TreatAccountingDeliverySlipItem, QuittanceLine } from '@checkTracking/helpers';
 
 
 export const mapReinsuranceDeliverySlipsList = (items: any): GetAllDeliverySlipsByCriteriaItem[] => {
