@@ -10,9 +10,9 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.StatusFolder
 
         public StatusProfile()
         {
-            CreateMap<Status, GetByIdResponse>().ReverseMap();
+            CreateMap<Status, GetStatusByIdResponse>().ReverseMap();
 
-            CreateMap<Status, GetByAllItem>().ReverseMap();
+            CreateMap<Status, GetStatusByAllItem>().ReverseMap();
         }
 
         #endregion Constructors

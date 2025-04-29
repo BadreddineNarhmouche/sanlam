@@ -2,11 +2,11 @@
 
 namespace SA.CheckTrackingPlatform.ServiceEngines.Management.BanksFolder.Responses
 {
-    public class GetByAllResponse : BaseResponse<IEnumerable<GetByAllItem>>
+    public class GetAllBanksResponse : BaseResponse<IEnumerable<GetBankByAllItem>>
     {
         
     }
-    public class GetByAllItem
+    public class GetBankByAllItem
     {
         #region Properties 
         public int Id { get; set; }

@@ -25,7 +25,7 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
         [HttpGet]
         [Route(nameof(GetBankById))]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<GetByIdResponse> GetBankById([FromQuery] GetByIdQuery query)
+        public async Task<GetBankByIdResponse> GetBankById([FromQuery] GetBankByIdQuery query)
         {
             return await _mediator.Send(query);
         }
@@ -33,7 +33,7 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
         [HttpGet]
         [Route(nameof(GetAllBanks))]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<GetByAllResponse> GetAllBanks([FromQuery] GetByAllQuery query)
+        public async Task<GetAllBanksResponse> GetAllBanks([FromQuery] GetBankByAllQuery query)
         {
             return await _mediator.Send(query);
         }

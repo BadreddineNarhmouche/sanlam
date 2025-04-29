@@ -1,7 +1,7 @@
 ﻿
 namespace SA.CheckTrackingPlatform.ServiceEngines.Management.StatusFolder.Responses
 {
-    public class GetByIdResponse : BaseResponse<GetByIdResponse>
+    public class GetStatusByIdResponse : BaseResponse<GetStatusByIdResponse>
     {
         #region Properties 
 

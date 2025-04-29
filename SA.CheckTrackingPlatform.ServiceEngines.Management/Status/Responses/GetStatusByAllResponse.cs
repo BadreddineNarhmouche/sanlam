@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace SA.CheckTrackingPlatform.ServiceEngines.Management.StatusFolder.Responses
 {
-    public class GetByAllResponse : BaseResponse<IEnumerable<GetByAllItem>>
+    public class GetStatusByAllResponse : BaseResponse<IEnumerable<GetStatusByAllItem>>
     {
         
     }
-    public class GetByAllItem
+    public class GetStatusByAllItem
     {
         #region Properties 
         public int Id { get; protected set; }

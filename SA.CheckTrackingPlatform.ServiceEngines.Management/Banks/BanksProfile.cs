@@ -10,9 +10,9 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.BanksFolder
 
         public BanksProfile()
         {
-            CreateMap<Bank, GetByIdResponse>().ReverseMap();
+            CreateMap<Bank, GetBankByIdResponse>().ReverseMap();
 
-            CreateMap<Bank, GetByAllItem>().ReverseMap();
+            CreateMap<Bank, GetBankByAllItem>().ReverseMap();
         }
 
         #endregion Constructors

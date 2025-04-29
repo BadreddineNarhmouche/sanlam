@@ -23,17 +23,17 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
         #region Methods
     
         [HttpGet]
-        [Route(nameof(GetBankById))]
+        [Route(nameof(GetBranchById))]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<GetByIdResponse> GetBankById([FromQuery] GetByIdQuery query)
+        public async Task<GetBranchByIdResponse> GetBranchById([FromQuery] GetBanchByIdQuery query)
         {
             return await _mediator.Send(query);
         }
 
         [HttpGet]
-        [Route(nameof(GetAllBanks))]
+        [Route(nameof(GetAllBranchs))]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<GetByAllResponse> GetAllBanks([FromQuery] GetByAllQuery query)
+        public async Task<GetBranchByAllResponse> GetAllBranchs([FromQuery] GetBranchByAllQuery query)
         {
             return await _mediator.Send(query);
         }
