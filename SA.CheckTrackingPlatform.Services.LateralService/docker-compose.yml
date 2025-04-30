@@ -16,8 +16,8 @@ services:
 
     volumes:
       - oracle_data:/opt/oracle/oradata         
-      - ./init:/container-entrypoint-initdb.d   
-
+      - ../../../Contexts/Application/SeedScipts:/container-entrypoint-initdb.d
+    
     shm_size: 1g
 
 volumes:
