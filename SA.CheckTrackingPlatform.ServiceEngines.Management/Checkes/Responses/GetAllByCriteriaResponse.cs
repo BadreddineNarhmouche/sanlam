@@ -29,6 +29,6 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses
         public decimal TransactionNumber { get; set; }
         public string BeneficiaryName { get; set; }
 
-        #endregion
+        #endregion Properties
     }
 }

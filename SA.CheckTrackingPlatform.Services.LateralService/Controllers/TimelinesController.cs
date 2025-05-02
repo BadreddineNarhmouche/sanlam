@@ -1,5 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Queries;
+using SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Timelines.Queries;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Timelines.Responses;
 
@@ -30,6 +32,17 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
         {
             return await _mediator.Send(query);
         }
+
+        [HttpGet]
+        [Route(nameof(GetTimelinesByCriteria))]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<GetTimelinesByCriteriaResponse> GetTimelinesByCriteria([FromQuery] GetTimelinesByCriteriaQuery query)
+        {
+            return await _mediator.Send(query);
+        }
+
+
+
         #endregion Methods
     }
 }
