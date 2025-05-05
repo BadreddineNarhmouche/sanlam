@@ -39,6 +39,6 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Mapper
 
         public static IMapper Mapper => lazyMapper.Value;
 
-        #endregion Properties
+        #endregion Properties 
     }
 }
