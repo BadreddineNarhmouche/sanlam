@@ -4,6 +4,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <Configurations>Debug;Development;Staging;PreProduction;Production</Configurations>
+    <UserSecretsId>6c47b483-f38a-43ec-8ba6-2ff399f06dec</UserSecretsId>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Staging|AnyCPU'">
     <Optimize>True</Optimize>
@@ -55,7 +56,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
 </Project>

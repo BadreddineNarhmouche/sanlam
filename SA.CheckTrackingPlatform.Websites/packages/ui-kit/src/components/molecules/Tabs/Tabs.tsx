@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import Tabs from '@mui/material/Tabs';
-import { GeneralHelper } from '@reinsurance/helpers';
+import { GeneralHelper } from '@checkTracking/helpers';
 import { Icons, Tab } from '../../atoms';
 import styles from './styles';
 

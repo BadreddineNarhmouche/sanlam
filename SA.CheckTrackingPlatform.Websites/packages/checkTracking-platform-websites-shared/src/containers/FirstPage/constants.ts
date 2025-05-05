@@ -1,0 +1,93 @@
+// import { filterData } from "@checkTracking/helpers";
+
+// *******************************************
+// FormSearch fields
+// *******************************************
+
+const FIELD_PRIME_MIN = {
+  fieldId: "primeNetMin",
+  type: "intervalMin",
+  label: "quittance.search.primemin",
+  gridOccupancy: 2,
+};
+
+const FIELD_PRIME_MAX = {
+  fieldId: "primeNetMax",
+  type: "intervalMax",
+  label: "quittance.search.prime",
+  gridOccupancy: 2,
+};
+
+const FIELD_CODE = {
+  fieldId: "externalPartnerUserCode",
+  type: "text",
+  label: "quittance.search.partnerUserCode",
+  gridOccupancy: 2,
+};
+
+const FIELD_POLICY_REFERENCE = {
+  fieldId: "policyReference",
+  type: "text",
+  label: "quittance.search.policyReference",
+  gridOccupancy: 2,
+};
+
+const FIELD_CLIENT = {
+  fieldId: "externalClientName",
+  type: "text",
+  label: "quittance.search.client",
+  gridOccupancy: 2,
+};
+
+const FIELD_DATETIME = {
+  fieldId: "dateCreation",
+  type: "datetime",
+  label: "quittance.search.datemission",
+  gridOccupancy: 2,
+};
+
+// const FIELD_REINSURER_SELECT = (statuses: any) => ({
+//   fieldId: "externalcheckTrackingReference",
+//   type: "select",
+//   label: "quittance.search.reinsurer",
+//   options: filterData(statuses),
+//   gridOccupancy: 2,
+// });
+
+// const FIELD_QUITTANCE_STATUS = (statuses: any) => ({
+//   fieldId: "quittanceStatusId",
+//   type: "select",
+//   label: "quittance.search.status",
+//   options: filterData(statuses),
+//   gridOccupancy: 2,
+// });
+
+// *******************************************
+// FIRST_PAGE
+// *******************************************
+
+export const FIRST_PAGE_QUITTANCE_FORM_SEARCH_FIELDS = () => {
+  return [
+    { ...FIELD_POLICY_REFERENCE, gridOccupancy: 3, isHeader: true },
+    { ...FIELD_CODE, gridOccupancy: 2, isHeader: true },
+    // { ...FIELD_REINSURER_SELECT(option), gridOccupancy: 3, isHeader: true },
+    { ...FIELD_PRIME_MIN, gridOccupancy: 2, isHeader: true },
+    { ...FIELD_PRIME_MAX, gridOccupancy: 2, isHeader: true },
+  ];
+};
+
+export const FIRST_PAGE_QUITTANCE_TABLE_COLUMNS_DEFAULT = [
+  { title: "N° Police" },
+  { title: "Assuré" },
+  { title: "Type de garantie" },
+  { title: "Branche" },
+];
+
+export const FIRST_PAGE_QUITTANCE_TABLE_HIDDEN_COLUMNS_DEFAULT = [
+  // "id",
+  // "publicQuittanceStatusCode",
+  // "publicQuittanceStatusLabel",
+  // "details",
+  // "reference",
+  // "isLoaded",
+];

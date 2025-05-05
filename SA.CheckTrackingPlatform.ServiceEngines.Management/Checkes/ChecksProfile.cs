@@ -16,7 +16,8 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes
 
         public ChecksProfile()
         {
-            CreateMap<ChecksProfile, GetChecksByIdResponse>().ReverseMap();
+            CreateMap<Checks, GetChecksByIdResponse>().ReverseMap();
+            CreateMap<Checks, GetAllByCriteriaItem>().ReverseMap();
         }
 
         #endregion Constructors

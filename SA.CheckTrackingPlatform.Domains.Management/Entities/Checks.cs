@@ -1,7 +1,5 @@
 ﻿
 using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using System.Data;
 using SA.CheckTrackingPlatform.Domains.Management.Common;
 
 namespace SA.CheckTrackingPlatform.Domains.Management.Entities
@@ -40,37 +38,5 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
         public ICollection<Timeline> Timelines { get; set; }
 
         #endregion Properties
-
-        //public static Checks MapFromDataRowForGetAllByCriteria(DataRow dataRow)
-        //{
-        //    try
-        //    {
-        //        return new Checks()
-        //        {
-        //            Id = Convert.ToInt32(dataRow["ID"]),
-        //            Amount = Convert.ToDouble(dataRow["AMOUNT"]),
-        //            BankId = Convert.ToInt32(dataRow["BANKID"]),
-        //            BranchId = Convert.ToInt32(dataRow["ID"]),
-        //            ServiceId = Convert.ToInt32(dataRow["ID"]),
-        //            CheckNumber = dataRow["BRANCHLABEL"].ToString(),
-        //            CreationDate = dataRow["QUITTANCESTARTDATE"] as DateTime?,
-        //            LotNumber = Convert.ToString(dataRow["POLICYIDENTIFIER"]),
-        //            RecipientName = dataRow["PRODUCTLABEL"].ToString(),
-        //            SinisterNumber = Convert.ToString(dataRow["CLIENTIDENTIFIER"]),
-        //            AccountNumber = dataRow["CLIENTNAME"].ToString(),
-        //            RegisterOrderNumber = dataRow["INSUREDIDENTIFIER"].ToString(),
-        //            BeneficiaryName = dataRow["PARTNERUSERCODE"].ToString(),
-        //            TransactionNumber = dataRow["TransactionNumber"].ToString()
-        //            //SanlamSharePercentage = (dataRow["SANLAMSHAREPERCENTAGE"] == DBNull.Value) ? 0 : Convert.ToDouble(dataRow["SANLAMSHAREPERCENTAGE"]),
-        //            //PremiumDue = (dataRow["PREMIUMDUE"] == DBNull.Value) ? 0 : Convert.ToDouble(dataRow["PREMIUMDUE"]),
-        //        };
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        throw ex;
-        //    }
-
-        //}
     }
 }

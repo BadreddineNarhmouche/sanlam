@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SA.CheckTrackingPlatform.Contexts.Management.Application;
@@ -247,10 +248,15 @@ webApplicationBuilder.Services.AddTransient<IInternalRoleCommandRepository, Inte
 webApplicationBuilder.Services.AddTransient<IInternalUserCommandRepository, InternalUserCommandRepository>();
 webApplicationBuilder.Services.AddTransient<INotificationCommandRepository, NotificationCommandRepository>();
 webApplicationBuilder.Services.AddTransient<INotificationTypeCommandRepository, NotificationTypeCommandRepository>();
-
 webApplicationBuilder.Services.AddTransient<IInternalRoleQueryRepository, InternalRoleQueryRepository>();
 webApplicationBuilder.Services.AddTransient<IInternalUserQueryRepository, InternalUserQueryRepository>();
 webApplicationBuilder.Services.AddTransient<IChecksQueryRepository , ChecksQueryRepository>();
+webApplicationBuilder.Services.AddTransient<ITimelinesQueryRepository, TimelineQueryRepository>();
+webApplicationBuilder.Services.AddTransient<IBanksQueryRepository, BanksQueryRepository>();
+webApplicationBuilder.Services.AddTransient<IBranchsQueryRepository, BranchsQueryRepository>();
+webApplicationBuilder.Services.AddTransient<IStatusQueryRepository, StatusQueryRepository>();
+
+
 webApplicationBuilder.Services.AddTransient<IInternalUserInternalRoleQueryRepository, InternalUserInternalRoleQueryRepository>();
 webApplicationBuilder.Services.AddTransient<INotificationQueryRepository, NotificationQueryRepository>();
 webApplicationBuilder.Services.AddTransient<INotificationTypeQueryRepository, NotificationTypeQueryRepository>();

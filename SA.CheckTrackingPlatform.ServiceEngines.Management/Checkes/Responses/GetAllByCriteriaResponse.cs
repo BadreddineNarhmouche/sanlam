@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses
 {
-    public class GetAllByCriteriaResponse : BaseResponse<List<GetAllByCriteriaItem>>
+    public class GetAllByCriteriaResponse : BasePagedResponse<List<GetAllByCriteriaItem>>
     {
         
     }
+    // On peut renvoyer moins d'élements 
     public class GetAllByCriteriaItem
     {
         #region Properties 
@@ -28,6 +29,6 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses
         public decimal TransactionNumber { get; set; }
         public string BeneficiaryName { get; set; }
 
-        #endregion
+        #endregion Properties
     }
 }

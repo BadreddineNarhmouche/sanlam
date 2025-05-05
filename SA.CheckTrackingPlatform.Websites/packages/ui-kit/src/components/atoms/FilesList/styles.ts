@@ -1,4 +1,4 @@
-import { GeneralHelper } from '@reinsurance/helpers';
+import { GeneralHelper } from '@checkTracking/helpers';
 
 const styles = {
   container: (isError: any) => ({

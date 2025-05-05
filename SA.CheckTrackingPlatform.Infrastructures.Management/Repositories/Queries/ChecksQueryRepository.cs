@@ -33,16 +33,83 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
 
             return query;
         }
-
-        public async Task<IEnumerable<Checks>> GetByCriteriaAsync(List<int>? ids, List<string>? checkNumbers, int? branchId, int? serviceId, int? bankId, string? lotNumber, string? beneficiaryName, int? pageIndex = null, int? pageSize = null)
+        public async Task<IEnumerable<Checks>> GetByCriteriaAsync(List<int>? ids, List<string>? checkNumbers, int? branchId, int? serviceId, int? bankId, string? lotNumber, string? beneficiaryName, int? pageIndex, int? pageSize)
         {
-            return await Task.Run(async () =>
-            {
+            // Construire le IQueryable pour ne materialiser qu’une seule fois en base
+            IQueryable<Checks> query = this.applicationContext.Checks
+                .Include(c => c.Timelines)
+                .ThenInclude(c => c.Status)
+                .Include(c => c.Branch)
+                .Include(c => c.Service)
+                .Include(c => c.Bank);
 
-                List<Checks> checks = new List<Checks>();
-                return checks;
-            });
+            if (ids != null && ids.Any())
+                query = query.Where(c => ids.Contains(c.Id));
+
+            if (checkNumbers != null && checkNumbers.Any())
+                query = query.Where(c => checkNumbers.Contains(c.CheckNumber));
+
+            if (branchId.HasValue)
+                query = query.Where(c => c.BranchId == branchId.Value);
+
+            if (serviceId.HasValue)
+                query = query.Where(c => c.ServiceId == serviceId.Value);
+
+            if (bankId.HasValue)
+                query = query.Where(c => c.BankId == bankId.Value);
+
+            if (!string.IsNullOrWhiteSpace(lotNumber))
+                query = query.Where(c => c.LotNumber == lotNumber);
+
+            if (!string.IsNullOrWhiteSpace(beneficiaryName))
+                query = query.Where(c => c.BeneficiaryName.Contains(beneficiaryName));
+
+            if (pageIndex.HasValue && pageSize.HasValue)
+            {
+                query = query.ToPaged(pageIndex.Value, pageSize.Value);
+            }
+
+            return await query
+                 .AsNoTrackingWithIdentityResolution()
+                 .ToListAsync();
         }
+
+        public async Task<int> CountAllByCriteriaAsync(List<int>? ids, List<string>? checkNumbers, int? branchId, int? serviceId, int? bankId, string? lotNumber, string? beneficiaryName)
+        {
+            IQueryable<Checks> query = this.applicationContext.Checks
+               .Include(c => c.Timelines)
+               .ThenInclude(c => c.Status)
+               .Include(c => c.Branch)
+               .Include(c => c.Service)
+               .Include(c => c.Bank);
+
+            if (ids != null && ids.Any())
+                query = query.Where(c => ids.Contains(c.Id));
+
+            if (checkNumbers != null && checkNumbers.Any())
+                query = query.Where(c => checkNumbers.Contains(c.CheckNumber));
+
+            if (branchId.HasValue)
+                query = query.Where(c => c.BranchId == branchId.Value);
+
+            if (serviceId.HasValue)
+                query = query.Where(c => c.ServiceId == serviceId.Value);
+
+            if (bankId.HasValue)
+                query = query.Where(c => c.BankId == bankId.Value);
+
+            if (!string.IsNullOrWhiteSpace(lotNumber))
+                query = query.Where(c => c.LotNumber == lotNumber);
+
+            if (!string.IsNullOrWhiteSpace(beneficiaryName))
+                query = query.Where(c => c.BeneficiaryName.Contains(beneficiaryName));
+
+
+            return await query
+                 .AsNoTrackingWithIdentityResolution()
+                .CountAsync();
+        }
+
         #endregion
     }
 }
