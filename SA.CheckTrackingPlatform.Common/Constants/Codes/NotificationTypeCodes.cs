@@ -6,8 +6,7 @@
         {
             #region Fields
 
-            public const string Quittance = "Quittance";
-            public const string DeliverySlip = "DeliverySlip";
+            //public const string Quittance = "Quittance";
 
             #endregion Fields
         }

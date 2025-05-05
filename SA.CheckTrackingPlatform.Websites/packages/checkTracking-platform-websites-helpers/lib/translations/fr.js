@@ -46,7 +46,7 @@ export const frTranslationMessages = {
     "not_found.subTitle": "Retour à la page d'accueil",
     "help.empty.title": "C'est vide là-dedans.",
     "help.title": "Aide et support",
-    "quittance.list.title": "Liste des demandes",
+    "quittance.list.title": "Liste des cheques",
     "payments.empty.subTitle": "Commencer à rechercher une virement dans la barre de recherche",
     "quittances.empty.subTitle": "Commencer à rechercher une quittance dans la barre de recherche",
     "quittance.search.primemin": "Prime annuel minimal",

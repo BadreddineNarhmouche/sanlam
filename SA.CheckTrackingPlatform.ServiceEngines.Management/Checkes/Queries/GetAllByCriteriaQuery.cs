@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Queries
 {
-    public class GetAllByCriteriaQuery : BaseRequest<GetAllByCriteriaResponse>
+    public class GetAllByCriteriaQuery : BasePagedRequest<GetAllByCriteriaResponse>
     {
         #region properties
         public List<int>? Ids { get; set; }
@@ -23,6 +23,8 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Queries
         public int? BankId { get; set; }
         public string? LotNumber { get; set; }
         public string? BeneficiaryName { get; set; }
+
+        public bool CalculateTotalCount { get; set; }
 
         #endregion Properties 
     }
@@ -73,15 +75,21 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Queries
 
                 if (response.IsSuccess)
                 {
+
+                    int totalCount = request.CalculateTotalCount ? await checksQueryRepository.CountAllByCriteriaAsync(request.Ids, request.CheckNumbers, request.BranchId,
+                        request.ServiceId, request.BankId, request.LotNumber, request.BeneficiaryName) : 0;
+
                     //paramétrage count 1 => Non Vide
                     IEnumerable<Checks> checks = await checksQueryRepository.GetByCriteriaAsync(request.Ids, request.CheckNumbers, request.BranchId,
-                        request.ServiceId, request.BankId, request.LotNumber, request.BeneficiaryName);
+                        request.ServiceId, request.BankId, request.LotNumber, request.BeneficiaryName, request.PageIndex, request.PageSize);
 
                     if (checks.IsNotNull())
                     {
                         response.Data = MappingConfiguration.Mapper.Map<List<GetAllByCriteriaItem>>(checks);
-                                                // Data reçoit les elements et Mapping avec une list des entitées des checks 
-                           // Car Nous voulons Mapper une liste avec une liste et nous voulons retourner tout les items de checks 
+                        response.FillPageInformation(checks.Count(), totalCount, request.PageIndex, request.PageSize);
+
+                        // Data reçoit les elements et Mapping avec une list des entitées des checks 
+                        // Car Nous voulons Mapper une liste avec une liste et nous voulons retourner tout les items de checks 
                     }
 
                     response.IsSuccess = true;

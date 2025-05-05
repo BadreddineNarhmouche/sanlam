@@ -26,7 +26,7 @@ export const quittanceStatusComponent = (
         case QUITTANCE_STATUS_CODES.DRAFT:
         case QUITTANCE_STATUS_CODES.TO_DO_SUBSCRIPTION:
         case QUITTANCE_STATUS_CODES.TO_DO_RECOVERY:
-        case QUITTANCE_STATUS_CODES.TO_DO_REINSURANCE:
+        case QUITTANCE_STATUS_CODES.TO_DO_checkTracking:
         case QUITTANCE_STATUS_CODES.TO_DO_ACCOUNTING:
             return (
                 <Chip
@@ -42,7 +42,7 @@ export const quittanceStatusComponent = (
             );
         case QUITTANCE_STATUS_CODES.IN_PROGRESS_SUBSCRIPTION:
         case QUITTANCE_STATUS_CODES.IN_PROGRESS_RECOVERY:
-        case QUITTANCE_STATUS_CODES.IN_PROGRESS_REINSURANCE:
+        case QUITTANCE_STATUS_CODES.IN_PROGRESS_checkTracking:
         case QUITTANCE_STATUS_CODES.IN_PROGRESS_ACCOUNTING:
             return (
                 <Chip
@@ -118,7 +118,7 @@ export const deliverySlipStatusComponent = (
 ) => {
 
     switch (deliverySlipStatusCode) {
-        case QUITTANCE_STATUS_CODES.TO_DO_REINSURANCE:
+        case QUITTANCE_STATUS_CODES.TO_DO_checkTracking:
         case QUITTANCE_STATUS_CODES.TO_DO_ACCOUNTING:
             return (
                 <Chip
@@ -132,7 +132,7 @@ export const deliverySlipStatusComponent = (
                     }}
                 />
             );
-        case QUITTANCE_STATUS_CODES.IN_PROGRESS_REINSURANCE:
+        case QUITTANCE_STATUS_CODES.IN_PROGRESS_checkTracking:
         case QUITTANCE_STATUS_CODES.IN_PROGRESS_ACCOUNTING:
         case QUITTANCE_STATUS_CODES.IN_PROGRESS_PAYMENT:
             return (

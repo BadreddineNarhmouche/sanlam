@@ -28,24 +28,12 @@ namespace System
     {
         #region Methods
 
-        public static string ToDocumentTypeLabel(this string quittanceDocumentTypeCode)
+        public static string ToDocumentTypeLabel(this string DocumentTypeCode)
         {
-            switch (quittanceDocumentTypeCode)
+            switch (DocumentTypeCode)
             {
-                case Constants.DocumentTypeCodes.CoverNote:
-                    return DucumentTypeCodeLabels.CoverNote;
-
-                case Constants.DocumentTypeCodes.HonorDeclaration:
-                    return DucumentTypeCodeLabels.HonorDeclaration;
-
-                case Constants.DocumentTypeCodes.SettlementNote:
-                    return DucumentTypeCodeLabels.SettlementNote;
-
-                case Constants.DocumentTypeCodes.DeliverySlipDetail:
-                    return DucumentTypeCodeLabels.DeliverySlipDetail;
-
-                case Constants.DocumentTypeCodes.Other:
-                    return DucumentTypeCodeLabels.Other;
+                //case Constants.DocumentTypeCodes.CoverNote:
+                //    return DucumentTypeCodeLabels.CoverNote;
 
                 default: return DucumentTypeCodeLabels.NotDefined;
             }

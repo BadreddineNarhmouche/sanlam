@@ -79,3 +79,21 @@ export interface InternalUser {
     pageSize?: number;
   };
 }
+
+export interface FilterCriteriaService {
+  id?: string;
+  workFlowStepCode?: string;
+  policyReference?: string;
+  reference?: string;
+  quittanceStatusId?: string;
+  externalPartnerUserCode?: string;
+  externalcheckTrackingReference?: string;
+  primeNetMin?: string;
+  primeNetMax?: string;
+  dateCreation?: string;
+  externalClientName?: string;
+  meta?: {
+    pageIndex?: number;
+    pageSize?: number;
+  };
+}

@@ -8,8 +8,8 @@ export declare const InternalRoleCodeConstants: {
     subscriptionsExecutor: string;
     recoveriesExecutor: string;
     recoveriesManager: string;
-    reinsurancesExecutor: string;
-    reinsurancesManager: string;
+    checkTrackingsExecutor: string;
+    checkTrackingsManager: string;
     accountingExecutor: string;
     accountingManager: string;
     documentDetails: string;
