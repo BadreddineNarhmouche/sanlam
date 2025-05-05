@@ -2,11 +2,11 @@ export const QUITTANCE_STATUS_CODES = {
   DRAFT: "Draft",
   TO_DO_SUBSCRIPTION: "ToDoSubscription",
   TO_DO_RECOVERY: "ToDoRecovery",
-  TO_DO_REINSURANCE: "ToDoReinsurance",
+  TO_DO_checkTracking: "ToDocheckTracking",
   TO_DO_ACCOUNTING: "ToDoAccounting",
   IN_PROGRESS_SUBSCRIPTION: "InProgressSubscription",
   IN_PROGRESS_RECOVERY: "InProgressRecovery",
-  IN_PROGRESS_REINSURANCE: "InProgressReinsurance",
+  IN_PROGRESS_checkTracking: "InProgresscheckTracking",
   IN_PROGRESS_ACCOUNTING: "InProgressAccounting",
   IN_PROGRESS_PAYMENT: "InProgressPayment",
   END_MISSION: "EndMission",
@@ -22,7 +22,7 @@ export const QUITTANCE_PAYMENT_STATUS_CODES = {
 export const WORKFLOW_STEP_CODES = {
   SUBSCRIPTIONS: "Subscriptions",
   RECOVERIES: "Recoveries",
-  REINSURANCES: "Reinsurances",
+  checkTrackingS: "checkTrackings",
   ACCOUNTING: "Accounting",
   OTHER: "Other",
 };
