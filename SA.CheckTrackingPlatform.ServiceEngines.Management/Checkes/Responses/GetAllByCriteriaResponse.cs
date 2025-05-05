@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses
 {
-    public class GetAllByCriteriaResponse : BaseResponse<List<GetAllByCriteriaItem>>
+    public class GetAllByCriteriaResponse : BasePagedResponse<List<GetAllByCriteriaItem>>
     {
         
     }
