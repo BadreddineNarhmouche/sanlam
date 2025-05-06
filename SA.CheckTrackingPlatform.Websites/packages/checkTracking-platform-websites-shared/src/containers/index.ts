@@ -5,4 +5,5 @@ export * from './RenderOnAuthenticated';
 export * from './RenderOnAnonymous';
 export * from './NavigationBar';
 export * from './Layout';
-export * from './FirstPage';
+export * from './Checks';
+export * from './CheckDetails';
