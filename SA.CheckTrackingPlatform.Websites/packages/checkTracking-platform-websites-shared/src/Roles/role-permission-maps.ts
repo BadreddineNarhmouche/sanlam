@@ -1,12 +1,12 @@
 export enum ROLE {
-    SUBSCRIPTIONS_EXECUTOR = 'SubscriptionsExecutor',
-    SUBSCRIPTIONS_MANAGER = 'SubscriptionsManager',
-    RECOVERIES_EXECUTOR = 'RecoveriesExecutor',
-    RECOVERIES_MANAGER = 'RecoveriesManager',
-    checkTrackingS_EXECUTOR = 'checkTrackingsExecutor',
-    checkTrackingS_MANAGER = 'checkTrackingsManager',
-    ACCOUNTING_EXECUTOR = 'AccountingExecutor',
-    ACCOUNTING_MANAGER = 'AccountingManager',
+    // SUBSCRIPTIONS_EXECUTOR = 'TSTe',
+    // SUBSCRIPTIONS_MANAGER = 'SubscriptionsManager',
+    // RECOVERIES_EXECUTOR = 'RecoveriesExecutor',
+    // RECOVERIES_MANAGER = 'RecoveriesManager',
+    // checkTrackingS_EXECUTOR = 'checkTrackingsExecutor',
+    // checkTrackingS_MANAGER = 'checkTrackingsManager',
+    // ACCOUNTING_EXECUTOR = 'AccountingExecutor',
+    // ACCOUNTING_MANAGER = 'AccountingManager',
 };
 
 export enum SCOPE {
@@ -14,26 +14,26 @@ export enum SCOPE {
 };
 
 export const PERMISSIONS: any = {
-    [ROLE.SUBSCRIPTIONS_EXECUTOR]: [SCOPE.CAN_VIEW_MENU],
-    [ROLE.SUBSCRIPTIONS_MANAGER]: [SCOPE.CAN_VIEW_MENU],
-    [ROLE.RECOVERIES_EXECUTOR]: [SCOPE.CAN_VIEW_MENU],
-    [ROLE.RECOVERIES_MANAGER]: [SCOPE.CAN_VIEW_MENU],
-    [ROLE.checkTrackingS_EXECUTOR]: [SCOPE.CAN_VIEW_MENU],
-    [ROLE.checkTrackingS_MANAGER]: [SCOPE.CAN_VIEW_MENU],
-    [ROLE.ACCOUNTING_EXECUTOR]: [SCOPE.CAN_VIEW_MENU],
-    [ROLE.ACCOUNTING_MANAGER]: [SCOPE.CAN_VIEW_MENU],
+    // [ROLE.SUBSCRIPTIONS_EXECUTOR]: [SCOPE.CAN_VIEW_MENU],
+    // [ROLE.SUBSCRIPTIONS_MANAGER]: [SCOPE.CAN_VIEW_MENU],
+    // [ROLE.RECOVERIES_EXECUTOR]: [SCOPE.CAN_VIEW_MENU],
+    // [ROLE.RECOVERIES_MANAGER]: [SCOPE.CAN_VIEW_MENU],
+    // [ROLE.checkTrackingS_EXECUTOR]: [SCOPE.CAN_VIEW_MENU],
+    // [ROLE.checkTrackingS_MANAGER]: [SCOPE.CAN_VIEW_MENU],
+    // [ROLE.ACCOUNTING_EXECUTOR]: [SCOPE.CAN_VIEW_MENU],
+    // [ROLE.ACCOUNTING_MANAGER]: [SCOPE.CAN_VIEW_MENU],
 };
 
 export const MANAGER_ROLES = [
-    ROLE.SUBSCRIPTIONS_MANAGER,
-    ROLE.RECOVERIES_MANAGER,
-    ROLE.checkTrackingS_MANAGER,
-    ROLE.ACCOUNTING_MANAGER,
+    // ROLE.SUBSCRIPTIONS_MANAGER,
+    // ROLE.RECOVERIES_MANAGER,
+    // ROLE.checkTrackingS_MANAGER,
+    // ROLE.ACCOUNTING_MANAGER,
 ];
 
 export const EXECUTOR_ROLES = [
-    ROLE.SUBSCRIPTIONS_EXECUTOR,
-    ROLE.RECOVERIES_EXECUTOR,
-    ROLE.checkTrackingS_EXECUTOR,
-    ROLE.ACCOUNTING_EXECUTOR,
+    // ROLE.SUBSCRIPTIONS_EXECUTOR,
+    // ROLE.RECOVERIES_EXECUTOR,
+    // ROLE.checkTrackingS_EXECUTOR,
+    // ROLE.ACCOUNTING_EXECUTOR,
 ];
