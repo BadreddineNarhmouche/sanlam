@@ -6,6 +6,7 @@ import { PAGES } from './navigation';
 
 const Home = React.lazy(() => import('../pages/HomePage'));
 const HelpPage = React.lazy(() => import('../pages/HelpPage'));
+const DetailsCheck = React.lazy(() => import('../pages/DetailsCheck'));
 
 export const ROUTES: RouteObject[] = [
     {
@@ -17,6 +18,10 @@ export const ROUTES: RouteObject[] = [
                 children: [
                     { path: '', element: <Home /> },
                 ],
+            },
+            {
+                path: PAGES.DETAILS_CHECK,
+                element: <DetailsCheck />,
             },
             {
                 path: PAGES.HELP,
