@@ -48,9 +48,9 @@ const AppLayout = () => {
     ],
   };
 
-  const showNavigationBar = ![
-    PAGES.NOT_FOUND,
-  ].includes(useLocation().pathname);
+  const showNavigationBar = ![PAGES.NOT_FOUND, PAGES.DETAILS_CHECK].includes(
+    useLocation().pathname
+  );
 
   const services: INotificationService = {
     getAllNotificationsByCriteria: (criteria: FilterCriteriaNotifications) =>

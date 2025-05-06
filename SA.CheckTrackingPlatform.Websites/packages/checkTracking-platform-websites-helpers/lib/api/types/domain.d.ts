@@ -71,7 +71,7 @@ export interface InternalUser {
         pageSize?: number;
     };
 }
-export interface FilterCriteriaService {
+export interface FilterCriteriaChecks {
     id?: string;
     workFlowStepCode?: string;
     policyReference?: string;
