@@ -1,4 +1,5 @@
 ﻿using SA.CheckTrackingPlatform.Domains.Management.Entities;
+using System.Collections;
 
 namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses
 {
