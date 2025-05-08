@@ -22,6 +22,8 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses
         public decimal TransactionNumber { get; set; }
         public string BeneficiaryName { get; set; }
 
+        public ICollection<Timeline> Timelines { get; set; }
+
         #endregion 
     }
 }

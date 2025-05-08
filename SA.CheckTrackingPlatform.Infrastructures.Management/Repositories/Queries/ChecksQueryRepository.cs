@@ -29,7 +29,7 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
         {
             Checks query = await this.applicationContext.Checks
                 .Include(c => c.Timelines)
-                .ThenInclude(c => c.Status)
+                .ThenInclude(c => c.Status) // Linq
                 .AsNoTrackingWithIdentityResolution()
                 .SingleOrDefaultAsync(o => o.Id == id);
 
