@@ -1,9 +1,4 @@
-import {
-  FilterCriteriaNotifications,
-  Notification,
-  PAGINATION,
-  apiCallHandler,
-} from "@checkTracking/helpers";
+import { apiCallHandler } from "@checkTracking/helpers";
 import { takeEvery } from "redux-saga/effects";
 import {
   AllStatus,
