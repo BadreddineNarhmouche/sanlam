@@ -1,4 +1,5 @@
 ﻿using SA.CheckTrackingPlatform.Domains.Management.Entities;
+using System.Collections;
 
 namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses
 {
@@ -23,6 +24,6 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses
 
         public ICollection<Timeline> Timelines { get; set; }
 
-        #endregion
+        #endregion 
     }
 }
