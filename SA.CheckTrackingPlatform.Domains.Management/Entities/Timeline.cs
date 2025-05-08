@@ -27,8 +27,6 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
         public InternalUser User { get; set; }
         public Status Status { get; set; }   
 
-
-
         #endregion Properties
     }
 }
