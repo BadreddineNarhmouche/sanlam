@@ -5,7 +5,6 @@ import {
   type Notification,
 } from "./domain";
 
-
 export interface INotificationService {
   getAllNotificationsByCriteria?: (
     criteria: FilterCriteriaNotifications
@@ -17,7 +16,13 @@ export interface INotificationService {
 }
 
 export interface IChecksService {
-  getAllChecksByCriteria?: (
-    criteria: FilterCriteriaChecks
-  ) => void;
+  getAllChecksByCriteria?: (criteria: FilterCriteriaChecks) => void;
+}
+
+export interface IDetailsChecksService {
+  getCheckById?: (criteria: FilterCriteriaChecks) => void;
+}
+
+export interface IStatusService {
+  getAllStatus?: () => void;
 }

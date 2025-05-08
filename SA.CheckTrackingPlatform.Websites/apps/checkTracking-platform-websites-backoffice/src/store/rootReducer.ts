@@ -12,6 +12,9 @@ import internalRolesReducer from "./InternalRoles/internalRolesSlice";
 //Checks
 import getAllChecksReducer from "./Checks/getAllChecksSlice";
 
+//Status
+import AllStatusReducer from "./Status/StatusAllSlice";
+
 export const rootReducer = combineReducers({
   notifications: notificationsListReducer,
   notificationsUpdate: notificationsUpdateReducer,
@@ -19,4 +22,5 @@ export const rootReducer = combineReducers({
   notificationsCreate: notificationsCreateReducer,
   internalRoles: internalRolesReducer,
   getAllChecks: getAllChecksReducer,
+  AllStatus: AllStatusReducer,
 });

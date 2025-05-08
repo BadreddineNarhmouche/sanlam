@@ -1,10 +1,15 @@
-import { FilterCriteriaChecks, IChecksService } from "@checkTracking/helpers";
+import {
+  FilterCriteriaChecks,
+  IChecksService,
+  IStatusService,
+} from "@checkTracking/helpers";
 import { Checks, KPIs } from "@checkTracking/shared";
 import { Grid } from "@checkTracking/ui-kit";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getAllChecks } from "../../store/Checks/getAllChecksSlice";
 import { PAGES } from "../../config/navigation";
+import { AllStatus } from "../../store/Status/StatusAllSlice";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -12,6 +17,10 @@ const HomePage = () => {
   const CheckServices: IChecksService = {
     getAllChecksByCriteria: (criteria: FilterCriteriaChecks) =>
       dispatch(getAllChecks(criteria)),
+  };
+
+  const StatusServices: IStatusService = {
+    getAllStatus: () => dispatch(AllStatus()),
   };
 
   useEffect(() => {
@@ -32,6 +41,7 @@ const HomePage = () => {
         <KPIs />
         <Checks
           services={CheckServices}
+          statusServices={StatusServices}
           detailsPage={PAGES.DETAILS_CHECK}
           initialFilterValues={filterValues}
         />
