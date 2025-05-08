@@ -43,9 +43,12 @@ const AppLayout = () => {
     ],
   };
 
-  const showNavigationBar = ![PAGES.NOT_FOUND, PAGES.DETAILS_CHECK].includes(
-    useLocation().pathname
-  );
+
+  // soit il vérifie le browser soit il vérifie le role de l'utilisateur;
+  const showNavigationBar = ![ // headre
+    PAGES.NOT_FOUND,
+    PAGES.DetailsCheck,
+  ].includes(useLocation().pathname);
 
   const services: INotificationService = {};
 
