@@ -24,7 +24,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Queries
         public string? LotNumber { get; set; }
         public string? BeneficiaryName { get; set; }
 
-        public bool CalculateTotalCount { get; set; }
+        public bool CalculateTotalCount { get; set; } = true;
 
         #endregion Properties 
     }
