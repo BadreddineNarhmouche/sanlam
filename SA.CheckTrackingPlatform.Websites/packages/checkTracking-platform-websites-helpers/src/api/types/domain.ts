@@ -97,3 +97,12 @@ export interface FilterCriteriaChecks {
     pageSize?: number;
   };
 }
+
+export interface Check {
+  id: string;
+  amount?: number;
+  serviceName?: string;
+  checkNumber?: string;
+  lotNumber?: string;
+  beneficiaryName?: string;
+}
