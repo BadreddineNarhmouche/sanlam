@@ -1,3 +1,3 @@
 export const CheckDetails = () => {
-  return <>test</>;
+  return <>Information Sur chéques</>;
 };

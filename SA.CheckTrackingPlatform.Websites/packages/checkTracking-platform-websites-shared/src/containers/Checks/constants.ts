@@ -77,9 +77,15 @@ export const FIRST_PAGE_QUITTANCE_FORM_SEARCH_FIELDS = (option: any) => {
 };
 
 export const FIRST_PAGE_QUITTANCE_TABLE_COLUMNS_DEFAULT = [
-  { title: "N° Police" },
-  { title: "Assuré" },
+  { title: "N° chéques" },
+  { title: "BankId" },
   { title: "Type de garantie" },
+  { title: "N° de police" },
+  { title: "Code partenaire" },
+  { title: "Nom du client" },
+
+
+
   // { title: "Branche" },
 ];
 
