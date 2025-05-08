@@ -1,6 +1,7 @@
 import {
   FilterCriteriaChecks,
   IChecksService,
+  IStatusService,
   PAGINATION,
 } from "@checkTracking/helpers";
 import {
@@ -25,21 +26,24 @@ import emptyStatePerson from "@checkTracking/ui-kit/src/assets/images/emptyState
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-  export const Checks = ({
-    services,
-    detailsPage,
-    initialFilterValues,
-  }: {
-    services: IChecksService;
-    detailsPage: string;
-    initialFilterValues: FilterCriteriaChecks;
-  }) => {
+export const Checks = ({
+  services,
+  statusServices,
+  detailsPage,
+  initialFilterValues,
+}: {
+  services: IChecksService;
+  statusServices: IStatusService;
+  detailsPage: string;
+  initialFilterValues: FilterCriteriaChecks;
+}) => {
   const [filterValues, setFilterValues] = useState<any>(initialFilterValues);
   const [emptySearchResult, setEmptySearchResult] = useState({
     isEmptyResult: false,
     isSearchMode: false,
   });
   const [checksData, setChecksData] = useState<any[]>([]);
+  const [statusData, setStatusData] = useState<any[]>([]);
   const intl = useIntl();
   const navigate = useNavigate();
 
@@ -58,6 +62,8 @@ import { useNavigate } from "react-router-dom";
     services.getAllChecksByCriteria &&
       services.getAllChecksByCriteria(criteria);
 
+    statusServices.getAllStatus && statusServices.getAllStatus();
+
     setEmptySearchResult({
       ...emptySearchResult,
       isSearchMode: true,
@@ -71,6 +77,12 @@ import { useNavigate } from "react-router-dom";
     isLoading: isLoadingQuittancesData,
     error: errorQuittancesData,
   } = useSelector((state: any) => state.getAllChecks);
+
+  const {
+    responseData: AllStatus,
+    isLoading: isLoadingStatusData,
+    error: errorStatusData,
+  } = useSelector((state: any) => state.AllStatus);
 
   useEffect(() => {
     handleSubmit(initialFilterValues);
@@ -94,6 +106,8 @@ import { useNavigate } from "react-router-dom";
           pageSize: PAGINATION.PAGE_SIZE,
         },
       });
+
+    statusServices.getAllStatus && statusServices.getAllStatus();
   };
 
   const handleResetFilter = () => {
@@ -121,6 +135,10 @@ import { useNavigate } from "react-router-dom";
     setChecksData(getAllChecks);
   }, [getAllChecks]);
 
+  useEffect(() => {
+    setStatusData(AllStatus);
+  }, [AllStatus]);
+
   return (
     <Grid container direction="column" px={8} py={7} id="quittance-table">
       <Grid item>
@@ -129,7 +147,7 @@ import { useNavigate } from "react-router-dom";
           handleSubmit={(values: any) => handleSubmit(values)}
           handleResetFilter={handleResetFilter}
           initialValues={initialFilterValues}
-          fieldsToDisplay={FIRST_PAGE_QUITTANCE_FORM_SEARCH_FIELDS([])}
+          fieldsToDisplay={FIRST_PAGE_QUITTANCE_FORM_SEARCH_FIELDS(statusData)}
           URLquittanceStatusDescriptionID={1}
           isLoading={false}
         />

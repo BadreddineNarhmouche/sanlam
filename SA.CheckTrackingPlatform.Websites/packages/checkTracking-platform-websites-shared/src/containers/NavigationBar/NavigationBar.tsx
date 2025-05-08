@@ -1,4 +1,4 @@
-import { INotificationService } from '@checkTracking/helpers';
+import { INotificationService } from "@checkTracking/helpers";
 import {
   AppBar,
   Badge,
@@ -10,12 +10,12 @@ import {
   Typography,
   UI_Typography,
   assets,
-} from '@checkTracking/ui-kit';
-import AppsIcon from '@mui/icons-material/Apps';
-import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { User } from '../Layout';
-import styles from './styles';
+} from "@checkTracking/ui-kit";
+import AppsIcon from "@mui/icons-material/Apps";
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { User } from "../Layout";
+import styles from "./styles";
 interface Links {
   label: string;
   to: string;
@@ -28,7 +28,7 @@ interface NavItems {
 }
 interface Props {
   navItems: NavItems;
-  services: INotificationService;
+  services?: INotificationService;
   showNavigationBar: boolean;
 }
 
@@ -39,7 +39,7 @@ export const NavigationBar: React.FC<Props> = (props, theme) => {
   const [tabsValue, setTabsValue] = useState(currentRoot);
 
   const currentRootInNavItems = navItems.links?.find(
-    (link) => link.to === currentRoot,
+    (link) => link.to === currentRoot
   );
 
   useEffect(() => {
@@ -49,7 +49,7 @@ export const NavigationBar: React.FC<Props> = (props, theme) => {
 
   const handleTabsChange = (
     event: any,
-    value: React.SetStateAction<string>,
+    value: React.SetStateAction<string>
   ) => {
     setTabsValue(value);
   };
@@ -70,7 +70,7 @@ export const NavigationBar: React.FC<Props> = (props, theme) => {
           <Toolbar disableGutters>
             <Box>
               <IconButton aria-controls="menu-appbar" color="primary">
-                <AppsIcon sx={{ color: 'primary.dark' }} />
+                <AppsIcon sx={{ color: "primary.dark" }} />
               </IconButton>
             </Box>
             <Box style={styles.logo}>
@@ -78,8 +78,8 @@ export const NavigationBar: React.FC<Props> = (props, theme) => {
                 src={assets.sanlam_logo.default}
                 alt="Sanlam"
                 width="120"
-                onClick={() => navigate('/')}
-                style={{ cursor: 'pointer' }}
+                onClick={() => navigate("/")}
+                style={{ cursor: "pointer" }}
               />
             </Box>
             <Box style={styles.logoresponsive}>

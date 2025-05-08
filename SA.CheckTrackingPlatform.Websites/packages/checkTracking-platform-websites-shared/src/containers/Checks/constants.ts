@@ -4,55 +4,34 @@ import { filterData } from "@checkTracking/helpers";
 // FormSearch fields
 // *******************************************
 
-const FIELD_PRIME_MIN = {
-  fieldId: "primeNetMin",
-  type: "intervalMin",
-  label: "quittance.search.primemin",
-  gridOccupancy: 2,
-};
-
-const FIELD_PRIME_MAX = {
-  fieldId: "primeNetMax",
-  type: "intervalMax",
-  label: "quittance.search.prime",
-  gridOccupancy: 2,
-};
-
-const FIELD_CODE = {
+const FIELD_CODE_LOT = {
   fieldId: "externalPartnerUserCode",
   type: "text",
-  label: "quittance.search.partnerUserCode",
+  label: "Lot",
+  // label: "quittance.search.partnerUserCode",
+  gridOccupancy: 2,
+};
+
+const FIELD_CODE_SIN = {
+  fieldId: "externalPartnerUserCode",
+  type: "text",
+  label: "Sin",
   gridOccupancy: 2,
 };
 
 const FIELD_POLICY_REFERENCE = {
   fieldId: "policyReference",
   type: "text",
-  label: "quittance.search.policyReference",
-  gridOccupancy: 2,
-};
-
-const FIELD_CLIENT = {
-  fieldId: "externalClientName",
-  type: "text",
-  label: "quittance.search.client",
+  label: "Check",
   gridOccupancy: 2,
 };
 
 const FIELD_DATETIME = {
   fieldId: "dateCreation",
   type: "datetime",
-  label: "quittance.search.datemission",
+  label: "Date",
   gridOccupancy: 2,
 };
-
-// const FIELD_REINSURER_SELECT = (statuses: any) => ({
-//   fieldId: "externalcheckTrackingReference",
-//   type: "select",
-//   label: "quittance.search.status",
-//   options: filterData(statuses),
-//   gridOccupancy: 2,
-// });
 
 const FIELD_CHECKS_STATUS = (statuses: any) => ({
   fieldId: "quittanceStatusId",
@@ -68,26 +47,23 @@ const FIELD_CHECKS_STATUS = (statuses: any) => ({
 
 export const FIRST_PAGE_QUITTANCE_FORM_SEARCH_FIELDS = (option: any) => {
   return [
-    { ...FIELD_POLICY_REFERENCE, gridOccupancy: 3, isHeader: true },
-    { ...FIELD_CODE, gridOccupancy: 2, isHeader: true },
-    { ...FIELD_CHECKS_STATUS(option), gridOccupancy: 3, isHeader: true },
-    { ...FIELD_PRIME_MIN, gridOccupancy: 2, isHeader: true },
-    { ...FIELD_PRIME_MAX, gridOccupancy: 2, isHeader: true },
+    { ...FIELD_POLICY_REFERENCE, gridOccupancy: 2, isHeader: true },
+    { ...FIELD_CODE_LOT, gridOccupancy: 2, isHeader: true },
+    { ...FIELD_CODE_SIN, gridOccupancy: 2, isHeader: true },
+    { ...FIELD_CHECKS_STATUS(option), gridOccupancy: 2, isHeader: true },
+    { ...FIELD_DATETIME, gridOccupancy: 2, isHeader: true },
+    { ...FIELD_DATETIME, gridOccupancy: 2, isHeader: true },
   ];
 };
 
 export const FIRST_PAGE_QUITTANCE_TABLE_COLUMNS_DEFAULT = [
-  { title: "N° Police" },
-  { title: "Assuré" },
-  { title: "Type de garantie" },
-  // { title: "Branche" },
+  { title: "Bénéficiaire" },
+  { title: "Numéro de chèque" },
+  { title: "Montant" },
+  { title: "Service" },
+  { title: "Numéro de lot" },
 ];
 
 export const FIRST_PAGE_QUITTANCE_TABLE_HIDDEN_COLUMNS_DEFAULT = [
   "id",
-  // "publicQuittanceStatusCode",
-  // "publicQuittanceStatusLabel",
-  // "details",
-  // "reference",
-  // "isLoaded",
 ];

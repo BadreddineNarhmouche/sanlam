@@ -28,6 +28,8 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
         public async Task<Checks> GetByIdAsync(int id)
         {
             Checks query = await this.applicationContext.Checks
+                .Include(c => c.Timelines)
+                .ThenInclude(c => c.Status)
                 .AsNoTrackingWithIdentityResolution()
                 .SingleOrDefaultAsync(o => o.Id == id);
 
