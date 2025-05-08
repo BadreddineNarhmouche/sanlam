@@ -5,6 +5,7 @@ import {
   apiCallGetAllChecksSuccess,
   getAllChecks,
 } from "./getAllChecksSlice";
+import { mapChecksList } from "./mapper";
 
 const baseApiPath = process.env.REACT_APP_API_BASE_PATH;
 
@@ -14,6 +15,7 @@ function* getAllCheck({ payload }: { payload: any }): any {
     baseApiPath,
     dispatchSuccess: apiCallGetAllChecksSuccess,
     dispatchFailure: apiCallGetAllChecksFailure,
+    mapper: mapChecksList,
   });
 }
 

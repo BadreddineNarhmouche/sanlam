@@ -7,3 +7,4 @@ export * from './NavigationBar';
 export * from './Layout';
 export * from './Checks';
 export * from './CheckDetails';
+export * from './KPIs';

@@ -1,29 +1,24 @@
 import {
-  FilterCriteriaNotifications,
   INotificationService,
-  Notification,
 } from "@checkTracking/helpers";
 
 import {
   NavigationBar,
   PermissionsGate,
-  ROLE,
+  // ROLE,
   SCOPE,
 } from "@checkTracking/shared";
 
 import { Grid } from "@checkTracking/ui-kit";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+// import { useEffect } from "react";
+// import { useDispatch } from "react-redux";
 import { injectIntl, useIntl } from "react-intl";
 import { Outlet, useLocation } from "react-router-dom";
 import { PAGES } from "../../config/navigation";
-import { getAllNotificationsByCriteria } from "../../store/Notifications/notificationsListSlice";
-import { countAllNotificationsByCriteria } from "../../store/Notifications/notificationCountSlice";
-import { updateNotification } from "../../store/Notifications/notificationUpdateSlice";
 
 const AppLayout = () => {
   const intl = useIntl();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const navItems = {
     applicationName: intl.formatMessage({ id: "applicationName" }),
     links: [
@@ -52,23 +47,9 @@ const AppLayout = () => {
     useLocation().pathname
   );
 
-  const services: INotificationService = {
-    getAllNotificationsByCriteria: (criteria: FilterCriteriaNotifications) =>
-      dispatch(getAllNotificationsByCriteria(criteria)),
-    countAllNotificationsByCriteria: (criteria: FilterCriteriaNotifications) =>
-      dispatch(countAllNotificationsByCriteria(criteria)),
-    updateNotification: (notification: Notification) =>
-      dispatch(updateNotification(notification)),
-  };
+  const services: INotificationService = {};
 
-  const location = useLocation();
-  useEffect(() => {
-    services.countAllNotificationsByCriteria &&
-      services.countAllNotificationsByCriteria({
-        internalUserId: 3,
-        isSeen: false,
-      });
-  }, [location.pathname]);
+  // const location = useLocation();
 
   return (
     <>
