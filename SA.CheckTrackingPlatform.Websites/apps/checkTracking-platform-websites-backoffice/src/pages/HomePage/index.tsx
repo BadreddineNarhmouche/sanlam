@@ -1,5 +1,5 @@
 import { FilterCriteriaChecks, IChecksService } from "@checkTracking/helpers";
-import { Checks } from "@checkTracking/shared";
+import { Checks, KPIs } from "@checkTracking/shared";
 import { Grid } from "@checkTracking/ui-kit";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -9,7 +9,7 @@ import { PAGES } from "../../config/navigation";
 const HomePage = () => {
   const dispatch = useDispatch();
 
-  const quittanceServices: IChecksService = {
+  const CheckServices: IChecksService = {
     getAllChecksByCriteria: (criteria: FilterCriteriaChecks) =>
       dispatch(getAllChecks(criteria)),
   };
@@ -29,12 +29,9 @@ const HomePage = () => {
   return (
     <>
       <Grid container>
-        {/* <IndicatorsBO
-          quittanceServices={quittanceServices}
-          KPIsService={KPIsService}
-        /> */}
+        <KPIs />
         <Checks
-          services={quittanceServices}
+          services={CheckServices}
           detailsPage={PAGES.DETAILS_CHECK}
           initialFilterValues={filterValues}
         />

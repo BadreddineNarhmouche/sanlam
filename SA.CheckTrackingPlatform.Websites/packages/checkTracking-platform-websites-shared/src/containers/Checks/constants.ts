@@ -46,14 +46,6 @@ const FIELD_DATETIME = {
   gridOccupancy: 2,
 };
 
-// const FIELD_REINSURER_SELECT = (statuses: any) => ({
-//   fieldId: "externalcheckTrackingReference",
-//   type: "select",
-//   label: "quittance.search.status",
-//   options: filterData(statuses),
-//   gridOccupancy: 2,
-// });
-
 const FIELD_CHECKS_STATUS = (statuses: any) => ({
   fieldId: "quittanceStatusId",
   type: "select",
@@ -77,17 +69,13 @@ export const FIRST_PAGE_QUITTANCE_FORM_SEARCH_FIELDS = (option: any) => {
 };
 
 export const FIRST_PAGE_QUITTANCE_TABLE_COLUMNS_DEFAULT = [
-  { title: "N° Police" },
-  { title: "Assuré" },
-  { title: "Type de garantie" },
-  // { title: "Branche" },
+  { title: "Bénéficiaire" },
+  { title: "Numéro de chèque" },
+  { title: "Montant" },
+  { title: "Service" },
+  { title: "Numéro de lot" },
 ];
 
 export const FIRST_PAGE_QUITTANCE_TABLE_HIDDEN_COLUMNS_DEFAULT = [
   "id",
-  // "publicQuittanceStatusCode",
-  // "publicQuittanceStatusLabel",
-  // "details",
-  // "reference",
-  // "isLoaded",
 ];
