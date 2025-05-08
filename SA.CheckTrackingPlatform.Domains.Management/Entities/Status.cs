@@ -23,10 +23,6 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
         public string Code { get; set; }
         public string Label { get; set; }
 
-        // Navigation properties
-        public ICollection<Timeline> Timelines { get; set; }
-
-
         #endregion Properties
     }
 }
