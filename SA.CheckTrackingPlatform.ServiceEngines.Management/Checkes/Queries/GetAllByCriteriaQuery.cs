@@ -81,12 +81,12 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Queries
 
                     //paramétrage count 1 => Non Vide
                     IEnumerable<Checks> checks = await checksQueryRepository.GetByCriteriaAsync(request.Ids, request.CheckNumbers, request.BranchId,
-                        request.ServiceId, request.BankId, request.LotNumber, request.BeneficiaryName, request.PageIndex, request.PageSize);
+                        request.ServiceId, request.BankId, request.LotNumber, request.BeneficiaryName, request.PageIndex, 50);
 
                     if (checks.IsNotNull())
                     {
                         response.Data = MappingConfiguration.Mapper.Map<List<GetAllByCriteriaItem>>(checks);
-                        response.FillPageInformation(checks.Count(), totalCount, request.PageIndex, request.PageSize);
+                        response.FillPageInformation(checks.Count(), totalCount, request.PageIndex, 50);
 
                         // Data reçoit les elements et Mapping avec une list des entitées des checks 
                         // Car Nous voulons Mapper une liste avec une liste et nous voulons retourner tout les items de checks 

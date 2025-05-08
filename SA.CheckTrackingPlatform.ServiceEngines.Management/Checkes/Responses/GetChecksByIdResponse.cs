@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SA.CheckTrackingPlatform.Domains.Management.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,8 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses
         public string RegisterOrderNumber { get; set; }
         public decimal TransactionNumber { get; set; }
         public string BeneficiaryName { get; set; }
+
+        public ICollection<Timeline> Timelines { get; set; }
 
         #endregion
     }
