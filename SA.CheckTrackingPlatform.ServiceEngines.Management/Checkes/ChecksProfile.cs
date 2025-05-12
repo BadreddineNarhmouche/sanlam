@@ -20,6 +20,8 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes
             CreateMap<Checks, GetAllByCriteriaItem>()
                 .ForMember(destination => destination.ServiceName, option => option.MapFrom(source => source.Service.Label))
                 .ReverseMap();
+              CreateMap<Timeline, StatusItems>().ForMember(destination => destination.id, option => option.MapFrom(source => source.Status.Id)).ReverseMap();
+            // CreateMap<Checks, StatusItems>().ForMember(destination => destination.id, option => option.MapFrom(source => source.Timelines.)).ReverseMap();
         }
 
         #endregion Constructors
