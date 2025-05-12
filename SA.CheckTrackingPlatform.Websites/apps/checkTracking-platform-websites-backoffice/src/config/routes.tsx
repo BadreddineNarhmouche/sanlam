@@ -31,10 +31,6 @@ export const ROUTES: RouteObject[] = [
                 path: PAGES.NOT_FOUND,
                 element: <NotFound />
             },
-            {
-                path: PAGES.DetailsCheck,
-                element: <DetailsChecksPage />
-            },
         ],
     },
 ];
