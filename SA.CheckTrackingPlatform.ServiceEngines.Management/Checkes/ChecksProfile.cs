@@ -20,10 +20,15 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes
             CreateMap<Checks, GetAllByCriteriaItem>()
                 .ForMember(destination => destination.ServiceName, option => option.MapFrom(source => source.Service.Label))
                 .ReverseMap();
-              CreateMap<Timeline, StatusItems>().ForMember(destination => destination.id, option => option.MapFrom(source => source.Status.Id)).ReverseMap();
-            // CreateMap<Checks, StatusItems>().ForMember(destination => destination.id, option => option.MapFrom(source => source.Timelines.)).ReverseMap();
-        }
+         
+            CreateMap<Timeline, TimelineItems>()
+              .ForMember(dest => dest.id, opt => opt.MapFrom(src => src.Id))
+              .ForMember(dest => dest.StatusItems, opt => opt.MapFrom(src => src.Status)).ReverseMap();
 
-        #endregion Constructors
+            CreateMap<Status, StatusItems>()
+                .ForMember(dest => dest.id, opt => opt.MapFrom(src => src.Id)).ReverseMap();
+
+            #endregion Constructors
+        }
     }
 }
