@@ -81,7 +81,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Queries
 
                     if (checks.IsNotNull())
                     {
-                        response = MappingConfiguration.Mapper.Map<GetChecksByIdResponse>(checks);
+                        response.Data = MappingConfiguration.Mapper.Map<GetChecksByIdResponse>(checks);
                     }
 
                     response.IsSuccess = true;

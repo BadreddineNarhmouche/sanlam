@@ -20,9 +20,9 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
         [ForeignKey(nameof(Check))]
         public int CheckId { get; set; }
         [ForeignKey(nameof(User))]
-        public int UserId { get; set; }   // table inetranl user
+        public int UserId { get; set; }
         [ForeignKey(nameof(Status))]
-        public int StatusId { get; set; }  // table status
+        public int StatusId { get; set; }
         public string ReasonLabel { get; set; }
 
 

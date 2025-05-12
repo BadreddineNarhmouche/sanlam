@@ -11,6 +11,7 @@ import internalRolesReducer from "./InternalRoles/internalRolesSlice";
 
 //Checks
 import getAllChecksReducer from "./Checks/getAllChecksSlice";
+import GetCheckByIdReducer from "./Checks/getCheckByIdSlice";
 
 //Status
 import AllStatusReducer from "./Status/StatusAllSlice";
@@ -23,4 +24,5 @@ export const rootReducer = combineReducers({
   internalRoles: internalRolesReducer,
   getAllChecks: getAllChecksReducer,
   AllStatus: AllStatusReducer,
+  getCheckById: GetCheckByIdReducer,
 });
