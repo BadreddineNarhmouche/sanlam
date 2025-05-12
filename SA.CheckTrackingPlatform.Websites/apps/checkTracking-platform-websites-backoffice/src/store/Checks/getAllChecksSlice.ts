@@ -1,8 +1,7 @@
 import { DataSliceState, createDataSlice } from '@checkTracking/helpers';
-import { ROLE } from '@checkTracking/shared';
 
-const initialState: DataSliceState<ROLE | null> = {
-    responseData: null,
+const initialState: DataSliceState<any> = {
+    responseData: [],
     isLoading: false,
     error: null,
 };

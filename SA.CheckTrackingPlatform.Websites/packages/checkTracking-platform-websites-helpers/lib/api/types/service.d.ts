@@ -6,6 +6,7 @@ export interface INotificationService {
 }
 export interface IChecksService {
     getAllChecksByCriteria?: (criteria: FilterCriteriaChecks) => void;
+    getCheckById?: (Id: string) => void;
 }
 export interface IDetailsChecksService {
     getCheckById?: (criteria: FilterCriteriaChecks) => void;
