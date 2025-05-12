@@ -12,8 +12,8 @@ using SA.CheckTrackingPlatform.Contexts.Management.Application;
 namespace SA.CheckTrackingPlatform.Contexts.Management.Application.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20250429103507_Migration0003")]
-    partial class Migration0003
+    [Migration("20250512103903_Migration0001")]
+    partial class Migration0001
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -544,19 +544,19 @@ namespace SA.CheckTrackingPlatform.Contexts.Management.Application.Migrations
             modelBuilder.Entity("SA.CheckTrackingPlatform.Domains.Management.Entities.Checks", b =>
                 {
                     b.HasOne("SA.CheckTrackingPlatform.Domains.Management.Entities.Bank", "Bank")
-                        .WithMany("Checks")
+                        .WithMany()
                         .HasForeignKey("BankId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SA.CheckTrackingPlatform.Domains.Management.Entities.Branch", "Branch")
-                        .WithMany("Checks")
+                        .WithMany()
                         .HasForeignKey("BranchId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SA.CheckTrackingPlatform.Domains.Management.Entities.Service", "Service")
-                        .WithMany("Checks")
+                        .WithMany()
                         .HasForeignKey("ServiceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -617,7 +617,7 @@ namespace SA.CheckTrackingPlatform.Contexts.Management.Application.Migrations
                         .IsRequired();
 
                     b.HasOne("SA.CheckTrackingPlatform.Domains.Management.Entities.Status", "Status")
-                        .WithMany("Timelines")
+                        .WithMany()
                         .HasForeignKey("StatusId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -635,16 +635,6 @@ namespace SA.CheckTrackingPlatform.Contexts.Management.Application.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("SA.CheckTrackingPlatform.Domains.Management.Entities.Bank", b =>
-                {
-                    b.Navigation("Checks");
-                });
-
-            modelBuilder.Entity("SA.CheckTrackingPlatform.Domains.Management.Entities.Branch", b =>
-                {
-                    b.Navigation("Checks");
-                });
-
             modelBuilder.Entity("SA.CheckTrackingPlatform.Domains.Management.Entities.Checks", b =>
                 {
                     b.Navigation("Timelines");
@@ -660,16 +650,6 @@ namespace SA.CheckTrackingPlatform.Contexts.Management.Application.Migrations
                     b.Navigation("Timelines");
 
                     b.Navigation("UserRoles");
-                });
-
-            modelBuilder.Entity("SA.CheckTrackingPlatform.Domains.Management.Entities.Service", b =>
-                {
-                    b.Navigation("Checks");
-                });
-
-            modelBuilder.Entity("SA.CheckTrackingPlatform.Domains.Management.Entities.Status", b =>
-                {
-                    b.Navigation("Timelines");
                 });
 #pragma warning restore 612, 618
         }

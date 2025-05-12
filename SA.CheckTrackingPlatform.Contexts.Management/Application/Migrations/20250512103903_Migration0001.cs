@@ -46,21 +46,7 @@ namespace SA.CheckTrackingPlatform.Contexts.Management.Application.Migrations
                     Id = table.Column<int>(type: "NUMBER(10)", nullable: false)
                         .Annotation("Oracle:Identity", "START WITH 1 INCREMENT BY 1"),
                     Code = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
-                    Label = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
-                    CreationDate = table.Column<DateTime>(type: "TIMESTAMP(7)", nullable: false),
-                    CreatedById = table.Column<string>(type: "NVARCHAR2(40)", maxLength: 40, nullable: false),
-                    CreatedByFullName = table.Column<string>(type: "NVARCHAR2(40)", maxLength: 40, nullable: false),
-                    ModificationDate = table.Column<DateTime>(type: "TIMESTAMP(7)", nullable: true),
-                    ModifiedById = table.Column<string>(type: "NVARCHAR2(40)", maxLength: 40, nullable: true),
-                    ModifiedByFullName = table.Column<string>(type: "NVARCHAR2(40)", maxLength: 40, nullable: true),
-                    IsDeactivated = table.Column<int>(type: "NUMBER(10)", nullable: false),
-                    DeactivationDate = table.Column<DateTime>(type: "TIMESTAMP(7)", nullable: true),
-                    DeactivatedById = table.Column<string>(type: "NVARCHAR2(40)", maxLength: 40, nullable: true),
-                    DeactivatedByFullName = table.Column<string>(type: "NVARCHAR2(40)", maxLength: 40, nullable: true),
-                    IsDeleted = table.Column<int>(type: "NUMBER(10)", nullable: false),
-                    DeletionDate = table.Column<DateTime>(type: "TIMESTAMP(7)", nullable: true),
-                    DeletedById = table.Column<string>(type: "NVARCHAR2(40)", maxLength: 40, nullable: true),
-                    DeletedByFullName = table.Column<string>(type: "NVARCHAR2(40)", maxLength: 40, nullable: true)
+                    Label = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -145,21 +131,7 @@ namespace SA.CheckTrackingPlatform.Contexts.Management.Application.Migrations
                     Id = table.Column<int>(type: "NUMBER(10)", nullable: false)
                         .Annotation("Oracle:Identity", "START WITH 1 INCREMENT BY 1"),
                     InternalUserId = table.Column<int>(type: "NUMBER(10)", nullable: false),
-                    InternalRoleId = table.Column<int>(type: "NUMBER(10)", nullable: false),
-                    CreationDate = table.Column<DateTime>(type: "TIMESTAMP(7)", nullable: false),
-                    CreatedById = table.Column<string>(type: "NVARCHAR2(40)", maxLength: 40, nullable: false),
-                    CreatedByFullName = table.Column<string>(type: "NVARCHAR2(40)", maxLength: 40, nullable: false),
-                    ModificationDate = table.Column<DateTime>(type: "TIMESTAMP(7)", nullable: true),
-                    ModifiedById = table.Column<string>(type: "NVARCHAR2(40)", maxLength: 40, nullable: true),
-                    ModifiedByFullName = table.Column<string>(type: "NVARCHAR2(40)", maxLength: 40, nullable: true),
-                    IsDeactivated = table.Column<int>(type: "NUMBER(10)", nullable: false),
-                    DeactivationDate = table.Column<DateTime>(type: "TIMESTAMP(7)", nullable: true),
-                    DeactivatedById = table.Column<string>(type: "NVARCHAR2(40)", maxLength: 40, nullable: true),
-                    DeactivatedByFullName = table.Column<string>(type: "NVARCHAR2(40)", maxLength: 40, nullable: true),
-                    IsDeleted = table.Column<int>(type: "NUMBER(10)", nullable: false),
-                    DeletionDate = table.Column<DateTime>(type: "TIMESTAMP(7)", nullable: true),
-                    DeletedById = table.Column<string>(type: "NVARCHAR2(40)", maxLength: 40, nullable: true),
-                    DeletedByFullName = table.Column<string>(type: "NVARCHAR2(40)", maxLength: 40, nullable: true)
+                    InternalRoleId = table.Column<int>(type: "NUMBER(10)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -226,7 +198,7 @@ namespace SA.CheckTrackingPlatform.Contexts.Management.Application.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Checkes",
+                name: "Checks",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "NUMBER(10)", nullable: false)
@@ -260,21 +232,21 @@ namespace SA.CheckTrackingPlatform.Contexts.Management.Application.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Checkes", x => x.Id);
+                    table.PrimaryKey("PK_Checks", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Checkes_Banks_BankId",
+                        name: "FK_Checks_Banks_BankId",
                         column: x => x.BankId,
                         principalTable: "Banks",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Checkes_Branchs_BranchId",
+                        name: "FK_Checks_Branchs_BranchId",
                         column: x => x.BranchId,
                         principalTable: "Branchs",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Checkes_Services_ServiceId",
+                        name: "FK_Checks_Services_ServiceId",
                         column: x => x.ServiceId,
                         principalTable: "Services",
                         principalColumn: "Id",
@@ -310,9 +282,9 @@ namespace SA.CheckTrackingPlatform.Contexts.Management.Application.Migrations
                 {
                     table.PrimaryKey("PK_Timelines", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Timelines_Checkes_CheckId",
+                        name: "FK_Timelines_Checks_CheckId",
                         column: x => x.CheckId,
-                        principalTable: "Checkes",
+                        principalTable: "Checks",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -330,18 +302,18 @@ namespace SA.CheckTrackingPlatform.Contexts.Management.Application.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Checkes_BankId",
-                table: "Checkes",
+                name: "IX_Checks_BankId",
+                table: "Checks",
                 column: "BankId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Checkes_BranchId",
-                table: "Checkes",
+                name: "IX_Checks_BranchId",
+                table: "Checks",
                 column: "BranchId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Checkes_ServiceId",
-                table: "Checkes",
+                name: "IX_Checks_ServiceId",
+                table: "Checks",
                 column: "ServiceId");
 
             migrationBuilder.CreateIndex(
@@ -404,7 +376,7 @@ namespace SA.CheckTrackingPlatform.Contexts.Management.Application.Migrations
                 name: "NotificationTypes");
 
             migrationBuilder.DropTable(
-                name: "Checkes");
+                name: "Checks");
 
             migrationBuilder.DropTable(
                 name: "InternalUsers");

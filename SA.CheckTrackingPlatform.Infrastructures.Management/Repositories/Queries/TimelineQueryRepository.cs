@@ -4,11 +4,6 @@ using SA.CheckTrackingPlatform.Contexts.Management.Application;
 using SA.CheckTrackingPlatform.Domains.Management.Entities;
 using SA.CheckTrackingPlatform.Domains.Management.Repositories.Queries;
 using SA.CheckTrackingPlatform.Infrastructures.Management.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queries
 {
