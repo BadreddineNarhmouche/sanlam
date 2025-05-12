@@ -17,6 +17,7 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
 
         #region Properties
 
+        [ForeignKey(nameof(Check))]
         public int CheckId { get; set; }
         [ForeignKey(nameof(User))]
         public int UserId { get; set; }
@@ -25,6 +26,7 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
         public string ReasonLabel { get; set; }
 
 
+        public Checks Check { get; set; }
         public InternalUser User { get; set; }
         public Status Status { get; set; }
 
