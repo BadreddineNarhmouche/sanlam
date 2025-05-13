@@ -1,19 +1,17 @@
 import { combineReducers } from "@reduxjs/toolkit";
 
-//notifications
 import notificationsListReducer from "./Notifications/notificationsListSlice";
 import notificationsUpdateReducer from "./Notifications/notificationUpdateSlice";
 import notificationsCreateReducer from "./Notifications/notificationCreateSlice";
 import notificationsCountReducer from "./Notifications/notificationCountSlice";
 
-//internalRoles
 import internalRolesReducer from "./InternalRoles/internalRolesSlice";
 
-//Checks
 import getAllChecksReducer from "./Checks/getAllChecksSlice";
 
-//Status
 import AllStatusReducer from "./Status/StatusAllSlice";
+
+import getcheksbyIdReducer from "./DetailsCh/getByIdChecksSlice";
 
 export const rootReducer = combineReducers({
   notifications: notificationsListReducer,
@@ -23,4 +21,5 @@ export const rootReducer = combineReducers({
   internalRoles: internalRolesReducer,
   getAllChecks: getAllChecksReducer,
   AllStatus: AllStatusReducer,
+  getCheckById: getcheksbyIdReducer,
 });
