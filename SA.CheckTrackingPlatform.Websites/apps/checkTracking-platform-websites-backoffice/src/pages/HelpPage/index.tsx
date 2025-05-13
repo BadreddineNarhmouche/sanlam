@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
-import { useIntl } from 'react-intl';
-import { PDFViewer, CardContainer } from '@checkTracking/ui-kit';
-import { HelpFilePaths } from '@checkTracking/helpers/lib/helpers/ConstantsHelper';
+import { useEffect } from "react";
+import { useIntl } from "react-intl";
+import { PDFViewer, CardContainer } from "@checkTracking/ui-kit";
+import { HelpFilePaths } from "@checkTracking/helpers/lib/helpers/ConstantsHelper";
 
 const HelpPage = () => {
   const intl = useIntl();
@@ -13,7 +13,7 @@ const HelpPage = () => {
     <CardContainer px={8} pt={8} pb={15.5}>
       <PDFViewer
         file={HelpFilePaths.generalSpecific}
-        fileName={intl.formatMessage({ id: 'help.title' })}
+        fileName={intl.formatMessage({ id: "help.title" })}
       />
     </CardContainer>
   );
