@@ -1,4 +1,3 @@
-// CheckDetails.tsx
 import { IDetailsChecksService, DetailsCheck } from "@checkTracking/helpers";
 import { useIntl } from "react-intl";
 import { useSelector } from "react-redux";
@@ -8,17 +7,26 @@ import {
   Skeleton,
   Typography,
 } from "@checkTracking/ui-kit";
+import { useEffect } from "react";
 
 interface CheckDetailsProps {
   services: IDetailsChecksService;
-  detailsPage: string;
+  checkId: string;
 }
 
 export const CheckDetails: React.FC<CheckDetailsProps> = ({
   services,
-  detailsPage,
+  checkId,
 }) => {
   const intl = useIntl();
+
+  const handleSubmit = () => {
+    services.getCheckById && services.getCheckById(checkId);
+  };
+
+  useEffect(() => {
+    handleSubmit();
+  }, []);
 
   const {
     responseData: data,
@@ -33,7 +41,7 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
   console.log(data);
 
   const labels: Record<keyof DetailsCheck, string> = {
-    id: intl.formatMessage({ id: "N°chèques" }),
+    id: intl.formatMessage({ id: "File.global.dialog.title" }),
     amount: intl.formatMessage({ id: "N° Montant" }),
     bankId: intl.formatMessage({ id: "N° banque" }),
     branchId: intl.formatMessage({ id: "N° branche" }),

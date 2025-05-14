@@ -118,5 +118,5 @@ export const frTranslationMessages = {
   payment_creation_virement_dialog_title: "Création un virement",
   payment_creation_virement_dialog_message:
     "Êtes-vous sûr de vouloir confirmer la création de ce bordereau {choice} ?",
-  "File.global.dialog.title": "Fichier échéancier global",
+  "File.global.dialog.title": "N° Chèques",
 };
