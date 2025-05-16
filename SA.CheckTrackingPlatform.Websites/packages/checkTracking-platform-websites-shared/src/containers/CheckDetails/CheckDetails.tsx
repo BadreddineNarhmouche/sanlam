@@ -1,13 +1,20 @@
-import { IDetailsChecksService, DetailsCheck } from "@checkTracking/helpers";
+import React, { useEffect } from "react";
 import { useIntl } from "react-intl";
 import { useSelector } from "react-redux";
+import {
+  IDetailsChecksService,
+  DetailsCheck as DetailsDTO,
+  TimelineItem,
+} from "@checkTracking/helpers";
 import {
   CardContainer,
   Grid,
   Skeleton,
   Typography,
+  Box,
 } from "@checkTracking/ui-kit";
-import { useEffect } from "react";
+import Header from "./Header";
+import OutlinedTimeline from "./OutlinedTimeline";
 
 interface CheckDetailsProps {
   services: IDetailsChecksService;
@@ -20,59 +27,99 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
 }) => {
   const intl = useIntl();
 
-  const handleSubmit = () => {
-    services.getCheckById && services.getCheckById(checkId);
-  };
-
   useEffect(() => {
-    handleSubmit();
-  }, []);
+    services.getCheckById?.(checkId);
+  }, [checkId, services]);
 
   const {
     responseData: data,
     isLoading,
     error,
   } = useSelector((st: any) => st.getCheckById) as {
-    responseData: DetailsCheck | null;
+    responseData: DetailsDTO | null;
     isLoading: boolean;
     error: string | null;
   };
 
-  console.log(data);
+  const lastStatusLabel =
+    data?.timelines && data.timelines.length > 0
+      ? data.timelines[data.timelines.length - 1].statusItems.label
+      : undefined;
 
-  const labels: Record<keyof DetailsCheck, string> = {
-    id: intl.formatMessage({ id: "File.global.dialog.title" }),
-    amount: intl.formatMessage({ id: "N° Montant" }),
-    bankId: intl.formatMessage({ id: "N° banque" }),
-    branchId: intl.formatMessage({ id: "N° branche" }),
-    serviceId: intl.formatMessage({ id: "N° service" }),
-    checkNumber: intl.formatMessage({ id: "N° chèque" }),
-    statusId: intl.formatMessage({ id: "N° status" }),
-    lotNumber: intl.formatMessage({ id: "lot Number" }),
-    recipientName: intl.formatMessage({ id: "Destinataire" }),
-    beneficiaryName: intl.formatMessage({ id: "Nom beneficiaire" }),
-    sinisterNumber: intl.formatMessage({ id: "N° sinistre" }),
-    accountNumber: intl.formatMessage({ id: "N° de Compte" }),
-
+  // 3. Mapping des labels pour tous les champs de DetailsDTO (hors timelines)
+  const labels: Record<Exclude<keyof DetailsDTO, "timelines">, string> = {
+    // id: intl.formatMessage({ id: "File.global.dialog.title" }),
+    amount: intl.formatMessage({ id: "quittance_details.policy_payment_info" }),
+    // bankId: intl.formatMessage({ id: "N° banque" }),
+    // branchId: intl.formatMessage({ id: "N° branche" }),
+    // serviceId: intl.formatMessage({ id: "N° service" }),
+    serviceName: intl.formatMessage({
+      id: "quittance_details.policy_payment_net_premium",
+    }),
+    bankName: intl.formatMessage({
+      id: "quittance_details.policy_payment_total_premium",
+    }),
+    branchName: intl.formatMessage({
+      id: "quittance_details.policy_payment_accessory",
+    }),
+    // creationDate: intl.formatMessage({ id: "Date de création" }),
+    // checkNumber: intl.formatMessage({ id: "N° chèque" }),
+    // statusId: intl.formatMessage({ id: "N° status" }),
+    lotNumber: intl.formatMessage({
+      id: "quittance_details.policy_payment_commission",
+    }),
+    recipientName: intl.formatMessage({
+      id: "quittance_details.policy_payment_date_of_receipt",
+    }),
+    beneficiaryName: intl.formatMessage({
+      id: "quittance_details.policy_payment_status",
+    }),
+    sinisterNumber: intl.formatMessage({
+      id: "deliverySlip_details.deliverySlip_info",
+    }),
+    accountNumber: intl.formatMessage({
+      id: "deliverySlip_details.deliverySlip_reference",
+    }),
     registerOrderNumber: intl.formatMessage({
-      id: "register Order",
+      id: "payment_details.payment_info",
     }),
     transactionNumber: intl.formatMessage({
-      id: "numéro de transaction",
+      id: "payment_details.payment_Number",
     }),
-    code: intl.formatMessage({ id: "code" }),
-    label: intl.formatMessage({ id: "label" }),
+    // code: intl.formatMessage({ id: "Code" }),
+    // label: intl.formatMessage({ id: "Label" }),
   };
 
-  const formatValue = (key: keyof DetailsCheck, obj: DetailsCheck) => {
+  // 4. Labels pour les propriétés de TimelineItem
+  const timelineLabels: Record<keyof TimelineItem, string> = {
+    id: intl.formatMessage({ id: "timeline.id" }),
+    date: intl.formatMessage({ id: "timeline.date" }),
+    statusItems: intl.formatMessage({ id: "timeline.statusItems" }),
+  };
+
+  // 5. Labels pour les champs de statusItems
+  const statusLabels: Record<keyof TimelineItem["statusItems"], string> = {
+    id: intl.formatMessage({ id: "status.id" }),
+    code: intl.formatMessage({ id: "status.code" }),
+    label: intl.formatMessage({ id: "status.label" }),
+  };
+
+  // 6. Fonction de formatage générique
+  const formatValue = (key: keyof DetailsDTO, obj: DetailsDTO) => {
     const raw = (obj as any)[key];
-    if (raw === null || raw === undefined || raw === "") return "—";
+    if (raw == null || raw === "") return "—";
     if (key === "amount") {
-      return raw.toLocaleString(undefined, { minimumFractionDigits: 2 });
+      return (raw as number).toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+      });
+    }
+    if (key === "creationDate") {
+      return new Date(raw as string).toLocaleString();
     }
     return raw;
   };
 
+  // 7. Gestion des états erreur / loading
   if (error) {
     return (
       <CardContainer px={8} pt={8} pb={15.5}>
@@ -82,23 +129,105 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
       </CardContainer>
     );
   }
+  if (isLoading || !data) {
+    return (
+      <CardContainer px={8} pt={8} pb={15.5}>
+        <Skeleton variant="text" width={200} height={40} sx={{ mb: 4 }} />
+        <Grid container spacing={4}>
+          {Array.from({ length: 6 }).map((_, i) => (
+            <Grid key={i} item xs={12} sm={6} md={4}>
+              <Skeleton variant="text" width="80%" height={20} />
+            </Grid>
+          ))}
+        </Grid>
+      </CardContainer>
+    );
+  }
 
+  // 8. Rendu principal
   return (
     <CardContainer px={8} pt={8} pb={15.5}>
-      <Grid container spacing={4}>
-        {(Object.keys(labels) as (keyof DetailsCheck)[]).map((key) => (
-          <Grid key={key} item xs={12} sm={6} md={4} lg={3}>
-            <Typography variant="caption" color="text.secondary">
-              {labels[key]}
-            </Typography>
+      {/* Header : on passe le statut */}
+      <Header checkNumber={data.checkNumber} statusLabel={lastStatusLabel} />
 
-            {isLoading || !data ? (
-              <Skeleton variant="text" width="80%" height={20} />
-            ) : (
-              <Typography variant="body1">{formatValue(key, data)}</Typography>
-            )}
+      <Grid container spacing={4} sx={{ height: "100%" }}>
+        {/* --- Colonne de gauche : détails du DTO --- */}
+        <Grid item xs={12} md={8}>
+          <Grid container spacing={4}>
+            {(Object.keys(labels) as Array<keyof typeof labels>).map((key) => (
+              <Grid key={key} item xs={12} sm={6} md={4} lg={3}>
+                <Typography variant="caption" color="text.secondary">
+                  {labels[key]}
+                </Typography>
+                <Typography variant="body1">
+                  {formatValue(key as keyof DetailsDTO, data)}
+                </Typography>
+              </Grid>
+            ))}
           </Grid>
-        ))}
+        </Grid>
+
+        {/* --- Colonne de droite : Timeline + détails --- */}
+        <Grid
+          item
+          xs={12}
+          md={4}
+          container
+          direction="column"
+          justifyContent="flex-end"
+          alignItems="flex-end"
+          sx={{ height: "100%", pt: 5, pr: 2 }}
+        >
+          <OutlinedTimeline />
+
+          <Box sx={{ width: "100%", mt: 3 }}>
+            {data.timelines?.map((tl: TimelineItem) => (
+              <Grid container spacing={1} key={tl.id} sx={{ mb: 2 }}>
+                <Grid item xs={6}>
+                  <Typography variant="caption" color="text.secondary">
+                    {timelineLabels.id}
+                  </Typography>
+                  <Typography variant="body2">{tl.id}</Typography>
+                </Grid>
+                <Grid item xs={6}>
+                  <Typography variant="caption" color="text.secondary">
+                    {timelineLabels.date}
+                  </Typography>
+                  <Typography variant="body2">
+                    {new Date(tl.date).toLocaleString(undefined, {
+                      hour12: false,
+                    })}
+                  </Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography variant="caption" color="text.secondary">
+                    {timelineLabels.statusItems}
+                  </Typography>
+                </Grid>
+                <Grid item xs={4}>
+                  <Typography variant="caption" color="text.secondary">
+                    {statusLabels.id}
+                  </Typography>
+                  <Typography variant="body2">{tl.statusItems.id}</Typography>
+                </Grid>
+                <Grid item xs={4}>
+                  <Typography variant="caption" color="text.secondary">
+                    {statusLabels.code}
+                  </Typography>
+                  <Typography variant="body2">{tl.statusItems.code}</Typography>
+                </Grid>
+                <Grid item xs={4}>
+                  <Typography variant="caption" color="text.secondary">
+                    {statusLabels.label}
+                  </Typography>
+                  <Typography variant="body2">
+                    {tl.statusItems.label}
+                  </Typography>
+                </Grid>
+              </Grid>
+            ))}
+          </Box>
+        </Grid>
       </Grid>
     </CardContainer>
   );

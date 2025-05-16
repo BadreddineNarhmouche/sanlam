@@ -1,23 +1,15 @@
-import {
-  FilterCriteriaChecks,
-  type FilterCriteriaNotifications,
-  type Notification,
-} from "./domain";
+import { FilterCriteriaChecks, type FilterCriteriaNotifications, type Notification } from "./domain";
 export interface INotificationService {
-  getAllNotificationsByCriteria?: (
-    criteria: FilterCriteriaNotifications
-  ) => void;
-  countAllNotificationsByCriteria?: (
-    criteria: FilterCriteriaNotifications
-  ) => void;
-  updateNotification?: (notification: Notification) => void;
+    getAllNotificationsByCriteria?: (criteria: FilterCriteriaNotifications) => void;
+    countAllNotificationsByCriteria?: (criteria: FilterCriteriaNotifications) => void;
+    updateNotification?: (notification: Notification) => void;
 }
 export interface IChecksService {
-  getAllChecksByCriteria?: (criteria: FilterCriteriaChecks) => void;
+    getAllChecksByCriteria?: (criteria: FilterCriteriaChecks) => void;
 }
 export interface IDetailsChecksService {
-  getCheckById?: (Id: string) => void;
+    getCheckById?: (Id: string) => void;
 }
 export interface IStatusService {
-  getAllStatus?: () => void;
+    getAllStatus?: () => void;
 }
