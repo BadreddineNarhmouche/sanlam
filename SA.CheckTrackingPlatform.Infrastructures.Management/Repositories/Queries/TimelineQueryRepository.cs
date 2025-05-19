@@ -26,7 +26,7 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
 
         public async Task<Timeline> GetTimelineByIdAsync(int id)
         {
-            Timeline query = await this.applicationContext.Timelines // dbset implementation
+            Timeline query = await this.applicationContext.Timelines 
                     .AsNoTrackingWithIdentityResolution()
                     .SingleOrDefaultAsync(o => o.Id == id);
 
