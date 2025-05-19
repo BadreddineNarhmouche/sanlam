@@ -21,7 +21,7 @@ export interface IChecksService {
 }
 
 export interface IDetailsChecksService {
-  getCheckById?: (criteria: FilterCriteriaChecks) => void;
+  getCheckById?: (Id: string) => void;
 }
 
 export interface IStatusService {

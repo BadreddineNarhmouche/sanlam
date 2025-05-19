@@ -92,6 +92,7 @@ namespace SA.CheckTrackingPlatform.Contexts.Management.Application
         public DbSet<Service> Services { get; set; }
         public DbSet<Status> Statuses { get; set; }
         public DbSet<Timeline> Timelines { get; set; }
+        public DbSet<ReasonMove> ReasonMoves { get; set; }
 
         #endregion DbSets
     }

@@ -96,3 +96,33 @@ export interface Check {
     lotNumber?: string;
     beneficiaryName?: string;
 }
+export interface DetailsCheck {
+    amount: number;
+    bankId: number;
+    branchId: number;
+    serviceId: number;
+    serviceName: string;
+    creationDate: Date;
+    bankName: string;
+    branchName: string;
+    checkNumber: string;
+    statusId: number;
+    lotNumber?: string;
+    recipientName: string;
+    beneficiaryName?: string;
+    sinisterNumber?: string;
+    accountNumber: string;
+    registerOrderNumber?: string;
+    transactionNumber?: string;
+    code?: string;
+    label?: string;
+}
+export interface TimelineItem {
+    id: number;
+    date: string;
+    statusItems: {
+        id: number;
+        code: string;
+        label: string;
+    };
+}
