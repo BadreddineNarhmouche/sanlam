@@ -1,0 +1,16 @@
+﻿C:\Users\lenovo\Source\Repos\SA.CheckTrackingPlatform\SA.CheckTrackingPlatform.Infrastructures.Management\Common\CommandRepository.cs
+C:\Users\lenovo\Source\Repos\SA.CheckTrackingPlatform\SA.CheckTrackingPlatform.Infrastructures.Management\Common\QueryRepository.cs
+C:\Users\lenovo\Source\Repos\SA.CheckTrackingPlatform\SA.CheckTrackingPlatform.Infrastructures.Management\Repositories\Commands\InternalRoleCommandRepository.cs
+C:\Users\lenovo\Source\Repos\SA.CheckTrackingPlatform\SA.CheckTrackingPlatform.Infrastructures.Management\Repositories\Commands\InternalUserCommandRepository.cs
+C:\Users\lenovo\Source\Repos\SA.CheckTrackingPlatform\SA.CheckTrackingPlatform.Infrastructures.Management\Repositories\Commands\NotificationCommandRepository.cs
+C:\Users\lenovo\Source\Repos\SA.CheckTrackingPlatform\SA.CheckTrackingPlatform.Infrastructures.Management\Repositories\Commands\NotificationTypeCommandRepository.cs
+C:\Users\lenovo\Source\Repos\SA.CheckTrackingPlatform\SA.CheckTrackingPlatform.Infrastructures.Management\Repositories\Queries\BanksQueryRepository.cs
+C:\Users\lenovo\Source\Repos\SA.CheckTrackingPlatform\SA.CheckTrackingPlatform.Infrastructures.Management\Repositories\Queries\BranchsQueryRepository.cs
+C:\Users\lenovo\Source\Repos\SA.CheckTrackingPlatform\SA.CheckTrackingPlatform.Infrastructures.Management\Repositories\Queries\ChecksQueryRepository.cs
+C:\Users\lenovo\Source\Repos\SA.CheckTrackingPlatform\SA.CheckTrackingPlatform.Infrastructures.Management\Repositories\Queries\InternalRoleQueryRepository.cs
+C:\Users\lenovo\Source\Repos\SA.CheckTrackingPlatform\SA.CheckTrackingPlatform.Infrastructures.Management\Repositories\Queries\InternalUserInternalRoleQueryRepository.cs
+C:\Users\lenovo\Source\Repos\SA.CheckTrackingPlatform\SA.CheckTrackingPlatform.Infrastructures.Management\Repositories\Queries\InternalUserQueryRepository.cs
+C:\Users\lenovo\Source\Repos\SA.CheckTrackingPlatform\SA.CheckTrackingPlatform.Infrastructures.Management\Repositories\Queries\NotificationQueryRepository.cs
+C:\Users\lenovo\Source\Repos\SA.CheckTrackingPlatform\SA.CheckTrackingPlatform.Infrastructures.Management\Repositories\Queries\NotificationTypeQueryRepository.cs
+C:\Users\lenovo\Source\Repos\SA.CheckTrackingPlatform\SA.CheckTrackingPlatform.Infrastructures.Management\Repositories\Queries\StatusQueryRepository.cs
+C:\Users\lenovo\Source\Repos\SA.CheckTrackingPlatform\SA.CheckTrackingPlatform.Infrastructures.Management\Repositories\Queries\TimelineQueryRepository.cs

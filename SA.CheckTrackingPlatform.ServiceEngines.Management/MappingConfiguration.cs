@@ -23,7 +23,6 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Mapper
                 mc.AddProfile<NotificationProfile>();
                 mc.AddProfile<ChecksProfile>();
                 mc.AddProfile<TimelineProfile>();
-         
                 mc.AddProfile<StatusProfile>();
                 mc.AddProfile<BanksProfile>();
                 mc.AddProfile<BranchsProfile>();
@@ -40,6 +39,6 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Mapper
 
         public static IMapper Mapper => lazyMapper.Value;
 
-        #endregion Properties
+        #endregion Properties 
     }
 }

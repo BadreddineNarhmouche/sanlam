@@ -226,5 +226,3 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
     </CardContainer>
   );
 };
-
-export default CheckDetails;
