@@ -12,6 +12,7 @@ import {
   Skeleton,
   Typography,
   Box,
+  Alert,
 } from "@checkTracking/ui-kit";
 import Header from "./Header";
 import OutlinedTimeline from "./OutlinedTimeline";
@@ -35,11 +36,7 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
     responseData: data,
     isLoading,
     error,
-  } = useSelector((st: any) => st.getCheckById) as {
-    responseData: DetailsDTO | null;
-    isLoading: boolean;
-    error: string | null;
-  };
+  } = useSelector((st: any) => st.getCheckById);
 
   const lastStatusLabel =
     data?.timelines && data.timelines.length > 0
@@ -116,15 +113,6 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
     return raw;
   };
 
-  if (error) {
-    return (
-      <CardContainer px={8} pt={8} pb={15.5}>
-        <Typography color="error">
-          {intl.formatMessage({ id: "error.api.title" })}
-        </Typography>
-      </CardContainer>
-    );
-  }
   if (isLoading || !data) {
     return (
       <CardContainer px={8} pt={8} pb={15.5}>
@@ -141,7 +129,7 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
   }
 
   return (
-    <CardContainer px={8} pt={8} pb={15.5}>
+    <>
       {/* Header : on passe le statut */}
       <Header checkNumber={data.checkNumber} statusLabel={lastStatusLabel} />
 
@@ -172,7 +160,7 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
           alignItems="flex-end"
           sx={{ height: "100%", pt: 5, pr: 2 }}
         >
-          <OutlinedTimeline />
+          <OutlinedTimeline Checks={data} />
 
           <Box sx={{ width: "100%", mt: 3 }}>
             {data.timelines?.map((tl: TimelineItem) => (
@@ -223,6 +211,6 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
           </Box>
         </Grid>
       </Grid>
-    </CardContainer>
+    </>
   );
 };
