@@ -39,6 +39,11 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
                 .AsNoTrackingWithIdentityResolution()
                 .SingleOrDefaultAsync(o => o.Id == id);
 
+            // query.Timelines.OrderByDescending(t => t.CreationDate);
+            query.Timelines = query.Timelines
+                 .OrderByDescending(t => t.CreationDate)
+                 .ToList();
+
             return query;
         }
         public async Task<IEnumerable<Checks>> GetByCriteriaAsync(List<int>? ids, List<string>? checkNumbers, int? branchId, int? serviceId, int? bankId, string? lotNumber, string? beneficiaryName, int? pageIndex, int? pageSize)
