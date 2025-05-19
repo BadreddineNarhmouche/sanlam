@@ -90,21 +90,18 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
     // label: intl.formatMessage({ id: "Label" }),
   };
 
-  // 4. Labels pour les propriétés de TimelineItem
   const timelineLabels: Record<keyof TimelineItem, string> = {
     id: intl.formatMessage({ id: "timeline.id" }),
     date: intl.formatMessage({ id: "timeline.date" }),
     statusItems: intl.formatMessage({ id: "timeline.statusItems" }),
   };
 
-  // 5. Labels pour les champs de statusItems
   const statusLabels: Record<keyof TimelineItem["statusItems"], string> = {
     id: intl.formatMessage({ id: "status.id" }),
     code: intl.formatMessage({ id: "status.code" }),
     label: intl.formatMessage({ id: "status.label" }),
   };
 
-  // 6. Fonction de formatage générique
   const formatValue = (key: keyof DetailsDTO, obj: DetailsDTO) => {
     const raw = (obj as any)[key];
     if (raw == null || raw === "") return "—";
@@ -119,7 +116,6 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
     return raw;
   };
 
-  // 7. Gestion des états erreur / loading
   if (error) {
     return (
       <CardContainer px={8} pt={8} pb={15.5}>
@@ -144,7 +140,6 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
     );
   }
 
-  // 8. Rendu principal
   return (
     <CardContainer px={8} pt={8} pb={15.5}>
       {/* Header : on passe le statut */}
@@ -167,7 +162,6 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
           </Grid>
         </Grid>
 
-        {/* --- Colonne de droite : Timeline + détails --- */}
         <Grid
           item
           xs={12}
