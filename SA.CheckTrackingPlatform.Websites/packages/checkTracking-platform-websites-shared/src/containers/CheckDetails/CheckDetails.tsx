@@ -162,8 +162,10 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
         >
           <OutlinedTimeline Checks={data} />
 
+          {/* revu de code à changer */}
           <Box sx={{ width: "100%", mt: 3 }}>
-            {data.timelines?.map((tl: TimelineItem) => (
+
+           {data.timelines?.map((tl: TimelineItem) => (
               <Grid container spacing={1} key={tl.id} sx={{ mb: 2 }}>
                 <Grid item xs={6}>
                   <Typography variant="caption" color="text.secondary">
