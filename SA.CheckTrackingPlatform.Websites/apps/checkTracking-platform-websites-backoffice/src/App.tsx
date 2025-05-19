@@ -1,11 +1,11 @@
-import { DEFAULT_LANGUAGE, translationMessages } from '@checkTracking/helpers';
-import get from 'lodash/get';
-import React, { Suspense } from 'react';
-import { IntlProvider } from 'react-intl';
-import { BrowserRouter as Router, useRoutes } from 'react-router-dom';
-import { Typography } from '@checkTracking/ui-kit';
-import { ROUTES } from './config/routes';
-import RoleProvider from './pages/RoleProvider';
+import { DEFAULT_LANGUAGE, translationMessages } from "@checkTracking/helpers";
+import get from "lodash/get";
+import React, { Suspense } from "react";
+import { IntlProvider } from "react-intl";
+import { BrowserRouter as Router, useRoutes } from "react-router-dom";
+import { Skeleton, Stack, Typography } from "@checkTracking/ui-kit";
+import { ROUTES } from "./config/routes";
+import RoleProvider from "./pages/RoleProvider";
 
 const App: React.FC = (): JSX.Element => {
   const messages = translationMessages;
@@ -19,20 +19,30 @@ const App: React.FC = (): JSX.Element => {
       >
         <RoleProvider>
           <Router>
-            <Suspense fallback={<div>loading...</div>}>
+            <Suspense
+              fallback={
+                <>
+                  <Stack spacing={2} mt={3}>
+                    <Skeleton variant="rectangular" mt={2} height={100} />
+                    <Skeleton variant="rectangular" mt={2} height={100} />
+                    <Skeleton variant="rectangular" mt={2} height={100} />
+                  </Stack>
+                </>
+              }
+            >
               <AppRoutes />
             </Suspense>
           </Router>
         </RoleProvider>
         <div
           style={{
-            position: 'fixed',
+            position: "fixed",
             bottom: 0,
             left: 0,
-            backgroundColor: '#f0f0f0',
-            padding: '5px',
-            borderRadius: '4px',
-            boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+            backgroundColor: "#f0f0f0",
+            padding: "5px",
+            borderRadius: "4px",
+            boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
             zIndex: 900,
           }}
         >
