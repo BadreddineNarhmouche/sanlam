@@ -1,6 +1,6 @@
 export declare const UserService: {
     initKeycloak: (onAuthenticatedCallback: (args?: any) => any, onAuthenticatedFailedCallback: (args?: any) => any) => any;
-    signIn: (options?: import("keycloak-js").KeycloakLoginOptions | undefined) => import("keycloak-js").KeycloakPromise<void, void>;
+    signIn: any;
     signOut: () => Promise<unknown>;
     isAuthenticated: () => any;
     getToken: () => string | undefined;

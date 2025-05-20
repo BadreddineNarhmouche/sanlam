@@ -161,8 +161,7 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
           alignItems="flex-end"
           sx={{ height: "100%", pt: 5, pr: 2 }}
         >
-          <OutlinedTimeline Checks={data?.timelines} />{" "}
-          {/* inspetion API champs */}
+          <OutlinedTimeline data={data} /> {/* inspetion API champs */}
           {/* revu de code à changer */}
         </Grid>
       </Grid>
