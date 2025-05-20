@@ -38,6 +38,7 @@ export declare const frTranslationMessages: {
     "input.upload.description": string;
     "nav_bar.help_tab": string;
     "nav_bar.home_tab": string;
+    "nav_bar.treatment_tab": string;
     "nav_bar.logout_button": string;
     "notifications.empty.title": string;
     "notifications.empty.subTitle": string;

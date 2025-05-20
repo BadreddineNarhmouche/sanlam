@@ -38,6 +38,7 @@ export const frTranslationMessages = {
     "input.upload.description": "Type formats .pdf, .jpg, and .png",
     "nav_bar.help_tab": "Aide et support",
     "nav_bar.home_tab": "Accueil",
+    "nav_bar.treatment_tab": "Traitement",
     "nav_bar.logout_button": "Se déconnecter",
     "notifications.empty.title": "C'est vide là-dedans.",
     "notifications.empty.subTitle": "Aucune notification reçue",

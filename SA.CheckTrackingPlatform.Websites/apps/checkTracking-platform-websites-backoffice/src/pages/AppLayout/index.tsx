@@ -1,6 +1,4 @@
-import {
-  INotificationService,
-} from "@checkTracking/helpers";
+import { INotificationService } from "@checkTracking/helpers";
 
 import {
   NavigationBar,
@@ -36,6 +34,20 @@ const AppLayout = () => {
         //   ROLE.ACCOUNTING_MANAGER,
         // ],
       },
+       {
+        label: intl.formatMessage({ id: "nav_bar.treatment_tab" }),
+        to: PAGES.TREATMENT_CHECK,
+        // roles: [
+        //   ROLE.SUBSCRIPTIONS_EXECUTOR,
+        //   ROLE.SUBSCRIPTIONS_MANAGER,
+        //   ROLE.RECOVERIES_EXECUTOR,
+        //   ROLE.RECOVERIES_MANAGER,
+        //   ROLE.checkTrackingS_EXECUTOR,
+        //   ROLE.checkTrackingS_MANAGER,
+        //   ROLE.ACCOUNTING_EXECUTOR,
+        //   ROLE.ACCOUNTING_MANAGER,
+        // ],
+      },
       {
         label: intl.formatMessage({ id: "nav_bar.help_tab" }),
         to: PAGES.HELP,
@@ -43,9 +55,11 @@ const AppLayout = () => {
     ],
   };
 
-  const showNavigationBar = ![PAGES.NOT_FOUND, PAGES.DETAILS_CHECK].includes(
-    useLocation().pathname
-  );
+  const showNavigationBar = ![
+    PAGES.NOT_FOUND,
+    PAGES.DETAILS_CHECK,
+    PAGES.TREATMENT_CHECK,
+  ].includes(useLocation().pathname);
 
   const services: INotificationService = {};
 
