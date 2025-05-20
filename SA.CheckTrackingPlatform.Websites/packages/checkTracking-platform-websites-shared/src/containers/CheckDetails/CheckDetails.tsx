@@ -131,10 +131,8 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
 
   return (
     <>
-      {/* Header : on passe le statut */}
       <Header checkNumber={data.checkNumber} statusLabel={lastStatusLabel} />
-
-      <Grid container spacing={4} sx={{ height: "100%" }}>
+      <Grid container spacing={4} sx={{ height: "100%", mt: "0.015cm" }}>
         {/* --- Colonne de gauche : détails du DTO --- */}
         <Grid item xs={12} md={8}>
           <Grid container spacing={4}>
