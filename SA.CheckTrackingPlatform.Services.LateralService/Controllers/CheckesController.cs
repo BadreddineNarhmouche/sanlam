@@ -2,6 +2,8 @@
 using MediatR;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Queries;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
 {
@@ -26,6 +28,7 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
         [HttpGet]
         [Route(nameof(GetById))]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        //[CustomAuthorize(Constants.InternalRoleCodes.User)]
         public async Task<GetChecksByIdResponse> GetById([FromQuery] GetChecksByIdQuery query)
         {
             return await _mediator.Send(query);
