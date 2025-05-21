@@ -24,7 +24,7 @@ const TreatmentPage = () => {
       <Treatment
       //  services={CheckServices}
       //  detailsPage={PAGES.TREATMENT_CHECK}
-      //  initialFilterValues={filterValues}
+       initialFilterValues={filterValues}
       />
     </Grid>
   );

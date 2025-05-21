@@ -58,7 +58,6 @@ const AppLayout = () => {
   const showNavigationBar = ![
     PAGES.NOT_FOUND,
     PAGES.DETAILS_CHECK,
-    PAGES.TREATMENT_CHECK,
   ].includes(useLocation().pathname);
 
   const services: INotificationService = {};
