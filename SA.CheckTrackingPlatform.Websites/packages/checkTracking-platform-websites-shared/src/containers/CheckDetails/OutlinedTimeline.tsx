@@ -10,6 +10,8 @@ import {
 import { Typography, Box } from "@mui/material";
 import { format } from "date-fns";
 import { motion } from "framer-motion";
+import "./OutlinedTimeline.css";
+import colors from "../../../../ui-kit/src/styles/_themes-vars.module.scss";
 
 export default function HorizontalTimeline({ data }: { data: any }) {
   const Checks = data?.timelines ?? [];
@@ -22,41 +24,33 @@ export default function HorizontalTimeline({ data }: { data: any }) {
   > = {
     Retour: {
       color: "#ffffff",
-      borderColor: "#e53935",
-      background: "#d90909",
+      borderColor: colors.TimelineBorderRetour,
+      background: colors.TimelineBackGroundRetour,
     },
     Envoie: {
       color: "#ffffff",
-      borderColor: "#20c628",
-      background: "#18c627",
+      borderColor: colors.TimelineBorderEnvoie,
+      background: colors.TimelineBackGroundEnvoie,
     },
     Validation: {
       color: "#ffffff",
-      borderColor: "#166fbc",
-      background: "#0f87d7",
+      borderColor: colors.TimelineBorderValidation,
+      background: colors.TimelineBackGroundValidation,
     },
     EnCours: {
       color: "#ffffff",
-      borderColor: "#f9a825",
-      background: "#f9a825",
+      borderColor: colors.TimelineBorderValidation,
+      background: colors.TimelineBackGroundValidation,
     },
     RECU: {
       color: "#ffffff",
-      borderColor: "#8e24aa",
-      background: "#c76fe0",
+      borderColor: colors.TimelineBorderValidationForRecu,
+      background: colors.TimelineBackGroundValidation,
     },
   };
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        position: "relative",
-        pl: 3,
-        borderLeft: "2px solid #3bbce0",
-        height: "100%",
-      }}
-    >
+    <Box className="timeline-container">
       <Timeline position="alternate">
         {Checks.map((check: any, index: number) => {
           const formattedDate = format(
@@ -98,21 +92,13 @@ export default function HorizontalTimeline({ data }: { data: any }) {
                   {formattedDate} {check.internalUserItem.firstName}{" "}
                   {check.internalUserItem.lastName}
                 </Typography>
-
                 <Box
                   component="span"
+                  className="timeline-label"
                   sx={{
-                    display: "inline-block",
-                    mt: 1,
-                    px: 1.2,
-                    py: 0.5,
-                    fontSize: "12px",
-                    border: `1px solid ${labelStyle.borderColor}`,
-                    borderRadius: "16px",
-                    color: labelStyle.color,
-                    backgroundColor: labelStyle.background,
-                    fontWeight: 500,
-                    width: "fit-content",
+                    color: labelStyle.borderColor,
+                    textShadow: `0 0 1px ${labelStyle.borderColor}`,
+                    backgroundColor: "transparent",
                   }}
                 >
                   {label}

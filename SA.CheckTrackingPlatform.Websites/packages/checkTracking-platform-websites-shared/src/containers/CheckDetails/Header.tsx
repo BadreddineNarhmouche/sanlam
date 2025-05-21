@@ -12,12 +12,24 @@ import { useNavigate } from "react-router-dom";
 
 interface HeaderProps {
   checkNumber: string;
-  statusLabel?: string;
-  creationDate?: Date;
+  timelines?: Array<{
+    date: string;
+    statusItems: {
+      label: string;
+    };
+  }>;
 }
-
-export const Header: React.FC<HeaderProps> = ({ checkNumber, statusLabel }) => {
+export const Header: React.FC<HeaderProps> = ({ checkNumber, timelines }) => {
   const navigate = useNavigate();
+
+  const lastStatusLabel =
+    timelines && timelines.length > 0
+      ? [...timelines]
+          .sort(
+            (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+          )
+          .at(-1)?.statusItems.label
+      : undefined;
 
   return (
     <AppBar position="static" color="default" elevation={1}>
@@ -36,9 +48,9 @@ export const Header: React.FC<HeaderProps> = ({ checkNumber, statusLabel }) => {
             Chèque numéro {checkNumber}
           </Typography>
 
-          {statusLabel && (
+          {lastStatusLabel && (
             <Chip
-              label={statusLabel}
+              label={lastStatusLabel}
               variant="outlined"
               sx={{
                 ml: 30,
@@ -57,5 +69,4 @@ export const Header: React.FC<HeaderProps> = ({ checkNumber, statusLabel }) => {
     </AppBar>
   );
 };
-
 export default Header;
