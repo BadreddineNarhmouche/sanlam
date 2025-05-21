@@ -33,7 +33,7 @@ export const Treatment = ({
 
   return (
     <>
-      <Grid container direction="column" px={8} py={7} id="quittance-table">
+      <Grid container direction="column" px={8} py={7} id="check-table">
         Traitement
         <Grid display="flex" justifyContent="flex-start">
           <Grid item>

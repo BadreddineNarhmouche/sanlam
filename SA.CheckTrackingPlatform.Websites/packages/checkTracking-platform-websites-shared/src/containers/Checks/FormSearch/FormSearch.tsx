@@ -104,8 +104,8 @@ const Form = (props: any) => {
       setEndDate={(value: any) => {
         setFieldValue(toFieldId, value);
       }}
-      fromDateLabel={translate(`quittance.search.${fromFieldId}`, intl)}
-      toDateLabel={translate(`quittance.search.${toFieldId}`, intl)}
+      fromDateLabel={translate(`check.search.${fromFieldId}`, intl)}
+      toDateLabel={translate(`check.search.${toFieldId}`, intl)}
     />
   );
 
@@ -170,7 +170,7 @@ const Form = (props: any) => {
             fontWeight={UI_Typography.FONT_WEIGHT_MEDIUM}
             mb={2}
           >
-            {intl.formatMessage({ id: "quittance.list.title" })}
+            {intl.formatMessage({ id: "check.list.title" })}
           </Typography>
           <Grid display="flex" flexDirection="row" columnSpacing={1}>
             <Grid item>

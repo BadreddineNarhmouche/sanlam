@@ -1,7 +1,7 @@
 import { Chip } from '@checkTracking/ui-kit';
 import {
-    QUITTANCE_STATUS_CODES,
-    QUITTANCE_PAYMENT_STATUS_CODES,
+    CHECK_STATUS_CODES,
+    CHECK_PAYMENT_STATUS_CODES,
 } from '../constants/global';
 
 const ColorCodes = {
@@ -17,20 +17,20 @@ const ColorCodes = {
     greyDark: '#6E6E6E'
 };
 
-export const quittanceStatusComponent = (
-    quittanceStatusCode: string,
-    quittanceStatusLabel: string,
+export const checkStatusComponent = (
+    checkStatusCode: string,
+    checkStatusLabel: string,
 ) => {
 
-    switch (quittanceStatusCode) {
-        case QUITTANCE_STATUS_CODES.DRAFT:
-        case QUITTANCE_STATUS_CODES.TO_DO_SUBSCRIPTION:
-        case QUITTANCE_STATUS_CODES.TO_DO_RECOVERY:
-        case QUITTANCE_STATUS_CODES.TO_DO_checkTracking:
-        case QUITTANCE_STATUS_CODES.TO_DO_ACCOUNTING:
+    switch (checkStatusCode) {
+        case CHECK_STATUS_CODES.DRAFT:
+        case CHECK_STATUS_CODES.TO_DO_SUBSCRIPTION:
+        case CHECK_STATUS_CODES.TO_DO_RECOVERY:
+        case CHECK_STATUS_CODES.TO_DO_checkTracking:
+        case CHECK_STATUS_CODES.TO_DO_ACCOUNTING:
             return (
                 <Chip
-                    label={quittanceStatusLabel}
+                    label={checkStatusLabel}
                     sx={{
                         border: 1,
                         borderColor: ColorCodes.yellowDark,
@@ -40,13 +40,13 @@ export const quittanceStatusComponent = (
                     }}
                 />
             );
-        case QUITTANCE_STATUS_CODES.IN_PROGRESS_SUBSCRIPTION:
-        case QUITTANCE_STATUS_CODES.IN_PROGRESS_RECOVERY:
-        case QUITTANCE_STATUS_CODES.IN_PROGRESS_checkTracking:
-        case QUITTANCE_STATUS_CODES.IN_PROGRESS_ACCOUNTING:
+        case CHECK_STATUS_CODES.IN_PROGRESS_SUBSCRIPTION:
+        case CHECK_STATUS_CODES.IN_PROGRESS_RECOVERY:
+        case CHECK_STATUS_CODES.IN_PROGRESS_checkTracking:
+        case CHECK_STATUS_CODES.IN_PROGRESS_ACCOUNTING:
             return (
                 <Chip
-                    label={quittanceStatusLabel}
+                    label={checkStatusLabel}
                     sx={{
                         border: 1,
                         borderColor: ColorCodes.blueDark,
@@ -57,10 +57,10 @@ export const quittanceStatusComponent = (
                 />
             );
         case 'Done':
-        case QUITTANCE_STATUS_CODES.END_MISSION:
+        case CHECK_STATUS_CODES.END_MISSION:
             return (
                 <Chip
-                    label={quittanceStatusLabel}
+                    label={checkStatusLabel}
                     sx={{
                         border: 1,
                         borderColor: ColorCodes.greenDark,
@@ -71,20 +71,20 @@ export const quittanceStatusComponent = (
                 />
             );
         default:
-            return <Chip label={quittanceStatusLabel} />;
+            return <Chip label={checkStatusLabel} />;
     }
 };
 
-export const quittancePaymentStatusComponent = (
-    quittancePaymentStatusCode: string,
-    quittancePaymentStatusLabel: string,
+export const checkPaymentStatusComponent = (
+    checkPaymentStatusCode: string,
+    checkPaymentStatusLabel: string,
 ) => {
 
-    switch (quittancePaymentStatusCode) {
-        case QUITTANCE_PAYMENT_STATUS_CODES.PAID:
+    switch (checkPaymentStatusCode) {
+        case CHECK_PAYMENT_STATUS_CODES.PAID:
             return (
                 <Chip
-                    label={quittancePaymentStatusLabel}
+                    label={checkPaymentStatusLabel}
                     sx={{
                         border: 1,
                         borderColor: ColorCodes.blueDark,
@@ -94,10 +94,10 @@ export const quittancePaymentStatusComponent = (
                     }}
                 />
             );
-        case QUITTANCE_PAYMENT_STATUS_CODES.UNPAID:
+        case CHECK_PAYMENT_STATUS_CODES.UNPAID:
             return (
                 <Chip
-                    label={quittancePaymentStatusLabel}
+                    label={checkPaymentStatusLabel}
                     sx={{
                         border: 1,
                         borderColor: ColorCodes.yellowDark,
@@ -108,7 +108,7 @@ export const quittancePaymentStatusComponent = (
                 />
             );
         default:
-            return <Chip label={quittancePaymentStatusLabel} />;
+            return <Chip label={checkPaymentStatusLabel} />;
     }
 };
 
@@ -118,8 +118,8 @@ export const deliverySlipStatusComponent = (
 ) => {
 
     switch (deliverySlipStatusCode) {
-        case QUITTANCE_STATUS_CODES.TO_DO_checkTracking:
-        case QUITTANCE_STATUS_CODES.TO_DO_ACCOUNTING:
+        case CHECK_STATUS_CODES.TO_DO_checkTracking:
+        case CHECK_STATUS_CODES.TO_DO_ACCOUNTING:
             return (
                 <Chip
                     label={deliverySlipStatusLabel}
@@ -132,9 +132,9 @@ export const deliverySlipStatusComponent = (
                     }}
                 />
             );
-        case QUITTANCE_STATUS_CODES.IN_PROGRESS_checkTracking:
-        case QUITTANCE_STATUS_CODES.IN_PROGRESS_ACCOUNTING:
-        case QUITTANCE_STATUS_CODES.IN_PROGRESS_PAYMENT:
+        case CHECK_STATUS_CODES.IN_PROGRESS_checkTracking:
+        case CHECK_STATUS_CODES.IN_PROGRESS_ACCOUNTING:
+        case CHECK_STATUS_CODES.IN_PROGRESS_PAYMENT:
             return (
                 <Chip
                     label={deliverySlipStatusLabel}

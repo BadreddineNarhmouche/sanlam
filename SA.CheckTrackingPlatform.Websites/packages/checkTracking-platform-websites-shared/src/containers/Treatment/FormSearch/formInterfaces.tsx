@@ -1,4 +1,4 @@
-import { FilterCriteriaService } from '@checkTracking/helpers';
+import { FilterCriteriaChecks } from '@checkTracking/helpers';
 import { IntlShape } from 'react-intl';
 
 interface FieldOption {
@@ -19,10 +19,11 @@ export interface FormProps {
   initialValues: Object;
   handleSubmit: (values: any) => any;
   handleResetFilter: () => any;
-  resetedValues?: FilterCriteriaService;
-  URLquittanceStatusDescriptionID?: number;
+  resetedValues?: FilterCriteriaChecks;
+  URLcheckStatusDescriptionID?: number;
   fieldsToDisplay?: Field[];
   isLoading: boolean;
+  titleForm?: string;
 }
 
 export interface FormValues {

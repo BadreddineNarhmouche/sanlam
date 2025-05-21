@@ -20,7 +20,7 @@ export interface FormProps {
   handleSubmit: (values: any) => any;
   handleResetFilter: () => any;
   resetedValues?: FilterCriteriaService;
-  URLquittanceStatusDescriptionID?: number;
+  URLcheckStatusDescriptionID?: number;
   fieldsToDisplay?: Field[];
   isLoading: boolean;
 }

@@ -8,7 +8,7 @@ const FIELD_CODE_LOT = {
   fieldId: "externalPartnerUserCode",
   type: "text",
   label: "Lot",
-  // label: "quittance.search.partnerUserCode",
+  // label: "check.search.partnerUserCode",
   gridOccupancy: 2,
 };
 
@@ -34,9 +34,9 @@ const FIELD_DATETIME = {
 };
 
 const FIELD_CHECKS_STATUS = (statuses: any) => ({
-  fieldId: "quittanceStatusId",
+  fieldId: "checkStatusId",
   type: "select",
-  label: "quittance.search.status",
+  label: "check.search.status",
   options: filterData(statuses),
   gridOccupancy: 2,
 });
@@ -45,7 +45,7 @@ const FIELD_CHECKS_STATUS = (statuses: any) => ({
 // FIRST_PAGE
 // *******************************************
 
-export const FIRST_PAGE_QUITTANCE_FORM_SEARCH_FIELDS = (option: any) => {
+export const FIRST_PAGE_CHECK_FORM_SEARCH_FIELDS = (option: any) => {
   return [
     { ...FIELD_POLICY_REFERENCE, gridOccupancy: 2, isHeader: true },
     { ...FIELD_CODE_LOT, gridOccupancy: 2, isHeader: true },
@@ -56,7 +56,7 @@ export const FIRST_PAGE_QUITTANCE_FORM_SEARCH_FIELDS = (option: any) => {
   ];
 };
 
-export const FIRST_PAGE_QUITTANCE_TABLE_COLUMNS_DEFAULT = [
+export const FIRST_PAGE_CHECK_TABLE_COLUMNS_DEFAULT = [
   { title: "Bénéficiaire" },
   { title: "Numéro de chèque" },
   { title: "Montant" },
@@ -64,6 +64,6 @@ export const FIRST_PAGE_QUITTANCE_TABLE_COLUMNS_DEFAULT = [
   { title: "Numéro de lot" },
 ];
 
-export const FIRST_PAGE_QUITTANCE_TABLE_HIDDEN_COLUMNS_DEFAULT = [
+export const FIRST_PAGE_CHECK_TABLE_HIDDEN_COLUMNS_DEFAULT = [
   "id",
 ];

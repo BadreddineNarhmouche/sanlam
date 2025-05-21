@@ -1,4 +1,4 @@
-export const QUITTANCE_STATUS_CODES = {
+export const CHECK_STATUS_CODES = {
   DRAFT: "Draft",
   TO_DO_SUBSCRIPTION: "ToDoSubscription",
   TO_DO_RECOVERY: "ToDoRecovery",
@@ -12,7 +12,7 @@ export const QUITTANCE_STATUS_CODES = {
   END_MISSION: "EndMission",
 };
 
-export const QUITTANCE_PAYMENT_STATUS_CODES = {
+export const CHECK_PAYMENT_STATUS_CODES = {
   PAID: "Paid",
   UNPAID: "Unpaid",
   PARTIALLY_PAID: "PartiallyPaid",
@@ -28,7 +28,7 @@ export const WORKFLOW_STEP_CODES = {
 };
 
 export const WORKFLOW_TYPE_CODES = {
-  QUITTANCE: "Quittance",
+  CHECK: "Check",
   DELIVERYSLIP: "DeliverySlip",
 };
 
