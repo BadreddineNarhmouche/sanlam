@@ -17,9 +17,9 @@ const ColorCodes = {
     greyDark: '#6E6E6E'
 };
 
-export const quittanceStatusComponent = (
-    quittanceStatusCode: string,
-    quittanceStatusLabel: string,
+export const ChecksStatusComponent = (
+    ChecksStatusCode: string,
+    ChecksStatusLabel: string,
 ) => {
 
     switch (quittanceStatusCode) {

@@ -1,0 +1,22 @@
+/* OutlinedTimeline.css */
+.timeline-container {
+    display: flex;
+    position: relative;
+    padding-left: 24px;
+    border-left: 2px solid #3bbce0;
+    height: 100%;
+  }
+  
+  .timeline-label {
+    display: inline-block;
+    margin-top: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-weight: 500;
+    width: fit-content;
+  
+    border: 1px solid currentColor;
+    background-color: transparent;
+    border-radius: 20px;
+  }
+  
