@@ -85,8 +85,8 @@ export declare const frTranslationMessages: {
     "table.result.message": string;
     "workflow.confirm_dialog_message": string;
     "workflow.confirm_dialog_title": string;
-    deliverySlip_creation_dialog_message: string;
-    deliverySlip_creation_dialog_title: string;
+    "deliverySlip_creation_dialog_message": string;
+    "deliverySlip_creation_dialog_title" : string;
     "check_details.policy_payment_info": string;
     "check_details.policy_payment_net_premium": string;
     "check_details.policy_payment_total_premium": string;
