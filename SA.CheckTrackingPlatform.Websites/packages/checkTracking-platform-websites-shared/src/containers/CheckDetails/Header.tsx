@@ -14,11 +14,11 @@ interface HeaderProps {
   checkNumber: string;
   statusLabel?: string;
   creationDate?: Date;
-  
 }
 
 export const Header: React.FC<HeaderProps> = ({ checkNumber, statusLabel }) => {
   const navigate = useNavigate();
+
   return (
     <AppBar position="static" color="default" elevation={1}>
       <Toolbar>
@@ -39,15 +39,16 @@ export const Header: React.FC<HeaderProps> = ({ checkNumber, statusLabel }) => {
           {statusLabel && (
             <Chip
               label={statusLabel}
-              color="primary"
               variant="outlined"
               sx={{
-                ml: 20, // marge à gauche pour l’éloigner
-                fontSize: "1rem", // ajustement de la taille si besoin
-                borderRadius: 1, // coins arrondis
-                borderWidth: 1.5, // trait un peu plus épais
-                borderColor: "primary.main",
-                color: "primary.main",
+                ml: 30,
+                fontSize: "0.875rem",
+                borderRadius: 1,
+                fontWeight: 600,
+                px: 1.5,
+                color: "#ffffff",
+                borderColor: "#166fbc",
+                backgroundColor: "#0f87d7",
               }}
             />
           )}

@@ -13,6 +13,7 @@ import {
   Typography,
   Box,
   Alert,
+  Timeline,
 } from "@checkTracking/ui-kit";
 import Header from "./Header";
 import OutlinedTimeline from "./OutlinedTimeline";
@@ -130,10 +131,8 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
 
   return (
     <>
-      {/* Header : on passe le statut */}
       <Header checkNumber={data.checkNumber} statusLabel={lastStatusLabel} />
-
-      <Grid container spacing={4} sx={{ height: "100%" }}>
+      <Grid container spacing={4} sx={{ height: "100%", mt: "0.015cm" }}>
         {/* --- Colonne de gauche : détails du DTO --- */}
         <Grid item xs={12} md={8}>
           <Grid container spacing={4}>
@@ -160,57 +159,8 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
           alignItems="flex-end"
           sx={{ height: "100%", pt: 5, pr: 2 }}
         >
-          <OutlinedTimeline Checks={data} />
-
+          <OutlinedTimeline data={data} /> {/* inspetion API champs */}
           {/* revu de code à changer */}
-          <Box sx={{ width: "100%", mt: 3 }}>
-
-           {data.timelines?.map((tl: TimelineItem) => (
-              <Grid container spacing={1} key={tl.id} sx={{ mb: 2 }}>
-                <Grid item xs={6}>
-                  <Typography variant="caption" color="text.secondary">
-                    {timelineLabels.id}
-                  </Typography>
-                  <Typography variant="body2">{tl.id}</Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <Typography variant="caption" color="text.secondary">
-                    {timelineLabels.date}
-                  </Typography>
-                  <Typography variant="body2">
-                    {new Date(tl.date).toLocaleString(undefined, {
-                      hour12: false,
-                    })}
-                  </Typography>
-                </Grid>
-                <Grid item xs={12}>
-                  <Typography variant="caption" color="text.secondary">
-                    {timelineLabels.statusItems}
-                  </Typography>
-                </Grid>
-                <Grid item xs={4}>
-                  <Typography variant="caption" color="text.secondary">
-                    {statusLabels.id}
-                  </Typography>
-                  <Typography variant="body2">{tl.statusItems.id}</Typography>
-                </Grid>
-                <Grid item xs={4}>
-                  <Typography variant="caption" color="text.secondary">
-                    {statusLabels.code}
-                  </Typography>
-                  <Typography variant="body2">{tl.statusItems.code}</Typography>
-                </Grid>
-                <Grid item xs={4}>
-                  <Typography variant="caption" color="text.secondary">
-                    {statusLabels.label}
-                  </Typography>
-                  <Typography variant="body2">
-                    {tl.statusItems.label}
-                  </Typography>
-                </Grid>
-              </Grid>
-            ))}
-          </Box>
         </Grid>
       </Grid>
     </>
