@@ -15,9 +15,9 @@ import {
 } from "@checkTracking/ui-kit";
 import { useIntl } from "react-intl";
 import {
-  FIRST_PAGE_QUITTANCE_FORM_SEARCH_FIELDS,
-  FIRST_PAGE_QUITTANCE_TABLE_COLUMNS_DEFAULT,
-  FIRST_PAGE_QUITTANCE_TABLE_HIDDEN_COLUMNS_DEFAULT,
+  FIRST_PAGE_CHECK_FORM_SEARCH_FIELDS,
+  FIRST_PAGE_CHECK_TABLE_COLUMNS_DEFAULT,
+  FIRST_PAGE_CHECK_TABLE_HIDDEN_COLUMNS_DEFAULT,
 } from "./constants";
 import FormSearch from "./FormSearch/FormSearch";
 import { useEffect, useState } from "react";
@@ -53,7 +53,7 @@ export const Checks = ({
       // workFlowStepCode: WORKFLOW_STEP_CODES.SUBSCRIPTIONS,
       policyReference: values.policyReference,
       reference: values.reference,
-      quittanceStatusId: values.quittanceStatusId,
+      checkStatusId: values.checkStatusId,
       externalPartnerUserCode: values.externalPartnerUserCode,
       // externalReinsuranceReference: values.externalReinsuranceReference,
       primeNetMin: values.primeNetMin,
@@ -74,8 +74,8 @@ export const Checks = ({
   const {
     responseData: getAllChecks,
     meta: checksMeta,
-    isLoading: isLoadingQuittancesData,
-    error: errorQuittancesData,
+    isLoading: isLoadingChecksData,
+    error: errorChecksData,
   } = useSelector((state: any) => state.getAllChecks);
 
   const {
@@ -96,7 +96,7 @@ export const Checks = ({
         // workFlowStepCode: WORKFLOW_STEP_CODES.SUBSCRIPTIONS,
         policyReference: filterValues.policyReference,
         reference: filterValues.reference,
-        quittanceStatusId: filterValues.quittanceStatusId,
+        checkStatusId: filterValues.checkStatusId,
         externalPartnerUserCode: filterValues.externalPartnerUserCode,
         externalReinsuranceReference: filterValues.externalReinsuranceReference,
         primeNetMin: filterValues.primeNetMin,
@@ -122,7 +122,7 @@ export const Checks = ({
         // workFlowStepCode: WORKFLOW_STEP_CODES.SUBSCRIPTIONS,
         policyReference: initialFilterValues.policyReference,
         reference: initialFilterValues.reference,
-        quittanceStatusId: initialFilterValues.quittanceStatusId,
+        checkStatusId: initialFilterValues.checkStatusId,
         externalPartnerUserCode: initialFilterValues.externalPartnerUserCode,
         // externalReinsuranceReference:
         // initialFilterValues.externalReinsuranceReference,
@@ -140,25 +140,25 @@ export const Checks = ({
   }, [AllStatus]);
 
   return (
-    <Grid container direction="column" px={8} py={7} id="quittance-table">
+    <Grid container direction="column" px={8} py={7} id="check-table">
       <Grid item>
         <FormSearch
           resetedValues={initialFilterValues}
           handleSubmit={(values: any) => handleSubmit(values)}
           handleResetFilter={handleResetFilter}
           initialValues={initialFilterValues}
-          fieldsToDisplay={FIRST_PAGE_QUITTANCE_FORM_SEARCH_FIELDS(statusData)}
-          URLquittanceStatusDescriptionID={1}
+          fieldsToDisplay={FIRST_PAGE_CHECK_FORM_SEARCH_FIELDS(statusData)}
+          URLcheckStatusDescriptionID={1}
           isLoading={false}
         />
       </Grid>
-      {isLoadingQuittancesData ? (
+      {isLoadingChecksData ? (
         <Stack spacing={2} mt={3}>
           <Skeleton variant="rectangular" mt={2} height={100} />
           <Skeleton variant="rectangular" mt={2} height={100} />
           <Skeleton variant="rectangular" mt={2} height={100} />
         </Stack>
-      ) : errorQuittancesData ? (
+      ) : errorChecksData ? (
         <CardContainer mt={3}>
           <EmptyState
             title={intl.formatMessage({
@@ -173,8 +173,8 @@ export const Checks = ({
         <Table
           isCollapsable={true}
           rows={checksData}
-          columns={FIRST_PAGE_QUITTANCE_TABLE_COLUMNS_DEFAULT}
-          hiddenColumns={FIRST_PAGE_QUITTANCE_TABLE_HIDDEN_COLUMNS_DEFAULT}
+          columns={FIRST_PAGE_CHECK_TABLE_COLUMNS_DEFAULT}
+          hiddenColumns={FIRST_PAGE_CHECK_TABLE_HIDDEN_COLUMNS_DEFAULT}
           onClickDetailRow={(row: any) => {
             navigate(`${detailsPage}?checkId=${row.id}`);
           }}
@@ -189,17 +189,17 @@ export const Checks = ({
             title={
               emptySearchResult.isEmptyResult && emptySearchResult.isSearchMode
                 ? intl.formatMessage({
-                    id: "quittances.searchResult.empty.title",
+                    id: "checks.searchResult.empty.title",
                   })
                 : intl.formatMessage({ id: "empty_state.title" })
             }
             subTitle={
               emptySearchResult.isEmptyResult && emptySearchResult.isSearchMode
                 ? intl.formatMessage({
-                    id: "quittances.empty.subTitle",
+                    id: "checks.empty.subTitle",
                   })
                 : intl.formatMessage({
-                    id: "quittances.empty.subTitle",
+                    id: "checks.empty.subTitle",
                   })
             }
             image={

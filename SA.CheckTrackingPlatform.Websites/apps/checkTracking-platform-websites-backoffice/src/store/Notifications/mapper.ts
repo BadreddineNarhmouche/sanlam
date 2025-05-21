@@ -8,7 +8,7 @@ export const mapNotificationsList = (notifications: any): Notification[] => {
         body: notification.body,
         isSeen: notification.isSeen,
         creationDate: notification.creationDate,
-        quittanceId: notification.quittanceId,
+        checkId: notification.checkId,
         deliverySlipId: notification.deliverySlipId,
         notificationTypeCode: notification.notificationTypeCode,
       }))
