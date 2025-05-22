@@ -1,5 +1,5 @@
-import { FilterCriteriaChecks } from '@checkTracking/helpers';
-import { IntlShape } from 'react-intl';
+import { FilterCriteriaChecks } from "@checkTracking/helpers";
+import { IntlShape } from "react-intl";
 
 interface FieldOption {
   label: string;

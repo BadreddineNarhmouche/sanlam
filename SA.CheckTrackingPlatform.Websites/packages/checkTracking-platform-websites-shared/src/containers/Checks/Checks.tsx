@@ -54,7 +54,6 @@ export const Checks = ({
       policyReference: values.policyReference,
       reference: values.reference,
       checkStatusId: values.checkStatusId,
-      externalPartnerUserCode: values.externalPartnerUserCode,
       // externalReinsuranceReference: values.externalReinsuranceReference,
       primeNetMin: values.primeNetMin,
       primeNetMax: values.primeNetMax,
@@ -97,7 +96,6 @@ export const Checks = ({
         policyReference: filterValues.policyReference,
         reference: filterValues.reference,
         checkStatusId: filterValues.checkStatusId,
-        externalPartnerUserCode: filterValues.externalPartnerUserCode,
         externalReinsuranceReference: filterValues.externalReinsuranceReference,
         primeNetMin: filterValues.primeNetMin,
         primeNetMax: filterValues.primeNetMax,
@@ -123,7 +121,6 @@ export const Checks = ({
         policyReference: initialFilterValues.policyReference,
         reference: initialFilterValues.reference,
         checkStatusId: initialFilterValues.checkStatusId,
-        externalPartnerUserCode: initialFilterValues.externalPartnerUserCode,
         // externalReinsuranceReference:
         // initialFilterValues.externalReinsuranceReference,
         primeNetMin: initialFilterValues.primeNetMin,

@@ -5,31 +5,38 @@ import { filterData } from "@checkTracking/helpers";
 // *******************************************
 
 const FIELD_CODE_LOT = {
-  fieldId: "externalPartnerUserCode",
+  fieldId: "externalPartnerUserOCde",
   type: "text",
-  label: "Lot",
+  label: "check.search.lot",
   // label: "check.search.partnerUserCode",
   gridOccupancy: 2,
 };
 
 const FIELD_CODE_SIN = {
-  fieldId: "externalPartnerUserCode",
+  fieldId: "externalPartnerUser",
   type: "text",
-  label: "Sin",
+  label: "check.search.sin",
   gridOccupancy: 2,
 };
 
 const FIELD_POLICY_REFERENCE = {
   fieldId: "policyReference",
   type: "text",
-  label: "Check",
+  label: "check.search.checkNumber",
   gridOccupancy: 2,
 };
 
 const FIELD_DATETIME = {
+  fieldId: "dateCreationre",
+  type: "datetime",
+  label: "check.search.date",
+  gridOccupancy: 2,
+};
+
+const FIELD_DATETIME_OTHER = {
   fieldId: "dateCreation",
   type: "datetime",
-  label: "Date",
+  label: "check.search.date",
   gridOccupancy: 2,
 };
 
@@ -52,7 +59,7 @@ export const FIRST_PAGE_CHECK_FORM_SEARCH_FIELDS = (option: any) => {
     { ...FIELD_CODE_SIN, gridOccupancy: 2, isHeader: true },
     { ...FIELD_CHECKS_STATUS(option), gridOccupancy: 2, isHeader: true },
     { ...FIELD_DATETIME, gridOccupancy: 2, isHeader: true },
-    { ...FIELD_DATETIME, gridOccupancy: 2, isHeader: true },
+    { ...FIELD_DATETIME_OTHER, gridOccupancy: 2, isHeader: true },
   ];
 };
 

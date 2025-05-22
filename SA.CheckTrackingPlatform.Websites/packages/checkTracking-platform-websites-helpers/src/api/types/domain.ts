@@ -86,11 +86,9 @@ export interface FilterCriteriaChecks {
   policyReference?: string;
   reference?: string;
   checkStatusId?: string;
-  externalPartnerUserCode?: string;
   externalcheckTrackingReference?: string;
   primeNetMin?: string;
   primeNetMax?: string;
-  dateCreation?: string;
   externalClientName?: string;
   meta?: {
     pageIndex?: number;

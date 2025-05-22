@@ -7,29 +7,22 @@ import { filterData } from "@checkTracking/helpers";
 const FIELD_CODE_LOT = {
   fieldId: "externalPartnerUserCode",
   type: "text",
-  label: "Lot",
+  label: "check.search.lot",
   // label: "check.search.partnerUserCode",
   gridOccupancy: 2,
 };
 
 const FIELD_CODE_SIN = {
-  fieldId: "externalPartnerUserCode",
+  fieldId: "externalPartnerUser",
   type: "text",
-  label: "Sin",
+  label: "check.search.sin",
   gridOccupancy: 2,
 };
 
 const FIELD_POLICY_REFERENCE = {
   fieldId: "policyReference",
   type: "text",
-  label: "Check",
-  gridOccupancy: 2,
-};
-
-const FIELD_DATETIME = {
-  fieldId: "dateCreation",
-  type: "datetime",
-  label: "Date",
+  label: "check.search.checkNumber",
   gridOccupancy: 2,
 };
 
