@@ -5,10 +5,10 @@ import {
   Toolbar,
   Typography,
   Box,
-  Chip,
 } from "@checkTracking/ui-kit";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
+import { StatusLabelBox } from "../../utils/StatusLabelBox";
 
 interface HeaderProps {
   checkNumber: string;
@@ -19,6 +19,7 @@ interface HeaderProps {
     };
   }>;
 }
+
 export const Header: React.FC<HeaderProps> = ({ checkNumber, timelines }) => {
   const navigate = useNavigate();
 
@@ -49,24 +50,12 @@ export const Header: React.FC<HeaderProps> = ({ checkNumber, timelines }) => {
           </Typography>
 
           {lastStatusLabel && (
-            <Chip
-              label={lastStatusLabel}
-              variant="outlined"
-              sx={{
-                ml: 30,
-                fontSize: "0.875rem",
-                borderRadius: 1,
-                fontWeight: 600,
-                px: 1.5,
-                color: "#ffffff",
-                borderColor: "#166fbc",
-                backgroundColor: "#0f87d7",
-              }}
-            />
+            <StatusLabelBox label={lastStatusLabel} sx={{ ml: "350px" }} />
           )}
         </Box>
       </Toolbar>
     </AppBar>
   );
 };
+
 export default Header;

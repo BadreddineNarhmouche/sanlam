@@ -1,9 +1,8 @@
-/* OutlinedTimeline.css */
 .timeline-container {
     display: flex;
     position: relative;
     padding-left: 24px;
-    border-left: 2px solid #3bbce0;
+    border-left: 2px solid #3a3a3a;
     height: 100%;
   }
   

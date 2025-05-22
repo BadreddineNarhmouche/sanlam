@@ -11,43 +11,11 @@ import { Typography, Box } from "@mui/material";
 import { format } from "date-fns";
 import { motion } from "framer-motion";
 import "./OutlinedTimeline.css";
-import colors from "../../../../ui-kit/src/styles/_themes-vars.module.scss";
+import { StatusLabelBox } from "../../utils/StatusLabelBox";
 
 export default function HorizontalTimeline({ data }: { data: any }) {
   const Checks = data?.timelines ?? [];
-
   const dotColors = ["primary", "success", "secondary", "grey"];
-
-  const labelStyles: Record<
-    string,
-    { color: string; borderColor: string; background: string }
-  > = {
-    Retour: {
-      color: "#ffffff",
-      borderColor: colors.TimelineBorderRetour,
-      background: colors.TimelineBackGroundRetour,
-    },
-    Envoie: {
-      color: "#ffffff",
-      borderColor: colors.TimelineBorderEnvoie,
-      background: colors.TimelineBackGroundEnvoie,
-    },
-    Validation: {
-      color: "#ffffff",
-      borderColor: colors.TimelineBorderValidation,
-      background: colors.TimelineBackGroundValidation,
-    },
-    EnCours: {
-      color: "#ffffff",
-      borderColor: colors.TimelineBorderValidation,
-      background: colors.TimelineBackGroundValidation,
-    },
-    RECU: {
-      color: "#ffffff",
-      borderColor: colors.TimelineBorderValidationForRecu,
-      background: colors.TimelineBackGroundValidation,
-    },
-  };
 
   return (
     <Box className="timeline-container">
@@ -58,13 +26,7 @@ export default function HorizontalTimeline({ data }: { data: any }) {
             "dd/MM/yyyy HH:mm"
           );
           const color = dotColors[index % dotColors.length];
-
           const label = check.statusItems.label;
-          const labelStyle = labelStyles[label] || {
-            color: "text.secondary",
-            borderColor: "#bb1717",
-            background: "#f5f5f5",
-          };
 
           return (
             <TimelineItem
@@ -92,17 +54,8 @@ export default function HorizontalTimeline({ data }: { data: any }) {
                   {formattedDate} {check.internalUserItem.firstName}{" "}
                   {check.internalUserItem.lastName}
                 </Typography>
-                <Box
-                  component="span"
-                  className="timeline-label"
-                  sx={{
-                    color: labelStyle.borderColor,
-                    textShadow: `0 0 1px ${labelStyle.borderColor}`,
-                    backgroundColor: "transparent",
-                  }}
-                >
-                  {label}
-                </Box>
+
+                <StatusLabelBox label={label} />
               </TimelineContent>
             </TimelineItem>
           );
