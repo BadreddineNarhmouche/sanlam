@@ -44,7 +44,6 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
       ? data.timelines[data.timelines.length - 1].statusItems.label
       : undefined;
 
-  // 3. Mapping des labels pour tous les champs de DetailsDTO (hors timelines)
   const labels: Record<Exclude<keyof DetailsDTO, "timelines">, string> = {
     // id: intl.formatMessage({ id: "File.global.dialog.title" }),
     amount: intl.formatMessage({ id: "quittance_details.policy_payment_info" }),
@@ -132,8 +131,8 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
   return (
     <>
       <Header checkNumber={data.checkNumber} timelines={data.timelines} />
-      <Grid container spacing={4} sx={{ height: "100%", mt: "0.015cm" }}>
-        {/* --- Colonne de gauche : détails du DTO --- */}
+      <Grid container sx={{ height: "400", mt: "0.015cm" }}>
+        {/* --- Colonne de gauche */}
         <Grid item xs={12} md={8}>
           <Grid container spacing={4}>
             {(Object.keys(labels) as Array<keyof typeof labels>).map((key) => (

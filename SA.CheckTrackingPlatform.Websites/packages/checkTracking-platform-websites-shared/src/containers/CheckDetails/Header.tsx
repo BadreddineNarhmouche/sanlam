@@ -46,11 +46,11 @@ export const Header: React.FC<HeaderProps> = ({ checkNumber, timelines }) => {
 
         <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}>
           <Typography variant="h5" component="div">
-            Chèque numéro {checkNumber}
+            Chèque N°{checkNumber}
           </Typography>
 
           {lastStatusLabel && (
-            <StatusLabelBox label={lastStatusLabel} sx={{ ml: "350px" }} />
+            <StatusLabelBox label={lastStatusLabel} sx={{ ml: "50px" }} />
           )}
         </Box>
       </Toolbar>
