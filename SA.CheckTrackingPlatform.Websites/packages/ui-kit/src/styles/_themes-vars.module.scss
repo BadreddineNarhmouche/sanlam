@@ -28,10 +28,43 @@ $warningDark2: #d86018;
 // error
 $errorLight: #fcefec;
 $errorMain: #ff3400;
+$errorRetour:#bb1717;
 
 // success
 $successDark: #0ea800;
 $successLight: #edfdeb;
+
+
+// TimelineStyles 
+// colors.scss
+$colorRetour:  #edfdeb;
+$borderColorRetour: #e53935;
+$backgroundRetour: #d90909;
+
+// colorsforEnvoie
+
+$colorEnvoie:#ffffff;
+$borderColorEnvoie: #20c628;
+$backgroundEnvoie: #18c627;
+
+
+// colorsforValidation 
+$colorValidation: #ffffff;
+$borderColorValidation: #166fbc;
+$backgroundValidation: #0f87d7;
+
+// colorsforEnCours
+
+$colorforEncours: #ffffff;
+$borderColorforEncours: #f9a825 ;
+$backgroundforEncours: #f9a825;
+
+// colorsforRECU 
+
+$colorforRecu: #ffffff;
+$borderColorforRecu: #8e24aa;
+$backgroundforRecu:  #c76fe0;
+
 
 // ==============================|| JAVASCRIPT ||============================== //
 
@@ -65,4 +98,33 @@ $successLight: #edfdeb;
   //success
   successDark: $successDark;
   successLight: $successLight;
+
+
+
+  TimelineRetour: $colorRetour;
+  TimelineBorderRetour: $borderColorRetour;
+  TimelineBackGroundRetour: $backgroundRetour;
+
+
+  TimelineEnvoie: $colorEnvoie;
+  TimelineBorderEnvoie: $borderColorEnvoie;
+  TimelineBackGroundEnvoie:$backgroundEnvoie;
+
+
+  TimelineValidation: $colorValidation;
+  TimelineBorderValidation: $borderColorValidation;
+  TimelineBackGroundValidation: $backgroundValidation;
+
+   // colorsforEnCours
+
+  TimelineforEncours: $colorforEncours;
+  TimelineBorderValidation: $borderColorforEncours;
+  TimelineBackGroundValidation: $backgroundforEncours;
+
+
+  // colorsforRECU
+
+   TimelineForRecu: $colorforRecu;
+   TimelineBorderValidationForRecu: $borderColorforRecu;
+   TimelineBackGroundValidation: $backgroundforRecu;
 }

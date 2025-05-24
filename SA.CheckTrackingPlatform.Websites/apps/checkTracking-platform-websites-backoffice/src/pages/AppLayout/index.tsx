@@ -1,6 +1,4 @@
-import {
-  INotificationService,
-} from "@checkTracking/helpers";
+import { INotificationService } from "@checkTracking/helpers";
 
 import {
   NavigationBar,
@@ -25,6 +23,20 @@ const AppLayout = () => {
       {
         label: intl.formatMessage({ id: "nav_bar.home_tab" }),
         to: PAGES.HOME,
+        // roles: [
+        //   ROLE.SUBSCRIPTIONS_EXECUTOR,
+        //   ROLE.SUBSCRIPTIONS_MANAGER,
+        //   ROLE.RECOVERIES_EXECUTOR,
+        //   ROLE.RECOVERIES_MANAGER,
+        //   ROLE.checkTrackingS_EXECUTOR,
+        //   ROLE.checkTrackingS_MANAGER,
+        //   ROLE.ACCOUNTING_EXECUTOR,
+        //   ROLE.ACCOUNTING_MANAGER,
+        // ],
+      },
+       {
+        label: intl.formatMessage({ id: "nav_bar.treatment_tab" }),
+        to: PAGES.TREATMENT_CHECK,
         // roles: [
         //   ROLE.SUBSCRIPTIONS_EXECUTOR,
         //   ROLE.SUBSCRIPTIONS_MANAGER,

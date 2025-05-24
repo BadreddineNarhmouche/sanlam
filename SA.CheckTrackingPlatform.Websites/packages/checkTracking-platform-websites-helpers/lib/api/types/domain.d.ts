@@ -44,7 +44,7 @@ export interface Notification {
     body?: string;
     isSeen?: boolean;
     creationDate?: any;
-    quittanceId?: string;
+    checkId?: string;
     deliverySlipId?: string;
     notificationTypeCode?: string;
     internalUserId?: number;
@@ -76,7 +76,7 @@ export interface FilterCriteriaChecks {
     workFlowStepCode?: string;
     policyReference?: string;
     reference?: string;
-    quittanceStatusId?: string;
+    checkStatusId?: string;
     externalPartnerUserCode?: string;
     externalcheckTrackingReference?: string;
     primeNetMin?: string;

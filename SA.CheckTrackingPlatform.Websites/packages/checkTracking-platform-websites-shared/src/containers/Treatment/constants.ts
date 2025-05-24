@@ -47,12 +47,10 @@ const FIELD_CHECKS_STATUS = (statuses: any) => ({
 
 export const FIRST_PAGE_CHECK_FORM_SEARCH_FIELDS = (option: any) => {
   return [
-    { ...FIELD_POLICY_REFERENCE, gridOccupancy: 2, isHeader: true },
-    { ...FIELD_CODE_LOT, gridOccupancy: 2, isHeader: true },
-    { ...FIELD_CODE_SIN, gridOccupancy: 2, isHeader: true },
-    { ...FIELD_CHECKS_STATUS(option), gridOccupancy: 2, isHeader: true },
-    { ...FIELD_DATETIME, gridOccupancy: 2, isHeader: true },
-    { ...FIELD_DATETIME, gridOccupancy: 2, isHeader: true },
+    { ...FIELD_POLICY_REFERENCE, gridOccupancy: 3, isHeader: true },
+    { ...FIELD_CODE_LOT, gridOccupancy: 3, isHeader: true },
+    { ...FIELD_CODE_SIN, gridOccupancy: 3, isHeader: true },
+    { ...FIELD_CHECKS_STATUS(option), gridOccupancy: 3, isHeader: true },
   ];
 };
 
@@ -66,4 +64,4 @@ export const FIRST_PAGE_CHECK_TABLE_COLUMNS_DEFAULT = [
 
 export const FIRST_PAGE_CHECK_TABLE_HIDDEN_COLUMNS_DEFAULT = [
   "id",
-];
+];;

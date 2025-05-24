@@ -33,6 +33,7 @@ const Form = (props: any) => {
     resetedValues,
     fieldsToDisplay,
     isLoading,
+    titleForm,
   } = props;
 
   useEffect(() => {
@@ -170,7 +171,7 @@ const Form = (props: any) => {
             fontWeight={UI_Typography.FONT_WEIGHT_MEDIUM}
             mb={2}
           >
-            {intl.formatMessage({ id: "check.list.title" })}
+            {titleForm != null ? intl.formatMessage({ id: titleForm }) : null}
           </Typography>
           <Grid display="flex" flexDirection="row" columnSpacing={1}>
             <Grid item>

@@ -131,7 +131,7 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
 
   return (
     <>
-      <Header checkNumber={data.checkNumber} statusLabel={lastStatusLabel} />
+      <Header checkNumber={data.checkNumber} timelines={data.timelines} />
       <Grid container spacing={4} sx={{ height: "100%", mt: "0.015cm" }}>
         {/* --- Colonne de gauche : détails du DTO --- */}
         <Grid item xs={12} md={8}>
@@ -163,6 +163,7 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
           {/* revu de code à changer */}
         </Grid>
       </Grid>
+      {/* Props Children */}
     </>
   );
 };

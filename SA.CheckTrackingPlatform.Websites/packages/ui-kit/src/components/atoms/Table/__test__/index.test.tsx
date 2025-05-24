@@ -12,7 +12,7 @@ describe('Table', () => {
               id: 'fake-id',
               reference: '1693925023454-0',
               status: '1',
-              demandType: 'Quittance',
+              demandType: 'Check',
               client: 'test',
               creationDate: '03-09-2023',
               details: [
@@ -30,7 +30,7 @@ describe('Table', () => {
               id: 'fake-id',
               reference: '1693925023454-9',
               status: '1',
-              demandType: 'Quittance',
+              demandType: 'Check',
               client: 'test',
               creationDate: '03-09-2023',
               details: [
