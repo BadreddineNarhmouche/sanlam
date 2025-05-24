@@ -40,9 +40,6 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
         {
             return await _mediator.Send(query);
         }
-
-
-
         #endregion Methods
     }
 }
