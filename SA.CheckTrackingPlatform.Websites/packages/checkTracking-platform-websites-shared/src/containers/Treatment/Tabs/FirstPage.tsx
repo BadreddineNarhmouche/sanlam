@@ -5,36 +5,53 @@ import {
   FIRST_PAGE_CHECK_TABLE_COLUMNS_DEFAULT,
   FIRST_PAGE_CHECK_TABLE_HIDDEN_COLUMNS_DEFAULT,
 } from "../constants";
-import { useRef, useState } from "react";
-import { FormattedMessage } from "react-intl";
+import { useEffect, useRef, useState } from "react";
 
 export const FirstPage = ({
   initialFilterValues,
-  handleSubmit,
-  handleResetFilter,
 }: {
   initialFilterValues?: any;
-  handleSubmit?: any;
-  handleResetFilter?: any;
 }) => {
   const inputElement = useRef<HTMLInputElement>(null);
   const [displayInput, setDisplayInput] = useState(false);
+  const [select, setSelect] = useState("policyReference");
+  const [data, setData] = useState<any[]>([]);
+  const [filterValues, setFilterValues] = useState<any>(initialFilterValues);
+
+  const handleSubmit = (value: any) => {
+    console.log(value);
+    setSelect("");
+    if (value.policyReference != null) {
+      console.log("first");
+      setSelect("policyReference");
+    } else if (value.reference != null) {
+      setSelect("reference");
+    }
+    handleResetFilter();
+    setData((cur) => [...cur, value]);
+    console.log(select);
+  };
+
+  const handleResetFilter = () => {
+    setFilterValues(initialFilterValues);
+  };
+
   function handleClick() {
-    setDisplayInput((curr) => !curr);
-    setTimeout(() => {
-      inputElement.current?.focus();
-    }, 20);
   }
+
+  useEffect(() => {}, []);
+
   return (
     <>
       <FormSearch
-        resetedValues={initialFilterValues}
+        resetedValues={filterValues}
         handleSubmit={(values: any) => handleSubmit(values)}
         handleResetFilter={handleResetFilter}
         initialValues={initialFilterValues}
         fieldsToDisplay={FIRST_PAGE_CHECK_FORM_SEARCH_FIELDS([])}
         URLcheckStatusDescriptionID={1}
         isLoading={false}
+        keyInput={select}
       />
       <Grid
         container
@@ -45,15 +62,7 @@ export const FirstPage = ({
         sx={{ marginBottom: 2, marginTop: 2 }}
       >
         {" "}
-        <Grid item>
-          {displayInput ? (
-            <TextField
-              // id={fieldId}
-              label={"test"}
-              inputRef={inputElement}
-            />
-          ) : null}
-        </Grid>
+        <Grid item></Grid>
         <Grid display="flex" flexDirection="row" columnSpacing={1}>
           <Button
             py={2.2}
@@ -64,35 +73,14 @@ export const FirstPage = ({
           >
             {!displayInput ? "Start" : "Valider"}
           </Button>
-          {displayInput ? (
-            <Button
-              ml={1}
-              py={2.1}
-              fullWidth
-              variant="outlined"
-              custombackgroundcolor={
-                // @ts-ignore
-                Theme.theme.palette.base.main
-              }
-            >
-              <FormattedMessage id="action.reset" />
-            </Button>
-          ) : null}
         </Grid>
       </Grid>
       <Grid>
         <Table
           isCollapsable={true}
-          rows={[{ test: "fsd" }]}
+          rows={data}
           columns={FIRST_PAGE_CHECK_TABLE_COLUMNS_DEFAULT}
           hiddenColumns={FIRST_PAGE_CHECK_TABLE_HIDDEN_COLUMNS_DEFAULT}
-          // onClickDetailRow={(row: any) => {
-          //   navigate(`${detailsPage}?checkId=${row.id}`);
-          // }}
-          // pagination={{
-          //   meta: checksMeta,
-          //   handleOnChangePage: (page: number) => handleOnPageChange(page),
-          // }}
         />
       </Grid>
     </>

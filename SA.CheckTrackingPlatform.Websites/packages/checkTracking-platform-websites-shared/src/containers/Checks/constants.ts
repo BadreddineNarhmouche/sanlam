@@ -8,7 +8,6 @@ const FIELD_CODE_LOT = {
   fieldId: "externalPartnerUserOCde",
   type: "text",
   label: "check.search.lot",
-  // label: "check.search.partnerUserCode",
   gridOccupancy: 2,
 };
 

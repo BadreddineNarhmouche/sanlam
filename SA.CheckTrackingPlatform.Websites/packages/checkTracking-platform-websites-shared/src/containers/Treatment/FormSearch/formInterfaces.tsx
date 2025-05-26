@@ -24,6 +24,7 @@ export interface FormProps {
   fieldsToDisplay?: Field[];
   isLoading: boolean;
   titleForm?: string;
+  keyInput?: string;
 }
 
 export interface FormValues {

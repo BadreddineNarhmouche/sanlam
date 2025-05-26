@@ -5,7 +5,7 @@ import { filterData } from "@checkTracking/helpers";
 // *******************************************
 
 const FIELD_CODE_LOT = {
-  fieldId: "externalPartnerUserCode",
+  fieldId: "reference",
   type: "text",
   label: "check.search.lot",
   // label: "check.search.partnerUserCode",
@@ -13,7 +13,7 @@ const FIELD_CODE_LOT = {
 };
 
 const FIELD_CODE_SIN = {
-  fieldId: "externalPartnerUser",
+  fieldId: "primeNetMin",
   type: "text",
   label: "check.search.sin",
   gridOccupancy: 2,
@@ -40,10 +40,9 @@ const FIELD_CHECKS_STATUS = (statuses: any) => ({
 
 export const FIRST_PAGE_CHECK_FORM_SEARCH_FIELDS = (option: any) => {
   return [
-    { ...FIELD_POLICY_REFERENCE, gridOccupancy: 3, isHeader: true },
-    { ...FIELD_CODE_LOT, gridOccupancy: 3, isHeader: true },
-    { ...FIELD_CODE_SIN, gridOccupancy: 3, isHeader: true },
-    { ...FIELD_CHECKS_STATUS(option), gridOccupancy: 3, isHeader: true },
+    { ...FIELD_POLICY_REFERENCE, gridOccupancy: 4, isHeader: true },
+    { ...FIELD_CODE_LOT, gridOccupancy: 4, isHeader: true },
+    { ...FIELD_CODE_SIN, gridOccupancy: 4, isHeader: true },
   ];
 };
 
