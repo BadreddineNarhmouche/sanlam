@@ -30,7 +30,6 @@ const HomePage = () => {
   const filterValues: FilterCriteriaChecks = {
     reference: "",
     policyReference: "",
-    externalPartnerUserCode: "",
     primeNetMin: "",
     primeNetMax: "",
   };

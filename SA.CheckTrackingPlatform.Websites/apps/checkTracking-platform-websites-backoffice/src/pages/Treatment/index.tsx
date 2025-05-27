@@ -1,12 +1,9 @@
 import { Grid } from "@checkTracking/ui-kit";
 import { useEffect } from "react";
-import { useIntl } from "react-intl";
-import { PAGES } from "../../config/navigation";
 import { FilterCriteriaChecks } from "@checkTracking/helpers";
 import { Treatment } from "@checkTracking/shared";
 
 const TreatmentPage = () => {
-  const intl = useIntl();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -14,7 +11,6 @@ const TreatmentPage = () => {
   const filterValues: FilterCriteriaChecks = {
     reference: "",
     policyReference: "",
-    externalPartnerUserCode: "",
     primeNetMin: "",
     primeNetMax: "",
   };
