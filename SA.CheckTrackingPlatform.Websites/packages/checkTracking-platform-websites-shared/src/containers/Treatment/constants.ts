@@ -5,31 +5,24 @@ import { filterData } from "@checkTracking/helpers";
 // *******************************************
 
 const FIELD_CODE_LOT = {
-  fieldId: "externalPartnerUserCode",
+  fieldId: "reference",
   type: "text",
-  label: "Lot",
+  label: "check.search.lot",
   // label: "check.search.partnerUserCode",
   gridOccupancy: 2,
 };
 
 const FIELD_CODE_SIN = {
-  fieldId: "externalPartnerUserCode",
+  fieldId: "primeNetMin",
   type: "text",
-  label: "Sin",
+  label: "check.search.sin",
   gridOccupancy: 2,
 };
 
 const FIELD_POLICY_REFERENCE = {
   fieldId: "policyReference",
   type: "text",
-  label: "Check",
-  gridOccupancy: 2,
-};
-
-const FIELD_DATETIME = {
-  fieldId: "dateCreation",
-  type: "datetime",
-  label: "Date",
+  label: "check.search.checkNumber",
   gridOccupancy: 2,
 };
 
@@ -47,10 +40,9 @@ const FIELD_CHECKS_STATUS = (statuses: any) => ({
 
 export const FIRST_PAGE_CHECK_FORM_SEARCH_FIELDS = (option: any) => {
   return [
-    { ...FIELD_POLICY_REFERENCE, gridOccupancy: 3, isHeader: true },
-    { ...FIELD_CODE_LOT, gridOccupancy: 3, isHeader: true },
-    { ...FIELD_CODE_SIN, gridOccupancy: 3, isHeader: true },
-    { ...FIELD_CHECKS_STATUS(option), gridOccupancy: 3, isHeader: true },
+    { ...FIELD_POLICY_REFERENCE, gridOccupancy: 4, isHeader: true },
+    { ...FIELD_CODE_LOT, gridOccupancy: 4, isHeader: true },
+    { ...FIELD_CODE_SIN, gridOccupancy: 4, isHeader: true },
   ];
 };
 

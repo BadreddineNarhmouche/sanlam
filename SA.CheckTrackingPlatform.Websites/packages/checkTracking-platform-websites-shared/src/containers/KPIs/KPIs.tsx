@@ -22,7 +22,7 @@ export const KPIs = () => {
           <Grid item xs={3}>
             <GenericKPI
               component={{
-                title: "Nb cheque ",
+                title: "check.search.checkNumber",
                 contents: [
                   {
                     code: "1",
@@ -43,7 +43,7 @@ export const KPIs = () => {
           <Grid item xs={3}>
             <GenericKPI
               component={{
-                title: "Nb cheque ",
+                title: "check.search.checkNumber",
                 contents: [
                   {
                     code: "1",
@@ -63,7 +63,7 @@ export const KPIs = () => {
           <Grid item xs={3}>
             <GenericKPI
               component={{
-                title: "Nb cheque ",
+                title: "check.search.checkNumber",
                 contents: [
                   {
                     code: "1",

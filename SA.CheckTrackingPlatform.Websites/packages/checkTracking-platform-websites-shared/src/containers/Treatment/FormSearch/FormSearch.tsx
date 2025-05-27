@@ -12,7 +12,7 @@ import {
 } from "@checkTracking/ui-kit";
 import { CircularProgress } from "@mui/material";
 import { validateYupSchema, withFormik, yupToFormErrors } from "formik";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { FormattedMessage, injectIntl, useIntl } from "react-intl";
 import { FormProps, FormValues } from "./formInterfaces";
 import validationsScheme from "./validationsSchema";
@@ -34,6 +34,7 @@ const Form = (props: any) => {
     fieldsToDisplay,
     isLoading,
     titleForm,
+    keyInput,
   } = props;
 
   useEffect(() => {
@@ -42,6 +43,19 @@ const Form = (props: any) => {
   }, [resetedValues]);
 
   const intl = useIntl();
+
+  const inputRefs = useRef<{ [key: string]: HTMLInputElement | null }>({});
+
+  // Then in useEffect:
+  useEffect(() => {
+    if (inputRefs.current[keyInput]) {
+      console.log("test");
+      inputRefs.current[keyInput]?.focus();
+      inputRefs.current[keyInput].value = "";
+
+      return;
+    }
+  }, [keyInput]);
 
   const renderTextField = (fieldId: string, fieldLabel: string) => (
     <TextField
@@ -52,6 +66,9 @@ const Form = (props: any) => {
       onBlur={handleBlur}
       helperText={touched[fieldId] ? errors[fieldId] : ""}
       error={touched[fieldId] && Boolean(errors[fieldId])}
+      inputRef={(el: HTMLInputElement) => {
+        inputRefs.current[fieldId] = el;
+      }}
     />
   );
 
