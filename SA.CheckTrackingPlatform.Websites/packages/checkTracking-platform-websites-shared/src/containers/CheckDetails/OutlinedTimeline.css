@@ -1,12 +1,13 @@
 .timeline-container {
-    display: flex;
-    position: relative;
-    padding-left: 24px;
-    border-left: 2px solid #3a3a3a;
-    height: 100%;
-  }
-  
-  .timeline-label {
+  display: flex;
+  position: relative;
+  padding-left: 24px;
+  border-left: 0.1125px solid #d3d3d3; 
+  height: 100%;
+}
+
+
+.timeline-label {
     display: inline-block;
     margin-top: 4px;
     padding: 2px 8px;
