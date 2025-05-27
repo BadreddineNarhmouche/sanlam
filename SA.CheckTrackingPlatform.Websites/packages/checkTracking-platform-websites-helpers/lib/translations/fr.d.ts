@@ -60,6 +60,10 @@ export declare const frTranslationMessages: {
     "check.search.partnerUserCode": string;
     "check.search.partnerUserLabel": string;
     "check.search.reinsurer": string;
+    "check.search.checkNumber": string;
+    "check.search.sin": string;
+    "check.search.lot": string;
+    "check.search.date": string;
     "File.global.search.startDate": string;
     "File.global.search.endDate": string;
     "check_details.reference": string;
