@@ -18,26 +18,33 @@ export const FirstPage = ({
   const [data, setData] = useState<any[]>([]);
   const [filterValues, setFilterValues] = useState<any>(initialFilterValues);
 
-  const handleSubmit = (value: any) => {
-    console.log(value);
-    setSelect("");
-    if (value.policyReference != null) {
-      console.log("first");
-      setSelect("policyReference");
-    } else if (value.reference != null) {
-      setSelect("reference");
+  function handleClick() {
+    const currentValue = inputElement.current?.value?.trim();
+    if (currentValue && currentValue.length > 1) {
+      setData((prev) => [...prev, { policyReference: currentValue }]);
+      inputElement.current.value = "";
+      inputElement.current.focus();
     }
+  }
+
+  const handleSubmit = (value: any) => {
+    let key = "";
+    if (value.policyReference != null) {
+      key = "policyReference";
+    } else if (value.reference != null) {
+      key = "reference";
+    }
+
+    setSelect(key);
     handleResetFilter();
     setData((cur) => [...cur, value]);
-    console.log(select);
   };
 
   const handleResetFilter = () => {
     setFilterValues(initialFilterValues);
   };
 
-  function handleClick() {
-  }
+  function handleClick() {}
 
   useEffect(() => {}, []);
 
@@ -52,11 +59,11 @@ export const FirstPage = ({
         URLcheckStatusDescriptionID={1}
         isLoading={false}
         keyInput={select}
+        inputElement={inputElement}
       />
+
       <Grid
         container
-        // justifyContent="flex-end"
-        // alignItems="center"
         justifyContent="space-between"
         alignItems="center"
         sx={{ marginBottom: 2, marginTop: 2 }}

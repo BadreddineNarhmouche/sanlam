@@ -35,18 +35,17 @@ const Form = (props: any) => {
     isLoading,
     titleForm,
     keyInput,
+    handleQuickAdd,
   } = props;
 
   useEffect(() => {
     resetedValues && setValues(resetedValues);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [resetedValues]);
 
   const intl = useIntl();
 
   const inputRefs = useRef<{ [key: string]: HTMLInputElement | null }>({});
 
-  // Then in useEffect:
   useEffect(() => {
     if (inputRefs.current[keyInput]) {
       console.log("test");
@@ -217,10 +216,7 @@ const Form = (props: any) => {
                   handleReset();
                   props.handleResetFilter();
                 }}
-                custombackgroundcolor={
-                  // @ts-ignore
-                  Theme.theme.palette.base.main
-                }
+                custombackgroundcolor={Theme.theme.palette.base.main}
                 disabled={!dirty || isSubmitting || isLoading}
               >
                 <FormattedMessage id="action.reset" />
@@ -241,18 +237,14 @@ const Form = (props: any) => {
   );
 };
 
-const FormSearch = withFormik<FormProps, FormValues>({
+const EnhancedForm = withFormik<FormProps, FormValues>({
   mapPropsToValues: ({ initialValues }: any) =>
-    /* eslint-disable */
     Object.keys(initialValues).reduce(
       (obj: any, key: string) => ((obj[key] = initialValues[key] || ""), obj),
       {}
     ),
-  /* eslint-enable */
   validate: (values: any, props: any) => {
-    const schema = validationsScheme({
-      ...props,
-    });
+    const schema = validationsScheme({ ...props });
     try {
       validateYupSchema<any>(values, schema, true);
     } catch (err) {
@@ -260,13 +252,12 @@ const FormSearch = withFormik<FormProps, FormValues>({
     }
     return {};
   },
-
   handleSubmit: (values: any, { setSubmitting, props }: any) => {
     setTimeout(() => {
       props.handleSubmit(values);
       setSubmitting(false);
     }, 1000);
   },
-})(Form);
+})((props) => <Form {...props} />);
 
-export default injectIntl(FormSearch);
+export default injectIntl(EnhancedForm);

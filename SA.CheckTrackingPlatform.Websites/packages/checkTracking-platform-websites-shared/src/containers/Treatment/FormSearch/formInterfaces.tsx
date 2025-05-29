@@ -25,6 +25,7 @@ export interface FormProps {
   isLoading: boolean;
   titleForm?: string;
   keyInput?: string;
+  onQuickAdd?: (policyRef: string) => void;
 }
 
 export interface FormValues {
