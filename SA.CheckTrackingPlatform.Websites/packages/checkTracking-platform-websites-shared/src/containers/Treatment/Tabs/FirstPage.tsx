@@ -40,26 +40,42 @@ export const FirstPage = ({
     setData((cur) => [...cur, value]);
   };
 
+  const handleQuickAdd = (value: string) => {
+    if (value && value.trim().length > 1) {
+      setData((prev) => [...prev, { [select]: value.trim() }]);
+    }
+  };
+
   const handleResetFilter = () => {
     setFilterValues(initialFilterValues);
   };
 
-  function handleClick() {}
-
   useEffect(() => {}, []);
+
+  function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      const currentValue = inputElement.current?.value?.trim();
+      if (currentValue && currentValue.length > 1) {
+        setData((prev) => [...prev, { policyReference: currentValue }]);
+        inputElement.current.value = "";
+        inputElement.current.focus();
+      }
+    }
+  }
 
   return (
     <>
       <FormSearch
         resetedValues={filterValues}
-        handleSubmit={(values: any) => handleSubmit(values)}
+        handleSubmit={handleSubmit}
         handleResetFilter={handleResetFilter}
         initialValues={initialFilterValues}
         fieldsToDisplay={FIRST_PAGE_CHECK_FORM_SEARCH_FIELDS([])}
         URLcheckStatusDescriptionID={1}
         isLoading={false}
         keyInput={select}
-        inputElement={inputElement}
+        onQuickAdd={handleQuickAdd}
       />
 
       <Grid
