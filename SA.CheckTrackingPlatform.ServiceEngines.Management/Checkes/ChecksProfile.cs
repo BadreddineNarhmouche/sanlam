@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using AutoMapper;
-using System.Threading.Tasks;
+﻿using AutoMapper;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses;
 using SA.CheckTrackingPlatform.Domains.Management.Entities;
-using SA.CheckTrackingPlatform.ServiceEngines.Management.InternalUsers.Responses;
 
 namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes
 {
@@ -20,6 +14,10 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes
             CreateMap<Checks, GetAllByCriteriaItem>()
                 .ForMember(destination => destination.ServiceName, option => option.MapFrom(source => source.Service.Label))
                 .ReverseMap();
+
+            CreateMap<Checks, GetAllItem>()
+              .ForMember(destination => destination.ServiceName, option => option.MapFrom(source => source.Service.Label))
+              .ReverseMap();
         }
 
         #endregion Constructors

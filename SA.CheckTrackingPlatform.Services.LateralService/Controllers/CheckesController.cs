@@ -22,7 +22,7 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
 
         #region Methods
 
-         // Récuperer un chéque par son identifiant        
+        // Récuperer un chéque par son identifiant        
         [HttpGet]
         [Route(nameof(GetById))]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -36,6 +36,14 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
         [Route(nameof(GetAllByCriteria))]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<GetAllByCriteriaResponse> GetAllByCriteria([FromQuery] GetAllByCriteriaQuery query)
+        {
+            return await _mediator.Send(query);
+        }
+
+        [HttpGet]
+        [Route(nameof(GetAllChecks))]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<GetAllResponse> GetAllChecks([FromQuery] GetAllChecksQuery query)
         {
             return await _mediator.Send(query);
         }

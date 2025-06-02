@@ -76,6 +76,30 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
                  .ToListAsync();
         }
 
+        public async Task<IEnumerable<Checks>> GetAllAsync(string? checkNumbers, string? lotNumber, string? SinisterNumber, string? Status)
+        {
+            IQueryable<Checks> query = this.applicationContext.Checks
+                .Include(c => c.Timelines)
+                .ThenInclude(c => c.Status);
+
+            if (!string.IsNullOrWhiteSpace(checkNumbers))
+                query = query.Where(c => checkNumbers.Contains(c.CheckNumber));
+
+
+            if (!string.IsNullOrWhiteSpace(lotNumber))
+                query = query.Where(c => c.LotNumber == lotNumber);
+
+            if (!string.IsNullOrWhiteSpace(SinisterNumber))
+                query = query.Where(c => c.SinisterNumber.Contains(SinisterNumber));
+
+            if (!string.IsNullOrWhiteSpace(Status))
+                query = query.Where(c => c.Timelines.Where(t => t.Status.Code == Status).OrderByDescending(q => q.CreationDate).Any());
+
+            return await query
+                 .AsNoTrackingWithIdentityResolution()
+                 .ToListAsync();
+        }
+
         public async Task<int> CountAllByCriteriaAsync(List<int>? ids, List<string>? checkNumbers, int? branchId, int? serviceId, int? bankId, string? lotNumber, string? beneficiaryName)
         {
             IQueryable<Checks> query = this.applicationContext.Checks
