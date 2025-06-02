@@ -96,6 +96,13 @@ export interface FilterCriteriaChecks {
   };
 }
 
+export interface FilterByAllChecks {
+  workFlowStepCode?: string;
+  policyReference?: string;
+  reference?: string;
+  status?: string;
+}
+
 export interface Check {
   id: string;
   amount?: number;

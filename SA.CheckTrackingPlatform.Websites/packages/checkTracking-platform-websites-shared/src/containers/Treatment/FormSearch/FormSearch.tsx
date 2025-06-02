@@ -49,7 +49,6 @@ const Form = (props: any) => {
   // Then in useEffect:
   useEffect(() => {
     if (inputRefs.current[keyInput]) {
-      console.log("test");
       inputRefs.current[keyInput]?.focus();
       inputRefs.current[keyInput].value = "";
 

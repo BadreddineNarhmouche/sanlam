@@ -10,6 +10,7 @@ import notificationsCountReducer from "./Notifications/notificationCountSlice";
 import internalRolesReducer from "./InternalRoles/internalRolesSlice";
 
 //Checks
+import getAllChecksByCriteriaReducer from "./Checks/getAllChecksByCriteriaSlice";
 import getAllChecksReducer from "./Checks/getAllChecksSlice";
 
 //Status
@@ -21,6 +22,7 @@ export const rootReducer = combineReducers({
   notificationsCount: notificationsCountReducer,
   notificationsCreate: notificationsCreateReducer,
   internalRoles: internalRolesReducer,
+  getAllChecksByCriteria: getAllChecksByCriteriaReducer,
   getAllChecks: getAllChecksReducer,
   AllStatus: AllStatusReducer,
 });
