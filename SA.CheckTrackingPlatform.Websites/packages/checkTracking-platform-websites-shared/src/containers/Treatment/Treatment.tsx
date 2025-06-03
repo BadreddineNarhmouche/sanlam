@@ -3,15 +3,16 @@ import { useState } from "react";
 import { useIntl } from "react-intl";
 import { FirstPage } from "./Tabs/FirstPage";
 import { OtherPage } from "./Tabs/OtherPage";
-import { FilterCriteriaChecks, IChecksService } from "@checkTracking/helpers";
+import { IChecksService } from "@checkTracking/helpers";
 import { DialogConfirmation } from "../Dialogs/DialogConfirmation";
+import { FilterFirstPageTreatment } from "@checkTracking/helpers/src/api/types/domain";
 
 export const Treatment = ({
   services,
   initialFilterValues,
 }: {
   services: IChecksService;
-  initialFilterValues: FilterCriteriaChecks;
+  initialFilterValues: FilterFirstPageTreatment;
 }) => {
   const intl = useIntl();
   const [selectedTab, setSelectedTab] = useState(0);

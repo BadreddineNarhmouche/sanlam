@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import {
   FilterByAllChecks,
   FilterCriteriaChecks,
+  FilterFirstPageTreatment,
   IChecksService,
 } from "@checkTracking/helpers";
 import { Treatment } from "@checkTracking/shared";
@@ -24,11 +25,10 @@ const TreatmentPage = () => {
       dispatch(getAllChecks(criteria)),
   };
 
-  const filterValues: FilterCriteriaChecks = {
+  const filterValues: FilterFirstPageTreatment = {
     reference: "",
-    policyReference: "",
-    primeNetMin: "",
-    primeNetMax: "",
+    sin: "",
+    lot: "",
   };
 
   return (

@@ -53,6 +53,7 @@ import ToolbarComponent from './Toolbar/Toolbar';
 import TooltipComponent from './Tooltip/Tooltip';
 import TypographyComponent from './Typography/Typography';
 import FilesList from './FilesList/FilesList';
+import SnackbarComponent from './Snackbar/Snackbar';
 
 export {
   AccordionComponent as Accordion,
@@ -110,4 +111,5 @@ export {
   ToolbarComponent as Toolbar,
   TooltipComponent as Tooltip,
   TypographyComponent as Typography,
+  SnackbarComponent as Snackbar
 };
