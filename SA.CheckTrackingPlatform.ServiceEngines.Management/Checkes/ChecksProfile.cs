@@ -21,7 +21,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes
                 .ForMember(destination => destination.BankName, option => option.MapFrom(source => source.Bank.Label))
                 .ForMember(destination => destination.BranchName, option => option.MapFrom(source => source.Branch.Label))
                 .ReverseMap();
-                
+
             CreateMap<Checks, GetAllByCriteriaItem>()
                 .ForMember(destination => destination.ServiceName, option => option.MapFrom(source => source.Service.Label))
                 .ReverseMap();
@@ -29,9 +29,9 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes
             CreateMap<Checks, GetAllItem>()
               .ForMember(destination => destination.ServiceName, option => option.MapFrom(source => source.Service.Label))
               .ReverseMap();
-        
-   
-            #endregion Constructors
+
+
         }
+        #endregion Constructors
     }
 }
