@@ -7,7 +7,7 @@ import { Checks, KPIs } from "@checkTracking/shared";
 import { Grid } from "@checkTracking/ui-kit";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getAllChecks } from "../../store/Checks/getAllChecksSlice";
+import { getAllChecksByCriteria } from "../../store/Checks/getAllChecksByCriteriaSlice";
 import { PAGES } from "../../config/navigation";
 import { AllStatus } from "../../store/Status/StatusAllSlice";
 
@@ -16,7 +16,7 @@ const HomePage = () => {
 
   const CheckServices: IChecksService = {
     getAllChecksByCriteria: (criteria: FilterCriteriaChecks) =>
-      dispatch(getAllChecks(criteria)),
+      dispatch(getAllChecksByCriteria(criteria)),
   };
 
   const StatusServices: IStatusService = {

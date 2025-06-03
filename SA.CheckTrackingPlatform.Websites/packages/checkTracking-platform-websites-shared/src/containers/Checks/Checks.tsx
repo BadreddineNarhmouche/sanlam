@@ -71,11 +71,11 @@ export const Checks = ({
   };
 
   const {
-    responseData: getAllChecks,
+    responseData: getAllChecksByCriteria,
     meta: checksMeta,
     isLoading: isLoadingChecksData,
     error: errorChecksData,
-  } = useSelector((state: any) => state.getAllChecks);
+  } = useSelector((state: any) => state.getAllChecksByCriteria);
 
   const {
     responseData: AllStatus,
@@ -129,8 +129,8 @@ export const Checks = ({
   };
 
   useEffect(() => {
-    setChecksData(getAllChecks);
-  }, [getAllChecks]);
+    setChecksData(getAllChecksByCriteria);
+  }, [getAllChecksByCriteria]);
 
   useEffect(() => {
     setStatusData(AllStatus);

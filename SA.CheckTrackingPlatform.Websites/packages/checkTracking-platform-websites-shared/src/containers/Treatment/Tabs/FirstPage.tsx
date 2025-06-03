@@ -1,4 +1,4 @@
-import { Button, Grid, Table, TextField, Theme } from "@checkTracking/ui-kit";
+import { Alert, Button, Grid, Table } from "@checkTracking/ui-kit";
 import FormSearch from "../FormSearch/FormSearch";
 import {
   FIRST_PAGE_CHECK_FORM_SEARCH_FIELDS,
@@ -6,24 +6,37 @@ import {
   FIRST_PAGE_CHECK_TABLE_HIDDEN_COLUMNS_DEFAULT,
 } from "../constants";
 import { useEffect, useRef, useState } from "react";
+import { IChecksService } from "@checkTracking/helpers";
+import { useSelector } from "react-redux";
+import { DialogConfirmation } from "../../Dialogs/DialogConfirmation";
 
 export const FirstPage = ({
+  services,
   initialFilterValues,
 }: {
+  services: IChecksService;
   initialFilterValues?: any;
 }) => {
   const inputElement = useRef<HTMLInputElement>(null);
   const [displayInput, setDisplayInput] = useState(false);
   const [select, setSelect] = useState("policyReference");
   const [data, setData] = useState<any[]>([]);
+  const [firstData, setFirstData] = useState<any[]>([]);
   const [filterValues, setFilterValues] = useState<any>(initialFilterValues);
+  const [openConfiramtionDialog, setOpenConfiramtionDialog] = useState(false);
 
-  function handleClick() {
-    const currentValue = inputElement.current?.value?.trim();
-    if (currentValue && currentValue.length > 1) {
-      setData((prev) => [...prev, { policyReference: currentValue }]);
-      inputElement.current.value = "";
-      inputElement.current.focus();
+  const {
+    responseData: getAllChecks,
+    isLoading: isLoadingStatusData,
+    error: errorStatusData,
+  } = useSelector((state: any) => state.getAllChecks);
+
+  const handleSubmit = (value: any) => {
+    setSelect("");
+    if (value.policyReference != null) {
+      setSelect("policyReference");
+    } else if (value.reference != null) {
+      setSelect("reference");
     }
   }
 
@@ -37,20 +50,38 @@ export const FirstPage = ({
 
     setSelect(key);
     handleResetFilter();
-    setData((cur) => [...cur, value]);
-  };
-
-  const handleQuickAdd = (value: string) => {
-    if (value && value.trim().length > 1) {
-      setData((prev) => [...prev, { [select]: value.trim() }]);
+    let dataOp = firstData.find((c) => c.checkNumber === value.policyReference);
+    if (
+      dataOp != null &&
+      data.find((c) => c.checkNumber === value.policyReference) == null
+    )
+      setData((cur) => [...cur, dataOp]);
+    else {
+      console.log("first");
+      return <Alert severity={"info"} />;
     }
   };
+
+  useEffect(() => {
+    setFirstData(getAllChecks);
+  }, [getAllChecks]);
 
   const handleResetFilter = () => {
     setFilterValues(initialFilterValues);
   };
 
-  useEffect(() => {}, []);
+  function handleClick() {
+    setOpenConfiramtionDialog(true);
+  }
+
+  useEffect(() => {
+    let obj = {
+      status: "REM",
+    };
+    services.getAllChecks && services.getAllChecks(obj);
+  }, []);
+
+  const handleSubmitModal = () => {};
 
   function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key === "Enter") {
@@ -94,7 +125,7 @@ export const FirstPage = ({
             type="submit"
             variant="contained"
           >
-            {!displayInput ? "Start" : "Valider"}
+            Valider
           </Button>
         </Grid>
       </Grid>
@@ -106,6 +137,14 @@ export const FirstPage = ({
           hiddenColumns={FIRST_PAGE_CHECK_TABLE_HIDDEN_COLUMNS_DEFAULT}
         />
       </Grid>
+      <DialogConfirmation
+        openConfiramtionDialog={openConfiramtionDialog}
+        setOpenConfiramtionDialog={setOpenConfiramtionDialog}
+        handleSubmit={handleSubmitModal}
+        isLoading={false}
+        error={false}
+        responseData={[]}
+      />
     </>
   );
 };

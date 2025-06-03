@@ -1,5 +1,6 @@
 import { RotateDirection } from "@react-pdf-viewer/core";
 import {
+  FilterByAllChecks,
   FilterCriteriaChecks,
   type FilterCriteriaNotifications,
   type Notification,
@@ -17,7 +18,7 @@ export interface INotificationService {
 
 export interface IChecksService {
   getAllChecksByCriteria?: (criteria: FilterCriteriaChecks) => void;
-  getCheckById?: (Id : string) => void;
+  getAllChecks?: (criteria: FilterByAllChecks) => void;
 }
 
 export interface IDetailsChecksService {
