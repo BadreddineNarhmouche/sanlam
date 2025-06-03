@@ -103,6 +103,12 @@ export interface FilterByAllChecks {
   status?: string;
 }
 
+export interface FilterFirstPageTreatment {
+  reference?: string;
+  sin?: string;
+  lot?: string;
+}
+
 export interface Check {
   id: string;
   amount?: number;

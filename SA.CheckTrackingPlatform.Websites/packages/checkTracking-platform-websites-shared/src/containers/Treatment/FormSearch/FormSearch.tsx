@@ -35,17 +35,20 @@ const Form = (props: any) => {
     isLoading,
     titleForm,
     keyInput,
-    handleQuickAdd,
+    callResetFilter,
+    resetFilterDone,
   } = props;
 
   useEffect(() => {
     resetedValues && setValues(resetedValues);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [resetedValues]);
 
   const intl = useIntl();
 
   const inputRefs = useRef<{ [key: string]: HTMLInputElement | null }>({});
 
+  // Then in useEffect:
   useEffect(() => {
     if (inputRefs.current[keyInput]) {
       inputRefs.current[keyInput]?.focus();
@@ -54,6 +57,13 @@ const Form = (props: any) => {
       return;
     }
   }, [keyInput]);
+
+  useEffect(() => {
+    if (callResetFilter === true) {
+      clickReset();
+      props.resetFilterDone();
+    }
+  }, [callResetFilter]);
 
   const renderTextField = (fieldId: string, fieldLabel: string) => (
     <TextField
@@ -177,6 +187,11 @@ const Form = (props: any) => {
     }
   };
 
+  const clickReset = () => {
+    handleReset();
+    props.handleResetFilter();
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <Grid container columnSpacing={2} mb={2} pl={2}>
@@ -211,11 +226,11 @@ const Form = (props: any) => {
                 py={2.1}
                 fullWidth
                 variant="outlined"
-                onClick={() => {
-                  handleReset();
-                  props.handleResetFilter();
-                }}
-                custombackgroundcolor={Theme.theme.palette.background}
+                onClick={() => clickReset()}
+                custombackgroundcolor={
+                  // @ts-ignore
+                  Theme.theme.palette.base.main
+                }
                 disabled={!dirty || isSubmitting || isLoading}
               >
                 <FormattedMessage id="action.reset" />
@@ -236,14 +251,18 @@ const Form = (props: any) => {
   );
 };
 
-const EnhancedForm = withFormik<FormProps, FormValues>({
+const FormSearch = withFormik<FormProps, FormValues>({
   mapPropsToValues: ({ initialValues }: any) =>
+    /* eslint-disable */
     Object.keys(initialValues).reduce(
       (obj: any, key: string) => ((obj[key] = initialValues[key] || ""), obj),
       {}
     ),
+  /* eslint-enable */
   validate: (values: any, props: any) => {
-    const schema = validationsScheme({ ...props });
+    const schema = validationsScheme({
+      ...props,
+    });
     try {
       validateYupSchema<any>(values, schema, true);
     } catch (err) {
@@ -251,12 +270,13 @@ const EnhancedForm = withFormik<FormProps, FormValues>({
     }
     return {};
   },
+
   handleSubmit: (values: any, { setSubmitting, props }: any) => {
     setTimeout(() => {
       props.handleSubmit(values);
       setSubmitting(false);
     }, 1000);
   },
-})((props) => <Form {...props} />);
+})(Form);
 
-export default injectIntl(EnhancedForm);
+export default injectIntl(FormSearch);

@@ -1,4 +1,11 @@
-import { Alert, Button, Grid, Table } from "@checkTracking/ui-kit";
+import {
+  Alert,
+  Button,
+  Grid,
+  Icons,
+  Snackbar,
+  Table,
+} from "@checkTracking/ui-kit";
 import FormSearch from "../FormSearch/FormSearch";
 import {
   FIRST_PAGE_CHECK_FORM_SEARCH_FIELDS,
@@ -6,24 +13,28 @@ import {
   FIRST_PAGE_CHECK_TABLE_HIDDEN_COLUMNS_DEFAULT,
 } from "../constants";
 import { useEffect, useRef, useState } from "react";
-import { IChecksService } from "@checkTracking/helpers";
+import {
+  FilterFirstPageTreatment,
+  IChecksService,
+} from "@checkTracking/helpers";
 import { useSelector } from "react-redux";
 import { DialogConfirmation } from "../../Dialogs/DialogConfirmation";
+import { useIntl } from "react-intl";
 
 export const FirstPage = ({
   services,
   initialFilterValues,
 }: {
   services: IChecksService;
-  initialFilterValues?: any;
+  initialFilterValues: FilterFirstPageTreatment;
 }) => {
-  const inputElement = useRef<HTMLInputElement>(null);
-  const [displayInput, setDisplayInput] = useState(false);
-  const [select, setSelect] = useState("policyReference");
+  const intl = useIntl();
+  const [select, setSelect] = useState("reference");
   const [data, setData] = useState<any[]>([]);
   const [firstData, setFirstData] = useState<any[]>([]);
-  const [filterValues, setFilterValues] = useState<any>(initialFilterValues);
   const [openConfiramtionDialog, setOpenConfiramtionDialog] = useState(false);
+  const [callReset, setCallReset] = useState(false);
+  const [displayAlert, setDisplayAlert] = useState(false);
 
   const {
     responseData: getAllChecks,
@@ -31,27 +42,20 @@ export const FirstPage = ({
     error: errorStatusData,
   } = useSelector((state: any) => state.getAllChecks);
 
-  
-
   const handleSubmit = (value: any) => {
-    let key = "";
-    if (value.policyReference != null) {
-      key = "policyReference";
-    } else if (value.reference != null) {
-      key = "reference";
+    setSelect("");
+    if (value.reference != null) {
+      setSelect("reference");
     }
-
-    setSelect(key);
-    handleResetFilter();
-    let dataOp = firstData.find((c) => c.checkNumber === value.policyReference);
+    let dataOp = firstData.find((c) => c.checkNumber === value.reference);
     if (
       dataOp != null &&
-      data.find((c) => c.checkNumber === value.policyReference) == null
-    )
+      data.find((c) => c.checkNumber === value.reference) == null
+    ) {
       setData((cur) => [...cur, dataOp]);
-    else {
-      console.log("first");
-      return <Alert severity={"info"} />;
+      setCallReset(true);
+    } else {
+      setDisplayAlert(false);
     }
   };
 
@@ -59,9 +63,7 @@ export const FirstPage = ({
     setFirstData(getAllChecks);
   }, [getAllChecks]);
 
-  const handleResetFilter = () => {
-    setFilterValues(initialFilterValues);
-  };
+  const handleResetFilter = () => {};
 
   function handleClick() {
     setOpenConfiramtionDialog(true);
@@ -74,31 +76,26 @@ export const FirstPage = ({
     services.getAllChecks && services.getAllChecks(obj);
   }, []);
 
-  const handleSubmitModal = () => {};
+  const resetFilterDone = () => {
+    setCallReset(false);
+  };
 
-  function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      const currentValue = inputElement.current?.value?.trim();
-      if (currentValue && currentValue.length > 1) {
-        setData((prev) => [...prev, { policyReference: currentValue }]);
-      }
-    }
-  }
+  const handleSubmitModal = () => {};
 
   return (
     <>
       <FormSearch
-        resetedValues={filterValues}
-        handleSubmit={handleSubmit}
+        resetedValues={initialFilterValues}
+        handleSubmit={(values: any) => handleSubmit(values)}
         handleResetFilter={handleResetFilter}
+        callResetFilter={callReset}
         initialValues={initialFilterValues}
         fieldsToDisplay={FIRST_PAGE_CHECK_FORM_SEARCH_FIELDS([])}
         URLcheckStatusDescriptionID={1}
         isLoading={false}
         keyInput={select}
+        resetFilterDone={resetFilterDone}
       />
-
       <Grid
         container
         justifyContent="space-between"
@@ -115,7 +112,7 @@ export const FirstPage = ({
             type="submit"
             variant="contained"
           >
-            Valider
+            {intl.formatMessage({ id: "button.validate" })}
           </Button>
         </Grid>
       </Grid>
@@ -134,6 +131,12 @@ export const FirstPage = ({
         isLoading={false}
         error={false}
         responseData={[]}
+      />
+      <Snackbar
+        open={displayAlert}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        severity={"error"}
+        message={"This is a success Alert inside a Snackbar!"}
       />
     </>
   );
