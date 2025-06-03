@@ -16,11 +16,11 @@ const TreatmentPage = () => {
   };
 
   return (
-  <Grid container>
+    <Grid container>
       <Treatment
-      //  services={CheckServices}
-      //  detailsPage={PAGES.TREATMENT_CHECK}
-       initialFilterValues={filterValues}
+        //  services={CheckServices}
+        //  detailsPage={PAGES.TREATMENT_CHECK}
+        initialFilterValues={filterValues}
       />
     </Grid>
   );
