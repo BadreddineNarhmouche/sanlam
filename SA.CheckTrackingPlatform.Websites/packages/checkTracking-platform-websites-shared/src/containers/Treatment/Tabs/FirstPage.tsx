@@ -31,14 +31,7 @@ export const FirstPage = ({
     error: errorStatusData,
   } = useSelector((state: any) => state.getAllChecks);
 
-  const handleSubmit = (value: any) => {
-    setSelect("");
-    if (value.policyReference != null) {
-      setSelect("policyReference");
-    } else if (value.reference != null) {
-      setSelect("reference");
-    }
-  }
+  
 
   const handleSubmit = (value: any) => {
     let key = "";
@@ -89,8 +82,6 @@ export const FirstPage = ({
       const currentValue = inputElement.current?.value?.trim();
       if (currentValue && currentValue.length > 1) {
         setData((prev) => [...prev, { policyReference: currentValue }]);
-        inputElement.current.value = "";
-        inputElement.current.focus();
       }
     }
   }
@@ -106,7 +97,6 @@ export const FirstPage = ({
         URLcheckStatusDescriptionID={1}
         isLoading={false}
         keyInput={select}
-        onQuickAdd={handleQuickAdd}
       />
 
       <Grid

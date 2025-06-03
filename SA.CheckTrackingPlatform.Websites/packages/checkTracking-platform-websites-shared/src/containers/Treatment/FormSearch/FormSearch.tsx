@@ -67,20 +67,6 @@ const Form = (props: any) => {
       inputRef={(el: HTMLInputElement) => {
         inputRefs.current[fieldId] = el;
       }}
-      onKeyDown={(e) => {
-        if (e.key === "Enter") {
-          e.preventDefault();
-          const value = values[fieldId];
-
-          if (value && value.trim().length > 1) {
-            props.onQuickAdd?.(value.trim());
-            setFieldValue(fieldId, "");
-            setTimeout(() => {
-              inputRefs.current[fieldId]?.focus();
-            }, 0);
-          }
-        }
-      }}
     />
   );
 
@@ -111,7 +97,6 @@ const Form = (props: any) => {
         <TextField
           {...params}
           name={fieldId}
-          onKeyDown={handleKeyDown}
           label={translate(fieldLabel, intl)}
           helperText={touched[fieldId] ? errors[fieldId] : ""}
           error={touched[fieldId] && Boolean(errors[fieldId])}
@@ -230,7 +215,7 @@ const Form = (props: any) => {
                   handleReset();
                   props.handleResetFilter();
                 }}
-                custombackgroundcolor={Theme.theme.palette.base.main}
+                custombackgroundcolor={Theme.theme.palette.background}
                 disabled={!dirty || isSubmitting || isLoading}
               >
                 <FormattedMessage id="action.reset" />
