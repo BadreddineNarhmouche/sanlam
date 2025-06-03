@@ -88,6 +88,7 @@ export const frTranslationMessages = {
     "requests.torenew": "Affaires fac à renouveler",
     "table.result.message": "Résultat de la recherche",
     "workflow.confirm_dialog_message": "Voulez-vous confirmer votre décision {choice} ?",
+    "workflow.confirm_dialog_message_confirm": "Voulez-vous annuler le traitement en cours ?",
     "workflow.confirm_dialog_title": "Confirmation",
     deliverySlip_creation_dialog_message: "Êtes-vous sûr de vouloir confirmer la création de ce bordereau {choice} ?",
     deliverySlip_creation_dialog_title: "Création du bordereau",

@@ -88,6 +88,7 @@ export declare const frTranslationMessages: {
     "requests.torenew": string;
     "table.result.message": string;
     "workflow.confirm_dialog_message": string;
+    "workflow.confirm_dialog_message_confirm": string;
     "workflow.confirm_dialog_title": string;
     deliverySlip_creation_dialog_message: string;
     deliverySlip_creation_dialog_title: string;
