@@ -16,8 +16,6 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes
 
         public ChecksProfile()
         {
-             public ChecksProfile()
-        {
             CreateMap<Checks, GetChecksByIdResponse>()
                 .ForMember(destination => destination.ServiceName, option => option.MapFrom(source => source.Service.Label))
                 .ForMember(destination => destination.BankName, option => option.MapFrom(source => source.Bank.Label))
@@ -31,18 +29,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes
             CreateMap<Checks, GetAllItem>()
               .ForMember(destination => destination.ServiceName, option => option.MapFrom(source => source.Service.Label))
               .ReverseMap();
-        }
-
-            CreateMap<Status, StatusItems>()
-                .ForMember(dest => dest.id, opt => opt.MapFrom(src => src.Id))
-                .ForMember(dest => dest.Label, opt => opt.MapFrom(src => src.Label))
-                .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
-                .ReverseMap();
-
-            CreateMap<InternalUser, InternalUserItems>()
-                 .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FirstName))
-                 .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.LastName))
-                 .ReverseMap();
+        
    
             #endregion Constructors
         }
