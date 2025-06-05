@@ -5,21 +5,21 @@ import { filterData } from "@checkTracking/helpers";
 // *******************************************
 
 const FIELD_CODE_LOT = {
-  fieldId: "lot",
+  fieldId: "lotNumber",
   type: "text",
   label: "check.search.lot",
   gridOccupancy: 2,
 };
 
 const FIELD_CODE_SIN = {
-  fieldId: "sin",
+  fieldId: "sinisterNumber",
   type: "text",
   label: "check.search.sin",
   gridOccupancy: 2,
 };
 
 const FIELD_POLICY_REFERENCE = {
-  fieldId: "reference",
+  fieldId: "checkNumber",
   type: "text",
   label: "check.search.checkNumber",
   gridOccupancy: 2,
@@ -41,7 +41,7 @@ export const FIRST_PAGE_CHECK_TABLE_COLUMNS_DEFAULT = [
   { title: "Bénéficiaire" },
   { title: "Numéro de chèque" },
   { title: "Montant" },
-  { title: "Service" },
+  { title: "Numéro de Sinester" },
   { title: "Numéro de lot" },
 ];
 
