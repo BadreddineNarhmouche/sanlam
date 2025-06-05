@@ -1,18 +1,11 @@
-import {
-  Alert,
-  Button,
-  Grid,
-  Icons,
-  Snackbar,
-  Table,
-} from "@checkTracking/ui-kit";
+import { Button, Grid, Snackbar, Table } from "@checkTracking/ui-kit";
 import FormSearch from "../FormSearch/FormSearch";
 import {
   FIRST_PAGE_CHECK_FORM_SEARCH_FIELDS,
   FIRST_PAGE_CHECK_TABLE_COLUMNS_DEFAULT,
   FIRST_PAGE_CHECK_TABLE_HIDDEN_COLUMNS_DEFAULT,
 } from "../constants";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   FilterFirstPageTreatment,
   IChecksService,
@@ -29,41 +22,47 @@ export const FirstPage = ({
   initialFilterValues: FilterFirstPageTreatment;
 }) => {
   const intl = useIntl();
-  const [select, setSelect] = useState("reference");
+  const [select, setSelect] = useState("checkNumber");
   const [data, setData] = useState<any[]>([]);
   const [firstData, setFirstData] = useState<any[]>([]);
   const [openConfiramtionDialog, setOpenConfiramtionDialog] = useState(false);
   const [callReset, setCallReset] = useState(false);
   const [displayAlert, setDisplayAlert] = useState(false);
 
-  const {
-    responseData: getAllChecks,
-    isLoading: isLoadingStatusData,
-    error: errorStatusData,
-  } = useSelector((state: any) => state.getAllChecks);
+  const { responseData: getAllChecks } = useSelector(
+    (state: any) => state.getAllChecks
+  );
 
-  const handleSubmit = (value: any) => {
+  const handleSubmit = (value: any, keyof: string) => {
     setSelect("");
-    if (value.reference != null) {
-      setSelect("reference");
+    if (value?.checkNumber != null) {
+      setSelect("checkNumber");
     }
-    let dataOp = firstData.find((c) => c.checkNumber === value.reference);
+    const results = findInArray(firstData, "checkNumber", value?.checkNumber);
+
     if (
-      dataOp != null &&
-      data.find((c) => c.checkNumber === value.reference) == null
+      results.length > 0 &&
+      data.find((c) => results.find((d) => c.checkNumber === d.checkNumber)) ===
+        undefined
     ) {
-      setData((cur) => [...cur, dataOp]);
+      setData((cur) => [...cur, ...results]);
       setCallReset(true);
     } else {
-      setDisplayAlert(false);
+      setDisplayAlert(true);
     }
   };
+
+  function findInArray<T>(array: T[], property: keyof T, value: any): T[] {
+    return array.filter((item) => item[property] === value);
+  }
 
   useEffect(() => {
     setFirstData(getAllChecks);
   }, [getAllChecks]);
 
-  const handleResetFilter = () => {};
+  const handleResetFilter = () => {
+    setData([]);
+  };
 
   function handleClick() {
     setOpenConfiramtionDialog(true);
@@ -82,11 +81,17 @@ export const FirstPage = ({
 
   const handleSubmitModal = () => {};
 
+  const handleClose = () => {
+    setDisplayAlert(false);
+  };
+
   return (
     <>
       <FormSearch
         resetedValues={initialFilterValues}
-        handleSubmit={(values: any) => handleSubmit(values)}
+        handleSubmit={(values: any, keyof: string) =>
+          handleSubmit(values, keyof)
+        }
         handleResetFilter={handleResetFilter}
         callResetFilter={callReset}
         initialValues={initialFilterValues}
@@ -135,8 +140,9 @@ export const FirstPage = ({
       <Snackbar
         open={displayAlert}
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
-        severity={"error"}
+        severity={"warning"}
         message={"This is a success Alert inside a Snackbar!"}
+        handleClose={() => handleClose()}
       />
     </>
   );

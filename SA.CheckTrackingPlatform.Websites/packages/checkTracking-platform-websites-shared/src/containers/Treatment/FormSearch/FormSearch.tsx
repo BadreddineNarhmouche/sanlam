@@ -60,7 +60,7 @@ const Form = (props: any) => {
 
   useEffect(() => {
     if (callResetFilter === true) {
-      clickReset();
+      handleReset();
       props.resetFilterDone();
     }
   }, [callResetFilter]);
@@ -187,11 +187,6 @@ const Form = (props: any) => {
     }
   };
 
-  const clickReset = () => {
-    handleReset();
-    props.handleResetFilter();
-  };
-
   return (
     <form onSubmit={handleSubmit}>
       <Grid container columnSpacing={2} mb={2} pl={2}>
@@ -226,7 +221,10 @@ const Form = (props: any) => {
                 py={2.1}
                 fullWidth
                 variant="outlined"
-                onClick={() => clickReset()}
+                onClick={() => {
+                  handleReset();
+                  props.handleResetFilter();
+                }}
                 custombackgroundcolor={
                   // @ts-ignore
                   Theme.theme.palette.base.main
@@ -273,7 +271,7 @@ const FormSearch = withFormik<FormProps, FormValues>({
 
   handleSubmit: (values: any, { setSubmitting, props }: any) => {
     setTimeout(() => {
-      props.handleSubmit(values);
+      props.handleSubmit(values, "");
       setSubmitting(false);
     }, 1000);
   },

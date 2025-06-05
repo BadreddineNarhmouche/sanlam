@@ -12,3 +12,16 @@ export const mapChecksList = (checks: any): Check[] => {
       }))
     : [];
 };
+
+export const mapAllChecksList = (checks: any): Check[] => {
+  return checks
+    ? checks?.map((check: any) => ({
+        id: check.id,
+        beneficiaryName: check.beneficiaryName,
+        checkNumber: check.checkNumber,
+        amount: check.amount,
+        sinisterNumber: check.sinisterNumber,
+        lotNumber: check.lotNumber,
+      }))
+    : [];
+};

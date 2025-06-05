@@ -17,7 +17,7 @@ interface Field {
 export interface FormProps {
   intl: IntlShape;
   initialValues: Object;
-  handleSubmit: (values: any) => any;
+  handleSubmit: (values: any, keyof: string) => any;
   handleResetFilter: () => any;
   resetedValues?: FilterFirstPageTreatment;
   URLcheckStatusDescriptionID?: number;

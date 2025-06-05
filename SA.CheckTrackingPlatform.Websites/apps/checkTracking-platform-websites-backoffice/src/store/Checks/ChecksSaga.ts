@@ -5,7 +5,7 @@ import {
   apiCallGetAllChecksByCriteriaSuccess,
   getAllChecksByCriteria,
 } from "./getAllChecksByCriteriaSlice";
-import { mapChecksList } from "./mapper";
+import { mapAllChecksList, mapChecksList } from "./mapper";
 import {
   apiCallGetAllChecksFailure,
   apiCallGetAllChecksSuccess,
@@ -31,7 +31,7 @@ function* getAllCheck({ payload }: { payload: any }): any {
     baseApiPath,
     dispatchSuccess: apiCallGetAllChecksSuccess,
     dispatchFailure: apiCallGetAllChecksFailure,
-    mapper: mapChecksList,
+    mapper: mapAllChecksList,
   });
 }
 
