@@ -26,7 +26,7 @@ export default function HorizontalTimeline({ data }: { data: any }) {
             "dd/MM/yyyy HH:mm"
           );
           const color = dotColors[index % dotColors.length];
-          const label = check.statusItems.label;
+          const label = check.statusItems.code;
 
           return (
             <TimelineItem

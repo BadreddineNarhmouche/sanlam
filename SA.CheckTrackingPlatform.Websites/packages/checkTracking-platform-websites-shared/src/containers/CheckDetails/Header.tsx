@@ -15,7 +15,7 @@ interface HeaderProps {
   timelines?: Array<{
     date: string;
     statusItems: {
-      label: string;
+      code: string;
     };
   }>;
 }
@@ -29,7 +29,7 @@ export const Header: React.FC<HeaderProps> = ({ checkNumber, timelines }) => {
           .sort(
             (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
           )
-          .at(-1)?.statusItems.label
+          .at(-1)?.statusItems.code
       : undefined;
 
   return (

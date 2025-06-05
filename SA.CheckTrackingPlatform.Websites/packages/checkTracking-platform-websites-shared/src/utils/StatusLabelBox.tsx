@@ -5,27 +5,28 @@ const timelineLabelStyles: Record<
   string,
   { color: string; borderColor: string; background: string }
 > = {
-  Retour: {
+  REM: {
+    // Status.Retour //
     color: "#ffffff",
     borderColor: colors.TimelineBorderRetour,
     background: colors.TimelineBackGroundRetour,
   },
-  Envoie: {
+  EB: {
     color: "#ffffff",
     borderColor: colors.TimelineBorderEnvoie,
     background: colors.TimelineBackGroundEnvoie,
   },
-  Validation: {
+  RB: {
     color: "#ffffff",
     borderColor: colors.TimelineBorderValidation,
     background: colors.TimelineBackGroundValidation,
   },
-  EnCours: {
+  EC: {
     color: "#ffffff",
     borderColor: colors.TimelineBorderValidation,
     background: colors.TimelineBackGroundValidation,
   },
-  RECU: {
+  RC: {
     color: "#ffffff",
     borderColor: colors.TimelineBorderValidationForRecu,
     background: colors.TimelineBackGroundValidation,
