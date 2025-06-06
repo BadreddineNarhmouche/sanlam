@@ -37,18 +37,19 @@ $successLight: #edfdeb;
 
 // TimelineStyles 
 // colors.scss
+
+// REM
 $colorRetour:  #edfdeb;
 $borderColorRetour: #e53935;
 $backgroundRetour: #d90909;
 
-// colorsforEnvoie
-
+// EB
 $colorEnvoie:#ffffff;
 $borderColorEnvoie: #20c628;
 $backgroundEnvoie: #18c627;
 
 
-// colorsforValidation 
+// RB
 $colorValidation: #ffffff;
 $borderColorValidation: #166fbc;
 $backgroundValidation: #0f87d7;
@@ -65,6 +66,21 @@ $colorforRecu: #ffffff;
 $borderColorforRecu: #8e24aa;
 $backgroundforRecu:  #c76fe0;
 
+// color for RM 
+$colorforRM: #ffffff;
+$borderColorForRM:#55c067;
+$backgroundforRM: #55c067;
+
+// color for RCR 
+$colorforRCR: #ffffff;
+$borderColorForRCR: #ebeb20;
+$backgroundforRCR: #f28500;
+
+
+// ColorForRm
+$colorforRecu: #ffffff;
+$borderColorforRM: #006086;
+$backgroundforRM:  #006086;
 
 // ==============================|| JAVASCRIPT ||============================== //
 
@@ -125,6 +141,6 @@ $backgroundforRecu:  #c76fe0;
   // colorsforRECU
 
    TimelineForRecu: $colorforRecu;
-   TimelineBorderValidationForRecu: $borderColorforRecu;
-   TimelineBackGroundValidation: $backgroundforRecu;
+   TimelineBorderForRM: $borderColorforRM;
+   TimelineBackGroundRM: $backgroundforRM;
 }

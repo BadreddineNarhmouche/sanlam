@@ -26,8 +26,8 @@ export default function HorizontalTimeline({ data }: { data: any }) {
             "dd/MM/yyyy HH:mm"
           );
           const color = dotColors[index % dotColors.length];
-          const label = check.statusItems.code;
-
+          const label = check.statusItems.label;
+          const code = check.statusItems.code;
           return (
             <TimelineItem
               key={index}
@@ -55,7 +55,7 @@ export default function HorizontalTimeline({ data }: { data: any }) {
                   {check.internalUserItem.lastName}
                 </Typography>
 
-                <StatusLabelBox label={label} />
+                <StatusLabelBox code={code} label={label} />
               </TimelineContent>
             </TimelineItem>
           );

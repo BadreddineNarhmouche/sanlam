@@ -16,6 +16,7 @@ interface HeaderProps {
     date: string;
     statusItems: {
       code: string;
+      label: string;
     };
   }>;
 }
@@ -23,13 +24,13 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ checkNumber, timelines }) => {
   const navigate = useNavigate();
 
-  const lastStatusLabel =
+  const lastStatusItem =
     timelines && timelines.length > 0
       ? [...timelines]
           .sort(
             (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
           )
-          .at(-1)?.statusItems.code
+          .at(-1)?.statusItems
       : undefined;
 
   return (
@@ -49,8 +50,12 @@ export const Header: React.FC<HeaderProps> = ({ checkNumber, timelines }) => {
             Chèque N°{checkNumber}
           </Typography>
 
-          {lastStatusLabel && (
-            <StatusLabelBox label={lastStatusLabel} sx={{ ml: "50px" }} />
+          {lastStatusItem && (
+            <StatusLabelBox
+              code={lastStatusItem.code}
+              label={lastStatusItem.label}
+              sx={{ ml: "50px" }}
+            />
           )}
         </Box>
       </Toolbar>

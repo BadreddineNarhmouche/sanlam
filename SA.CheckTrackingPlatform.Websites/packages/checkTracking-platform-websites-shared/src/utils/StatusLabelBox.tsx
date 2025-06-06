@@ -1,4 +1,4 @@
-import { Box, Chip } from "@checkTracking/ui-kit";
+import { Box } from "@checkTracking/ui-kit";
 import colors from "../../../ui-kit/src/styles/_themes-vars.module.scss";
 
 const timelineLabelStyles: Record<
@@ -6,7 +6,6 @@ const timelineLabelStyles: Record<
   { color: string; borderColor: string; background: string }
 > = {
   REM: {
-    // Status.Retour //
     color: "#ffffff",
     borderColor: colors.TimelineBorderRetour,
     background: colors.TimelineBackGroundRetour,
@@ -31,16 +30,28 @@ const timelineLabelStyles: Record<
     borderColor: colors.TimelineBorderValidationForRecu,
     background: colors.TimelineBackGroundValidation,
   },
+  RM: {
+    color: "#ffffff",
+    borderColor: colors.TimelineBorderForRM,
+    background: colors.TimelineBackGroundRM,
+  },
+  RCR: {
+    color: "#ffffff",
+    borderColor: colors.TimelineBorderForRM,
+    background: colors.TimelineBackGroundRM,
+  },
 };
 
 export const StatusLabelBox = ({
+  code,
   label,
   sx,
 }: {
-  label: string;
+  code: string; // <- utilisé pour récupérer le style
+  label: string; // <- texte affiché à l'écran
   sx?: object;
 }) => {
-  const style = timelineLabelStyles[label] || {
+  const style = timelineLabelStyles[code] || {
     color: "#444",
     borderColor: "#ccc",
     background: "transparent",
