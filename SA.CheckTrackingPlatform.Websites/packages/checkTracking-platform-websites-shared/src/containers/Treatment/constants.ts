@@ -41,10 +41,8 @@ export const FIRST_PAGE_CHECK_TABLE_COLUMNS_DEFAULT = [
   { title: "Bénéficiaire" },
   { title: "Numéro de chèque" },
   { title: "Montant" },
-  { title: "Numéro de Sinester" },
+  { title: "Numéro de Sinistre" },
   { title: "Numéro de lot" },
 ];
 
-export const FIRST_PAGE_CHECK_TABLE_HIDDEN_COLUMNS_DEFAULT = [
-  "id",
-];;
+export const FIRST_PAGE_CHECK_TABLE_HIDDEN_COLUMNS_DEFAULT = ["id"];

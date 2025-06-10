@@ -2,7 +2,12 @@ import { Grid, TabPanels, Tabs } from "@checkTracking/ui-kit";
 import { useState } from "react";
 import { useIntl } from "react-intl";
 import { FirstPage } from "./Tabs/FirstPage";
-import { OtherPage } from "./Tabs/OtherPage";
+import { SecondPage } from "./Tabs/SecondPage";
+import { ThirdPage } from "./Tabs/ThirdPage";
+import { FourthPage } from "./Tabs/FourthPage";
+import { FifthPage } from "./Tabs/FifthPage";
+import { SixthPage } from "./Tabs/SixthPage";
+import { SeventhPage } from "./Tabs/SeventhPage";
 import { IChecksService } from "@checkTracking/helpers";
 import { DialogConfirmation } from "../Dialogs/DialogConfirmation";
 import { FilterFirstPageTreatment } from "@checkTracking/helpers/src/api/types/domain";
@@ -42,7 +47,52 @@ export const Treatment = ({
       ),
     },
     {
-      component: <OtherPage />,
+      component: (
+        <SecondPage
+          services={services}
+          initialFilterValues={initialFilterValues}
+        />
+      ),
+    },
+    {
+      component: (
+        <ThirdPage
+          services={services}
+          initialFilterValues={initialFilterValues}
+        />
+      ),
+    },
+    {
+      component: (
+        <FourthPage
+          services={services}
+          initialFilterValues={initialFilterValues}
+        />
+      ),
+    },
+    {
+      component: (
+        <FifthPage
+          services={services}
+          initialFilterValues={initialFilterValues}
+        />
+      ),
+    },
+    {
+      component: (
+        <SixthPage
+          services={services}
+          initialFilterValues={initialFilterValues}
+        />
+      ),
+    },
+    {
+      component: (
+        <SeventhPage
+          services={services}
+          initialFilterValues={initialFilterValues}
+        />
+      ),
     },
   ];
 
