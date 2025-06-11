@@ -2,7 +2,6 @@ import { Grid, TabPanels, Tabs } from "@checkTracking/ui-kit";
 import { useState } from "react";
 import { useIntl } from "react-intl";
 import { FirstPage } from "./Tabs/FirstPage";
-import { OtherPage } from "./Tabs/OtherPage";
 import { IChecksService } from "@checkTracking/helpers";
 import { DialogConfirmation } from "../Dialogs/DialogConfirmation";
 import { FilterFirstPageTreatment } from "@checkTracking/helpers/src/api/types/domain";
@@ -38,11 +37,63 @@ export const Treatment = ({
         <FirstPage
           services={services}
           initialFilterValues={initialFilterValues}
+          status="REM"
         />
       ),
     },
     {
-      component: <OtherPage />,
+      component: (
+        <FirstPage
+          services={services}
+          initialFilterValues={initialFilterValues}
+          status="EB"
+        />
+      ),
+    },
+    {
+      component: (
+        <FirstPage
+          services={services}
+          initialFilterValues={initialFilterValues}
+          status="RB"
+        />
+      ),
+    },
+    {
+      component: (
+        <FirstPage
+          services={services}
+          initialFilterValues={initialFilterValues}
+          status="EC"
+        />
+      ),
+    },
+    {
+      component: (
+        <FirstPage
+          services={services}
+          initialFilterValues={initialFilterValues}
+          status="RC"
+        />
+      ),
+    },
+    {
+      component: (
+        <FirstPage
+          services={services}
+          initialFilterValues={initialFilterValues}
+          status="RM"
+        />
+      ),
+    },
+    {
+      component: (
+        <FirstPage
+          services={services}
+          initialFilterValues={initialFilterValues}
+          status="RCR"
+        />
+      ),
     },
   ];
 

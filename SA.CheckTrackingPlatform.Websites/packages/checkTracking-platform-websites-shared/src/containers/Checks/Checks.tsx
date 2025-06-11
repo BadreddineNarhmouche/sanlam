@@ -50,11 +50,9 @@ export const Checks = ({
   const handleSubmit = (values: FilterCriteriaChecks) => {
     const criteria = {
       ...values,
-      // workFlowStepCode: WORKFLOW_STEP_CODES.SUBSCRIPTIONS,
       policyReference: values.policyReference,
       reference: values.reference,
       checkStatusId: values.checkStatusId,
-      // externalReinsuranceReference: values.externalReinsuranceReference,
       primeNetMin: values.primeNetMin,
       primeNetMax: values.primeNetMax,
     };
@@ -92,7 +90,6 @@ export const Checks = ({
     services.getAllChecksByCriteria &&
       services.getAllChecksByCriteria({
         ...filterValues,
-        // workFlowStepCode: WORKFLOW_STEP_CODES.SUBSCRIPTIONS,
         policyReference: filterValues.policyReference,
         reference: filterValues.reference,
         checkStatusId: filterValues.checkStatusId,
@@ -117,12 +114,9 @@ export const Checks = ({
     services.getAllChecksByCriteria &&
       services.getAllChecksByCriteria({
         ...initialFilterValues,
-        // workFlowStepCode: WORKFLOW_STEP_CODES.SUBSCRIPTIONS,
         policyReference: initialFilterValues.policyReference,
         reference: initialFilterValues.reference,
         checkStatusId: initialFilterValues.checkStatusId,
-        // externalReinsuranceReference:
-        // initialFilterValues.externalReinsuranceReference,
         primeNetMin: initialFilterValues.primeNetMin,
         primeNetMax: initialFilterValues.primeNetMax,
       });

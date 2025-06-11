@@ -26,9 +26,9 @@ const TreatmentPage = () => {
   };
 
   const filterValues: FilterFirstPageTreatment = {
-    reference: "",
-    sin: "",
-    lot: "",
+    lotNumber: "",
+    checkNumber: "",
+    sinisterNumber: "",
   };
 
   return (
