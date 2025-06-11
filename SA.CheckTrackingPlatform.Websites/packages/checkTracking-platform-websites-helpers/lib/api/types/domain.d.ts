@@ -93,9 +93,9 @@ export interface FilterByAllChecks {
     status?: string;
 }
 export interface FilterFirstPageTreatment {
-    reference?: string;
-    sin?: string;
-    lot?: string;
+    checkNumber?: string;
+    sinisterNumber?: string;
+    lotNumber?: string;
 }
 export interface FilterSecondPageTreatment {
     reference?: string;
