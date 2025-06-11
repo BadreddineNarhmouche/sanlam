@@ -3,15 +3,8 @@ using SA.CheckTrackingPlatform.Common.Resources.Messages;
 using SA.CheckTrackingPlatform.Domains.Management.Entities;
 using SA.CheckTrackingPlatform.Domains.Management.Repositories.Commands;
 using SA.CheckTrackingPlatform.Domains.Management.Repositories.Queries;
-using SA.CheckTrackingPlatform.ServiceEngines.Management.Mapper;
-using SA.CheckTrackingPlatform.ServiceEngines.Management.Timelines.Queries;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Timelines.Responses;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Timelines.Commands
 {
