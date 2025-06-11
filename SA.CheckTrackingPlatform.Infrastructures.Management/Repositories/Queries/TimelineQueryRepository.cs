@@ -51,8 +51,8 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
             if (statusId.HasValue)
                 query = query.Where(c => c.StatusId == statusId.Value);
 
-            if (!string.IsNullOrWhiteSpace(reasonlabel))
-                query = query.Where(c => c.ReasonLabel == reasonlabel);
+            //if (!string.IsNullOrWhiteSpace(reasonlabel))
+            //    query = query.Where(c => c.ReasonLabel == reasonlabel);
 
 
             if (pageIndex.HasValue && pageSize.HasValue)
