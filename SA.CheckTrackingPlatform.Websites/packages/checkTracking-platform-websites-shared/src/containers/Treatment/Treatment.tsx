@@ -2,12 +2,6 @@ import { Grid, TabPanels, Tabs } from "@checkTracking/ui-kit";
 import { useState } from "react";
 import { useIntl } from "react-intl";
 import { FirstPage } from "./Tabs/FirstPage";
-import { SecondPage } from "./Tabs/SecondPage";
-import { ThirdPage } from "./Tabs/ThirdPage";
-import { FourthPage } from "./Tabs/FourthPage";
-import { FifthPage } from "./Tabs/FifthPage";
-import { SixthPage } from "./Tabs/SixthPage";
-import { SeventhPage } from "./Tabs/SeventhPage";
 import { IChecksService } from "@checkTracking/helpers";
 import { DialogConfirmation } from "../Dialogs/DialogConfirmation";
 import { FilterFirstPageTreatment } from "@checkTracking/helpers/src/api/types/domain";
@@ -43,54 +37,61 @@ export const Treatment = ({
         <FirstPage
           services={services}
           initialFilterValues={initialFilterValues}
+          status="REM"
         />
       ),
     },
     {
       component: (
-        <SecondPage
+        <FirstPage
           services={services}
           initialFilterValues={initialFilterValues}
+          status="EB"
         />
       ),
     },
     {
       component: (
-        <ThirdPage
+        <FirstPage
           services={services}
           initialFilterValues={initialFilterValues}
+          status="RB"
         />
       ),
     },
     {
       component: (
-        <FourthPage
+        <FirstPage
           services={services}
           initialFilterValues={initialFilterValues}
+          status="EC"
         />
       ),
     },
     {
       component: (
-        <FifthPage
+        <FirstPage
           services={services}
           initialFilterValues={initialFilterValues}
+          status="RC"
         />
       ),
     },
     {
       component: (
-        <SixthPage
+        <FirstPage
           services={services}
           initialFilterValues={initialFilterValues}
+          status="RM"
         />
       ),
     },
     {
       component: (
-        <SeventhPage
+        <FirstPage
           services={services}
           initialFilterValues={initialFilterValues}
+          status="RCR"
         />
       ),
     },

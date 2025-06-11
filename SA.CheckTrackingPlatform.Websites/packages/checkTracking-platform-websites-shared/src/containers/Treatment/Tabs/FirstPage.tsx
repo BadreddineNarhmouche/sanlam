@@ -13,13 +13,16 @@ import {
 import { useSelector } from "react-redux";
 import { DialogConfirmation } from "../../Dialogs/DialogConfirmation";
 import { useIntl } from "react-intl";
+import { FIELDS_PAGE_TREATMENT } from "../../../constants/global";
 
 export const FirstPage = ({
   services,
   initialFilterValues,
+  status,
 }: {
   services: IChecksService;
   initialFilterValues: FilterFirstPageTreatment;
+  status: string;
 }) => {
   const intl = useIntl();
   const [select, setSelect] = useState("checkNumber");
@@ -38,14 +41,19 @@ export const FirstPage = ({
     if (value?.checkNumber != null) {
       setSelect("checkNumber");
     }
-    const results = findInArray(firstData, "checkNumber", value?.checkNumber);
-
+    const resultsToDisplay: any[] = [];
+    for (let index = 0; index < FIELDS_PAGE_TREATMENT.length; index++) {
+      resultsToDisplay.push(
+        ...findInArray(firstData, FIELDS_PAGE_TREATMENT[index], value)
+      );
+    }
     if (
-      results.length > 0 &&
-      data.find((c) => results.find((d) => c.checkNumber === d.checkNumber)) ===
-        undefined
+      resultsToDisplay.length > 0 &&
+      data.find((c) =>
+        resultsToDisplay.find((d) => c.checkNumber === d.checkNumber)
+      ) === undefined
     ) {
-      setData((cur) => [...cur, ...results]);
+      setData((cur) => [...cur, ...resultsToDisplay]);
       setCallReset(true);
     } else {
       setDisplayAlert(true);
@@ -53,7 +61,7 @@ export const FirstPage = ({
   };
 
   function findInArray<T>(array: T[], property: keyof T, value: any): T[] {
-    return array.filter((item) => item[property] === value);
+    return array.filter((item) => item[property] === value[property]);
   }
 
   useEffect(() => {
@@ -69,10 +77,10 @@ export const FirstPage = ({
   }
 
   useEffect(() => {
-    let obj = {
-      status: "REM",
-    };
-    services.getAllChecks && services.getAllChecks(obj);
+    services.getAllChecks &&
+      services.getAllChecks({
+        status: status,
+      });
   }, []);
 
   const resetFilterDone = () => {
