@@ -1,7 +1,4 @@
-import {
-  DataSliceState,
-  createDataSlice,
-} from "@checkTracking/helpers";
+import { DataSliceState, createDataSlice } from "@checkTracking/helpers";
 
 const initialState: DataSliceState<any> = {
   responseData: [],

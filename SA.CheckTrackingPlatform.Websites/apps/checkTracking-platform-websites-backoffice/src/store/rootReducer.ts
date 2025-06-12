@@ -17,6 +17,9 @@ import GetCheckByIdReducer from "./Checks/getCheckByIdSlice";
 //Status
 import AllStatusReducer from "./Status/StatusAllSlice";
 
+// Timelines
+import TimelineCreateReducer from "./timeline/TimelineCreateSlice";
+
 export const rootReducer = combineReducers({
   notifications: notificationsListReducer,
   notificationsUpdate: notificationsUpdateReducer,
@@ -27,4 +30,5 @@ export const rootReducer = combineReducers({
   getAllChecks: getAllChecksReducer,
   AllStatus: AllStatusReducer,
   getCheckById: GetCheckByIdReducer,
+  TimelineUpdate: TimelineCreateReducer,
 });
