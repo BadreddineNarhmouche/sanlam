@@ -110,7 +110,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Timelines.Commands
                     }
 
                     response.IsSuccess = true;
-                    response.IsPopulated = timelineCreated.Count > 0 ? true : false;
+                    response.IsPopulated = timelineCreated.Count > 0 ? true : false; // vérification de la création
                     response.InformationMessage = InformationMessages.QuerySucceeded;
                 }
                 else
