@@ -4,6 +4,7 @@ using SA.CheckTrackingPlatform.ServiceEngines.Management.BranchFolder;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Timelines;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.StatusFolder;
+using SA.CheckTrackingPlatform.ServiceEngines.Management.ReasonsMoves;
 
 namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Mapper
 {
@@ -26,6 +27,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Mapper
                 mc.AddProfile<StatusProfile>();
                 mc.AddProfile<BanksProfile>();
                 mc.AddProfile<BranchsProfile>();
+                mc.AddProfile<ReasonMoveProfile>();
             });
 
             IMapper iMapper = mapperConfiguration.CreateMapper();
