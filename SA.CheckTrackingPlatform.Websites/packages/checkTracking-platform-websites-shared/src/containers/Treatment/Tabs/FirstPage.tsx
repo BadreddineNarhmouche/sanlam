@@ -5,10 +5,12 @@ import {
   FIRST_PAGE_CHECK_TABLE_COLUMNS_DEFAULT,
   FIRST_PAGE_CHECK_TABLE_HIDDEN_COLUMNS_DEFAULT,
 } from "../constants";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
   FilterFirstPageTreatment,
   IChecksService,
+  IReasonMoveServices,
 } from "@checkTracking/helpers";
 import { useSelector } from "react-redux";
 import { DialogConfirmation } from "../../Dialogs/DialogConfirmation";
@@ -31,6 +33,7 @@ export const FirstPage = ({
   const [openConfiramtionDialog, setOpenConfiramtionDialog] = useState(false);
   const [callReset, setCallReset] = useState(false);
   const [displayAlert, setDisplayAlert] = useState(false);
+  const navigate = useNavigate(); // instancie le hook
 
   const { responseData: getAllChecks } = useSelector(
     (state: any) => state.getAllChecks

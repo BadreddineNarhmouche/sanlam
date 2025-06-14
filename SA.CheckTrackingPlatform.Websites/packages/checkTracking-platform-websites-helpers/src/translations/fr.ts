@@ -92,7 +92,7 @@ export const frTranslationMessages = {
   "workflow.confirm_dialog_message":
     "Voulez-vous confirmer votre décision {choice} ?",
   "workflow.confirm_dialog_message_confirm":
-    "Voulez-vous annuler le traitement en cours ?",
+    "Voulez-vous annuler le traitement en cours et passer vers un autre status  ?",
   "workflow.confirm_dialog_title": "Confirmation",
   deliverySlip_creation_dialog_message:
     "Êtes-vous sûr de vouloir confirmer la création de ce bordereau {choice} ?",

@@ -4,7 +4,8 @@ import internalRolesSaga from "./InternalRoles/internalRolesSaga";
 import ChecksSaga from "./Checks/ChecksSaga";
 import StatusSaga from "./Status/StatusSaga";
 import DetailsChSaga from "./DetailsCh/DetailsChSaga";
-import { watchCreateTimeline } from "./timeline/watchCreateTimeline";
+import ReasonMoveSaga from "./ReasonMove/ReasonMoveSaga";
+import { watchCreateTimeline } from "./timeline/createTimelineSaga";
 
 export const rootSaga = function* sagas() {
   yield all([
@@ -14,5 +15,6 @@ export const rootSaga = function* sagas() {
     StatusSaga(),
     DetailsChSaga(),
     watchCreateTimeline(),
+    ReasonMoveSaga(),
   ]);
 };

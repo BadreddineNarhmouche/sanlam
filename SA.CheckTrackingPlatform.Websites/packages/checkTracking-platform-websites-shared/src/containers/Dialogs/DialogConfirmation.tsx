@@ -104,7 +104,7 @@ export const DialogConfirmation = ({
             )}
             <Typography variant="button">
               <FormattedMessage
-                id={error ? "button.retry" : "button.confirm"}
+              id={error ? "button.retry" : "button.confirm"}
               />
             </Typography>
           </Button>
