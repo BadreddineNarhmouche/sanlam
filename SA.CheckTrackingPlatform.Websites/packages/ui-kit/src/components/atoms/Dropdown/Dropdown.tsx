@@ -14,8 +14,7 @@ interface DropdownProps {
   label: string;
   value: string;
   options: DropdownOption[];
-  onChange: (event: SelectChangeEvent) => void; // ✅ le bon type
-}
+  onChange: (event: SelectChangeEvent) => void; 
 
 const DropdownComponent = ({
   label,
