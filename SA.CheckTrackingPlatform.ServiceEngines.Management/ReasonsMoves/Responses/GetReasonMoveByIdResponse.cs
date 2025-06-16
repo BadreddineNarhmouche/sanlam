@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SA.CheckTrackingPlatform.ServiceEngines.Management.ReasonsMoves.Responses
+namespace SA.CheckTrackingPlatform.ServiceEngines.Management
 {
-    public class GetReasonMoveByIdResponse : BaseResponse<GetReasonMoveByAllResponse>
+    public class GetReasonMoveByIdResponse : BaseResponse<GetReasonMoveByIdResponse>
     {
         #region Properties
         public int Id { get; set; }
