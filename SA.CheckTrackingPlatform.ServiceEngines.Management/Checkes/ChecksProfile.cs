@@ -31,8 +31,10 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes
              .ForMember(dest => dest.date, opt => opt.MapFrom(src => src.CreationDate))
              .ForMember(dest => dest.userId, opt => opt.MapFrom(src => src.UserId))
              .ForMember(dest => dest.StatusItems, opt => opt.MapFrom(src => src.Status))
+             .ForMember(dest => dest.ReasonMovesItems, opt => opt.MapFrom(src => src.ReasonMove))
              .ForMember(dest => dest.InternalUserItem, opt => opt.MapFrom(src => src.User))
              .ReverseMap();
+
 
             CreateMap<Status, StatusItems>()
                 .ForMember(dest => dest.id, opt => opt.MapFrom(src => src.Id))
@@ -47,8 +49,11 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes
 
             CreateMap<Checks, GetAllItem>().ReverseMap();
 
-
-
+            CreateMap<ReasonMove, ReasonMovesItems>()
+                .ForMember(dest => dest.id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Label, opt => opt.MapFrom(src => src.Label))
+                .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
+                .ReverseMap();
         }
         #endregion Constructors
     }

@@ -40,7 +40,7 @@ export const Checks = ({
   const [filterValues, setFilterValues] = useState<any>(initialFilterValues);
   const [emptySearchResult, setEmptySearchResult] = useState({
     isEmptyResult: false,
-    isSearchMode: false,  
+    isSearchMode: false,
   });
   const [checksData, setChecksData] = useState<any[]>([]);
   const [statusData, setStatusData] = useState<any[]>([]);

@@ -108,31 +108,6 @@ export interface FilterFirstPageTreatment {
   sinisterNumber?: string;
   lotNumber?: string;
 }
-export interface FilterSecondPageTreatment {
-  reference?: string;
-  sin?: string;
-  lot?: string;
-}
-export interface FilterThirdPageTreatment {
-  reference?: string;
-  sin?: string;
-  lot?: string;
-}
-export interface FilterFourthPageTreatment {
-  reference?: string;
-  sin?: string;
-  lot?: string;
-}
-export interface FilterFifthPageTreatment {
-  reference?: string;
-  sin?: string;
-  lot?: string;
-}
-export interface FilterSixthPageTreatment {
-  reference?: string;
-  sin?: string;
-  lot?: string;
-}
 
 export interface Check {
   id: string;

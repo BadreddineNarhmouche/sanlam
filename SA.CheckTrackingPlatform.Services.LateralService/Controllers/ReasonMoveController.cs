@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using SA.CheckTrackingPlatform.ServiceEngines.Management.ReasonsMoves.Queries;
-using SA.CheckTrackingPlatform.ServiceEngines.Management.ReasonsMoves.Responses;
+using SA.CheckTrackingPlatform.ServiceEngines.Management.Queries;
+using SA.CheckTrackingPlatform.ServiceEngines.Management.Responses;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.StatusFolder.Queries;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.StatusFolder.Responses;
 

@@ -1,34 +1,46 @@
-import { memo } from 'react';
-import InputLabel from '@mui/material/InputLabel';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import MenuItem from '../MenuItem/MenuItem';
+import { memo } from "react";
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
+import Select, { SelectChangeEvent } from "@mui/material/Select"; // 👈 ici
+import MenuItem from "@mui/material/MenuItem";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
-const DropdownComponent = (props: {
+interface DropdownOption {
   label: string;
   value: string;
-  options: { label: string; value: string }[];
-}) => {
+}
+
+interface DropdownProps {
+  label: string;
+  value: string;
+  options: DropdownOption[];
+  onChange: (event: SelectChangeEvent) => void; // ✅ le bon type
+}
+
+const DropdownComponent = ({
+  label,
+  value,
+  options,
+  onChange,
+}: DropdownProps) => {
+  const dropdownId = `dropdown-${label.replace(/\s+/g, "-").toLowerCase()}`;
+
   return (
     <FormControl fullWidth>
-      <InputLabel id="demo-simple-select-label">{props.label}</InputLabel>
+      <InputLabel id={`${dropdownId}-label`}>{label}</InputLabel>
       <Select
-        labelId="demo-simple-select-label"
-        id="demo-simple-select"
-        value={props.value}
-        label={props.label}
+        labelId={`${dropdownId}-label`}
+        id={dropdownId}
+        value={value}
+        label={label}
+        onChange={onChange}
         IconComponent={KeyboardArrowDownIcon}
       >
-        {props.options?.map(
-          (option: { label: string; value: string }, index: number) => {
-            return (
-              <MenuItem value={option.value} key={index}>
-                {option.label}
-              </MenuItem>
-            );
-          },
-        )}
+        {options.map((option) => (
+          <MenuItem key={option.value} value={option.value}>
+            {option.label}
+          </MenuItem>
+        ))}
       </Select>
     </FormControl>
   );

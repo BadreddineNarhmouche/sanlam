@@ -2,9 +2,9 @@ import { Grid, TabPanels, Tabs } from "@checkTracking/ui-kit";
 import { useState } from "react";
 import { useIntl } from "react-intl";
 import { FirstPage } from "./Tabs/FirstPage";
-import { IChecksService } from "@checkTracking/helpers";
 import { DialogConfirmation } from "../Dialogs/DialogConfirmation";
 import { FilterFirstPageTreatment } from "@checkTracking/helpers/src/api/types/domain";
+import { IChecksService } from "@checkTracking/helpers";
 
 export const Treatment = ({
   services,
@@ -23,12 +23,18 @@ export const Treatment = ({
     setOpenConfiramtionDialog(true);
   };
 
+  const goToNextTab = () => {
+    const nextTab = selectedTab + 1;
+    if (nextTab < PANELS.length) {
+      setSelectedTab(nextTab);
+    } else {
+      console.warn("Dernier onglet atteint.");
+    }
+  };
+
   const handleSubmitModal = () => {
     setSelectedTab(newSelectedTab);
     setOpenConfiramtionDialog(false);
-    if (newSelectedTab === 0) {
-      // navigate("/");
-    }
   };
 
   const PANELS = [
@@ -38,6 +44,8 @@ export const Treatment = ({
           services={services}
           initialFilterValues={initialFilterValues}
           status="REM"
+          reasonmove={["CHT", "CER"]}
+          goToNextTab={goToNextTab}
         />
       ),
     },
@@ -46,7 +54,9 @@ export const Treatment = ({
         <FirstPage
           services={services}
           initialFilterValues={initialFilterValues}
-          status="EB"
+          status="REM"
+          reasonmove={["CHT", "CER"]}
+          goToNextTab={goToNextTab}
         />
       ),
     },
@@ -56,6 +66,8 @@ export const Treatment = ({
           services={services}
           initialFilterValues={initialFilterValues}
           status="RB"
+          reasonmove={["CHT", "CER", "IMPL", "RDM", "CTRL", "EXTRN", "PRSQ"]}
+          goToNextTab={goToNextTab}
         />
       ),
     },
@@ -65,6 +77,8 @@ export const Treatment = ({
           services={services}
           initialFilterValues={initialFilterValues}
           status="EC"
+          reasonmove={["CHT", "CER", "IMPL", "RDM", "CTRL", "EXTRN", "PRSQ"]}
+          goToNextTab={goToNextTab}
         />
       ),
     },
@@ -74,6 +88,8 @@ export const Treatment = ({
           services={services}
           initialFilterValues={initialFilterValues}
           status="RC"
+          reasonmove={["CHT", "CER", "IMPL", "RDM", "CTRL", "EXTRN", "PRSQ"]}
+          goToNextTab={goToNextTab}
         />
       ),
     },
@@ -83,6 +99,8 @@ export const Treatment = ({
           services={services}
           initialFilterValues={initialFilterValues}
           status="RM"
+          reasonmove={["CHT", "CER", "IMPL", "RDM", "CTRL", "EXTRN", "PRSQ"]}
+          goToNextTab={goToNextTab}
         />
       ),
     },
@@ -92,6 +110,8 @@ export const Treatment = ({
           services={services}
           initialFilterValues={initialFilterValues}
           status="RCR"
+          reasonmove={["CHT", "CER", "IMPL", "RDM", "CTRL", "EXTRN", "PRSQ"]}
+          goToNextTab={goToNextTab}
         />
       ),
     },
@@ -115,9 +135,7 @@ export const Treatment = ({
           <Grid item>
             <Tabs tabs={TABS} value={selectedTab} onChange={handleChangeTab} />
           </Grid>
-          <Grid item sm>
-            {" "}
-          </Grid>
+          <Grid item sm />
         </Grid>
         <Grid item>
           <TabPanels panels={PANELS} value={selectedTab} />

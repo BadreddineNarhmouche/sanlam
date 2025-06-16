@@ -29,8 +29,9 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses
         public string BeneficiaryName { get; set; }
         public StatusItems StatusItems { get; set; }
         public InternalUser InternalUser { get; set; }
+        public ReasonMovesItems ReasonMovesItems { get; set; }
 
-       // public ICollection<Timeline> Timelines { get; set; } // timeline contient status 
+        // public ICollection<Timeline> Timelines { get; set; } // timeline contient status 
         public ICollection<TimelineItems> Timelines { get; set; } // timeline contient status 
 
         #endregion 
@@ -45,6 +46,8 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses
         public StatusItems StatusItems { get; set; }
 
         public InternalUserItems InternalUserItem { get; set; }
+
+        public ReasonMovesItems ReasonMovesItems { get; set; }
     }
 
     public class StatusItems
@@ -53,12 +56,18 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses
         public string Code { get; set; }
         public string Label { get; set; }
     }
-
+    
 
     public class InternalUserItems
     {
         public int id { get; set; }
         public string FirstName { get;set; }
         public string LastName { get; set; }
+    }
+    public class ReasonMovesItems
+    {
+        public int id { get; set; }
+        public string Code { get; set; }
+        public string Label { get; set; }
     }
 }
