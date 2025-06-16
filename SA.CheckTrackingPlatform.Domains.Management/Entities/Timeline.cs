@@ -27,7 +27,6 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
         public int? ReasonMoveId { get; set; }
         public string? Comment { get; set; }
         public DateTime DateOfPassage { get; set; }
-
         public Checks Check { get; set; }
         public InternalUser User { get; set; }
         public Status Status { get; set; }

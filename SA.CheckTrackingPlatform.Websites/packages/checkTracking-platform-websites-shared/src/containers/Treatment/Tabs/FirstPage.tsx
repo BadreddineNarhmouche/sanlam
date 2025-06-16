@@ -19,12 +19,18 @@ import { FIELDS_PAGE_TREATMENT } from "../../../constants/global";
 
 export const FirstPage = ({
   services,
+  servicesReasonMove,
   initialFilterValues,
   status,
+  reasonmove,
+  goToNextTab,
 }: {
   services: IChecksService;
+  servicesReasonMove: IReasonMoveServices;
   initialFilterValues: FilterFirstPageTreatment;
   status: string;
+  reasonmove: string[];
+  goToNextTab?: () => void;
 }) => {
   const intl = useIntl();
   const [select, setSelect] = useState("checkNumber");
@@ -38,7 +44,6 @@ export const FirstPage = ({
   const { responseData: getAllChecks } = useSelector(
     (state: any) => state.getAllChecks
   );
-
   const handleSubmit = (value: any, keyof: string) => {
     setSelect("");
     if (value?.checkNumber != null) {
@@ -86,11 +91,26 @@ export const FirstPage = ({
       });
   }, []);
 
+  useEffect(() => {
+    services.getAllChecks &&
+      services.getAllChecks({
+        reasonMov: reasonmove,
+      });
+  });
+
   const resetFilterDone = () => {
     setCallReset(false);
   };
 
-  const handleSubmitModal = () => {};
+  const handleSubmitModal = () => {
+    setOpenConfiramtionDialog(false);
+
+    if (goToNextTab) {
+      goToNextTab();
+    } else {
+      console.warn("La fonction goToNextTab n'a pas été fournie.");
+    }
+  };
 
   const handleClose = () => {
     setDisplayAlert(false);
