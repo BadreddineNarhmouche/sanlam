@@ -20,6 +20,9 @@ import AllStatusReducer from "./Status/StatusAllSlice";
 // Timelines
 import TimelineCreateReducer from "./timeline/TimelineCreateSlice";
 
+//ReasonMove
+import AllReasonMoveReducer from "./ReasonMove/ReasonMoveAllSlice";
+
 export const rootReducer = combineReducers({
   notifications: notificationsListReducer,
   notificationsUpdate: notificationsUpdateReducer,
@@ -31,4 +34,5 @@ export const rootReducer = combineReducers({
   AllStatus: AllStatusReducer,
   getCheckById: GetCheckByIdReducer,
   TimelineUpdate: TimelineCreateReducer,
+  AllReasonMove: AllReasonMoveReducer,
 });

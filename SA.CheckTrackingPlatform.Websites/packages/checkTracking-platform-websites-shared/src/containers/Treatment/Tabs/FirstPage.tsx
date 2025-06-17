@@ -5,10 +5,12 @@ import {
   FIRST_PAGE_CHECK_TABLE_COLUMNS_DEFAULT,
   FIRST_PAGE_CHECK_TABLE_HIDDEN_COLUMNS_DEFAULT,
 } from "../constants";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
   FilterFirstPageTreatment,
   IChecksService,
+  IReasonMoveServices,
 } from "@checkTracking/helpers";
 import { useSelector } from "react-redux";
 import { DialogConfirmation } from "../../Dialogs/DialogConfirmation";
@@ -17,12 +19,18 @@ import { FIELDS_PAGE_TREATMENT } from "../../../constants/global";
 
 export const FirstPage = ({
   services,
+  servicesReasonMove,
   initialFilterValues,
   status,
+  reasonmove,
+  goToNextTab,
 }: {
   services: IChecksService;
+  servicesReasonMove: IReasonMoveServices;
   initialFilterValues: FilterFirstPageTreatment;
   status: string;
+  reasonmove: string[];
+  goToNextTab?: () => void;
 }) => {
   const intl = useIntl();
   const [select, setSelect] = useState("checkNumber");
@@ -31,11 +39,11 @@ export const FirstPage = ({
   const [openConfiramtionDialog, setOpenConfiramtionDialog] = useState(false);
   const [callReset, setCallReset] = useState(false);
   const [displayAlert, setDisplayAlert] = useState(false);
+  const navigate = useNavigate(); // instancie le hook
 
   const { responseData: getAllChecks } = useSelector(
     (state: any) => state.getAllChecks
   );
-
   const handleSubmit = (value: any, keyof: string) => {
     setSelect("");
     if (value?.checkNumber != null) {
@@ -83,11 +91,26 @@ export const FirstPage = ({
       });
   }, []);
 
+  useEffect(() => {
+    services.getAllChecks &&
+      services.getAllChecks({
+        reasonMov: reasonmove,
+      });
+  });
+
   const resetFilterDone = () => {
     setCallReset(false);
   };
 
-  const handleSubmitModal = () => {};
+  const handleSubmitModal = () => {
+    setOpenConfiramtionDialog(false);
+
+    if (goToNextTab) {
+      goToNextTab();
+    } else {
+      console.warn("La fonction goToNextTab n'a pas été fournie.");
+    }
+  };
 
   const handleClose = () => {
     setDisplayAlert(false);

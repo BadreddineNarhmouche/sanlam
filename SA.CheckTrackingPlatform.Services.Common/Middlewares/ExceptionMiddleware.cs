@@ -32,7 +32,7 @@ namespace SA.CheckTrackingPlatform.Services.Common.Middlewares
             {
                 await this.requestDelegate(httpContext);
             }
-            catch (Exception exception)
+            catch (Exception exception) // contenuer de Message
             {
                 this.logger.Fatal(string.Format("An exception was raised: {0}", exception));
 

@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { GeneralHelper, translate } from "@checkTracking/helpers";
 import {
   Alert,
@@ -6,12 +7,13 @@ import {
   Grid,
   Icons,
   Typography,
+  Dropdown,
+  DateRange,
 } from "@checkTracking/ui-kit";
 import { FormattedMessage, useIntl } from "react-intl";
 import { CircularProgress } from "@mui/material";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { isEmpty } from "lodash";
-import { useNavigate } from "react-router-dom";
 
 interface Props {
   openConfiramtionDialog: boolean;
@@ -34,15 +36,21 @@ export const DialogConfirmation = ({
   responseData,
   handleCancel,
 }: Props) => {
-  const navigate = useNavigate();
+  const intl = useIntl();
+
+  const [reasonMove, setReasonMove] = useState("");
+  const [startDate, setStartDate] = useState<Date | null>(null);
+  const [endDate, setEndDate] = useState<Date | null>(null);
+
+  const { responseData: reasonMoveOptions = [] } = useSelector(
+    (state: any) => state.AllReasonMove
+  );
+
   useEffect(() => {
     if (!isLoading && !error && !isEmpty(responseData)) {
       setOpenConfiramtionDialog(false);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [responseData]);
-
-  const intl = useIntl();
 
   return (
     <Dialog
@@ -52,7 +60,7 @@ export const DialogConfirmation = ({
       title={<FormattedMessage id="workflow.confirm_dialog_title" />}
       content={
         <>
-          <Typography variant="body2">
+          <Typography variant="body2" mb={2}>
             <FormattedMessage
               id="workflow.confirm_dialog_message_confirm"
               values={{
@@ -65,11 +73,32 @@ export const DialogConfirmation = ({
             />
           </Typography>
 
+          <Grid container spacing={2} mb={2}>
+            <Grid item xs={12}>
+              <Dropdown
+                label={intl.formatMessage({ id: "label.reason_move" })}
+                value={reasonMove}
+                options={reasonMoveOptions}
+                onChange={(e) => setReasonMove(e.target.value as string)}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <DateRange
+                startDate={startDate}
+                endDate={endDate}
+                setStartDate={setStartDate}
+                setEndDate={setEndDate}
+                fromDateLabel="Date de début"
+                toDateLabel="Date de fin"
+              />
+            </Grid>
+          </Grid>
+
           {error && (
             <Grid item xs={12} mt={3}>
               <Alert
                 withBoxStyle={true}
-                severity={"error"}
+                severity="error"
                 icon={<Icons.Error />}
               >
                 <Typography variant="button">
@@ -94,10 +123,11 @@ export const DialogConfirmation = ({
               <FormattedMessage id="button.abandon" />
             </Typography>
           </Button>
+
           <Button
             variant="contained"
             onClick={handleSubmit}
-            disabled={isLoading}
+            disabled={isLoading || !reasonMove || !startDate || !endDate}
           >
             {isLoading && (
               <CircularProgress color="primary" size={24} sx={{ mr: 1 }} />

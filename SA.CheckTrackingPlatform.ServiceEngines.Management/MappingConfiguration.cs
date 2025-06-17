@@ -22,12 +22,12 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Mapper
                 mc.AddProfile<InternalUserInternalRoleProfile>();
                 mc.AddProfile<InternalUserProfile>();
                 mc.AddProfile<NotificationProfile>();
-                mc.AddProfile<ChecksProfile>();
+                mc.AddProfile<ChecksProfile>();  
                 mc.AddProfile<TimelineProfile>();
-                mc.AddProfile<StatusProfile>();
-                mc.AddProfile<BanksProfile>();
-                mc.AddProfile<BranchsProfile>();
-                mc.AddProfile<ReasonMoveProfile>();
+                mc.AddProfile<StatusProfile>(); 
+                mc.AddProfile<BanksProfile>();  
+                mc.AddProfile<BranchsProfile>();   
+                mc.AddProfile<ReasonMoveProfile>();  
             });
 
             IMapper iMapper = mapperConfiguration.CreateMapper();

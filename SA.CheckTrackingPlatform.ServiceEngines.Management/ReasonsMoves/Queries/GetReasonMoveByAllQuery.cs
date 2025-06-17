@@ -4,7 +4,10 @@ using SA.CheckTrackingPlatform.Domains.Management.Entities;
 using SA.CheckTrackingPlatform.Domains.Management.Repositories.Queries;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Mapper;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Responses;
+<<<<<<< HEAD
 using SA.CheckTrackingPlatform.ServiceEngines.Management.StatusFolder.Responses;
+=======
+>>>>>>> 0c4c2e20744ef0295be16f5a5698d8b46d0107a3
 using System;
 using System.Collections.Generic;
 using System.Linq;
