@@ -1,6 +1,7 @@
-import { GeneralHelper, translate } from "@checkTracking/helpers";
+import { translate } from "@checkTracking/helpers";
 import {
   Alert,
+  Autocomplete,
   Button,
   Dialog,
   Grid,
@@ -8,15 +9,14 @@ import {
   Typography,
 } from "@checkTracking/ui-kit";
 import { FormattedMessage, useIntl } from "react-intl";
-import { CircularProgress } from "@mui/material";
-import { useEffect } from "react";
+import { CircularProgress, TextField } from "@mui/material";
+import { useEffect, useState } from "react";
 import { isEmpty } from "lodash";
-import { useNavigate } from "react-router-dom";
 
 interface Props {
   openConfiramtionDialog: boolean;
   setOpenConfiramtionDialog: React.Dispatch<React.SetStateAction<boolean>>;
-  handleSubmit: () => void;
+  handleSubmit: (Select?: any, Comment?: any) => any;
   handleCancel?: () => void;
   isLoading: boolean;
   error: boolean;
@@ -24,7 +24,7 @@ interface Props {
   choice?: string;
 }
 
-export const DialogConfirmation = ({
+export const DialogTreatment = ({
   openConfiramtionDialog,
   setOpenConfiramtionDialog,
   handleSubmit,
@@ -34,7 +34,8 @@ export const DialogConfirmation = ({
   responseData,
   handleCancel,
 }: Props) => {
-  const navigate = useNavigate();
+  const [fieldReason, setFieldReason] = useState<any>();
+  const [fieldComment, setFieldComment] = useState<any>();
   useEffect(() => {
     if (!isLoading && !error && !isEmpty(responseData)) {
       setOpenConfiramtionDialog(false);
@@ -44,6 +45,11 @@ export const DialogConfirmation = ({
 
   const intl = useIntl();
 
+  const ds: any[] = [
+    { id: 1, code: 1, label: "fsdf" },
+    { id: 2, code: 2, label: "vxcvcxv" },
+  ];
+
   return (
     <Dialog
       fullWidth
@@ -52,19 +58,40 @@ export const DialogConfirmation = ({
       title={<FormattedMessage id="workflow.confirm_dialog_title" />}
       content={
         <>
-          <Typography variant="body2">
-            <FormattedMessage
-              id="workflow.confirm_dialog_message"
-              values={{
-                choice: !GeneralHelper.isStringNullOrEmpty(choice) ? (
-                  <span style={{ fontWeight: "bold" }}>{`"${choice}"`}</span>
-                ) : (
-                  ""
-                ),
-              }}
-            />
-          </Typography>
-
+          <Grid mt={1} container columnSpacing={1}>
+            <Grid item xs={12}>
+              <Autocomplete
+                options={ds}
+                renderOption={(props: any, option: any) => (
+                  <li {...props} key={option.id}>
+                    {option.label || option.name || option}
+                  </li>
+                )}
+                onChange={(e: any, value: any) => {
+                  setFieldReason(value.id);
+                }}
+                renderInput={(params: any) => (
+                  <TextField
+                    {...params}
+                    label={translate("File.global.search.comment", intl)}
+                  />
+                )}
+              />
+            </Grid>
+            <Grid mt={2} item xs={12}>
+              <TextField
+                type="text"
+                label={translate("File.global.search.comment", intl)}
+                onChange={(
+                  e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+                ) => setFieldComment(e.target.value)}
+                name="comments"
+                fullWidth
+                multiline
+                minRows={3}
+              />
+            </Grid>
+          </Grid>
           {error && (
             <Grid item xs={12} mt={3}>
               <Alert
@@ -96,7 +123,7 @@ export const DialogConfirmation = ({
           </Button>
           <Button
             variant="contained"
-            onClick={handleSubmit}
+            onClick={() => handleSubmit(fieldReason, fieldComment)}
             disabled={isLoading}
           >
             {isLoading && (

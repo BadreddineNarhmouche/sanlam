@@ -75,9 +75,6 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Timelines.Commands
                     request.Date = DateTime.Now;
                 }
 
-
-
-
                 #endregion Validations
 
                 #region Operations

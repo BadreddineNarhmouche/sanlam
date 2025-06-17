@@ -1,10 +1,15 @@
 import { Grid, TabPanels, Tabs } from "@checkTracking/ui-kit";
-import { useState } from "react";
-import { useIntl } from "react-intl";
+import { useEffect, useState } from "react";
 import { FirstPage } from "./Tabs/FirstPage";
 import { IChecksService } from "@checkTracking/helpers";
 import { DialogConfirmation } from "../Dialogs/DialogConfirmation";
 import { FilterFirstPageTreatment } from "@checkTracking/helpers/src/api/types/domain";
+import { useSelector } from "react-redux";
+import {
+  CheckByAllStatusComponent,
+  TreatmentLabelComponent,
+} from "../../utils/CheckHelpers";
+import { ROLES } from "../../constants/global";
 
 export const Treatment = ({
   services,
@@ -13,10 +18,13 @@ export const Treatment = ({
   services: IChecksService;
   initialFilterValues: FilterFirstPageTreatment;
 }) => {
-  const intl = useIntl();
   const [selectedTab, setSelectedTab] = useState(0);
   const [newSelectedTab, setNewSelectedTab] = useState(0);
   const [openConfiramtionDialog, setOpenConfiramtionDialog] = useState(false);
+
+  const { responseData: internalRoles } = useSelector(
+    (state: any) => state.internalRoles
+  );
 
   const handleChangeTab = (event: React.SyntheticEvent, newValue: number) => {
     setNewSelectedTab(newValue);
@@ -31,86 +39,42 @@ export const Treatment = ({
     }
   };
 
-  const PANELS = [
-    {
-      component: (
-        <FirstPage
-          services={services}
-          initialFilterValues={initialFilterValues}
-          status="REM"
-        />
-      ),
-    },
-    {
-      component: (
-        <FirstPage
-          services={services}
-          initialFilterValues={initialFilterValues}
-          status="EB"
-        />
-      ),
-    },
-    {
-      component: (
-        <FirstPage
-          services={services}
-          initialFilterValues={initialFilterValues}
-          status="RB"
-        />
-      ),
-    },
-    {
-      component: (
-        <FirstPage
-          services={services}
-          initialFilterValues={initialFilterValues}
-          status="EC"
-        />
-      ),
-    },
-    {
-      component: (
-        <FirstPage
-          services={services}
-          initialFilterValues={initialFilterValues}
-          status="RC"
-        />
-      ),
-    },
-    {
-      component: (
-        <FirstPage
-          services={services}
-          initialFilterValues={initialFilterValues}
-          status="RM"
-        />
-      ),
-    },
-    {
-      component: (
-        <FirstPage
-          services={services}
-          initialFilterValues={initialFilterValues}
-          status="RCR"
-        />
-      ),
-    },
-  ];
+  const handleSubmitData = (Select: any, Comment: any) => {
+    console.log(Select);
+    console.log(Comment);
+  };
 
-  const TABS = [
-    { label: "Reçu métier" },
-    { label: "Envoi BO" },
-    { label: "Reçu BO" },
-    { label: "Envoi client" },
-    { label: "Retour Client" },
-    { label: "Retour métier" },
-    { label: "Réception chèque retourné" },
-  ];
+  const [PANELS, setPANELS] = useState<any[]>([]);
+  const [TABS, setTABS] = useState<any[]>([]);
+
+  useEffect(() => {
+    const newPanels: any[] = [];
+    const newTabs: any[] = [];
+    internalRoles?.map((item: any) => {
+      if (ROLES.includes(item.internalRoleCode)) {
+        newPanels.push({
+          component: (
+            <FirstPage
+              services={services}
+              initialFilterValues={initialFilterValues}
+              status={CheckByAllStatusComponent(item.internalRoleCode)}
+              handleSubmitData={(Select: any, Comment: any) =>
+                handleSubmitData(Select, Comment)
+              }
+            />
+          ),
+        });
+        newTabs.push({ label: TreatmentLabelComponent(item.internalRoleCode) });
+      }
+      return null;
+    });
+    setPANELS(newPanels.reverse());
+    setTABS(newTabs.reverse());
+  }, [services, initialFilterValues, internalRoles]);
 
   return (
     <>
       <Grid container direction="column" px={8} py={7} id="check-table">
-        Traitement
         <Grid display="flex" justifyContent="flex-start">
           <Grid item>
             <Tabs tabs={TABS} value={selectedTab} onChange={handleChangeTab} />
