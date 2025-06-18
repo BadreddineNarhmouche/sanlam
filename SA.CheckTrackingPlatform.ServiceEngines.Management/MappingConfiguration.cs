@@ -27,7 +27,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Mapper
                 mc.AddProfile<StatusProfile>(); 
                 mc.AddProfile<BanksProfile>();  
                 mc.AddProfile<BranchsProfile>();   
-             //   mc.AddProfile<ReasonMoveProfile>();  
+                mc.AddProfile<ReasonMoveProfile>();  
             });
 
             IMapper iMapper = mapperConfiguration.CreateMapper();
