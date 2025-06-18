@@ -77,16 +77,25 @@ export interface FilterCriteriaChecks {
     policyReference?: string;
     reference?: string;
     checkStatusId?: string;
-    externalPartnerUserCode?: string;
     externalcheckTrackingReference?: string;
     primeNetMin?: string;
     primeNetMax?: string;
-    dateCreation?: string;
     externalClientName?: string;
     meta?: {
         pageIndex?: number;
         pageSize?: number;
     };
+}
+export interface FilterByAllChecks {
+    workFlowStepCode?: string;
+    policyReference?: string;
+    reference?: string;
+    status?: string;
+}
+export interface FilterFirstPageTreatment {
+    checkNumber?: string;
+    sinisterNumber?: string;
+    lotNumber?: string;
 }
 export interface Check {
     id: string;

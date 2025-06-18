@@ -24,6 +24,7 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "framer-motion": "^12.12.1",
     "moment": "^2.30.1",
     "pdfjs-dist": "^3.0.279"
   }

@@ -18,7 +18,7 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; protected set; }
+        public int Id { get; protected set; } //gygyg
         public string Code { get; set; }
         public string Label { get; set; }
 

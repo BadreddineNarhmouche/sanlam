@@ -15,6 +15,6 @@
         public string LotNumber { get; set; }
         public string BeneficiaryName { get; set; }
 
-        #endregion
+        #endregion Properties
     }
 }

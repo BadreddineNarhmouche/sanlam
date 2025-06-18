@@ -1,0 +1,2 @@
+﻿C:\Users\lenovo\Source\Repos\SA.CheckTrackingPlatform\SA.CheckTrackingPlatform.Domains.Common\ICommandRepository.cs
+C:\Users\lenovo\Source\Repos\SA.CheckTrackingPlatform\SA.CheckTrackingPlatform.Domains.Common\IQueryRepository.cs

@@ -11,6 +11,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Timelines
         public TimelineProfile()
         {
             CreateMap<Timeline, GetTimelinesByIdResponse>().ReverseMap();
+            CreateMap<Timeline, GetTimelinesByCriteriaResponse>().ReverseMap();
         }
         #endregion constructors
     }

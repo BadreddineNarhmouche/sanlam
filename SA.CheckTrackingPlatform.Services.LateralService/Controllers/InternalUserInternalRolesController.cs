@@ -41,7 +41,9 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
         public async Task<GetAllInternalUserInternalRolesByInternalUserElectronicAddressResponse> GetAllByInternalUserElectronicAddress([FromQuery] GetAllInternalUserInternalRolesByInternalUserElectronicAddressQuery query)
         {
             query.InternalUserElectronicAddress = User.FindFirst(KeycloakAttributes.InternalUserElectronicAddress).Value;
-
+           // sans autorisation par keycloak on rentre jamais
+           //verification par Keycloak
+           // verification avec keycloak ramener mail par parametre back end
             return await this.mediator.Send(query);
         }
 

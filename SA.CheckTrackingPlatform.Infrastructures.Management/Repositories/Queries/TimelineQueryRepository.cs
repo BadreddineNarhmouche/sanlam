@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PdfSharpCore;
 using SA.CheckTrackingPlatform.Contexts.Management.Application;
 using SA.CheckTrackingPlatform.Domains.Management.Entities;
 using SA.CheckTrackingPlatform.Domains.Management.Repositories.Queries;
@@ -25,14 +26,43 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
 
         public async Task<Timeline> GetTimelineByIdAsync(int id)
         {
-            Timeline query = await this.applicationContext.Timelines // dbset implementation
+            Timeline query = await this.applicationContext.Timelines 
                     .AsNoTrackingWithIdentityResolution()
                     .SingleOrDefaultAsync(o => o.Id == id);
 
             return query;
         }
 
-        #endregion Methods
+        public async Task<IEnumerable<Timeline>> GetTimelinesByCriteriaAsync(List<int>? ids, List<int>? ChecksIds, List<int>? UserIds, int? statusId, string? reasonlabel , int? pageIndex = null, int? pageSize = null)
+        {
+            IQueryable<Timeline> query = this.applicationContext.Timelines
+                .AsNoTrackingWithIdentityResolution();
 
+
+            if (ids != null && ids.Any())
+                query = query.Where(c => ids.Contains(c.Id));
+
+            if (ChecksIds != null && ChecksIds.Any())
+                query = query.Where(c => ChecksIds.Contains(c.CheckId));
+
+            if (UserIds != null && UserIds.Any())
+                query = query.Where(c => UserIds.Contains(c.UserId));
+
+            if (statusId.HasValue)
+                query = query.Where(c => c.StatusId == statusId.Value);
+
+            //if (!string.IsNullOrWhiteSpace(reasonlabel))
+            //    query = query.Where(c => c.ReasonLabel == reasonlabel);
+
+
+            if (pageIndex.HasValue && pageSize.HasValue)
+            {
+                int skip = pageIndex.Value * pageSize.Value;
+                query = query.Skip(skip).Take(pageSize.Value);
+            }
+
+            return await query.ToListAsync();
+        }
+        #endregion Methods
     }
 }

@@ -1,1 +1,1 @@
-export * from './CheckDetails';
+export * from "./CheckDetails";

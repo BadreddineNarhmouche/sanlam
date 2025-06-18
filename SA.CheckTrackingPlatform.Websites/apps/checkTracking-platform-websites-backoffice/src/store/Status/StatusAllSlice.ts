@@ -1,19 +1,12 @@
-import {
-  DataSliceState,
-  createDataSlice,
-  Notification,
-} from '@checkTracking/helpers';
+import { DataSliceState, createDataSlice } from "@checkTracking/helpers";
 
-const initialState: DataSliceState<Notification> = {
+const initialState: DataSliceState<any> = {
   responseData: [],
   isLoading: false,
   error: null,
 };
 
-export const StatusAllSlice = createDataSlice(
-  'AllStatus',
-  initialState,
-);
+export const StatusAllSlice = createDataSlice("AllStatus", initialState);
 
 export const {
   getAll: AllStatus,

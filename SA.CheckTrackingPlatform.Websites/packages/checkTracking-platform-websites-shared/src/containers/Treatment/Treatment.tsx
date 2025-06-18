@@ -1,9 +1,9 @@
 import { Grid, TabPanels, Tabs } from "@checkTracking/ui-kit";
 import { useEffect, useState } from "react";
 import { FirstPage } from "./Tabs/FirstPage";
-import { IChecksService } from "@checkTracking/helpers";
 import { DialogConfirmation } from "../Dialogs/DialogConfirmation";
 import { FilterFirstPageTreatment } from "@checkTracking/helpers/src/api/types/domain";
+import { IChecksService } from "@checkTracking/helpers";
 import { useSelector } from "react-redux";
 import {
   CheckByAllStatusComponent,
@@ -31,14 +31,109 @@ export const Treatment = ({
     setOpenConfiramtionDialog(true);
   };
 
-  const handleSubmitModal = () => {
-    setSelectedTab(newSelectedTab);
-    setOpenConfiramtionDialog(false);
-    if (newSelectedTab === 0) {
-      // navigate("/");
+  const goToNextTab = () => {
+    const nextTab = selectedTab + 1;
+    if (nextTab < PANELS.length) {
+      setSelectedTab(nextTab);
+    } else {
+      console.warn("Dernier onglet atteint.");
     }
   };
 
+  const handleSubmitModal = () => {
+    setSelectedTab(newSelectedTab);
+    setOpenConfiramtionDialog(false);
+  };
+
+  const PANELS = [
+    {
+      component: (
+        <FirstPage
+          services={services}
+          initialFilterValues={initialFilterValues}
+          status="REM"
+          reasonmove={["CHT", "CER"]}
+          goToNextTab={goToNextTab}
+        />
+      ),
+    },
+    {
+      component: (
+        <FirstPage
+          services={services}
+          initialFilterValues={initialFilterValues}
+          status="REM"
+          reasonmove={["CHT", "CER"]}
+          goToNextTab={goToNextTab}
+        />
+      ),
+    },
+    {
+      component: (
+        <FirstPage
+          services={services}
+          initialFilterValues={initialFilterValues}
+          status="RB"
+          reasonmove={["CHT", "CER", "IMPL", "RDM", "CTRL", "EXTRN", "PRSQ"]}
+          goToNextTab={goToNextTab}
+        />
+      ),
+    },
+    {
+      component: (
+        <FirstPage
+          services={services}
+          initialFilterValues={initialFilterValues}
+          status="EC"
+          reasonmove={["CHT", "CER", "IMPL", "RDM", "CTRL", "EXTRN", "PRSQ"]}
+          goToNextTab={goToNextTab}
+        />
+      ),
+    },
+    {
+      component: (
+        <FirstPage
+          services={services}
+          initialFilterValues={initialFilterValues}
+          status="RC"
+          reasonmove={["CHT", "CER", "IMPL", "RDM", "CTRL", "EXTRN", "PRSQ"]}
+          goToNextTab={goToNextTab}
+        />
+      ),
+    },
+    {
+      component: (
+        <FirstPage
+          services={services}
+          initialFilterValues={initialFilterValues}
+          status="RM"
+          reasonmove={["CHT", "CER", "IMPL", "RDM", "CTRL", "EXTRN", "PRSQ"]}
+          goToNextTab={goToNextTab}
+        />
+      ),
+    },
+    {
+      component: (
+        <FirstPage
+          services={services}
+          initialFilterValues={initialFilterValues}
+          status="RCR"
+          reasonmove={["CHT", "CER", "IMPL", "RDM", "CTRL", "EXTRN", "PRSQ"]}
+          goToNextTab={goToNextTab}
+        />
+      ),
+    },
+  ];
+
+  const TABS = [
+    { label: "Reçu métier" },
+    { label: "Envoi BO" },
+    { label: "Reçu BO" },
+    { label: "Envoi client" },
+    { label: "Retour Client" },
+    { label: "Retour métier" },
+    { label: "Réception chèque retourné" },
+  ];
   const handleSubmitData = (Select: any, Comment: any) => {
     console.log(Select);
     console.log(Comment);
@@ -79,9 +174,7 @@ export const Treatment = ({
           <Grid item>
             <Tabs tabs={TABS} value={selectedTab} onChange={handleChangeTab} />
           </Grid>
-          <Grid item sm>
-            {" "}
-          </Grid>
+          <Grid item sm />
         </Grid>
         <Grid item>
           <TabPanels panels={PANELS} value={selectedTab} />

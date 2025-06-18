@@ -29,9 +29,22 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
         {
             Checks query = await this.applicationContext.Checks
                 .Include(c => c.Timelines)
-                .ThenInclude(c => c.Status)
+                // timeline contient objet de cheques ne doit pas le contenir
+                .ThenInclude(c => c.Status) // Linq
+                .Include(c => c.Timelines)
+                .ThenInclude(c => c.User)
+                .Include(c => c.Timelines)
+                .ThenInclude(c => c.ReasonMove)
+                .Include(c => c.Branch)
+                .Include(c => c.Service)
+                .Include(c => c.Bank)
                 .AsNoTrackingWithIdentityResolution()
                 .SingleOrDefaultAsync(o => o.Id == id);
+
+            // query.Timelines.OrderByDescending(t => t.CreationDate);
+            query.Timelines = query.Timelines
+                 .OrderByDescending(t => t.CreationDate)
+                 .ToList();
 
             return query;
         }

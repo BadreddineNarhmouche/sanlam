@@ -361,3 +361,9 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+SA.CheckTrackingPlatform.Services.LateralService/Program.cs
+SA.CheckTrackingPlatform.Services.LateralService/Program.cs
+SA.CheckTrackingPlatform.ServiceEngines.Management/Timelines/Responses/CreateTimelineResponse.cs
+SA.CheckTrackingPlatform.ServiceEngines.Management/Checkes/ChecksProfile.cs
+SA.CheckTrackingPlatform.Infrastructures.Management/Repositories/Queries/TimelineQueryRepository.cs
+SA.CheckTrackingPlatform.Infrastructures.Management/Repositories/Queries/TimelineQueryRepository.cs

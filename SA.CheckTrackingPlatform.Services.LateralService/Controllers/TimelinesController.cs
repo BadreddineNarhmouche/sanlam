@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Timelines.Commands;
+using SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Queries;
+using SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Timelines.Queries;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Timelines.Responses;
 using static System.CoreConstants;
@@ -34,6 +36,14 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
             return await _mediator.Send(query);
         }
 
+        [HttpGet]
+        [Route(nameof(GetTimelinesByCriteria))]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<GetTimelinesByCriteriaResponse> GetTimelinesByCriteria([FromQuery] GetTimelinesByCriteriaQuery query)
+        {
+            return await _mediator.Send(query);
+        }
+
         [HttpPost]
         [Route(nameof(CreateTimeLine))]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -42,7 +52,6 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
             command.InternalUserElectronicAddress = User.FindFirst(KeycloakAttributes.InternalUserElectronicAddress).Value;
             return await _mediator.Send(command);
         }
-
         #endregion Methods
     }
 }

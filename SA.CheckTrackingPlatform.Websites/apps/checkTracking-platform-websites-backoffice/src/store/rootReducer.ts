@@ -12,9 +12,16 @@ import internalRolesReducer from "./InternalRoles/internalRolesSlice";
 //Checks
 import getAllChecksByCriteriaReducer from "./Checks/getAllChecksByCriteriaSlice";
 import getAllChecksReducer from "./Checks/getAllChecksSlice";
+import GetCheckByIdReducer from "./Checks/getCheckByIdSlice";
 
 //Status
 import AllStatusReducer from "./Status/StatusAllSlice";
+
+// Timelines
+import TimelineCreateReducer from "./timeline/TimelineCreateSlice";
+
+//ReasonMove
+import AllReasonMoveReducer from "./ReasonMove/ReasonMoveAllSlice";
 
 export const rootReducer = combineReducers({
   notifications: notificationsListReducer,
@@ -25,4 +32,7 @@ export const rootReducer = combineReducers({
   getAllChecksByCriteria: getAllChecksByCriteriaReducer,
   getAllChecks: getAllChecksReducer,
   AllStatus: AllStatusReducer,
+  getCheckById: GetCheckByIdReducer,
+  TimelineUpdate: TimelineCreateReducer,
+  AllReasonMove: AllReasonMoveReducer,
 });
