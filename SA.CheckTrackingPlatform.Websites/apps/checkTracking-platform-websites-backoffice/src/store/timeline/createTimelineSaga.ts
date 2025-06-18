@@ -21,7 +21,7 @@ function* createTimelineSaga(
       InternalUserElectronicAddress,
     } = action.payload;
 
-    const formData = new FormData();
+    const formData = new FormData(); // payload de type any CheckIds
     CheckIds.forEach((id: number) =>
       formData.append("CheckIds", id.toString())
     );
