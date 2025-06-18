@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses
+﻿namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses
 {
     public class GetAllByCriteriaResponse : BasePagedResponse<List<GetAllByCriteriaItem>>
     {
-        
+
     }
     // On peut renvoyer moins d'élements 
     public class GetAllByCriteriaItem

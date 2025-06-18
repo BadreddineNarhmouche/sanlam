@@ -1,10 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.Extensions.Configuration;
 using SA.CheckTrackingPlatform.Domains.Management.Common;
 using SA.CheckTrackingPlatform.Domains.Management.Entities;
-using Oracle.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.Extensions.Options;
 
 namespace SA.CheckTrackingPlatform.Contexts.Management.Application
 {
