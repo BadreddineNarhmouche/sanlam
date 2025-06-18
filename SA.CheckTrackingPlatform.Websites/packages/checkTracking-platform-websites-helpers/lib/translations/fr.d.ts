@@ -125,4 +125,10 @@ export declare const frTranslationMessages: {
     "deliverySlip_details.deliverySlip_reference": string;
     "payment_details.payment_Number": string;
     "payment_details.payment_info": string;
+    "CheckTracking.confirm_dialogPopUp_title": string;
+    "CheckTracking.confirm_dialogPopUp_body": string;
+    "CheckTracking.reason_label_1": string;
+    "CheckTracking.reason_label_2": string;
+    "CheckTracking.reason_label_3": string;
+    "CheckTracking.comment_label": string;
 };

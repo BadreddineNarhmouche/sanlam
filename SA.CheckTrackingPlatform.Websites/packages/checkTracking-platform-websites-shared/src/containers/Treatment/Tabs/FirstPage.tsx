@@ -10,21 +10,26 @@ import { useEffect, useState } from "react";
 import {
   FilterFirstPageTreatment,
   IChecksService,
-  IReasonMoveServices,
+  IReasonMoveService,
 } from "@checkTracking/helpers";
 import { useSelector } from "react-redux";
 import { DialogConfirmation } from "../../Dialogs/DialogConfirmation";
 import { useIntl } from "react-intl";
 import { FIELDS_PAGE_TREATMENT } from "../../../constants/global";
+import { DialogConfirmationPopUp } from "../../Dialogs/DialogConfirmationPopUp";
 
 export const FirstPage = ({
   services,
   initialFilterValues,
   status,
+  handleSubmitModal,
+  reasonMoveService,
 }: {
   services: IChecksService;
   initialFilterValues: FilterFirstPageTreatment;
   status: string;
+  reasonMoveService: IReasonMoveService;
+  handleSubmitModal?: () => void;
 }) => {
   const intl = useIntl();
   const [select, setSelect] = useState("checkNumber");
@@ -33,11 +38,26 @@ export const FirstPage = ({
   const [openConfiramtionDialog, setOpenConfiramtionDialog] = useState(false);
   const [callReset, setCallReset] = useState(false);
   const [displayAlert, setDisplayAlert] = useState(false);
-  const navigate = useNavigate(); // instancie le hook
+  const navigate = useNavigate();
 
   const { responseData: getAllChecks } = useSelector(
     (state: any) => state.getAllChecks
   );
+
+  const handleSubmitModalLocal = () => {
+    if (handleSubmitModal) {
+      handleSubmitModal();
+    }
+    setOpenConfiramtionDialog(false);
+  };
+
+  const [reasons, setReasons] = useState<{ label: string; code: string }[]>([]);
+
+  useEffect(() => {
+    reasonMoveService.AllReasonMoves().then((res) => {
+      setReasons(res);
+    });
+  }, [reasonMoveService]);
 
   const handleSubmit = (value: any, keyof: string) => {
     setSelect("");
@@ -90,7 +110,7 @@ export const FirstPage = ({
     setCallReset(false);
   };
 
-  const handleSubmitModal = () => {};
+  //const handleSubmitModal = () => {};
 
   const handleClose = () => {
     setDisplayAlert(false);
@@ -140,14 +160,15 @@ export const FirstPage = ({
           hiddenColumns={FIRST_PAGE_CHECK_TABLE_HIDDEN_COLUMNS_DEFAULT}
         />
       </Grid>
-      <DialogConfirmation
-        openConfiramtionDialog={openConfiramtionDialog}
-        setOpenConfiramtionDialog={setOpenConfiramtionDialog}
-        handleSubmit={handleSubmitModal}
-        isLoading={false}
-        error={false}
-        responseData={[]}
-      />
+      {["EC", "RC"].includes(status) && (
+        <DialogConfirmationPopUp
+          open={openConfiramtionDialog}
+          onClose={() => setOpenConfiramtionDialog(false)}
+          onConfirm={handleSubmitModalLocal}
+          isLoading={false}
+          reasons={reasons}
+        />
+      )}
       <Snackbar
         open={displayAlert}
         anchorOrigin={{ vertical: "top", horizontal: "right" }}

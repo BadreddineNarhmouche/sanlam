@@ -39,7 +39,6 @@ export const DialogConfirmation = ({
     if (!isLoading && !error && !isEmpty(responseData)) {
       setOpenConfiramtionDialog(false);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [responseData]);
 
   const intl = useIntl();
@@ -104,7 +103,7 @@ export const DialogConfirmation = ({
             )}
             <Typography variant="button">
               <FormattedMessage
-              id={error ? "button.retry" : "button.confirm"}
+                id={error ? "button.retry" : "button.confirm"}
               />
             </Typography>
           </Button>

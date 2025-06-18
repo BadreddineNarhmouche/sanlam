@@ -10,7 +10,7 @@ const baseApiPath = process.env.REACT_APP_API_BASE_PATH;
 
 function* GetAllReasonMove(): any {
   yield apiCallHandler({
-    apiPath: `ReasonMove/GetAllReasonMoves`,
+    apiPath: `/ReasonMove/GetAllReasonMoves`,
     baseApiPath,
     dispatchSuccess: apiCallReasonMoveAllSuccess,
     dispatchFailure: apiCallReasonMoveAllFailure,

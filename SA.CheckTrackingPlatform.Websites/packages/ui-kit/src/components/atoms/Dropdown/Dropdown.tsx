@@ -1,9 +1,9 @@
-import { memo } from 'react';
-import InputLabel from '@mui/material/InputLabel';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import MenuItem from '../MenuItem/MenuItem';
+import { memo } from "react";
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import MenuItem from "../MenuItem/MenuItem";
 
 const DropdownComponent = (props: {
   label: string;
@@ -27,7 +27,7 @@ const DropdownComponent = (props: {
                 {option.label}
               </MenuItem>
             );
-          },
+          }
         )}
       </Select>
     </FormControl>

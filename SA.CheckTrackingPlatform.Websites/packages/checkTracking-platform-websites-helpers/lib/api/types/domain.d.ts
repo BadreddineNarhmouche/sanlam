@@ -130,3 +130,7 @@ export interface Check {
     lotNumber?: string;
     beneficiaryName?: string;
 }
+export interface ReasonMove {
+    label?: string;
+    code?: string;
+}
