@@ -1,5 +1,5 @@
-import React, { memo } from 'react';
-import { Box, TabPanel } from '../../atoms';
+import React, { memo } from "react";
+import { Box, TabPanel } from "../../atoms";
 
 interface Panels {
   component: React.ReactNode;
@@ -21,7 +21,7 @@ const TabPanelsComponent: React.FC<Props> = ({ panels, value }) => {
                 {panel.component}
               </TabPanel>
             </Box>
-          ) as any,
+          ) as any
       )}
     </>
   );
