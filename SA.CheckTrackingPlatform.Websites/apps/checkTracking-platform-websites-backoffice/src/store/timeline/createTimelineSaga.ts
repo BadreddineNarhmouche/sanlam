@@ -1,6 +1,5 @@
 import { apiCallHandler } from "@checkTracking/helpers";
 import { takeEvery, call, put } from "redux-saga/effects";
-import { PAGINATION } from "@checkTracking/helpers";
 import {
   timelineAnnotationCreate,
   TimelineAnnotationCreateSuccess,
@@ -18,7 +17,8 @@ function* createTimelineSaga(
       Comment,
       ReasonMoveId,
       Status,
-      Date: DateQuittanceAnnotation,
+      Date: timelineDate,
+      InternalUserElectronicAddress,
     } = action.payload;
 
     const formData = new FormData();
@@ -26,6 +26,12 @@ function* createTimelineSaga(
       formData.append("CheckIds", id.toString())
     );
     formData.append("Status", Status);
+    formData.append("Date", timelineDate.toISOString());
+    formData.append(
+      "InternalUserElectronicAddress",
+      InternalUserElectronicAddress
+    );
+
     if (Comment) {
       formData.append("Comment", Comment);
     }
@@ -33,17 +39,13 @@ function* createTimelineSaga(
       formData.append("ReasonMoveId", ReasonMoveId.toString());
     }
 
-    formData.append("Date", DateQuittanceAnnotation.toISOString());
-
-    const requestOptions = {
-      method: "POST",
-      body: formData,
-    };
-
     yield call(apiCallHandler, {
       apiPath: `/Timelines/CreateTimeLine`,
       baseApiPath,
-      requestOptions,
+      requestOptions: {
+        method: "POST",
+        body: formData,
+      },
       dispatchSuccess: TimelineAnnotationCreateSuccess,
       dispatchFailure: TimelineAnnotationCreateFailure,
     });

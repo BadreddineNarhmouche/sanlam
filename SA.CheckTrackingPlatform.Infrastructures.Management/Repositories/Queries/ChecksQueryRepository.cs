@@ -33,6 +33,8 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
                 .ThenInclude(c => c.Status) // Linq
                 .Include(c => c.Timelines)
                 .ThenInclude(c => c.User)
+                .Include(c => c.Timelines)
+                .ThenInclude(c => c.ReasonMove)
                 .Include(c => c.Branch)
                 .Include(c => c.Service)
                 .Include(c => c.Bank)

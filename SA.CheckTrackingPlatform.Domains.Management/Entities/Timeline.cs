@@ -33,6 +33,8 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
         public InternalUser User { get; set; }
         public Status Status { get; set; }
 
+        public ReasonMove ReasonMove { get; set; }
+
         #endregion Properties
     }
 }
