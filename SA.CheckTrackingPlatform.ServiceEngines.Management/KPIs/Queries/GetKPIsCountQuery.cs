@@ -65,7 +65,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.Queries
 
 
                     response.IsSuccess = true;
-                    //response.IsPopulated = Bankes.IsNotNull();
+                   // response.IsPopulated = Bankes.IsNotNull();
                     response.InformationMessage = InformationMessages.QuerySucceeded;
                 }
                 else

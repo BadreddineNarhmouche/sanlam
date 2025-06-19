@@ -27,6 +27,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string BeneficiaryName { get; set; }
+        public string Comment { get; set; }
         public StatusItems StatusItems { get; set; }
         public InternalUser InternalUser { get; set; }
         public ReasonMoveItems ReasonMoveItems { get; set; }
@@ -43,6 +44,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses
         public DateTime date{ get; set; }
 
         public int userId { get; set; }
+        public string comment { get; set; }
         public StatusItems StatusItems { get; set; }
 
         public InternalUserItems InternalUserItem { get; set; }
