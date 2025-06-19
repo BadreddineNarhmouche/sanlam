@@ -1,9 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using MediatR;
-using SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Queries;
-using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Authorization;
+using SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses;
 
 namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
 {
@@ -23,7 +21,7 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
         #endregion Constructors
 
         #region Methods
-     
+
         [HttpGet]
         [Route(nameof(GetById))]
         [ProducesResponseType(StatusCodes.Status200OK)]

@@ -1,10 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using SA.CheckTrackingPlatform.ServiceEngines.Management;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Queries;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Responses;
-using SA.CheckTrackingPlatform.ServiceEngines.Management.StatusFolder.Queries;
-using SA.CheckTrackingPlatform.ServiceEngines.Management.StatusFolder.Responses;
 
 namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
 {

@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PdfSharpCore;
 using SA.CheckTrackingPlatform.Contexts.Management.Application;
 using SA.CheckTrackingPlatform.Domains.Management.Entities;
 using SA.CheckTrackingPlatform.Domains.Management.Repositories.Queries;
