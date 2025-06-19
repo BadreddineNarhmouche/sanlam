@@ -10,8 +10,6 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.Queries
     {
         #region properties
 
-
-
         #endregion Properties 
     }
 
