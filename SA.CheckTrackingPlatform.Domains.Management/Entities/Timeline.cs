@@ -31,6 +31,8 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
         public Status Status { get; set; }
         public ReasonMove ReasonMove { get; set; }
 
+        public ReasonMove ReasonMove { get; set; }
+
         #endregion Properties
     }
 }

@@ -1,45 +1,34 @@
 import { memo } from "react";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select"; // 👈 ici
-import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import MenuItem from "../MenuItem/MenuItem";
 
-interface DropdownOption {
+const DropdownComponent = (props: {
   label: string;
   value: string;
-}
-
-interface DropdownProps {
-  label: string;
-  value: string;
-  options: DropdownOption[];
-  onChange: (event: SelectChangeEvent) => void; 
-
-const DropdownComponent = ({
-  label,
-  value,
-  options,
-  onChange,
-}: DropdownProps) => {
-  const dropdownId = `dropdown-${label.replace(/\s+/g, "-").toLowerCase()}`;
-
+  options: { label: string; value: string }[];
+}) => {
   return (
     <FormControl fullWidth>
-      <InputLabel id={`${dropdownId}-label`}>{label}</InputLabel>
+      <InputLabel id="demo-simple-select-label">{props.label}</InputLabel>
       <Select
-        labelId={`${dropdownId}-label`}
-        id={dropdownId}
-        value={value}
-        label={label}
-        onChange={onChange}
+        labelId="demo-simple-select-label"
+        id="demo-simple-select"
+        value={props.value}
+        label={props.label}
         IconComponent={KeyboardArrowDownIcon}
       >
-        {options.map((option) => (
-          <MenuItem key={option.value} value={option.value}>
-            {option.label}
-          </MenuItem>
-        ))}
+        {props.options?.map(
+          (option: { label: string; value: string }, index: number) => {
+            return (
+              <MenuItem value={option.value} key={index}>
+                {option.label}
+              </MenuItem>
+            );
+          }
+        )}
       </Select>
     </FormControl>
   );

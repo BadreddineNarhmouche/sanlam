@@ -29,11 +29,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses
         public string BeneficiaryName { get; set; }
         public StatusItems StatusItems { get; set; }
         public InternalUser InternalUser { get; set; }
-<<<<<<< HEAD
-        public ReasonMovesItems ReasonMoveItems { get; set; }
-=======
-        public ReasonMovesItems ReasonMovesItems { get; set; }
->>>>>>> 0c4c2e20744ef0295be16f5a5698d8b46d0107a3
+        public ReasonMoveItems ReasonMoveItems { get; set; }
 
         // public ICollection<Timeline> Timelines { get; set; } // timeline contient status 
         public ICollection<TimelineItems> Timelines { get; set; } // timeline contient status 
@@ -51,7 +47,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses
 
         public InternalUserItems InternalUserItem { get; set; }
 
-        public ReasonMovesItems ReasonMovesItems { get; set; }
+        public ReasonMoveItems ReasonMoveItems { get; set; }
     }
 
     public class StatusItems
@@ -60,7 +56,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses
         public string Code { get; set; }
         public string Label { get; set; }
     }
-    
+
 
     public class InternalUserItems
     {
@@ -68,11 +64,8 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses
         public string FirstName { get;set; }
         public string LastName { get; set; }
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> 0c4c2e20744ef0295be16f5a5698d8b46d0107a3
-    public class ReasonMovesItems
+    public class ReasonMoveItems
     {
         public int id { get; set; }
         public string Code { get; set; }

@@ -28,6 +28,7 @@ export interface IDetailsChecksService {
 export interface IStatusService {
   getAllStatus?: () => void;
 }
-export interface IReasonMoveServices {
-  getAllReasonMoves: () => Promise<{ label: string; value: string }[]>;
+
+export interface IReasonMoveService {
+  AllReasonMoves: () => Promise<{ label: string; code: string }[]>;
 }

@@ -125,5 +125,11 @@ export const frTranslationMessages = {
     "deliverySlip_details.deliverySlip_reference": "N° Compte",
     "payment_details.payment_Number": "N° Transaction",
     "payment_details.payment_info": "Register Order",
+    "CheckTracking.confirm_dialogPopUp_title": "Valider les chèques",
+    "CheckTracking.confirm_dialogPopUp_body": "Êtes-vous sûr de vouloir valider les chèques séléctionner",
+    "CheckTracking.reason_label_1": "Applicable",
+    "CheckTracking.reason_label_2": "Rendement",
+    "CheckTracking.reason_label_3": "Imposable",
+    "CheckTracking.comment_label": "Commentaire",
 };
 //# sourceMappingURL=fr.js.map

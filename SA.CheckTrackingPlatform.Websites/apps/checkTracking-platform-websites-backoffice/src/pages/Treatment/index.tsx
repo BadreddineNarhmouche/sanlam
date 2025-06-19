@@ -5,11 +5,11 @@ import {
   FilterCriteriaChecks,
   FilterFirstPageTreatment,
   IChecksService,
-  IReasonMoveServices,
 } from "@checkTracking/helpers";
+import { IReasonMoveService } from "@checkTracking/helpers";
 import { Treatment } from "@checkTracking/shared";
 import { getAllChecksByCriteria } from "../../store/Checks/getAllChecksByCriteriaSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getAllChecks } from "../../store/Checks/getAllChecksSlice";
 import { AllReasonMove } from "../../store/ReasonMove/ReasonMoveAllSlice";
 
@@ -21,20 +21,34 @@ const TreatmentPage = () => {
     dispatch(AllReasonMove());
   }, [dispatch]);
 
+  const reasonMoves = useSelector(
+    (state: any) => state.AllReasonMove.responseData
+  );
+
+  const ReasonMoveService: IReasonMoveService = {
+    AllReasonMoves: () => Promise.resolve(reasonMoves),
+  };
+
   const CheckServices: IChecksService = {
     getAllChecksByCriteria: (criteria: FilterCriteriaChecks) =>
       dispatch(getAllChecksByCriteria(criteria)),
     getAllChecks: (criteria: FilterByAllChecks) =>
       dispatch(getAllChecks(criteria)),
   };
+
   const filterValues: FilterFirstPageTreatment = {
     lotNumber: "",
     checkNumber: "",
     sinisterNumber: "",
   };
+
   return (
     <Grid container>
-      <Treatment services={CheckServices} initialFilterValues={filterValues} />
+      <Treatment
+        services={CheckServices}
+        initialFilterValues={filterValues}
+        reasonMoveService={ReasonMoveService}
+      />
     </Grid>
   );
 };
