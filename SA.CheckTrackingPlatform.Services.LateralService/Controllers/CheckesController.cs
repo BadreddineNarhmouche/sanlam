@@ -23,18 +23,15 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
         #endregion Constructors
 
         #region Methods
-
-        // Récuperer un chéque par son identifiant        
+     
         [HttpGet]
         [Route(nameof(GetById))]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        //[CustomAuthorize(Constants.InternalRoleCodes.User)]
         public async Task<GetChecksByIdResponse> GetById([FromQuery] GetChecksByIdQuery query)
         {
             return await _mediator.Send(query);
         }
 
-        // Récuperer un chéque par des critères
         [HttpGet]
         [Route(nameof(GetAllByCriteria))]
         [ProducesResponseType(StatusCodes.Status200OK)]

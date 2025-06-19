@@ -18,9 +18,6 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Timelines.Responses
         public string ReasonLabel { get; set; }
         public InternalUser InternalUserItems { get; set; }
 
-        // public ICollection<Status> Status { get; set; }
-
         #endregion Properties
-
     }
 }

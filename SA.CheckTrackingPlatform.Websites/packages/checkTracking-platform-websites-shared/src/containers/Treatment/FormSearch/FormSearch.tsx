@@ -48,7 +48,6 @@ const Form = (props: any) => {
 
   const inputRefs = useRef<{ [key: string]: HTMLInputElement | null }>({});
 
-  // Then in useEffect:
   useEffect(() => {
     if (inputRefs.current[keyInput]) {
       inputRefs.current[keyInput]?.focus();

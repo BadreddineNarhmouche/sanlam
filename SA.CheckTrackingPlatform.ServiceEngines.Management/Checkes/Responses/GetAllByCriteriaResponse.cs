@@ -4,7 +4,6 @@
     {
 
     }
-    // On peut renvoyer moins d'élements 
     public class GetAllByCriteriaItem
     {
         #region Properties 

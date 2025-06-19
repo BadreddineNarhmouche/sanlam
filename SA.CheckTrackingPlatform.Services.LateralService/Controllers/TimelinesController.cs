@@ -49,10 +49,9 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<CreateTimelineResponse> CreateTimeLine([FromForm] CreateTimelineCommand command)
         {
-            // command.InternalUserElectronicAddress = User.FindFirst(KeycloakAttributes.InternalUserElectronicAddress).Value;
+            command.InternalUserElectronicAddress = User.FindFirst(KeycloakAttributes.InternalUserElectronicAddress).Value;
             return await _mediator.Send(command);
         }
         #endregion Methods
-        // remplissage null => date de system
     }
 }

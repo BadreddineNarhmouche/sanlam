@@ -13,7 +13,6 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
         protected readonly ApplicationContext applicationContext;
         #endregion Fields
 
-
         #region Constructors 
         public TimelineQueryRepository(ApplicationContext applicationContext) : base()
         {
@@ -21,19 +20,18 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
         }
         #endregion Constructors
 
-
         #region Methods
 
         public async Task<Timeline> GetTimelineByIdAsync(int id)
         {
-            Timeline query = await this.applicationContext.Timelines 
+            Timeline query = await this.applicationContext.Timelines
                     .AsNoTrackingWithIdentityResolution()
                     .SingleOrDefaultAsync(o => o.Id == id);
 
             return query;
         }
 
-        public async Task<IEnumerable<Timeline>> GetTimelinesByCriteriaAsync(List<int>? ids, List<int>? ChecksIds, List<int>? UserIds, int? statusId, string? reasonlabel , int? pageIndex = null, int? pageSize = null)
+        public async Task<IEnumerable<Timeline>> GetTimelinesByCriteriaAsync(List<int>? ids, List<int>? ChecksIds, List<int>? UserIds, int? statusId, string? reasonlabel, int? pageIndex = null, int? pageSize = null)
         {
             IQueryable<Timeline> query = this.applicationContext.Timelines
                 .AsNoTrackingWithIdentityResolution();
@@ -50,10 +48,6 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
 
             if (statusId.HasValue)
                 query = query.Where(c => c.StatusId == statusId.Value);
-
-            //if (!string.IsNullOrWhiteSpace(reasonlabel))
-            //    query = query.Where(c => c.ReasonLabel == reasonlabel);
-
 
             if (pageIndex.HasValue && pageSize.HasValue)
             {

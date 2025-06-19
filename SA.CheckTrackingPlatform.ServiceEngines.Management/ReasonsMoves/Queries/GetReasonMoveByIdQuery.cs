@@ -20,7 +20,6 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Queries
         #endregion Properties 
     }
 
-
     public class GetReasonMoveByIdQueryHandler : IRequestHandler<GetReasonMoveByIdQuery, GetReasonMoveByIdResponse>
     {
         #region Fields 
