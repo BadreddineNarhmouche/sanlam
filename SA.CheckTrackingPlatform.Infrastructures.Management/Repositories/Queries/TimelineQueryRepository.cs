@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using PdfSharpCore;
 using SA.CheckTrackingPlatform.Contexts.Management.Application;
 using SA.CheckTrackingPlatform.Domains.Management.Entities;
@@ -63,6 +64,21 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
 
             return await query.ToListAsync();
         }
+
+        public async Task<int> CountKPIAsync(string? statusTimeline, DateTime? date)
+        {
+           if(statusTimeline == Constants.TimelineStatusCodes.ReceivedTrade)
+            {
+                IQueryable<Timeline> query = applicationContext.Timelines
+                    .Where(q => (q.Status.Label == Constants.TimelineStatusCodes.ReceivedTrade));
+
+                return await query
+                       .AsNoTrackingWithIdentityResolution()
+                       .CountAsync();
+
+            }
+        }
+
         #endregion Methods
     }
 }
