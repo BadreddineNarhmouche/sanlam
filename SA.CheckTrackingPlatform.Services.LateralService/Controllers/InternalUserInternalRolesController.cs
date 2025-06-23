@@ -41,7 +41,6 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
         public async Task<GetAllInternalUserInternalRolesByInternalUserElectronicAddressResponse> GetAllByInternalUserElectronicAddress([FromQuery] GetAllInternalUserInternalRolesByInternalUserElectronicAddressQuery query)
         {
             query.InternalUserElectronicAddress = User.FindFirst(KeycloakAttributes.InternalUserElectronicAddress).Value;
-
             return await this.mediator.Send(query);
         }
 

@@ -30,14 +30,24 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
             Checks query = await this.applicationContext.Checks
                 .Include(c => c.Timelines)
                 .ThenInclude(c => c.Status)
+                .Include(c => c.Timelines)
+                .ThenInclude(c => c.User)
+                .Include(c => c.Timelines)
+                .ThenInclude(c => c.ReasonMove)
+                .Include(c => c.Branch)
+                .Include(c => c.Service)
+                .Include(c => c.Bank)
                 .AsNoTrackingWithIdentityResolution()
                 .SingleOrDefaultAsync(o => o.Id == id);
+
+            query.Timelines = query.Timelines
+                 .OrderByDescending(t => t.CreationDate)
+                 .ToList();
 
             return query;
         }
         public async Task<IEnumerable<Checks>> GetByCriteriaAsync(List<int>? ids, List<string>? checkNumbers, int? branchId, int? serviceId, int? bankId, string? lotNumber, string? beneficiaryName, int? pageIndex, int? pageSize)
         {
-            // Construire le IQueryable pour ne materialiser qu’une seule fois en base
             IQueryable<Checks> query = this.applicationContext.Checks
                 .Include(c => c.Timelines)
                 .ThenInclude(c => c.Status)

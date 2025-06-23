@@ -34,6 +34,14 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
             return await _mediator.Send(query);
         }
 
+        [HttpGet]
+        [Route(nameof(GetTimelinesByCriteria))]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<GetTimelinesByCriteriaResponse> GetTimelinesByCriteria([FromQuery] GetTimelinesByCriteriaQuery query)
+        {
+            return await _mediator.Send(query);
+        }
+
         [HttpPost]
         [Route(nameof(CreateTimeLine))]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -42,7 +50,6 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
             command.InternalUserElectronicAddress = User.FindFirst(KeycloakAttributes.InternalUserElectronicAddress).Value;
             return await _mediator.Send(command);
         }
-
         #endregion Methods
     }
 }

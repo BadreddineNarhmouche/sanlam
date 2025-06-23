@@ -9,8 +9,14 @@ export interface IChecksService {
     getAllChecks?: (criteria: FilterByAllChecks) => void;
 }
 export interface IDetailsChecksService {
-    getCheckById?: (criteria: FilterCriteriaChecks) => void;
+    getCheckById?: (Id: string) => void;
 }
 export interface IStatusService {
     getAllStatus?: () => void;
+}
+export interface IReasonMoveService {
+    AllReasonMoves: () => Promise<{
+        label: string;
+        code: string;
+    }[]>;
 }

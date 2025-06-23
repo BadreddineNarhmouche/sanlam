@@ -1,16 +1,16 @@
-import { ToastContainer } from 'react-toastify';
-import { Provider } from 'react-redux';
-import ReactDOM from 'react-dom/client';
-import { UserService } from '@checkTracking/helpers';
-import 'react-toastify/dist/ReactToastify.css';
-import { EmptyState, Grid, Icons, Theme } from '@checkTracking/ui-kit';
-import App from './App';
-import store from './store/store';
-import './index.css';
-import reportWebVitals from './reportWebVitals';
+import { ToastContainer } from "react-toastify";
+import { Provider } from "react-redux";
+import ReactDOM from "react-dom/client";
+import { UserService } from "@checkTracking/helpers";
+import "react-toastify/dist/ReactToastify.css";
+import { EmptyState, Grid, Icons, Theme } from "@checkTracking/ui-kit";
+import App from "./App";
+import store from "./store/store";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement,
+  document.getElementById("root") as HTMLElement
 );
 
 UserService.initKeycloak(
@@ -21,7 +21,7 @@ UserService.initKeycloak(
           <ToastContainer />
           <App />
         </Provider>
-      </Theme.ThemeWrapper>,
+      </Theme.ThemeWrapper>
     );
   },
   () => {
@@ -29,18 +29,18 @@ UserService.initKeycloak(
       <Theme.ThemeWrapper>
         <Grid justifyContent="center" alignItems="center">
           <EmptyState
-            title={'Une erreur est survenue'}
-            subTitle={'Veuillez réessayer ultérieurement'}
+            title={"Une erreur est survenue"}
+            subTitle={"Veuillez réessayer ultérieurement"}
             action={{
-              label: 'Réessayer',
+              label: "Réessayer",
               startIcon: <Icons.Refresh />,
               onClick: () => window.location.reload(),
             }}
           />
         </Grid>
-      </Theme.ThemeWrapper>,
+      </Theme.ThemeWrapper>
     );
-  },
+  }
 );
 
 reportWebVitals();

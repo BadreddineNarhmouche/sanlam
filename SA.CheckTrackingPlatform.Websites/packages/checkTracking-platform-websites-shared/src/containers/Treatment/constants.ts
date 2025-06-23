@@ -45,6 +45,4 @@ export const FIRST_PAGE_CHECK_TABLE_COLUMNS_DEFAULT = [
   { title: "Numéro de lot" },
 ];
 
-export const FIRST_PAGE_CHECK_TABLE_HIDDEN_COLUMNS_DEFAULT = [
-  "id",
-];;
+export const FIRST_PAGE_CHECK_TABLE_HIDDEN_COLUMNS_DEFAULT = ["id"];

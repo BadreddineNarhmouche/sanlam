@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using MediatR;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.BranchFolder.Queries;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.BranchFolder.Responses;
 
@@ -21,7 +21,7 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
         #endregion Constructors
 
         #region Methods
-    
+
         [HttpGet]
         [Route(nameof(GetBranchById))]
         [ProducesResponseType(StatusCodes.Status200OK)]

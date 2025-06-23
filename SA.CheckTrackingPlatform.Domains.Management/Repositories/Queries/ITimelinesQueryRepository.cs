@@ -7,6 +7,7 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Repositories.Queries
     {
         #region Methods
         Task<Timeline> GetTimelineByIdAsync(int id);
+        Task<IEnumerable<Timeline>> GetTimelinesByCriteriaAsync(List<int>? ids, List<int>? ChecksIds, List<int>? UserIds, int? statusId, string? reasonlabel, int? pageIndex = null, int? pageSize = null);
         #endregion Methods
     }
 }

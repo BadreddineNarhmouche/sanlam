@@ -1,9 +1,9 @@
-import { fr } from 'date-fns/locale';
-import { memo } from 'react';
-import { DateRangePicker } from 'react-nice-dates';
-import 'react-nice-dates/build/style.css';
-import Grid from '../Grid/Grid';
-import styles from './styles';
+import { fr } from "date-fns/locale";
+import { memo } from "react";
+import { DateRangePicker } from "react-nice-dates";
+import "react-nice-dates/build/style.css";
+import Grid from "../Grid/Grid";
+import styles from "./styles";
 
 const DateRange = (props: any) => {
   return (
@@ -20,7 +20,7 @@ const DateRange = (props: any) => {
         <Grid container columnSpacing={1} mt={1}>
           <Grid item xs display="grid">
             <input
-              className={'input' + (focus === 'startDate' ? ' -focused' : '')}
+              className={"input" + (focus === "startDate" ? " -focused" : "")}
               {...startDateInputProps}
               placeholder={props.fromDateLabel}
               style={styles.dateInput}
@@ -28,7 +28,7 @@ const DateRange = (props: any) => {
           </Grid>
           <Grid item xs display="grid">
             <input
-              className={'input' + (focus === 'endDate' ? ' -focused' : '')}
+              className={"input" + (focus === "endDate" ? " -focused" : "")}
               {...endDateInputProps}
               placeholder={props.toDateLabel}
               style={styles.dateInput}

@@ -7,7 +7,6 @@
         public int CheckId { get; set; }
         public int UserId { get; set; }
         public int StatusId { get; set; }
-        public string ReasonLabel { get; set; }
 
         #endregion Properties
     }

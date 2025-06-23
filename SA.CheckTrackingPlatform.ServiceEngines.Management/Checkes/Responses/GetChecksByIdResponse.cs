@@ -30,7 +30,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses
         public InternalUser InternalUser { get; set; }
         public ReasonMoveItems ReasonMoveItems { get; set; }
 
-        public ICollection<TimelineItems> Timelines { get; set; }
+        public ICollection<Timeline> Timelines { get; set; }
 
         #endregion 
     }

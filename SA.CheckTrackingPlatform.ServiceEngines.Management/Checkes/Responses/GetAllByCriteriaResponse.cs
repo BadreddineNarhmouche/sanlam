@@ -4,7 +4,6 @@
     {
 
     }
-    // On peut renvoyer moins d'élements 
     public class GetAllByCriteriaItem
     {
         #region Properties 
@@ -15,6 +14,6 @@
         public string LotNumber { get; set; }
         public string BeneficiaryName { get; set; }
 
-        #endregion
+        #endregion Properties
     }
 }

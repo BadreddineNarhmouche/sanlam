@@ -1,5 +1,4 @@
 ﻿
-
 namespace SA.CheckTrackingPlatform.ServiceEngines.Management.BranchFolder.Responses
 {
     public class GetBranchByAllResponse : BaseResponse<IEnumerable<GetBranchByAllItem>>
