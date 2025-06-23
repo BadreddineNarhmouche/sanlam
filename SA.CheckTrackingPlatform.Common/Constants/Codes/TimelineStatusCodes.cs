@@ -7,19 +7,19 @@ namespace System
         {
             #region Fields 
 
-            public const string ReceivedTrade = "ReceivedTrade";
+            public const string ReceivedTrade = "Reçu métier";
 
-            public const string SendOffice = "SendOffice";
+            public const string SendOffice = "Envoi BO";
 
-            public const string ReceivedOffice = "ReceivedOffice";
+            public const string ReceivedOffice = "Reçu BO";
 
-            public const string SendClient = "SentClient";
+            public const string SendClient = "Envoie client";
 
-            public const string ReturnClient = "ReturnClient";
+            public const string ReturnClient = "Retour Client";
 
-            public const string ReturnTrade = "ReturnTrade";
+            public const string ReturnTrade = "Retour métier";
 
-            public const string ReceiptReturnCheck = "ReceiptReceivedTrade";
+            public const string ReceiptReturnCheck = "Réception chèque retourné";
 
             #endregion Fields
         }

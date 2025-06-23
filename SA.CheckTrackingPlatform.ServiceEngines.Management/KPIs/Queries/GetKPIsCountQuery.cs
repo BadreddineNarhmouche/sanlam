@@ -2,7 +2,11 @@
 using SA.CheckTrackingPlatform.Common.Resources.Messages;
 using SA.CheckTrackingPlatform.Domains.Management.Repositories.Queries;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.Responses;
+using Microsoft.Extensions.Configuration;
+using SixLabors.ImageSharp;
 using System.Reflection;
+using System.Data.SqlClient;
+using Dapper;
 
 namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.Queries
 {
@@ -18,16 +22,21 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.Queries
     {
         #region Fields 
 
-        private readonly IBanksQueryRepository banksQueryRepository;
-        
+        // private readonly IBanksQueryRepository banksQueryRepository;
+        private readonly ITimelinesQueryRepository timelinesQueryRepository;
+        private readonly IMediator mediator;
+      //  private readonly IConfiguration configuration;
+
 
         #endregion Fields 
 
         #region Constructors 
 
-        public GetKPIsCountQueryHandler(IBanksQueryRepository banksQueryRepository)
+        public GetKPIsCountQueryHandler(ITimelinesQueryRepository timelinesQueryRepository , IMediator mediator)
         {
-            this.banksQueryRepository = banksQueryRepository;
+            this.timelinesQueryRepository = timelinesQueryRepository;
+            this.mediator = mediator;
+          //  this.configuration = configuration;
         }
 
         #endregion Constructors 
@@ -60,16 +69,45 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.Queries
 
                 if (response.IsSuccess)
                 {
+                    try
+                    {
+                        int count = await timelinesQueryRepository.GetKpiCountAsync(
+                            Constants.TimelineStatusCodes.ReceivedOffice,
+                            new List<string>
+                            {
+                Constants.TimelineStatusCodes.SendClient,
+                Constants.TimelineStatusCodes.ReturnClient,
+                Constants.TimelineStatusCodes.ReturnTrade,
+                Constants.TimelineStatusCodes.ReceiptReturnCheck,
+                            }
+                        );
 
+                        var data = new GetKPIsCountResponse
+                        {
+                            Count = count,
+                            Id = 0
+                        };
 
-                    response.IsSuccess = true;
-                   // response.IsPopulated = Bankes.IsNotNull();
-                    response.InformationMessage = InformationMessages.QuerySucceeded;
+                        response.Data = data;
+                        response.IsSuccess = true;
+                        response.IsPopulated = true;
+                        response.InformationMessage = InformationMessages.QuerySucceeded;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        response.IsSuccess = false;
+                        response.WarningMessage = WarningMessages.QueryFailure;
+                    }
                 }
                 else
                 {
+                    response.IsSuccess = false;
                     response.WarningMessage = WarningMessages.QueryFailure;
                 }
+
+
+
 
                 #endregion Operations
 

@@ -1,10 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Dapper;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using PdfSharpCore;
 using SA.CheckTrackingPlatform.Contexts.Management.Application;
 using SA.CheckTrackingPlatform.Domains.Management.Entities;
 using SA.CheckTrackingPlatform.Domains.Management.Repositories.Queries;
 using SA.CheckTrackingPlatform.Infrastructures.Management.Common;
+using SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.Responses;
+using Microsoft.Extensions.Configuration;
+using Oracle.ManagedDataAccess.Client;
 
 namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queries
 {
@@ -12,13 +16,16 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
     {
         #region Fields 
         protected readonly ApplicationContext applicationContext;
+        private readonly IConfiguration configuration;
+
         #endregion Fields
 
 
         #region Constructors 
-        public TimelineQueryRepository(ApplicationContext applicationContext) : base()
+        public TimelineQueryRepository(ApplicationContext applicationContext, IConfiguration configuration) : base()
         {
             this.applicationContext = applicationContext;
+            this.configuration = configuration;
         }
         #endregion Constructors
 
@@ -65,19 +72,55 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
             return await query.ToListAsync();
         }
 
-        public async Task<int> CountKPIAsync(string? statusTimeline, DateTime? date)
+
+        public async Task<int> GetKpiCountAsync(string statutFinal, List<string> statutsExclus)
         {
-           if(statusTimeline == Constants.TimelineStatusCodes.ReceivedTrade)
+            var inParams = statutsExclus.Select((_, i) => $":p{i}").ToList();
+            string inClause = string.Join(", ", inParams);
+
+            string query = $@"
+    WITH DernierTimeline AS (
+        SELECT 
+            t.""CheckId"",
+            t.""StatusId"",
+            ROW_NUMBER() OVER (
+                PARTITION BY t.""CheckId"" 
+                ORDER BY t.""DateOfPassage"" DESC, t.""Id"" DESC
+            ) AS rn
+        FROM ""Timelines"" t
+    )
+    SELECT COUNT(*) AS ""Count""
+    FROM DernierTimeline dt
+    INNER JOIN ""Statuses"" s ON dt.""StatusId"" = s.""Id""
+    WHERE dt.rn = 1
+      AND s.""Label"" = :statutFinal
+      AND NOT EXISTS (
+          SELECT 1
+          FROM ""Timelines"" t2
+          INNER JOIN ""Statuses"" s2 ON t2.""StatusId"" = s2.""Id""
+          WHERE t2.""CheckId"" = dt.""CheckId""
+            AND s2.""Label"" IN ({inClause})
+      )
+    ";
+
+            string connectionString = configuration.GetConnectionString("OracleDatabase");
+            using (var connection = new OracleConnection(connectionString))
             {
-                IQueryable<Timeline> query = applicationContext.Timelines
-                    .Where(q => (q.Status.Label == Constants.TimelineStatusCodes.ReceivedTrade));
+                await connection.OpenAsync();
 
-                return await query
-                       .AsNoTrackingWithIdentityResolution()
-                       .CountAsync();
+                var parameters = new DynamicParameters();
+                parameters.Add("statutFinal", statutFinal);
 
+                for (int i = 0; i < statutsExclus.Count; i++)
+                {
+                    parameters.Add($"p{i}", statutsExclus[i]);
+                }
+
+                int count = await connection.ExecuteScalarAsync<int>(query, parameters);
+                return count;
             }
         }
+
 
         #endregion Methods
     }
