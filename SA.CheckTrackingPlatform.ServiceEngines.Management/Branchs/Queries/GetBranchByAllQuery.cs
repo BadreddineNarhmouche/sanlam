@@ -15,14 +15,11 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.BranchFolder.Querie
         #endregion Properties 
     }
 
-
     public class GetByAllQueryHandler : IRequestHandler<GetBranchByAllQuery, GetBranchByAllResponse>
     {
         #region Fields 
 
         private readonly IBranchsQueryRepository branchsQueryRepository;
-        
-        
 
         #endregion Fields 
 

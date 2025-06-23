@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using MediatR;
-using SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Queries;
+using SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses;
 
 namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
 {
@@ -22,8 +22,7 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
 
         #region Methods
 
-        // Récuperer un chéque par son identifiant        
-        [HttpGet]
+       [HttpGet]
         [Route(nameof(GetById))]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<GetChecksByIdResponse> GetById([FromQuery] GetChecksByIdQuery query)
@@ -31,8 +30,7 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
             return await _mediator.Send(query);
         }
 
-        // Récuperer un chéque par des critères
-        [HttpGet]
+       [HttpGet]
         [Route(nameof(GetAllByCriteria))]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<GetAllByCriteriaResponse> GetAllByCriteria([FromQuery] GetAllByCriteriaQuery query)

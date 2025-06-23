@@ -1,9 +1,9 @@
 ﻿
 namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses
 {
-    public class GetAllResponse  : BaseResponse<List<GetAllItem>>
+    public class GetAllResponse : BaseResponse<List<GetAllItem>>
     {
-        
+
     }
 
     public class GetAllItem

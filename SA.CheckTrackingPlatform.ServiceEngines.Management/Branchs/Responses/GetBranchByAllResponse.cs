@@ -4,7 +4,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.BranchFolder.Respon
 {
     public class GetBranchByAllResponse : BaseResponse<IEnumerable<GetBranchByAllItem>>
     {
-        
+
     }
     public class GetBranchByAllItem
     {
