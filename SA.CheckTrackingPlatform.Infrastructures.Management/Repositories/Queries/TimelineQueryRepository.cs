@@ -122,6 +122,6 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
         }
 
 
-        #endregion Methods
+        #endregion Methods */
     }
 }
