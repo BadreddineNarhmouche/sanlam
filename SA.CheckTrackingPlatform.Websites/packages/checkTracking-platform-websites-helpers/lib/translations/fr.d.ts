@@ -60,8 +60,13 @@ export declare const frTranslationMessages: {
     "check.search.partnerUserCode": string;
     "check.search.partnerUserLabel": string;
     "check.search.reinsurer": string;
+    "check.search.checkNumber": string;
+    "check.search.sin": string;
+    "check.search.lot": string;
+    "check.search.date": string;
     "File.global.search.startDate": string;
     "File.global.search.endDate": string;
+    "File.global.search.comment": string;
     "check_details.reference": string;
     "check_details.check_info": string;
     "check_details.check_policyReference": string;
@@ -84,6 +89,7 @@ export declare const frTranslationMessages: {
     "requests.torenew": string;
     "table.result.message": string;
     "workflow.confirm_dialog_message": string;
+    "workflow.confirm_dialog_message_confirm": string;
     "workflow.confirm_dialog_title": string;
     deliverySlip_creation_dialog_message: string;
     deliverySlip_creation_dialog_title: string;
