@@ -26,7 +26,7 @@ export const KPIs = () => {
                 contents: [
                   {
                     code: "1",
-                    count: 0, //GetCountReinsurances?.count ?? 0,
+                    count: 3, //GetCountReinsurances?.count ?? 0,
                     countColor: "red",
                     description: "Télécharger",
                     onClick() {
