@@ -12,6 +12,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.Queries
     public class GetKPIsCountQuery : BaseRequest<GetKPIsCountResponse>
     {
         #region properties
+        public string TimelineStatusCodeRequest { get; set; }
 
         #endregion Properties 
     }
@@ -66,39 +67,34 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.Queries
                 {
                     try
                     {
-                        var query = timelinesQueryRepository.GetKpiQuery(
-                            Constants.TimelineStatusCodes.ReceivedOffice,
-                            new List<string>
-                            {
-                Constants.TimelineStatusCodes.SendClient,
-                Constants.TimelineStatusCodes.ReturnClient,
-                Constants.TimelineStatusCodes.ReturnTrade,
-                Constants.TimelineStatusCodes.ReceiptReturnCheck,
-                            });
+                        var kpiGrouped = await timelinesQueryRepository.GetKpiQueryGroupedByStatusAsync();
 
-                        var data = new GetKPIsCountResponse
+                        response.Data = new GetKPIsCountResponse
                         {
-                            Count = await query.CountAsync(),
-                            Id = 0
+                            NumberOfChecksIssuedButNotAcknowledgedByTheBusinessUnit = kpiGrouped.TryGetValue(Constants.TimelineStatusCodes.EditedCheck, out var val1) ? val1 : 0,
+                            NumberOfChecksReceivedByBusinessUnitButNotByRegistryOffice = kpiGrouped.TryGetValue(Constants.TimelineStatusCodes.ReceivedTrade, out var val2) ? val2 : 0,
+                            NumberOfChecksReceivedByRegistryOfficeButNotSentToClient = kpiGrouped.TryGetValue(Constants.TimelineStatusCodes.ReceivedOffice, out var val3) ? val3 : 0,
+                            NumberOfReturnedChecksNotYetReceived = kpiGrouped.TryGetValue(Constants.TimelineStatusCodes.ReturnClient, out var val4) ? val4 : 0
                         };
 
-                        response.Data = data;
                         response.IsSuccess = true;
                         response.IsPopulated = true;
                         response.InformationMessage = InformationMessages.QuerySucceeded;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.WriteLine(ex.Message);
                         response.IsSuccess = false;
+                        response.IsPopulated = false;
                         response.WarningMessage = WarningMessages.QueryFailure;
                     }
                 }
                 else
                 {
                     response.IsSuccess = false;
+                    response.IsPopulated = false;
                     response.WarningMessage = WarningMessages.QueryFailure;
                 }
+
 
 
                 #endregion Operations

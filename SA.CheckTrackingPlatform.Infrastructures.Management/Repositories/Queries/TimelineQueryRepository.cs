@@ -72,19 +72,29 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
             return await query.ToListAsync();
         }
 
-
-        public IQueryable<Timeline> GetKpiQuery(string statutFinal, List<string> statutsExclus)
+        public async Task<Dictionary<string, int>> GetKpiQueryGroupedByStatusAsync()
         {
-            return from c in applicationContext.Checks
-                   join t in applicationContext.Timelines on c.Id equals t.CheckId
-                   join s in applicationContext.Statuses on t.StatusId equals s.Id
-                   where s.Label == statutFinal
-                         && t.DateOfPassage == applicationContext.Timelines
-                             .Where(t2 => t2.CheckId == c.Id)
-                             .Max(t2 => t2.DateOfPassage)
-                   select t;
+            var latestTimelines = await (
+                from c in applicationContext.Checks
+                join t in applicationContext.Timelines on c.Id equals t.CheckId
+                join s in applicationContext.Statuses on t.StatusId equals s.Id
+                where t.DateOfPassage == applicationContext.Timelines
+                    .Where(t2 => t2.CheckId == c.Id)
+                    .Max(t2 => t2.DateOfPassage)
+                select new
+                {
+                    StatusLabel = s.Label.Trim().ToLowerInvariant()
+                }
+            ).ToListAsync();
+
+            var grouped = latestTimelines
+                .GroupBy(x => x.StatusLabel)
+                .ToDictionary(g => g.Key, g => g.Count());
+
+            return grouped;
         }
 
-        #endregion Methods */
+
+        #endregion Methods 
     }
 }

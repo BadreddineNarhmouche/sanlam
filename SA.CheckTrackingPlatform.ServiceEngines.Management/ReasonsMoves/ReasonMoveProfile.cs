@@ -17,7 +17,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management
         public ReasonMoveProfile()
         {
             CreateMap<ReasonMove, GetReasonMoveByIdResponse>().ReverseMap();
-
+                                        
             CreateMap<ReasonMove, GetReasonMoveByAllItem>().ReverseMap();
         }
 

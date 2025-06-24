@@ -7,19 +7,19 @@ namespace System
         {
             #region Fields 
 
-            public const string ReceivedTrade = "Reçu métier";
+            public static readonly string ReceivedTrade = "Reçu métier".Trim().ToLowerInvariant();
 
-            public const string SendOffice = "Envoi BO";
+            public static readonly string SendOffice = "Envoi BO".Trim().ToLowerInvariant();
 
-            public const string ReceivedOffice = "Reçu BO";
+            public static readonly string ReceivedOffice = "Reçu BO".Trim().ToLowerInvariant();
 
-            public const string SendClient = "Envoie client";
+            public static readonly string SendClient = "Envoie client".Trim().ToLowerInvariant();
 
-            public const string ReturnClient = "Retour Client";
+            public static readonly string ReturnClient = "Retour Client".Trim().ToLowerInvariant(); 
 
-            public const string ReturnTrade = "Retour métier";
+            public static readonly string EditedCheck = "Edité".Trim().ToLowerInvariant();
 
-            public const string ReceiptReturnCheck = "Réception chèque retourné";
+            public static readonly string ReceiptReturnCheck = "Réception chèque retourné".Trim().ToLowerInvariant();
 
             #endregion Fields
         }
