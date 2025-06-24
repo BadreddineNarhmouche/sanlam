@@ -20,3 +20,6 @@ export interface IReasonMoveService {
         code: string;
     }[]>;
 }
+export interface ITimeLineService {
+    CreateTimeLine: (payload: any) => void;
+}

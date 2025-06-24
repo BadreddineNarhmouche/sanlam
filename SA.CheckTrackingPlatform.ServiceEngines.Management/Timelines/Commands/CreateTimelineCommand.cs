@@ -14,7 +14,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Timelines.Commands
         public string? InternalUserElectronicAddress { get; set; }
         public string? Comment { get; set; }
         public int? ReasonMoveId { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
         public string Status { get; set; }
     }
 
@@ -70,11 +70,6 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Timelines.Commands
                     return response;
                 }
 
-                if (request.Date.IsNull())
-                {
-                    request.Date = DateTime.Now;
-                }
-
                 #endregion Validations
 
                 #region Operations
@@ -82,22 +77,29 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Timelines.Commands
                 if (response.IsSuccess)
                 {
                     IEnumerable<Status> statuses = await statusQueryRepository.GetByAllAsync();
-                    Timeline timelineToCreated = new Timeline();
                     List<Timeline> timelineCreated = new List<Timeline>();
 
                     internalUser = await internalUserQueryRepository.GetByElectronicAddressAsync(request.InternalUserElectronicAddress);
 
                     foreach (var item in request.CheckIds)
                     {
-                        timelineToCreated.CheckId = item;
-                        timelineToCreated.UserId = internalUser.Id;
-                        timelineToCreated.StatusId = statuses.Where(c => c.Code == request.Status).Select(c => c.Id).FirstOrDefault();
-                        timelineToCreated.ReasonMoveId = request.ReasonMoveId ?? null;
-                        timelineToCreated.Comment = request.Comment ?? null;
-                        timelineToCreated.DateOfPassage = request.Date;
+                        var timelineToCreated = new Timeline
+                        {
+                            CheckId = item,
+                            UserId = internalUser.Id,
+                            StatusId = statuses.Where(c => c.Code == request.Status).Select(c => c.Id).FirstOrDefault(),
+                            ReasonMoveId = request.ReasonMoveId,
+                            Comment = request.Comment,
+                            DateOfPassage = request.Date ?? DateTime.Now,
+                            CreatedById = internalUser.Id.ToString(),
+                            CreatedByFullName = internalUser.FirstName + " " + internalUser.LastName,
+                            CreationDate = DateTime.Now
+                        };
 
-                        timelineCreated.Add(await timelinesCommandRepository.AddAsync(timelineToCreated));
+                        timelineCreated.Add(timelineToCreated);
                     }
+
+                    await timelinesCommandRepository.AddRangeAsync(timelineCreated);
 
                     response.IsSuccess = true;
                     response.IsPopulated = timelineCreated.Count > 0 ? true : false;

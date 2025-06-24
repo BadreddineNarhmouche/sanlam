@@ -12,6 +12,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 import { CircularProgress, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 import { isEmpty } from "lodash";
+import { useSelector } from "react-redux";
 
 interface Props {
   openConfiramtionDialog: boolean;
@@ -45,10 +46,9 @@ export const DialogTreatment = ({
 
   const intl = useIntl();
 
-  const ds: any[] = [
-    { id: 1, code: 1, label: "fsdf" },
-    { id: 2, code: 2, label: "vxcvcxv" },
-  ];
+  const { responseData: reasonMoveOptions = [] } = useSelector(
+    (state: any) => state.AllReasonMove
+  );
 
   return (
     <Dialog
@@ -61,7 +61,7 @@ export const DialogTreatment = ({
           <Grid mt={1} container columnSpacing={1}>
             <Grid item xs={12}>
               <Autocomplete
-                options={ds}
+                options={reasonMoveOptions}
                 renderOption={(props: any, option: any) => (
                   <li {...props} key={option.id}>
                     {option.label || option.name || option}

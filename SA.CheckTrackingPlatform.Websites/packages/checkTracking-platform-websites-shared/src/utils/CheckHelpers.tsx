@@ -55,3 +55,24 @@ export const TreatmentLabelComponent = (InternalRoleCode: string) => {
       return "";
   }
 };
+
+export const GetNextStatusComponent = (InternalRoleCode: string) => {
+  switch (InternalRoleCode) {
+    case STATUS_TREATMENTS.ReceiptByBusinessUnit:
+      return STATUS_TREATMENTS.BoOut;
+    case STATUS_TREATMENTS.BoOut:
+      return STATUS_TREATMENTS.BoIn;
+    case STATUS_TREATMENTS.BoIn:
+      return STATUS_TREATMENTS.ClientOut;
+    case STATUS_TREATMENTS.ClientOut:
+      return STATUS_TREATMENTS.ClientIn;
+    case STATUS_TREATMENTS.ClientIn:
+      return STATUS_TREATMENTS.BackToBusinessUnit;
+    case STATUS_TREATMENTS.BackToBusinessUnit:
+      return STATUS_TREATMENTS.ReceiptByBusinessUnit;
+    case STATUS_TREATMENTS.ReturnedCheckIn:
+      return STATUS_TREATMENTS.BackToBusinessUnit;
+    default:
+      return "";
+  }
+};

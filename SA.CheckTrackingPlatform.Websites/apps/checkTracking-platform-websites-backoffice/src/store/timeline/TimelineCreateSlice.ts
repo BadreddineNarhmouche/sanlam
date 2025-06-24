@@ -7,14 +7,14 @@ const initialState: DataSliceState<any> = {
 };
 
 export const TimelineCreateSlice = createDataSlice(
-  "TimelineSlice",
+  "CreateTimeline",
   initialState
 );
 
 export const {
-  update: timelineAnnotationCreate,
-  callApiSuccess: TimelineAnnotationCreateSuccess,
-  callApiFailure: TimelineAnnotationCreateFailure,
+  update: CreateTimeline,
+  callApiSuccess: TimelineCreatedSuccess,
+  callApiFailure: TimelineCreatedFailure,
   defaultEndCallApiSuccess,
 } = TimelineCreateSlice.actions;
 

@@ -1,175 +1,138 @@
 import { Grid, TabPanels, Tabs } from "@checkTracking/ui-kit";
-import { useState } from "react";
-import { useIntl } from "react-intl";
+import { useEffect, useState } from "react";
 import { FirstPage } from "./Tabs/FirstPage";
-import { IChecksService } from "@checkTracking/helpers";
+import { IChecksService, ITimeLineService } from "@checkTracking/helpers";
 import { DialogConfirmation } from "../Dialogs/DialogConfirmation";
 import { FilterFirstPageTreatment } from "@checkTracking/helpers/src/api/types/domain";
+import { useSelector } from "react-redux";
+import {
+  CheckByAllStatusComponent,
+  GetNextStatusComponent,
+  TreatmentLabelComponent,
+} from "../../utils/CheckHelpers";
+import { ROLES } from "../../constants/global";
 import { IReasonMoveService } from "@checkTracking/helpers";
 
 export const Treatment = ({
-    services,
-    initialFilterValues,
-    reasonMoveService,
+  services,
+  initialFilterValues,
+  reasonMoveService,
+  timeLineService,
 }: {
-    services: IChecksService;
-    initialFilterValues: FilterFirstPageTreatment;
-    reasonMoveService: IReasonMoveService;
+  services: IChecksService;
+  initialFilterValues: FilterFirstPageTreatment;
+  reasonMoveService: IReasonMoveService;
+  timeLineService: ITimeLineService;
 }) => {
-    const intl = useIntl();
-    const [selectedTab, setSelectedTab] = useState(0);
-    const [newSelectedTab, setNewSelectedTab] = useState(0);
-    const [openConfiramtionDialog, setOpenConfiramtionDialog] = useState(false);
+  const [selectedTab, setSelectedTab] = useState(0);
+  const [newSelectedTab, setNewSelectedTab] = useState(0);
+  const [openConfiramtionDialog, setOpenConfiramtionDialog] = useState(false);
 
-    const handleChangeTab = (event: React.SyntheticEvent, newValue: number) => {
-        setNewSelectedTab(newValue);
-        setOpenConfiramtionDialog(true);
+  const { responseData: internalRoles } = useSelector(
+    (state: any) => state.internalRoles
+  );
+
+  const handleChangeTab = (event: React.SyntheticEvent, newValue: number) => {
+    setNewSelectedTab(newValue);
+    setOpenConfiramtionDialog(true);
+  };
+
+  const handleSubmitModal = () => {
+    setSelectedTab(newSelectedTab);
+    setOpenConfiramtionDialog(false);
+    if (newSelectedTab === 0) {
+      // navigate("/");
+    }
+  };
+
+  const handleSubmitData = (
+    dataTable: any[],
+    Select: any,
+    Comment: any,
+    status: any
+  ) => {
+    console.log(dataTable);
+    console.log(Select);
+    console.log(Comment);
+    console.log(status);
+
+    const checkIds: any[] = [];
+
+    dataTable.map((item) => {
+      checkIds.push(item.id);
+    });
+
+    const obj = {
+      CheckIds: checkIds,
+      Comment: Comment,
+      ReasonMoveId: Select,
+      Status: GetNextStatusComponent(status),
+      StatusNow: status,
     };
 
-    const handleSubmitModal = () => {
-        setSelectedTab(newSelectedTab);
-        setOpenConfiramtionDialog(false);
-        if (newSelectedTab === 0) {
-            // navigate("/");
-        }
-    };
+    console.log(GetNextStatusComponent(status));
+    console.log(obj);
+    timeLineService.CreateTimeLine && timeLineService.CreateTimeLine(obj);
+  };
 
-    const PANELS = [
-        {
-            component: (
-                <FirstPage
-                    services={services}
-                    initialFilterValues={initialFilterValues}
-                    reasonMoveService={reasonMoveService}
-                    status="REM"
-                    handleSubmitModal={() => {
-                        setSelectedTab(newSelectedTab);
-                        setOpenConfiramtionDialog(false);
-                    }}
-                />
-            ),
-        },
-        {
-            component: (
-                <FirstPage
-                    services={services}
-                    initialFilterValues={initialFilterValues}
-                    reasonMoveService={reasonMoveService}
-                    status="EB"
-                    handleSubmitModal={() => {
-                        setSelectedTab(newSelectedTab);
-                        setOpenConfiramtionDialog(false);
-                    }}
-                />
-            ),
-        },
-        {
-            component: (
-                <FirstPage
-                    services={services}
-                    initialFilterValues={initialFilterValues}
-                    reasonMoveService={reasonMoveService}
-                    status="RB"
-                    handleSubmitModal={() => {
-                        setSelectedTab(newSelectedTab);
-                        setOpenConfiramtionDialog(false);
-                    }}
-                />
-            ),
-        },
-        {
-            component: (
-                <FirstPage
-                    services={services}
-                    initialFilterValues={initialFilterValues}
-                    reasonMoveService={reasonMoveService}
-                    status="EC"
-                    handleSubmitModal={() => {
-                        setSelectedTab(newSelectedTab);
-                        setOpenConfiramtionDialog(false);
-                    }}
-                />
-            ),
-        },
-        {
-            component: (
-                <FirstPage
-                    services={services}
-                    initialFilterValues={initialFilterValues}
-                    reasonMoveService={reasonMoveService}
-                    status="RC"
-                    handleSubmitModal={() => {
-                        setSelectedTab(newSelectedTab);
-                        setOpenConfiramtionDialog(false);
-                    }}
-                />
-            ),
-        },
-        {
-            component: (
-                <FirstPage
-                    services={services}
-                    initialFilterValues={initialFilterValues}
-                    reasonMoveService={reasonMoveService}
-                    status="RM"
-                    handleSubmitModal={() => {
-                        setSelectedTab(newSelectedTab);
-                        setOpenConfiramtionDialog(false);
-                    }}
-                />
-            ),
-        },
-        {
-            component: (
-                <FirstPage
-                    services={services}
-                    initialFilterValues={initialFilterValues}
-                    reasonMoveService={reasonMoveService}
-                    status="RCR"
-                    handleSubmitModal={() => {
-                        setSelectedTab(newSelectedTab);
-                        setOpenConfiramtionDialog(false);
-                    }}
-                />
-            ),
-        },
-    ];
+  const [PANELS, setPANELS] = useState<any[]>([]);
+  const [TABS, setTABS] = useState<any[]>([]);
 
-    const TABS = [
-        { label: "Reçu métier" },
-        { label: "Envoi BO" },
-        { label: "Reçu BO" },
-        { label: "Envoi client" },
-        { label: "Retour Client" },
-        { label: "Retour métier" },
-        { label: "Réception chèque retourné" },
-    ];
-
-    return (
-        <>
-            <Grid container direction="column" px={8} py={7} id="check-table">
-                Traitement
-                <Grid display="flex" justifyContent="flex-start">
-                    <Grid item>
-                        <Tabs tabs={TABS} value={selectedTab} onChange={handleChangeTab} />
-                    </Grid>
-                    <Grid item sm>
-                        {" "}
-                    </Grid>
-                </Grid>
-                <Grid item>
-                    <TabPanels panels={PANELS} value={selectedTab} />
-                </Grid>
-            </Grid>
-
-            <DialogConfirmation
-                openConfiramtionDialog={openConfiramtionDialog}
-                setOpenConfiramtionDialog={setOpenConfiramtionDialog}
-                handleSubmit={handleSubmitModal}
-                isLoading={false}
-                error={false}
-                responseData={[]}
+  useEffect(() => {
+    const newPanels: any[] = [];
+    const newTabs: any[] = [];
+    internalRoles?.map((item: any) => {
+      if (ROLES.includes(item.internalRoleCode)) {
+        newPanels.push({
+          component: (
+            <FirstPage
+              services={services}
+              initialFilterValues={initialFilterValues}
+              status={CheckByAllStatusComponent(item.internalRoleCode)}
+              reasonMoveService={reasonMoveService}
+              handleSubmitData={(dataTable: any[], Select: any, Comment: any) =>
+                handleSubmitData(
+                  dataTable,
+                  Select,
+                  Comment,
+                  CheckByAllStatusComponent(item.internalRoleCode)
+                )
+              }
             />
-        </>
-    );
+          ),
+        });
+        newTabs.push({ label: TreatmentLabelComponent(item.internalRoleCode) });
+      }
+      return null;
+    });
+    setPANELS(newPanels.reverse());
+    setTABS(newTabs.reverse());
+  }, [services, initialFilterValues, internalRoles]);
+
+  return (
+    <>
+      <Grid container direction="column" px={8} py={7} id="check-table">
+        <Grid display="flex" justifyContent="flex-start">
+          <Grid item>
+            <Tabs tabs={TABS} value={selectedTab} onChange={handleChangeTab} />
+          </Grid>
+          <Grid item sm>
+            {" "}
+          </Grid>
+        </Grid>
+        <Grid item>
+          <TabPanels panels={PANELS} value={selectedTab} />
+        </Grid>
+      </Grid>
+
+      <DialogConfirmation
+        openConfiramtionDialog={openConfiramtionDialog}
+        setOpenConfiramtionDialog={setOpenConfiramtionDialog}
+        handleSubmit={handleSubmitModal}
+        isLoading={false}
+        error={false}
+        responseData={[]}
+      />
+    </>
+  );
 };

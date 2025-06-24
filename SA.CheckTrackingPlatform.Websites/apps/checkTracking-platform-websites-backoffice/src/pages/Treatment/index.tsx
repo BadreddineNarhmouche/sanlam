@@ -5,6 +5,7 @@ import {
   FilterCriteriaChecks,
   FilterFirstPageTreatment,
   IChecksService,
+  ITimeLineService,
 } from "@checkTracking/helpers";
 import { IReasonMoveService } from "@checkTracking/helpers";
 import { Treatment } from "@checkTracking/shared";
@@ -12,6 +13,7 @@ import { getAllChecksByCriteria } from "../../store/Checks/getAllChecksByCriteri
 import { useDispatch, useSelector } from "react-redux";
 import { getAllChecks } from "../../store/Checks/getAllChecksSlice";
 import { AllReasonMove } from "../../store/ReasonMove/ReasonMoveAllSlice";
+import { CreateTimeline } from "../../store/timeline/TimelineCreateSlice";
 
 const TreatmentPage = () => {
   const dispatch = useDispatch();
@@ -36,6 +38,11 @@ const TreatmentPage = () => {
       dispatch(getAllChecks(criteria)),
   };
 
+  const TimeLineService: ITimeLineService = {
+    CreateTimeLine: (criteria: any) =>
+      dispatch(CreateTimeline(criteria)),
+  };
+
   const filterValues: FilterFirstPageTreatment = {
     lotNumber: "",
     checkNumber: "",
@@ -48,6 +55,7 @@ const TreatmentPage = () => {
         services={CheckServices}
         initialFilterValues={filterValues}
         reasonMoveService={ReasonMoveService}
+        timeLineService={TimeLineService}
       />
     </Grid>
   );
