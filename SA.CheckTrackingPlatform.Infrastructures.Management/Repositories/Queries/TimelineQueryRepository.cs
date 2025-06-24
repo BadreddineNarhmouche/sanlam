@@ -73,54 +73,17 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
         }
 
 
-        public async Task<int> GetKpiCountAsync(string statutFinal, List<string> statutsExclus)
+        public IQueryable<Timeline> GetKpiQuery(string statutFinal, List<string> statutsExclus)
         {
-            var inParams = statutsExclus.Select((_, i) => $":p{i}").ToList();
-            string inClause = string.Join(", ", inParams);
-
-            string query = $@"
-    WITH DernierTimeline AS (
-        SELECT 
-            t.""CheckId"",
-            t.""StatusId"",
-            ROW_NUMBER() OVER (
-                PARTITION BY t.""CheckId"" 
-                ORDER BY t.""DateOfPassage"" DESC, t.""Id"" DESC
-            ) AS rn
-        FROM ""Timelines"" t
-    )
-    SELECT COUNT(*) AS ""Count""
-    FROM DernierTimeline dt
-    INNER JOIN ""Statuses"" s ON dt.""StatusId"" = s.""Id""
-    WHERE dt.rn = 1
-      AND s.""Label"" = :statutFinal
-      AND NOT EXISTS (
-          SELECT 1
-          FROM ""Timelines"" t2
-          INNER JOIN ""Statuses"" s2 ON t2.""StatusId"" = s2.""Id""
-          WHERE t2.""CheckId"" = dt.""CheckId""
-            AND s2.""Label"" IN ({inClause})
-      )
-    ";
-
-            string connectionString = configuration.GetConnectionString("OracleDatabase");
-            using (var connection = new OracleConnection(connectionString))
-            {
-                await connection.OpenAsync();
-
-                var parameters = new DynamicParameters();
-                parameters.Add("statutFinal", statutFinal);
-
-                for (int i = 0; i < statutsExclus.Count; i++)
-                {
-                    parameters.Add($"p{i}", statutsExclus[i]);
-                }
-
-                int count = await connection.ExecuteScalarAsync<int>(query, parameters);
-                return count;
-            }
+            return from c in applicationContext.Checks
+                   join t in applicationContext.Timelines on c.Id equals t.CheckId
+                   join s in applicationContext.Statuses on t.StatusId equals s.Id
+                   where s.Label == statutFinal
+                         && t.DateOfPassage == applicationContext.Timelines
+                             .Where(t2 => t2.CheckId == c.Id)
+                             .Max(t2 => t2.DateOfPassage)
+                   select t;
         }
-
 
         #endregion Methods */
     }

@@ -5,8 +5,7 @@ using SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.Responses;
 using Microsoft.Extensions.Configuration;
 using SixLabors.ImageSharp;
 using System.Reflection;
-using System.Data.SqlClient;
-using Dapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.Queries
 {
@@ -22,11 +21,8 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.Queries
     {
         #region Fields 
 
-        // private readonly IBanksQueryRepository banksQueryRepository;
         private readonly ITimelinesQueryRepository timelinesQueryRepository;
         private readonly IMediator mediator;
-      //  private readonly IConfiguration configuration;
-
 
         #endregion Fields 
 
@@ -36,7 +32,6 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.Queries
         {
             this.timelinesQueryRepository = timelinesQueryRepository;
             this.mediator = mediator;
-          //  this.configuration = configuration;
         }
 
         #endregion Constructors 
@@ -71,7 +66,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.Queries
                 {
                     try
                     {
-                        int count = await timelinesQueryRepository.GetKpiCountAsync(
+                        var query = timelinesQueryRepository.GetKpiQuery(
                             Constants.TimelineStatusCodes.ReceivedOffice,
                             new List<string>
                             {
@@ -79,12 +74,11 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.Queries
                 Constants.TimelineStatusCodes.ReturnClient,
                 Constants.TimelineStatusCodes.ReturnTrade,
                 Constants.TimelineStatusCodes.ReceiptReturnCheck,
-                            }
-                        );
+                            });
 
                         var data = new GetKPIsCountResponse
                         {
-                            Count = count,
+                            Count = await query.CountAsync(),
                             Id = 0
                         };
 
@@ -105,8 +99,6 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.Queries
                     response.IsSuccess = false;
                     response.WarningMessage = WarningMessages.QueryFailure;
                 }
-
-
 
 
                 #endregion Operations
