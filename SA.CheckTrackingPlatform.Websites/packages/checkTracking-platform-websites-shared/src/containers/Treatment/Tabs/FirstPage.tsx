@@ -90,8 +90,14 @@ export const FirstPage = ({
   }, [getAllChecks]);
 
   useEffect(() => {
-    reasonMoveService.AllReasonMoves && reasonMoveService.AllReasonMoves();
-  }, [reasonMoveService]);
+    if (status === STATUS_TREATMENTS.ClientIn) {
+      reasonMoveService.AllReasonMoves &&
+        reasonMoveService.AllReasonMoves("MR");
+    } else if (status === STATUS_TREATMENTS.ClientOut) {
+      reasonMoveService.AllReasonMoves &&
+        reasonMoveService.AllReasonMoves("MT");
+    }
+  }, []);
 
   const handleResetFilter = () => {
     setData([]);

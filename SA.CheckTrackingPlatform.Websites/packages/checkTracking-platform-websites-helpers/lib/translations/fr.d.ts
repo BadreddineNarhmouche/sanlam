@@ -128,6 +128,7 @@ export declare const frTranslationMessages: {
     "payment_details.payment_info": string;
     "CheckTracking.confirm_dialogPopUp_title": string;
     "CheckTracking.confirm_dialogPopUp_body": string;
+    "CheckTracking.reason_labe": string;
     "CheckTracking.reason_label_1": string;
     "CheckTracking.reason_label_2": string;
     "CheckTracking.reason_label_3": string;

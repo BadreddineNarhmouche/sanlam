@@ -136,6 +136,7 @@ export const frTranslationMessages = {
   "CheckTracking.confirm_dialogPopUp_title": "Valider les chèques",
   "CheckTracking.confirm_dialogPopUp_body":
     "Êtes-vous sûr de vouloir valider les chèques séléctionner",
+  "CheckTracking.reason_labe": "Motif",
   "CheckTracking.reason_label_1": "Applicable",
   "CheckTracking.reason_label_2": "Rendement",
   "CheckTracking.reason_label_3": "Imposable",

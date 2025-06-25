@@ -73,7 +73,7 @@ export const DialogTreatment = ({
                 renderInput={(params: any) => (
                   <TextField
                     {...params}
-                    label={translate("File.global.search.comment", intl)}
+                    label={translate("CheckTracking.reason_labe", intl)}
                   />
                 )}
               />

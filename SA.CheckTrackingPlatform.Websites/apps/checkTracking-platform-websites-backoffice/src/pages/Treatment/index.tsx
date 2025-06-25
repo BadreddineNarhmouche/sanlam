@@ -10,7 +10,7 @@ import {
 import { IReasonMoveService } from "@checkTracking/helpers";
 import { Treatment } from "@checkTracking/shared";
 import { getAllChecksByCriteria } from "../../store/Checks/getAllChecksByCriteriaSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getAllChecks } from "../../store/Checks/getAllChecksSlice";
 import { AllReasonMove } from "../../store/ReasonMove/ReasonMoveAllSlice";
 import { CreateTimeline } from "../../store/timeline/TimelineCreateSlice";
@@ -18,17 +18,8 @@ import { CreateTimeline } from "../../store/timeline/TimelineCreateSlice";
 const TreatmentPage = () => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    dispatch(AllReasonMove());
-  }, [dispatch]);
-
-  const reasonMoves = useSelector(
-    (state: any) => state.AllReasonMove.responseData
-  );
-
   const ReasonMoveService: IReasonMoveService = {
-    AllReasonMoves: () => Promise.resolve(reasonMoves),
+    AllReasonMoves: (To : any) =>  dispatch(AllReasonMove(To)),
   };
 
   const CheckServices: IChecksService = {
