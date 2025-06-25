@@ -131,4 +131,8 @@ export declare const frTranslationMessages: {
     "CheckTracking.reason_label_2": string;
     "CheckTracking.reason_label_3": string;
     "CheckTracking.comment_label": string;
+    "check.kpi.receivedRegistryNotClient": string;
+    "check.kpi.returnedNotYetReceived": string;
+    "check.kpi.receivedBUNotRegistry": string;
+    "check.kpi.issuedNotAcknowledged": string;
 };

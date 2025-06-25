@@ -23,6 +23,10 @@ import TimelineCreateReducer from "./timeline/TimelineCreateSlice";
 //ReasonMove
 import AllReasonMoveReducer from "./ReasonMove/ReasonMoveAllSlice";
 
+// KPIs
+
+import CheckTrackingKPIReducer from "./KPIs/CheckTrackingKPISlice";
+
 export const rootReducer = combineReducers({
   notifications: notificationsListReducer,
   notificationsUpdate: notificationsUpdateReducer,
@@ -35,4 +39,5 @@ export const rootReducer = combineReducers({
   getCheckById: GetCheckByIdReducer,
   TimelineUpdate: TimelineCreateReducer,
   AllReasonMove: AllReasonMoveReducer,
+  CheckTrackingKPI: CheckTrackingKPIReducer,
 });

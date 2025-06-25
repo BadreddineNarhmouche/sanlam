@@ -5,83 +5,118 @@ import {
   Theme,
   Typography,
 } from "@checkTracking/ui-kit";
+import { useIntl } from "react-intl";
 import { GenericKPI } from "./GenericKPI";
+import { IChecksService, IKPIService } from "@checkTracking/helpers";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
-export const KPIs = () => {
+export const KPIs = ({
+  CheckServices,
+  KPIService,
+}: {
+  CheckServices: IChecksService;
+  KPIService: IKPIService;
+}) => {
+  const intl = useIntl();
+
+  useEffect(() => {
+    KPIService.GetKPIs();
+  }, []);
+
+  const { responseData } = useSelector((state: any) => state.CheckTrackingKPI);
+
+  const {
+    numberOfChecksIssuedButNotAcknowledgedByTheBusinessUnit = 0,
+    numberOfChecksReceivedByBusinessUnitButNotByRegistryOffice = 0,
+    numberOfChecksReceivedByRegistryOfficeButNotSentToClient = 0,
+    numberOfReturnedChecksNotYetReceived = 0,
+  } = responseData || {};
+
   return (
-    <Grid
-      container
-      sx={{ pt: 7, px: 8, pr: 6 }}
-      backgroundColor={
-        // @ts-ignore
-        Theme.theme.palette.base.main
-      }
-    >
-      {
-        <Grid container direction="row" spacing={2} xl={12}>
-          <Grid item xs={3}>
-            <GenericKPI
-              component={{
-                title: "check.search.checkNumber",
-                contents: [
-                  {
-                    code: "1",
-                    count: 3, //GetCountReinsurances?.count ?? 0,
-                    countColor: "red",
-                    description: "Télécharger",
-                    onClick() {
-                      //   KPIsService.ExportFileExcelRenovel &&
-                      //     KPIsService.ExportFileExcelRenovel();
-                      <Alert icon="info" />;
-                    },
-                    isHideButton: true,
-                  },
-                ],
-              }}
-            />
-          </Grid>
-          <Grid item xs={3}>
-            <GenericKPI
-              component={{
-                title: "check.search.checkNumber",
-                contents: [
-                  {
-                    code: "1",
-                    count: 0, //GetCountReinsurances?.count ?? 0,
-                    countColor: "red",
-                    description: "Télécharger",
-                    onClick() {
-                      //   KPIsService.ExportFileExcelRenovel &&
-                      //     KPIsService.ExportFileExcelRenovel();
-                    },
-                    isHideButton: true,
-                  },
-                ],
-              }}
-            />
-          </Grid>
-          <Grid item xs={3}>
-            <GenericKPI
-              component={{
-                title: "check.search.checkNumber",
-                contents: [
-                  {
-                    code: "1",
-                    count: 0, //GetCountReinsurances?.count ?? 0,
-                    countColor: "red",
-                    description: "Télécharger",
-                    onClick() {
-                      //   KPIsService.ExportFileExcelRenovel &&
-                      //     KPIsService.ExportFileExcelRenovel();
-                    },
-                    isHideButton: true,
-                  },
-                ],
-              }}
-            />
-          </Grid>
+    <Grid container direction="row" spacing={2} xl={12}>
+      {numberOfChecksIssuedButNotAcknowledgedByTheBusinessUnit !== 0 && (
+        <Grid item xs={3}>
+          <GenericKPI
+            component={{
+              title: "check.kpi.issuedNotAcknowledged",
+              contents: [
+                {
+                  code: "1",
+                  count:
+                    numberOfChecksIssuedButNotAcknowledgedByTheBusinessUnit,
+                  countColor: "red",
+                  description: "Télécharger",
+                  onClick() {},
+                  isHideButton: true,
+                },
+              ],
+            }}
+          />
         </Grid>
-      }
+      )}
+
+      {numberOfChecksReceivedByBusinessUnitButNotByRegistryOffice !== 0 && (
+        <Grid item xs={3}>
+          <GenericKPI
+            component={{
+              title: "check.kpi.receivedBUNotRegistry",
+              contents: [
+                {
+                  code: "2",
+                  count:
+                    numberOfChecksReceivedByBusinessUnitButNotByRegistryOffice,
+                  countColor: "red",
+                  description: "Télécharger",
+                  onClick() {},
+                  isHideButton: true,
+                },
+              ],
+            }}
+          />
+        </Grid>
+      )}
+
+      {numberOfChecksReceivedByRegistryOfficeButNotSentToClient !== 0 && (
+        <Grid item xs={3}>
+          <GenericKPI
+            component={{
+              title: "check.kpi.receivedRegistryNotClient",
+              contents: [
+                {
+                  code: "3",
+                  count:
+                    numberOfChecksReceivedByRegistryOfficeButNotSentToClient,
+                  countColor: "red",
+                  description: "Télécharger",
+                  onClick() {},
+                  isHideButton: true,
+                },
+              ],
+            }}
+          />
+        </Grid>
+      )}
+
+      {numberOfReturnedChecksNotYetReceived !== 0 && (
+        <Grid item xs={3}>
+          <GenericKPI
+            component={{
+              title: "check.kpi.returnedNotYetReceived",
+              contents: [
+                {
+                  code: "4",
+                  count: numberOfReturnedChecksNotYetReceived,
+                  countColor: "red",
+                  description: "Télécharger",
+                  onClick() {},
+                  isHideButton: true,
+                },
+              ],
+            }}
+          />
+        </Grid>
+      )}
     </Grid>
   );
 };

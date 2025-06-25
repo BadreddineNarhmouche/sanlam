@@ -2,6 +2,7 @@ import {
   FilterCriteriaChecks,
   IChecksService,
   IStatusService,
+  IKPIService,
 } from "@checkTracking/helpers";
 import { Checks, KPIs } from "@checkTracking/shared";
 import { Grid } from "@checkTracking/ui-kit";
@@ -10,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { getAllChecksByCriteria } from "../../store/Checks/getAllChecksByCriteriaSlice";
 import { PAGES } from "../../config/navigation";
 import { AllStatus } from "../../store/Status/StatusAllSlice";
+import { GetCheckTrackingKPIs } from "../../store/KPIs/CheckTrackingKPISlice";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -21,6 +23,10 @@ const HomePage = () => {
 
   const StatusServices: IStatusService = {
     getAllStatus: () => dispatch(AllStatus()),
+  };
+
+  const KPIsService: IKPIService = {
+    GetKPIs: () => dispatch(GetCheckTrackingKPIs()),
   };
 
   useEffect(() => {
@@ -37,12 +43,12 @@ const HomePage = () => {
   return (
     <>
       <Grid container>
-        <KPIs />
         <Checks
           services={CheckServices}
           statusServices={StatusServices}
           detailsPage={PAGES.DETAILS_CHECK}
           initialFilterValues={filterValues}
+          KPIservice={KPIsService}
         />
       </Grid>
     </>
@@ -50,4 +56,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-// No additional code is needed at $PLACEHOLDER$. The component is already complete and functional.

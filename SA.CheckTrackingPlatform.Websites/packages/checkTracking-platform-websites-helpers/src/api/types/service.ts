@@ -32,3 +32,7 @@ export interface IStatusService {
 export interface IReasonMoveService {
   AllReasonMoves: () => Promise<{ label: string; code: string }[]>;
 }
+
+export interface IKPIService {
+  GetKPIs: () => void;
+}

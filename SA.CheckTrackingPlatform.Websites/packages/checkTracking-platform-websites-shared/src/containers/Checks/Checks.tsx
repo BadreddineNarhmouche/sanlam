@@ -3,6 +3,7 @@ import {
   IChecksService,
   IStatusService,
   PAGINATION,
+  IKPIService,
 } from "@checkTracking/helpers";
 import {
   Backdrop,
@@ -13,6 +14,7 @@ import {
   Stack,
   Table,
 } from "@checkTracking/ui-kit";
+import { GenericKPI } from "../KPIs/GenericKPI";
 import { useIntl } from "react-intl";
 import {
   FIRST_PAGE_CHECK_FORM_SEARCH_FIELDS,
@@ -25,17 +27,20 @@ import emptyStateDesk from "@checkTracking/ui-kit/src/assets/images/emptyStateDe
 import emptyStatePerson from "@checkTracking/ui-kit/src/assets/images/emptyStatePerson.svg";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { KPIs } from "../KPIs";
 
 export const Checks = ({
   services,
   statusServices,
   detailsPage,
   initialFilterValues,
+  KPIservice,
 }: {
   services: IChecksService;
   statusServices: IStatusService;
   detailsPage: string;
   initialFilterValues: FilterCriteriaChecks;
+  KPIservice: IKPIService;
 }) => {
   const [filterValues, setFilterValues] = useState<any>(initialFilterValues);
   const [emptySearchResult, setEmptySearchResult] = useState({
@@ -133,6 +138,7 @@ export const Checks = ({
   return (
     <Grid container direction="column" px={8} py={7} id="check-table">
       <Grid item>
+        <KPIs CheckServices={services} KPIService={KPIservice} />
         <FormSearch
           resetedValues={initialFilterValues}
           handleSubmit={(values: any) => handleSubmit(values)}

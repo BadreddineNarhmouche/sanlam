@@ -6,6 +6,7 @@ import StatusSaga from "./Status/StatusSaga";
 import DetailsChSaga from "./DetailsCh/DetailsChSaga";
 import ReasonMoveSaga from "./ReasonMove/ReasonMoveSaga";
 import { watchCreateTimeline } from "./timeline/createTimelineSaga";
+import CheckTrackingKPIsSaga from "./KPIs/CheckTrackingKPIsSaga";
 
 export const rootSaga = function* sagas() {
   yield all([
@@ -16,5 +17,6 @@ export const rootSaga = function* sagas() {
     DetailsChSaga(),
     watchCreateTimeline(),
     ReasonMoveSaga(),
+    CheckTrackingKPIsSaga(),
   ]);
 };

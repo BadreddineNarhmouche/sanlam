@@ -131,5 +131,9 @@ export const frTranslationMessages = {
     "CheckTracking.reason_label_2": "Rendement",
     "CheckTracking.reason_label_3": "Imposable",
     "CheckTracking.comment_label": "Commentaire",
+    "check.kpi.receivedRegistryNotClient": "Check reçu par Burreau Ordre et non envoyés aux clients",
+    "check.kpi.returnedNotYetReceived": "Chèques retournés et non encore reçu",
+    "check.kpi.receivedBUNotRegistry": "Chèques reçu au métier et non reçu par BO",
+    "check.kpi.issuedNotAcknowledged": "Chèques édité et non reçu par Métier ",
 };
 //# sourceMappingURL=fr.js.map
