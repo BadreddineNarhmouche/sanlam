@@ -2,9 +2,12 @@
 
 namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.Responses
 {
-    public class GetKPIsCountResponse : BaseResponse<GetKPIsCountResponse>
+    public class GetKPIsCountResponse : BaseResponse<GetKPIsCountResponseByAllItem>
     {
 
+    }
+    public class GetKPIsCountResponseByAllItem
+    {
         #region Properties 
 
         public int NumberOfChecksIssuedButNotAcknowledgedByTheBusinessUnit { get; set; }
@@ -13,6 +16,5 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.Responses
         public int NumberOfReturnedChecksNotYetReceived { get; set; }
 
         #endregion Properties
-
     }
 }

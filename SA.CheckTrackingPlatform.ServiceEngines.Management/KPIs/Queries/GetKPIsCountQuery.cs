@@ -69,7 +69,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.Queries
                     {
                         var kpiGrouped = await timelinesQueryRepository.GetKpiQueryGroupedByStatusAsync();
 
-                        response.Data = new GetKPIsCountResponse
+                        response.Data = new GetKPIsCountResponseByAllItem
                         {
                             NumberOfChecksIssuedButNotAcknowledgedByTheBusinessUnit = kpiGrouped.TryGetValue(Constants.TimelineStatusCodes.EditedCheck, out var val1) ? val1 : 0,
                             NumberOfChecksReceivedByBusinessUnitButNotByRegistryOffice = kpiGrouped.TryGetValue(Constants.TimelineStatusCodes.ReceivedTrade, out var val2) ? val2 : 0,
