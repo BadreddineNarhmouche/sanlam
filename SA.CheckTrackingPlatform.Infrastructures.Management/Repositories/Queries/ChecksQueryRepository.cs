@@ -103,7 +103,9 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
                 query = query.Where(c => c.SinisterNumber.Contains(SinisterNumber));
 
             if (!string.IsNullOrWhiteSpace(Status))
-                query = query.Where(c => c.Timelines.Where(t => t.Status.Code == Status).OrderByDescending(q => q.CreationDate).Any());
+                query = query.Where(c => c.Timelines.Where(t =>
+                    t.Status.Code == Status && t.DateOfPassage == applicationContext.Timelines.Where(t2 => t2.CheckId == c.Id).Max(t2 => t2.DateOfPassage)
+                ).OrderByDescending(q => q.CreationDate).Any());
 
             return await query
                  .AsNoTrackingWithIdentityResolution()

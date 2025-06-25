@@ -101,6 +101,14 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Timelines.Commands
 
                     await timelinesCommandRepository.AddRangeAsync(timelineCreated);
 
+                    var obj = new CreateTimelineResponse
+                    {
+                        CheckId = 1,
+                        UserId = internalUser.Id,
+                        StatusId = statuses.Where(c => c.Code == request.Status).Select(c => c.Id).FirstOrDefault(),
+                    };
+
+                    response.Data = obj;
                     response.IsSuccess = true;
                     response.IsPopulated = timelineCreated.Count > 0 ? true : false;
                     response.InformationMessage = InformationMessages.QuerySucceeded;
