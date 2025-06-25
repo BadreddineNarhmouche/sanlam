@@ -40,9 +40,6 @@ export const Treatment = ({
   const handleSubmitModal = () => {
     setSelectedTab(newSelectedTab);
     setOpenConfiramtionDialog(false);
-    if (newSelectedTab === 0) {
-      // navigate("/");
-    }
   };
 
   const handleSubmitData = (
@@ -51,11 +48,6 @@ export const Treatment = ({
     Comment: any,
     status: any
   ) => {
-    console.log(dataTable);
-    console.log(Select);
-    console.log(Comment);
-    console.log(status);
-
     const checkIds: any[] = [];
 
     dataTable.map((item) => {
@@ -69,9 +61,7 @@ export const Treatment = ({
       Status: GetNextStatusComponent(status),
       StatusNow: status,
     };
-
-    console.log(GetNextStatusComponent(status));
-    console.log(obj);
+    
     timeLineService.CreateTimeLine && timeLineService.CreateTimeLine(obj);
   };
 
@@ -90,14 +80,12 @@ export const Treatment = ({
               initialFilterValues={initialFilterValues}
               status={CheckByAllStatusComponent(item.internalRoleCode)}
               reasonMoveService={reasonMoveService}
-              handleSubmitData={(dataTable: any[], Select: any, Comment: any) =>
-                handleSubmitData(
-                  dataTable,
-                  Select,
-                  Comment,
-                  CheckByAllStatusComponent(item.internalRoleCode)
-                )
-              }
+              handleSubmitData={(
+                dataTable: any[],
+                Select: any,
+                Comment: any,
+                status: any
+              ) => handleSubmitData(dataTable, Select, Comment, status)}
             />
           ),
         });

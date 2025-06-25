@@ -39,7 +39,12 @@ export const FirstPage = ({
   services: IChecksService;
   initialFilterValues: FilterFirstPageTreatment;
   status: string;
-  handleSubmitData: (dataTable: any[], Select: any, Comment?: any) => any;
+  handleSubmitData: (
+    dataTable: any[],
+    Select?: any,
+    Comment?: any,
+    statusNow?: any
+  ) => any;
   reasonMoveService: IReasonMoveService;
 }) => {
   const intl = useIntl();
@@ -56,6 +61,18 @@ export const FirstPage = ({
     isLoading: isLoadingData,
     error: errorData,
   } = useSelector((state: any) => state.getAllChecks);
+
+  const {
+    responseData: TimelineUpdate,
+    isLoading: isLoadingTimeLineUpdate,
+    error: errorTimeLineUpdate,
+  } = useSelector((state: any) => state.TimelineUpdate);
+
+  useEffect(() => {
+    if (TimelineUpdate.isSuccess) {
+      setData([]);
+    }
+  }, [TimelineUpdate]);
 
   const handleSubmit = (value: any, keyof: string) => {
     setSelect("");
@@ -123,10 +140,12 @@ export const FirstPage = ({
     setCallReset(false);
   };
 
-  const handleSubmitModal = () => {};
+  const handleSubmitModal = () => {
+    handleSubmitData(data, null, null, status);
+  };
 
   const handleSubmitModalTreatment = (Select?: any, Comment?: any) => {
-    handleSubmitData(data, Select, Comment);
+    handleSubmitData(data, Select, Comment, status);
   };
 
   const handleClose = () => {
@@ -183,6 +202,7 @@ export const FirstPage = ({
                 onClick={handleClick}
                 type="submit"
                 variant="contained"
+                disabled={data.length > 0 ? false : true}
               >
                 {intl.formatMessage({ id: "button.validate" })}
               </Button>
@@ -200,9 +220,9 @@ export const FirstPage = ({
             openConfiramtionDialog={openConfiramtionDialog}
             setOpenConfiramtionDialog={setOpenConfiramtionDialog}
             handleSubmit={handleSubmitModal}
-            isLoading={false}
-            error={false}
-            responseData={[]}
+            isLoading={isLoadingTimeLineUpdate}
+            error={errorTimeLineUpdate}
+            responseData={TimelineUpdate}
           />
           <Snackbar
             open={displayAlert}
@@ -217,9 +237,9 @@ export const FirstPage = ({
             handleSubmit={(Select?: any, Comment?: any) =>
               handleSubmitModalTreatment(Select, Comment)
             }
-            isLoading={isLoadingData}
-            error={false}
-            responseData={[]}
+            isLoading={isLoadingTimeLineUpdate}
+            error={errorTimeLineUpdate}
+            responseData={TimelineUpdate}
           />
         </>
       )}

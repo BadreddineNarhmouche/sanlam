@@ -124,7 +124,7 @@ export const DialogTreatment = ({
           <Button
             variant="contained"
             onClick={() => handleSubmit(fieldReason, fieldComment)}
-            disabled={isLoading}
+            disabled={isLoading || !fieldReason}
           >
             {isLoading && (
               <CircularProgress color="primary" size={24} sx={{ mr: 1 }} />
