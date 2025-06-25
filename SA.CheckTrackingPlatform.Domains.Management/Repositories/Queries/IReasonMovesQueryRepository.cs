@@ -7,7 +7,7 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Repositories.Queries
     {
         #region Methods 
         Task<ReasonMove> GetReasonMoveByIdAsync(int id);
-        Task<IEnumerable<ReasonMove>> GetAllReasonMovesAsync();
+        Task<IEnumerable<ReasonMove>> GetAllReasonMovesAsync(string to = "RE");
         #endregion Methods
     }
 }

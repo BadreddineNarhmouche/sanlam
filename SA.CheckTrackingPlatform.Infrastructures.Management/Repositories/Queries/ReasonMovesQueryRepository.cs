@@ -32,12 +32,13 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
             return query;
         }
 
-        public async Task<IEnumerable<ReasonMove>> GetAllReasonMovesAsync()
+        public async Task<IEnumerable<ReasonMove>> GetAllReasonMovesAsync(string to)
         {
             return await Task.Run(async () =>
             {
                 IEnumerable<ReasonMove> query = await this.applicationContext.ReasonMoves
                  .AsNoTrackingWithIdentityResolution()
+                 .Where(o => o.To == to)
                  .ToListAsync();
 
                 return query;

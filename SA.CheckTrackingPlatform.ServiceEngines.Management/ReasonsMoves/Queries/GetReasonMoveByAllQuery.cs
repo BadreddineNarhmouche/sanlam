@@ -12,6 +12,8 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Queries
     {
         #region properties
 
+        public string To { get; set; }
+
         #endregion Properties 
     }
 
@@ -60,7 +62,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Queries
                 if (response.IsSuccess)
                 {
 
-                    IEnumerable<ReasonMove> ReasonMoves = await reasonMovesQueryRepository.GetAllReasonMovesAsync();
+                    IEnumerable<ReasonMove> ReasonMoves = await reasonMovesQueryRepository.GetAllReasonMovesAsync(request.To);
 
                     if (ReasonMoves.IsNotNull())
                     {
@@ -73,6 +75,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Queries
                 }
                 else
                 {
+                    response.IsPopulated = false;
                     response.WarningMessage = WarningMessages.QueryFailure;
                 }
 

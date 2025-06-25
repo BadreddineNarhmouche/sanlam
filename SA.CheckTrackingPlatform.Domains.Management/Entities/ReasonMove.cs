@@ -20,6 +20,7 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
         public int Id { get; protected set; }
         public string Code { get; set; }
         public string Label { get; set; }
+        public string To { get; set; }
 
         #endregion Properties
     }
