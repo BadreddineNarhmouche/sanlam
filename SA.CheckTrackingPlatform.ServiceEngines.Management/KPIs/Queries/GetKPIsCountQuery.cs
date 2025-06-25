@@ -12,7 +12,6 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.Queries
     public class GetKPIsCountQuery : BaseRequest<GetKPIsCountResponse>
     {
         #region properties
-        public string TimelineStatusCodeRequest { get; set; }
 
         #endregion Properties 
     }
