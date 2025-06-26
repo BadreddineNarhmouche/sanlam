@@ -1,7 +1,6 @@
 export const AuthorizedRoles = {
   CheckTrackingPlatform: "platform-back-office-checkTracking",
 };
-
 export const InternalRoleCodeConstants = {
   ReceiptByBusinessUnit: "ReceiptByBusinessUnit",
   BoOut: "BoOut",
@@ -11,7 +10,6 @@ export const InternalRoleCodeConstants = {
   BackToBusinessUnit: "BackToBusinessUnit",
   ReturnedCheckIn: "ReturnedCheckIn",
 };
-
 export const LocalStorageKeyConstants = {
   internalUserInternalRoles: "CurrentInternalUserInternalRoles",
   internalUser: "CurrentInternalUser",

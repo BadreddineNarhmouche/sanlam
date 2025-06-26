@@ -36,95 +36,97 @@ export const KPIs = ({
 
   return (
     <Grid container direction="row" spacing={2} xl={12}>
-      <RenderByRoles internalRoleCodes={["BoOut"]}>
-        {numberOfChecksIssuedButNotAcknowledgedByTheBusinessUnit !== 0 && (
-          <Grid item xs={3}>
-            <GenericKPI
-              component={{
-                title: "check.kpi.issuedNotAcknowledged",
-                contents: [
-                  {
-                    code: "1",
-                    count:
-                      numberOfChecksIssuedButNotAcknowledgedByTheBusinessUnit,
-                    countColor: "red",
-                    description: "Télécharger",
-                    onClick() {},
-                    isHideButton: true,
-                  },
-                ],
-              }}
-            />
-          </Grid>
-        )}
-      </RenderByRoles>
-
-      <RenderByRoles internalRoleCodes={["BoIn"]}>
-        {numberOfChecksReceivedByBusinessUnitButNotByRegistryOffice !== 0 && (
-          <Grid item xs={3}>
-            <GenericKPI
-              component={{
-                title: "check.kpi.receivedBUNotRegistry",
-                contents: [
-                  {
-                    code: "2",
-                    count:
-                      numberOfChecksReceivedByBusinessUnitButNotByRegistryOffice,
-                    countColor: "red",
-                    description: "Télécharger",
-                    onClick() {},
-                    isHideButton: true,
-                  },
-                ],
-              }}
-            />
-          </Grid>
-        )}
-      </RenderByRoles>
-
-      <RenderByRoles internalRoleCodes={["BoIn"]}>
-        {numberOfChecksReceivedByRegistryOfficeButNotSentToClient !== 0 && (
-          <Grid item xs={3}>
-            <GenericKPI
-              component={{
-                title: "check.kpi.receivedRegistryNotClient",
-                contents: [
-                  {
-                    code: "3",
-                    count:
-                      numberOfChecksReceivedByRegistryOfficeButNotSentToClient,
-                    countColor: "red",
-                    description: "Télécharger",
-                    onClick() {},
-                    isHideButton: true,
-                  },
-                ],
-              }}
-            />
-          </Grid>
-        )}
-      </RenderByRoles>
-
-      <RenderByRoles internalRoleCodes={["BoOut"]}>
-        {numberOfReturnedChecksNotYetReceived !== 0 && (
-          <Grid item xs={3}>
-            <GenericKPI
-              component={{
-                title: "check.kpi.returnedNotYetReceived",
-                contents: [
-                  {
-                    code: "4",
-                    count: numberOfReturnedChecksNotYetReceived,
-                    countColor: "red",
-                    description: "Télécharger",
-                    onClick() {},
-                    isHideButton: true,
-                  },
-                ],
-              }}
-            />
-          </Grid>
-        )}
+      {" "}
+      <RenderByRoles
+        internalRoleCodes={["BoIn"]}
+        fallback={
+          <>
+            {" "}
+            {numberOfChecksReceivedByBusinessUnitButNotByRegistryOffice !==
+              0 && (
+              <Grid item xs={3}>
+                <GenericKPI
+                  component={{
+                    title: "check.kpi.receivedBUNotRegistry",
+                    contents: [
+                      {
+                        code: "2",
+                        count:
+                          numberOfChecksReceivedByBusinessUnitButNotByRegistryOffice,
+                        countColor: "red",
+                        description: "Télécharger",
+                        onClick() {},
+                        isHideButton: true,
+                      },
+                    ],
+                  }}
+                />
+              </Grid>
+            )}{" "}
+            {numberOfChecksReceivedByRegistryOfficeButNotSentToClient !== 0 && (
+              <Grid item xs={3}>
+                <GenericKPI
+                  component={{
+                    title: "check.kpi.receivedRegistryNotClient",
+                    contents: [
+                      {
+                        code: "3",
+                        count:
+                          numberOfChecksReceivedByRegistryOfficeButNotSentToClient,
+                        countColor: "red",
+                        description: "Télécharger",
+                        onClick() {},
+                        isHideButton: true,
+                      },
+                    ],
+                  }}
+                />
+              </Grid>
+            )}
+          </>
+        }
+      >
+        <>
+          {numberOfChecksIssuedButNotAcknowledgedByTheBusinessUnit !== 0 && (
+            <Grid item xs={3}>
+              <GenericKPI
+                component={{
+                  title: "check.kpi.issuedNotAcknowledged",
+                  contents: [
+                    {
+                      code: "1",
+                      count:
+                        numberOfChecksIssuedButNotAcknowledgedByTheBusinessUnit,
+                      countColor: "red",
+                      description: "Télécharger",
+                      onClick() {},
+                      isHideButton: true,
+                    },
+                  ],
+                }}
+              />
+            </Grid>
+          )}{" "}
+          {numberOfReturnedChecksNotYetReceived !== 0 && (
+            <Grid item xs={3}>
+              <GenericKPI
+                component={{
+                  title: "check.kpi.returnedNotYetReceived",
+                  contents: [
+                    {
+                      code: "4",
+                      count: numberOfReturnedChecksNotYetReceived,
+                      countColor: "red",
+                      description: "Télécharger",
+                      onClick() {},
+                      isHideButton: true,
+                    },
+                  ],
+                }}
+              />
+            </Grid>
+          )}
+        </>
       </RenderByRoles>
     </Grid>
   );
