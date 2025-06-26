@@ -109,3 +109,5 @@ export interface ReasonMove {
     label?: string;
     code?: string;
 }
+export interface DetailsCheck {
+}

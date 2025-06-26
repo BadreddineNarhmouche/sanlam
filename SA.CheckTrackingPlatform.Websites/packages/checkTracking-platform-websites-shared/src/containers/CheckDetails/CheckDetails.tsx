@@ -4,16 +4,12 @@ import { useSelector } from "react-redux";
 import {
     IDetailsChecksService,
     DetailsCheck as DetailsDTO,
-    TimelineItem,
 } from "@checkTracking/helpers";
 import {
     CardContainer,
     Grid,
     Skeleton,
     Typography,
-    Box,
-    Alert,
-    Timeline,
 } from "@checkTracking/ui-kit";
 import Header from "./Header";
 import OutlinedTimeline from "./OutlinedTimeline";
@@ -29,20 +25,12 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
 }) => {
     const intl = useIntl();
 
-    useEffect(() => {
-        services.getCheckById?.(checkId);
-    }, [checkId, services]);
-
     const {
         responseData: data,
         isLoading,
         error,
     } = useSelector((st: any) => st.getCheckById);
 
-    const lastStatusLabel =
-        data?.timelines && data.timelines.length > 0
-            ? data.timelines[data.timelines.length - 1].statusItems.label
-            : undefined;
 
     const labels: Record<Exclude<keyof DetailsDTO, "timelines">, string> = {
         amount: intl.formatMessage({ id: "quittance_details.policy_payment_info" }),
@@ -76,18 +64,6 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
         transactionNumber: intl.formatMessage({
             id: "payment_details.payment_Number",
         }),
-    };
-
-    const timelineLabels: Record<keyof TimelineItem, string> = {
-        id: intl.formatMessage({ id: "timeline.id" }),
-        date: intl.formatMessage({ id: "timeline.date" }),
-        statusItems: intl.formatMessage({ id: "timeline.statusItems" }),
-    };
-
-    const statusLabels: Record<keyof TimelineItem["statusItems"], string> = {
-        id: intl.formatMessage({ id: "status.id" }),
-        code: intl.formatMessage({ id: "status.code" }),
-        label: intl.formatMessage({ id: "status.label" }),
     };
 
     const formatValue = (key: keyof DetailsDTO, obj: DetailsDTO) => {
