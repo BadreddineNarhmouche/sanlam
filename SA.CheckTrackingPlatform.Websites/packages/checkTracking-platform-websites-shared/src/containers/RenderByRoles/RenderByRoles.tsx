@@ -1,24 +1,35 @@
-import { GeneralHelper, UserService } from '@checkTracking/helpers';
-import { ReactElement, useEffect, useState } from 'react';
+import { GeneralHelper, UserService } from "@checkTracking/helpers";
+import { ReactElement, useEffect, useState } from "react";
 
 interface Props {
-    internalRoleCodes: string[];
-    children?: ReactElement;
-    fallback?: ReactElement;
+  internalRoleCodes: string[];
+  children?: React.ReactNode;
+  fallback?: ReactElement;
 }
 
-export const RenderByRoles = ({ internalRoleCodes, children, fallback }: Props) => {
+export const RenderByRoles = ({
+  internalRoleCodes,
+  children,
+  fallback,
+}: Props) => {
+  const [isAuthorized, setIsAuthorized] = useState(() => {
+    return false;
+  });
 
-    const [isAuthorized, setIsAuthorized] = useState(() => { return false; }); 
+  useEffect(() => {
+    UserService.getCurrentInternalUser().then((response) => {
+      if (
+        response.isSuccess &&
+        UserService.isAuthorized(
+          internalRoleCodes.map((internalRole) =>
+            GeneralHelper.hashStringValue(internalRole, -10)
+          )
+        )
+      ) {
+        setIsAuthorized(true);
+      }
+    });
+  }, [internalRoleCodes]);
 
-    useEffect(() => {
-        UserService.getCurrentInternalUser().then((response) => {
-            if (response.isSuccess && UserService.isAuthorized(internalRoleCodes.map(internalRole => GeneralHelper.hashStringValue(internalRole, -10)))) {
-                setIsAuthorized(true);
-            }
-        });
-    }, [internalRoleCodes]);
-
-    return (isAuthorized ? children : fallback);
-}
-
+  return isAuthorized ? children : fallback;
+};

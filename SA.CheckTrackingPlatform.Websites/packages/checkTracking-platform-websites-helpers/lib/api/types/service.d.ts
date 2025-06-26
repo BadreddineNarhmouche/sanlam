@@ -15,10 +15,10 @@ export interface IStatusService {
     getAllStatus?: () => void;
 }
 export interface IReasonMoveService {
-    AllReasonMoves: () => Promise<{
-        label: string;
-        code: string;
-    }[]>;
+    AllReasonMoves: (To: any) => void;
+}
+export interface ITimeLineService {
+    CreateTimeLine: (payload: any) => void;
 }
 export interface IKPIService {
     GetKPIs: () => void;

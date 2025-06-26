@@ -8,9 +8,9 @@ import {
 
 const baseApiPath = process.env.REACT_APP_API_BASE_PATH;
 
-function* GetAllReasonMove(): any {
+function* GetAllReasonMove({ payload }: { payload: any }): any {
   yield apiCallHandler({
-    apiPath: `/ReasonMove/GetAllReasonMoves`,
+    apiPath: `/ReasonMove/GetAllReasonMoves?To=${payload}`,
     baseApiPath,
     dispatchSuccess: apiCallReasonMoveAllSuccess,
     dispatchFailure: apiCallReasonMoveAllFailure,

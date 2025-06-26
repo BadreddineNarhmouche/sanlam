@@ -1,59 +1,47 @@
-import { apiCallHandler } from "@checkTracking/helpers";
-import { takeEvery, call, put } from "redux-saga/effects";
+import { apiCallHandler, GeneralHelper } from "@checkTracking/helpers";
+import { takeEvery } from "redux-saga/effects";
 import {
-  timelineAnnotationCreate,
-  TimelineAnnotationCreateSuccess,
-  TimelineAnnotationCreateFailure,
+  CreateTimeline,
+  TimelineCreatedSuccess,
+  TimelineCreatedFailure,
 } from "./TimelineCreateSlice";
+import {
+  apiCallGetAllChecksFailure,
+  apiCallGetAllChecksSuccess,
+} from "../DetailsCh/getByIdChecksSlice";
+import { mapAllChecksList } from "../Checks/mapper";
 
 const baseApiPath = process.env.REACT_APP_API_BASE_PATH;
 
-function* createTimelineSaga(
-  action: ReturnType<typeof timelineAnnotationCreate>
-) {
-  try {
-    const {
-      CheckIds,
-      Comment,
-      ReasonMoveId,
-      Status,
-      Date: timelineDate,
-      InternalUserElectronicAddress,
-    } = action.payload;
+function* CreateTimelineFunction({ payload }: { payload: any }) {
+  const bodyFormData: any = new FormData();
+  GeneralHelper.appendObjectToFormData(payload, bodyFormData);
 
-    const formData = new FormData(); // payload de type any CheckIds
-    CheckIds.forEach((id: number) =>
-      formData.append("CheckIds", id.toString())
-    );
-    formData.append("Status", Status);
-    formData.append("Date", timelineDate.toISOString());
-    formData.append(
-      "InternalUserElectronicAddress",
-      InternalUserElectronicAddress
-    );
+  const requestOptions = {
+    method: "POST",
+    body: bodyFormData,
+    contentType: "multipart/form-data",
+  };
 
-    if (Comment) {
-      formData.append("Comment", Comment);
-    }
-    if (ReasonMoveId !== undefined && ReasonMoveId !== null) {
-      formData.append("ReasonMoveId", ReasonMoveId.toString());
-    }
+  yield apiCallHandler({
+    apiPath: `/Timelines/CreateTimeLine`,
+    baseApiPath,
+    requestOptions,
+    dispatchSuccess: TimelineCreatedSuccess,
+    dispatchFailure: TimelineCreatedFailure,
 
-    yield call(apiCallHandler, {
-      apiPath: `/Timelines/CreateTimeLine`,
-      baseApiPath,
-      requestOptions: {
-        method: "POST",
-        body: formData,
-      },
-      dispatchSuccess: TimelineAnnotationCreateSuccess,
-      dispatchFailure: TimelineAnnotationCreateFailure,
-    });
-  } catch (error: any) {
-    yield put(TimelineAnnotationCreateFailure(error));
-  }
+    successCallback: function* () {
+      yield apiCallHandler({
+        apiPath: `/Checkes/GetAllChecks?status=${payload.StatusNow}`,
+        baseApiPath,
+        dispatchSuccess: apiCallGetAllChecksSuccess,
+        dispatchFailure: apiCallGetAllChecksFailure,
+        mapper: mapAllChecksList,
+      });
+    },
+  });
 }
 
 export function* watchCreateTimeline() {
-  yield takeEvery(timelineAnnotationCreate.type, createTimelineSaga);
+  yield takeEvery(CreateTimeline, CreateTimelineFunction);
 }

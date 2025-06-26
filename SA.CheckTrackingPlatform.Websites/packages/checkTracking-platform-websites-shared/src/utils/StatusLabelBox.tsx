@@ -47,8 +47,8 @@ export const StatusLabelBox = ({
   label,
   sx,
 }: {
-  code: string; // <- utilisé pour récupérer le style
-  label: string; // <- texte affiché à l'écran
+  code: string;
+  label: string;
   sx?: object;
 }) => {
   const style = timelineLabelStyles[code] || {
