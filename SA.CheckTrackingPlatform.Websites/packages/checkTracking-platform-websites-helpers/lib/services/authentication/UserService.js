@@ -1,7 +1,7 @@
-import Keycloak from 'keycloak-js';
-import { GeneralHelper, LocalStorageHelper } from '../..';
-import { LocalStorageKeyConstants } from '../../helpers/ConstantsHelper';
-import { v4 as uuidv4 } from 'uuid';
+import Keycloak from "keycloak-js";
+import { GeneralHelper, LocalStorageHelper } from "../..";
+import { LocalStorageKeyConstants } from "../../helpers/ConstantsHelper";
+import { v4 as uuidv4 } from "uuid";
 const initOptions = {
     realm: process.env.REACT_APP_KEYCLOAK_REALM,
     url: process.env.REACT_APP_KEYCLOAK_URL,
@@ -12,45 +12,48 @@ const initKeycloak = (onAuthenticatedCallback, onAuthenticatedFailedCallback) =>
     keycloak
         .init({
         useNonce: true,
-        onLoad: 'login-required',
+        onLoad: "login-required",
         checkLoginIframe: true,
         checkLoginIframeInterval: 5,
-        responseMode: 'fragment',
-        flow: 'standard',
+        responseMode: "fragment",
+        flow: "standard",
         enableLogging: false,
-        pkceMethod: 'S256',
+        pkceMethod: "S256",
         messageReceiveTimeout: 10000,
     })
         .then(async (authenticated) => {
         if (!authenticated) {
-            console.log('user is not authenticated..!');
+            console.log("user is not authenticated..!");
         }
         else {
-            console.log('you are connected');
+            console.log("you are connected");
             LocalStorageHelper.clear();
             await getCurrentInternalUser();
         }
         onAuthenticatedCallback();
     })
         .catch((error) => {
-        console.log('error authentication', error);
+        console.log("error authentication", error);
         onAuthenticatedFailedCallback();
     });
 };
 const signIn = keycloak.login;
 const signOut = () => {
     return new Promise((resolve, reject) => {
-        keycloak.logout().then(() => {
+        keycloak
+            .logout()
+            .then(() => {
             LocalStorageHelper.clear();
             keycloak.redirectUri = window.location.origin;
             resolve({
-                isSuccess: true
+                isSuccess: true,
             });
-        }).catch((error) => {
-            console.log('AuthenticationError-0004: Contact the administrator.');
+        })
+            .catch((error) => {
+            console.log("AuthenticationError-0004: Contact the administrator.");
             resolve({
                 isSuccess: false,
-                error: error
+                error: error,
             });
         });
     });
@@ -115,7 +118,7 @@ const isAuthorized = (internalRoleCodes) => {
     if (LocalStorageHelper.contains(LocalStorageKeyConstants.internalUserInternalRoles)) {
         let data = LocalStorageHelper.get(LocalStorageKeyConstants.internalUserInternalRoles);
         if (GeneralHelper.isArrayNotNullOrEmpty(data)) {
-            const containsList = (mainList, subList) => subList.some(item => mainList.includes(item));
+            const containsList = (mainList, subList) => subList.some((item) => mainList.includes(item));
             return containsList(data, internalRoleCodes);
         }
         else {
@@ -139,37 +142,37 @@ const getCurrentInternalUser = () => {
                 const internalUser = LocalStorageHelper.get(LocalStorageKeyConstants.internalUser);
                 resolve({
                     isSuccess: true,
-                    firstName: internalUser['firstName'],
-                    lastName: internalUser['lastName'],
-                    electronicAddress: internalUser['electronicAddress']
+                    firstName: internalUser["firstName"],
+                    lastName: internalUser["lastName"],
+                    electronicAddress: internalUser["electronicAddress"],
                 });
             }
             else {
                 const headers = {
-                    'Authorization': `Bearer ${getToken()}`,
-                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${getToken()}`,
+                    "Content-Type": "application/json",
                 };
                 const criteria = {
                     electronicAddress: getCurrentInternalUserElectronicAddress(),
                     callingChannelCode: process.env.REACT_APP_CHANNEL_CODE,
-                    callerId: uuidv4()
+                    callerId: uuidv4(),
                 };
                 fetch(`${process.env.REACT_APP_API_BASE_PATH}/InternalUsers/GetByElectronicAddress` +
                     `?electronicAddress=${criteria.electronicAddress}` +
                     `&callingChannelCode=${criteria.callingChannelCode}` +
                     `&callerId=${criteria.callerId}`, { headers })
-                    .then(response => {
+                    .then((response) => {
                     if (!response.ok) {
-                        throw new Error('Network response was not ok');
+                        throw new Error("Network response was not ok");
                     }
                     return response.json();
-                }).then(data => {
-                    if (data.isSuccess
-                        && data.isPopulated) {
+                })
+                    .then((data) => {
+                    if (data.isSuccess && data.isPopulated) {
                         LocalStorageHelper.add(LocalStorageKeyConstants.internalUser, {
                             firstName: data.firstName,
                             lastName: data.lastName,
-                            electronicAddress: data.electronicAddress
+                            electronicAddress: data.electronicAddress,
                         });
                         resolve({
                             isSuccess: true,
@@ -177,22 +180,22 @@ const getCurrentInternalUser = () => {
                             warningMessage: data.warningMessage,
                             firstName: data.firstName,
                             lastName: data.lastName,
-                            electronicAddress: data.electronicAddress
+                            electronicAddress: data.electronicAddress,
                         });
                     }
                     else {
                         resolve({
                             isSuccess: false,
                             informationMessage: data.informationMessage,
-                            warningMessage: data.warningMessage
+                            warningMessage: data.warningMessage,
                         });
                     }
                 })
-                    .catch(error => {
+                    .catch((error) => {
                     resolve({
                         isSuccess: false,
-                        informationMessage: '',
-                        warningMessage: "Une erreur est survenue. Merci d'essayer plus tard"
+                        informationMessage: "",
+                        warningMessage: "Une erreur est survenue. Merci d'essayer plus tard",
                     });
                 });
             }
@@ -200,8 +203,8 @@ const getCurrentInternalUser = () => {
         else {
             resolve({
                 isSuccess: false,
-                informationMessage: '',
-                warningMessage: "L'utilisateur n'est pas authentifi�"
+                informationMessage: "",
+                warningMessage: "L'utilisateur n'est pas authentifi�",
             });
         }
     });
@@ -217,6 +220,6 @@ export const UserService = {
     getUsername,
     hasRole,
     getCurrentInternalUser,
-    isAuthorized
+    isAuthorized,
 };
 //# sourceMappingURL=UserService.js.map
