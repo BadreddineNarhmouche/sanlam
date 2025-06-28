@@ -1,6 +1,5 @@
 import { InternalRoleCodeConstants } from "@checkTracking/helpers/lib/helpers/ConstantsHelper";
 import { STATUS_TREATMENTS } from "../constants/global";
-import { Chip } from "@checkTracking/ui-kit";
 
 const ColorCodes = {
   greenLight: "#E3FAF6",

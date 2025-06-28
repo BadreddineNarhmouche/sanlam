@@ -1,8 +1,8 @@
-import * as _ from 'lodash';
-import { GeneralConstants } from '../constants/global';
-import { DIGITS_THOUSANDS_SEPARATOR } from '../constants/validators';
-import { parse, isBefore } from 'date-fns';
-import { FileExtensionConstants } from './ConstantsHelper';
+import * as _ from "lodash";
+import { GeneralConstants } from "../constants/global";
+import { DIGITS_THOUSANDS_SEPARATOR } from "../constants/validators";
+import { parse, isBefore } from "date-fns";
+import { FileExtensionConstants } from "./ConstantsHelper";
 const isArrayUndefinedOrEmpty = (arr) => {
     return !arr || arr.length === 0;
 };
@@ -24,7 +24,7 @@ const isObjectNullOrEmpty = (obj) => {
     if (obj === null || obj === undefined) {
         return true;
     }
-    if (typeof obj !== 'object') {
+    if (typeof obj !== "object") {
         return true;
     }
     return Object.keys(obj).length === 0;
@@ -68,29 +68,29 @@ const buildOrganizationNameCode = (organizationName, code) => {
 };
 const formatNumberInput = (value) => {
     if (!value || isNaN(value))
-        return '';
+        return "";
     return parseFloat(value)
         .toString()
-        .replace(DIGITS_THOUSANDS_SEPARATOR, '$1 ');
+        .replace(DIGITS_THOUSANDS_SEPARATOR, "$1 ");
 };
 const parseInputValue = (inputValue) => {
-    const numericValue = inputValue.replace(/[^\d.]/g, '');
+    const numericValue = inputValue.replace(/[^\d.]/g, "");
     const parsedValue = parseFloat(numericValue);
     return parsedValue;
 };
 const formatNumber = (num) => {
     return isNumeric(num)
-        ? num.toString().replace(DIGITS_THOUSANDS_SEPARATOR, '$1 ')
+        ? num.toString().replace(DIGITS_THOUSANDS_SEPARATOR, "$1 ")
         : num;
 };
 const isNumeric = (number) => _.isFinite(_.parseInt(number)) && !_.isNaN(_.parseInt(number));
 const getCurrentMonth = (intl) => {
-    const month = new Date().toLocaleString(intl.locale, { month: 'long' });
+    const month = new Date().toLocaleString(intl.locale, { month: "long" });
     const formattedMonth = month.charAt(0).toUpperCase() + month.slice(1);
     return formattedMonth;
 };
 const isNumber = (variable) => {
-    return typeof variable === 'number' && isFinite(variable);
+    return typeof variable === "number" && isFinite(variable);
 };
 const formatCurrentDate = (date) => {
     const day = `0${date.getDate()}`.slice(-2);
@@ -109,11 +109,11 @@ const base64ToUint8Array = (base64) => {
     }
     return bytes;
 };
-const appendObjectToFormData = (obj, formData, prefix = '') => {
+const appendObjectToFormData = (obj, formData, prefix = "") => {
     for (const key in obj) {
         if (Object.prototype.hasOwnProperty.call(obj, key)) {
             const value = obj[key];
-            const fullKey = prefix && prefix !== ''
+            const fullKey = prefix && prefix !== ""
                 ? Array.isArray(obj)
                     ? `${prefix}[${key}]`
                     : `${prefix}.${key}`
@@ -124,7 +124,7 @@ const appendObjectToFormData = (obj, formData, prefix = '') => {
                     if (value[i] && isFile(value[i])) {
                         formData.append(fullKey, value[i]);
                     }
-                    else if (Array.isArray(value[i]) || typeof value[i] === 'object') {
+                    else if (Array.isArray(value[i]) || typeof value[i] === "object") {
                         appendObjectToFormData(value[i], formData, arrayKey);
                     }
                     else {
@@ -135,7 +135,7 @@ const appendObjectToFormData = (obj, formData, prefix = '') => {
             else if (isFile(value)) {
                 formData.append(fullKey, value);
             }
-            else if (typeof value === 'object') {
+            else if (typeof value === "object") {
                 appendObjectToFormData(value, formData, fullKey);
             }
             else {
@@ -156,7 +156,7 @@ const filterObjectByTemplate = (obj, template) => {
     }
     return result;
 };
-const isFirstDateEarlier = (dateString1, dateString2, inputFormat = 'dd/MM/yyyy') => {
+const isFirstDateEarlier = (dateString1, dateString2, inputFormat = "dd/MM/yyyy") => {
     try {
         const date1 = parse(dateString1, inputFormat, new Date());
         const date2 = parse(dateString2, inputFormat, new Date());
@@ -190,23 +190,22 @@ const isArrayNotNullOrEmpty = (value) => {
 };
 const hashStringValue = (value, shift) => {
     return value
-        .split('')
+        .split("")
         .map((char) => {
         if (char.match(/[a-zA-Z]/)) {
             const isUpperCase = char === char.toUpperCase();
             const baseCharCode = isUpperCase
-                ? 'A'.charCodeAt(0)
-                : 'a'.charCodeAt(0);
+                ? "A".charCodeAt(0)
+                : "a".charCodeAt(0);
             const charCode = char.charCodeAt(0);
-            const shiftedCharCode = ((((charCode - baseCharCode + shift) % 26) + 26) % 26) +
-                baseCharCode;
+            const shiftedCharCode = ((((charCode - baseCharCode + shift) % 26) + 26) % 26) + baseCharCode;
             return String.fromCharCode(shiftedCharCode);
         }
         else {
             return char;
         }
     })
-        .join('');
+        .join("");
 };
 const isFileTypeValid = (fileType) => {
     const knownContentTypes = [
@@ -236,7 +235,7 @@ const isFileTypeValid = (fileType) => {
         "application/x-zip-compressed",
         "application/x-gzip-compressed",
         "application/x-msdownload",
-        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
     ];
     return knownContentTypes.includes(fileType);
 };
@@ -244,7 +243,7 @@ const isFileSizeValid = (fileSize, minimumLengthInBytes, maximumLengthInBytes) =
     return fileSize > minimumLengthInBytes && fileSize <= maximumLengthInBytes;
 };
 const getFileExtension = (filename) => {
-    var parts = filename.split('.');
+    var parts = filename.split(".");
     return parts[parts.length - 1].toLowerCase();
 };
 const isSupportedImageExtension = (filename) => {
@@ -265,7 +264,8 @@ const isSupportedImageExtension = (filename) => {
 };
 const isExcelExtension = (filename) => {
     var ext = getFileExtension(filename);
-    return ext === FileExtensionConstants.oldExcel || ext === FileExtensionConstants.modernExcel;
+    return (ext === FileExtensionConstants.oldExcel ||
+        ext === FileExtensionConstants.modernExcel);
 };
 const isPdfExtension = (filename) => {
     return getFileExtension(filename) === FileExtensionConstants.pdf;
@@ -304,6 +304,6 @@ export const GeneralHelper = {
     isSupportedImageExtension,
     isExcelExtension,
     isPdfExtension,
-    isTextExtension
+    isTextExtension,
 };
 //# sourceMappingURL=GeneralHelpers.js.map

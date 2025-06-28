@@ -2,20 +2,13 @@ export declare const AuthorizedRoles: {
     CheckTrackingPlatform: string;
 };
 export declare const InternalRoleCodeConstants: {
-    technicalAdministrator: string;
-    functionalAdministrator: string;
-    subscriptionsManager: string;
-    subscriptionsExecutor: string;
-    recoveriesExecutor: string;
-    recoveriesManager: string;
-    checkTrackingsExecutor: string;
-    checkTrackingsManager: string;
-    accountingExecutor: string;
-    accountingManager: string;
-    documentDetails: string;
-    documentConsulting: string;
-    documentUpload: string;
-    demandePage: string;
+    ReceiptByBusinessUnit: string;
+    BoOut: string;
+    BoIn: string;
+    ClientOut: string;
+    ClientIn: string;
+    BackToBusinessUnit: string;
+    ReturnedCheckIn: string;
 };
 export declare const LocalStorageKeyConstants: {
     internalUserInternalRoles: string;

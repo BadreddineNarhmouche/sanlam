@@ -8,21 +8,14 @@ export const AuthorizedRoles = {
 
 //#region InternalRoleCodeConstants
 
-export const InternalRoleCodeConstants = {
-    technicalAdministrator: 'TechnicalAdministrator',
-    functionalAdministrator: 'FunctionalAdministrator',
-    subscriptionsManager: 'SubscriptionsManager',
-    subscriptionsExecutor: 'SubscriptionsExecutor',
-    recoveriesExecutor: 'RecoveriesExecutor',
-    recoveriesManager: 'RecoveriesManager',
-    checkTrackingsExecutor: 'checkTrackingsExecutor',
-    checkTrackingsManager: 'checkTrackingsManager',
-    accountingExecutor: 'AccountingExecutor',
-    accountingManager: 'AccountingManager',
-    documentDetails: 'DocumentDetails',
-    documentConsulting: 'DocumentConsulting',
-    documentUpload: 'DocumentUpload',
-    demandePage: 'DemandePage'
+export declare const InternalRoleCodeConstants: {
+  ReceiptByBusinessUnit: string;
+  BoOut: string;
+  BoIn: string;
+  ClientOut: string;
+  ClientIn: string;
+  BackToBusinessUnit: string;
+  ReturnedCheckIn: string;
 };
 
 //#region LocalStorageKeyConstants
