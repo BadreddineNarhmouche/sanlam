@@ -98,19 +98,21 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Timelines.Commands
                     internalUser = await internalUserQueryRepository.GetByElectronicAddressAsync(request.InternalUserElectronicAddress);
 
                     foreach (var item in request.CheckIds)
-                    {
-                        timelineToCreated.CheckId = item;
-                        timelineToCreated.UserId = internalUser.Id;
-                        timelineToCreated.StatusId = statuses.Where(c => c.Code == request.Status).Select(c => c.Id).FirstOrDefault();
-                        timelineToCreated.ReasonMoveId = request.ReasonMoveId ?? null;
-                        timelineToCreated.Comment = request.Comment ?? null;
-                        timelineToCreated.DateOfPassage = request.Date;
+                     {
+                         timelineToCreated.CheckId = item;
+                         timelineToCreated.UserId = internalUser.Id;
+                         timelineToCreated.CreatedById = internalUser.Id.ToString();
+                         timelineToCreated.CreatedByFullName = internalUser.LastName;
+                         timelineToCreated.StatusId = statuses.Where(c => c.Code == request.Status).Select(c => c.Id).FirstOrDefault();
+                         timelineToCreated.ReasonMoveId = request.ReasonMoveId ?? null;
+                         timelineToCreated.Comment = request.Comment ?? null;
+                         timelineToCreated.DateOfPassage = request.Date;
 
-                        timelineCreated.Add(await timelinesCommandRepository.AddAsync(timelineToCreated));
-                    }
+                         timelineCreated.Add(await timelinesCommandRepository.AddAsync(timelineToCreated));
+                     }
 
                     response.IsSuccess = true;
-                    response.IsPopulated = timelineCreated.Count > 0 ? true : false; // vérification de la création
+                    response.IsPopulated = timelineCreated.Count > 0 ? true : false;
                     response.InformationMessage = InformationMessages.QuerySucceeded;
                 }
                 else
