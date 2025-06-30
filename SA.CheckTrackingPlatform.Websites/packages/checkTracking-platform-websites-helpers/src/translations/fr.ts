@@ -141,4 +141,5 @@ export const frTranslationMessages = {
   "CheckTracking.reason_label_2": "Rendement",
   "CheckTracking.reason_label_3": "Imposable",
   "CheckTracking.comment_label": "Commentaire",
+  "snackbar.message": "Test",
 };

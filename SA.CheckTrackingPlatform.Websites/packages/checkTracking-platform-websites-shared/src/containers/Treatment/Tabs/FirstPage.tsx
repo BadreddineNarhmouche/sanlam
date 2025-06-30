@@ -228,7 +228,7 @@ export const FirstPage = ({
             open={displayAlert}
             anchorOrigin={{ vertical: "top", horizontal: "right" }}
             severity={"warning"}
-            message={"This is a success Alert inside a Snackbar!"}
+            message={intl.formatMessage({ id: "snackbar.message" })}
             handleClose={() => handleClose()}
           />
           <DialogTreatment
