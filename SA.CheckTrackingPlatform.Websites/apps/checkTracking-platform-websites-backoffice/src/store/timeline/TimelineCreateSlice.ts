@@ -1,7 +1,13 @@
 import { DataSliceState, createDataSlice } from "@checkTracking/helpers";
 
-const initialState: DataSliceState<any> = {
+/* const initialState: DataSliceState<any> = {
   responseData: [],
+  isLoading: false,
+  error: null,
+};*/
+
+const initialState: DataSliceState<any> = {
+  responseData: null,
   isLoading: false,
   error: null,
 };

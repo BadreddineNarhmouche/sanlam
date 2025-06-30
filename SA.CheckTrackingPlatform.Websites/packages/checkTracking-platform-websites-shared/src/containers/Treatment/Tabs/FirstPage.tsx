@@ -68,8 +68,14 @@ export const FirstPage = ({
     error: errorTimeLineUpdate,
   } = useSelector((state: any) => state.TimelineUpdate);
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (TimelineUpdate.isSuccess) {
+      setData([]);
+    }
+  }, [TimelineUpdate]); */
+
+  useEffect(() => {
+    if (TimelineUpdate?.isSuccess) {
       setData([]);
     }
   }, [TimelineUpdate]);
