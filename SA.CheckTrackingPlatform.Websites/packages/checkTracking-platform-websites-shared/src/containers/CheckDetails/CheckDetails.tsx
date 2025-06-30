@@ -6,6 +6,7 @@ import {
   DetailsCheck as DetailsDTO,
   TimelineItem,
 } from "@checkTracking/helpers";
+
 import {
   CardContainer,
   Grid,
