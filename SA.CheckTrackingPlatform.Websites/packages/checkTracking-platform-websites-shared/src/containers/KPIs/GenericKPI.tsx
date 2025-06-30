@@ -57,12 +57,6 @@ const KPICard = ({
       />
     );
 
-  // const {
-  //   responseData: exportFileExcelRenovel,
-  //   isLoading,
-  //   error,
-  // } = useSelector((state: any) => state.exportFileExcelRenovel);
-
   const renderContent = (contents: any) => (
     <Grid container direction="row" mt={2}>
       {contents?.map((content: any, index: number) => (

@@ -8,16 +8,15 @@ export const AuthorizedRoles = {
 
 //#region InternalRoleCodeConstants
 
-export declare const InternalRoleCodeConstants: {
-  ReceiptByBusinessUnit: string;
-  BoOut: string;
-  BoIn: string;
-  ClientOut: string;
-  ClientIn: string;
-  BackToBusinessUnit: string;
-  ReturnedCheckIn: string;
+export const InternalRoleCodeConstants = {
+  ReceiptByBusinessUnit: "ReceiptByBusinessUnit",
+  BoOut: "BoOut",
+  BoIn: "BoIn",
+  ClientOut: "ClientOut",
+  ClientIn: "ClientIn",
+  BackToBusinessUnit: "BackToBusinessUnit",
+  ReturnedCheckIn: "ReturnedCheckIn",
 };
-
 //#endregion InternalRoleCodeConstants
 
 //#region LocalStorageKeyConstants

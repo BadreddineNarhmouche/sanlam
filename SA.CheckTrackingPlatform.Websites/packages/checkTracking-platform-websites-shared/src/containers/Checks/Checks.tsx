@@ -131,6 +131,8 @@ export const Checks = ({
     setChecksData(getAllChecksByCriteria);
   }, [getAllChecksByCriteria]);
 
+  console.log("DATA CHANGED", getAllChecksByCriteria);
+
   useEffect(() => {
     setStatusData(AllStatus);
   }, [AllStatus]);

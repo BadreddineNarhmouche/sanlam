@@ -38,7 +38,7 @@ export const KPIs = ({
     <Grid container direction="row" spacing={2} xl={12}>
       {" "}
       <RenderByRoles
-        internalRoleCodes={["BoIn"]}
+        internalRoleCodes={["BoIn", "BoOut", "BackToBusinessUnit"]}
         fallback={
           <>
             {" "}
