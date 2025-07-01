@@ -75,11 +75,9 @@ export const Checks = ({
     error: errorChecksData,
   } = useSelector((state: any) => state.getAllChecksByCriteria);
 
-  const {
-    responseData: AllStatus,
-    isLoading: isLoadingStatusData,
-    error: errorStatusData,
-  } = useSelector((state: any) => state.AllStatus);
+  const { responseData: AllStatus } = useSelector(
+    (state: any) => state.AllStatus
+  );
 
   useEffect(() => {
     handleSubmit(initialFilterValues);

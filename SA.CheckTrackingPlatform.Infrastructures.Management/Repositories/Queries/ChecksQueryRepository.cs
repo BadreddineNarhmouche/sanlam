@@ -46,7 +46,7 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
 
             return query;
         }
-        public async Task<IEnumerable<Checks>> GetByCriteriaAsync(List<int>? ids, List<string>? checkNumbers, int? branchId, int? serviceId, int? bankId, string? lotNumber, string? beneficiaryName, int? pageIndex, int? pageSize)
+        public async Task<IEnumerable<Checks>> GetByCriteriaAsync(string? checkNumbers, string? lotNumber, string? SinisterNumber, int? StatusId, int? pageIndex, int? pageSize)
         {
             IQueryable<Checks> query = this.applicationContext.Checks
                 .Include(c => c.Timelines)
@@ -55,26 +55,19 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
                 .Include(c => c.Service)
                 .Include(c => c.Bank);
 
-            if (ids != null && ids.Any())
-                query = query.Where(c => ids.Contains(c.Id));
-
             if (checkNumbers != null && checkNumbers.Any())
                 query = query.Where(c => checkNumbers.Contains(c.CheckNumber));
-
-            if (branchId.HasValue)
-                query = query.Where(c => c.BranchId == branchId.Value);
-
-            if (serviceId.HasValue)
-                query = query.Where(c => c.ServiceId == serviceId.Value);
-
-            if (bankId.HasValue)
-                query = query.Where(c => c.BankId == bankId.Value);
 
             if (!string.IsNullOrWhiteSpace(lotNumber))
                 query = query.Where(c => c.LotNumber == lotNumber);
 
-            if (!string.IsNullOrWhiteSpace(beneficiaryName))
-                query = query.Where(c => c.BeneficiaryName.Contains(beneficiaryName));
+            if (!string.IsNullOrWhiteSpace(SinisterNumber))
+                query = query.Where(c => c.SinisterNumber == SinisterNumber);
+
+            if (StatusId.IsNotNull())
+                query = query.Where(c => c.Timelines.Where(t =>
+                   t.Status.Id == StatusId && t.DateOfPassage == applicationContext.Timelines.Where(t2 => t2.CheckId == c.Id).Max(t2 => t2.DateOfPassage)
+               ).OrderByDescending(q => q.CreationDate).Any());
 
             if (pageIndex.HasValue && pageSize.HasValue)
             {
@@ -95,7 +88,6 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
             if (!string.IsNullOrWhiteSpace(checkNumbers))
                 query = query.Where(c => checkNumbers.Contains(c.CheckNumber));
 
-
             if (!string.IsNullOrWhiteSpace(lotNumber))
                 query = query.Where(c => c.LotNumber == lotNumber);
 
@@ -112,7 +104,7 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
                  .ToListAsync();
         }
 
-        public async Task<int> CountAllByCriteriaAsync(List<int>? ids, List<string>? checkNumbers, int? branchId, int? serviceId, int? bankId, string? lotNumber, string? beneficiaryName)
+        public async Task<int> CountAllByCriteriaAsync(string? checkNumbers, string? lotNumber, string? SinisterNumber, int? StatusId)
         {
             IQueryable<Checks> query = this.applicationContext.Checks
                .Include(c => c.Timelines)
@@ -121,27 +113,19 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
                .Include(c => c.Service)
                .Include(c => c.Bank);
 
-            if (ids != null && ids.Any())
-                query = query.Where(c => ids.Contains(c.Id));
-
             if (checkNumbers != null && checkNumbers.Any())
                 query = query.Where(c => checkNumbers.Contains(c.CheckNumber));
-
-            if (branchId.HasValue)
-                query = query.Where(c => c.BranchId == branchId.Value);
-
-            if (serviceId.HasValue)
-                query = query.Where(c => c.ServiceId == serviceId.Value);
-
-            if (bankId.HasValue)
-                query = query.Where(c => c.BankId == bankId.Value);
 
             if (!string.IsNullOrWhiteSpace(lotNumber))
                 query = query.Where(c => c.LotNumber == lotNumber);
 
-            if (!string.IsNullOrWhiteSpace(beneficiaryName))
-                query = query.Where(c => c.BeneficiaryName.Contains(beneficiaryName));
+            if (!string.IsNullOrWhiteSpace(SinisterNumber))
+                query = query.Where(c => c.SinisterNumber == SinisterNumber);
 
+            if (StatusId.IsNotNull())
+                query = query.Where(c => c.Timelines.Where(t =>
+                   t.Status.Id == StatusId && t.DateOfPassage == applicationContext.Timelines.Where(t2 => t2.CheckId == c.Id).Max(t2 => t2.DateOfPassage)
+               ).OrderByDescending(q => q.CreationDate).Any());
 
             return await query
                  .AsNoTrackingWithIdentityResolution()

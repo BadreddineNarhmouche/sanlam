@@ -11,14 +11,11 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Queries
     public class GetAllByCriteriaQuery : BasePagedRequest<GetAllByCriteriaResponse>
     {
         #region properties
-        public List<int>? Ids { get; set; }
-        public List<string>? CheckNumbers { get; set; }
-        public int? BranchId { get; set; }
-        public int? ServiceId { get; set; }
-        public int? BankId { get; set; }
+        
+        public string? CheckNumbers { get; set; }
         public string? LotNumber { get; set; }
-        public string? BeneficiaryName { get; set; }
-
+        public string? SinisterNumber { get; set; }
+        public int? StatusId { get; set; }
         public bool CalculateTotalCount { get; set; } = true;
 
         #endregion Properties 
@@ -71,20 +68,15 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Queries
                 if (response.IsSuccess)
                 {
 
-                    int totalCount = request.CalculateTotalCount ? await checksQueryRepository.CountAllByCriteriaAsync(request.Ids, request.CheckNumbers, request.BranchId,
-                        request.ServiceId, request.BankId, request.LotNumber, request.BeneficiaryName) : 0;
+                    int totalCount = request.CalculateTotalCount ? await checksQueryRepository.CountAllByCriteriaAsync(request.CheckNumbers, request.LotNumber, request.SinisterNumber, request.StatusId) : 0;
 
-                    //paramétrage count 1 => Non Vide
-                    IEnumerable<Checks> checks = await checksQueryRepository.GetByCriteriaAsync(request.Ids, request.CheckNumbers, request.BranchId,
-                        request.ServiceId, request.BankId, request.LotNumber, request.BeneficiaryName, request.PageIndex, 50);
+                    IEnumerable<Checks> checks = await checksQueryRepository.GetByCriteriaAsync(request.CheckNumbers, request.LotNumber, request.SinisterNumber,
+                        request.StatusId, request.PageIndex, 50);
 
                     if (checks.IsNotNull())
                     {
                         response.Data = MappingConfiguration.Mapper.Map<List<GetAllByCriteriaItem>>(checks);
                         response.FillPageInformation(checks.Count(), totalCount, request.PageIndex, 50);
-
-                        // Data reçoit les elements et Mapping avec une list des entitées des checks 
-                        // Car Nous voulons Mapper une liste avec une liste et nous voulons retourner tout les items de checks 
                     }
 
                     response.IsSuccess = true;
