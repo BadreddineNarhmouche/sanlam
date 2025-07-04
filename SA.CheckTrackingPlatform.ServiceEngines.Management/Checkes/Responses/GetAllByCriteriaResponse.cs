@@ -13,6 +13,7 @@
         public string CheckNumber { get; set; }
         public string LotNumber { get; set; }
         public string BeneficiaryName { get; set; }
+        public string SinisterNumber { get; set; }
 
         #endregion Properties
     }
