@@ -28,10 +28,10 @@ const HomePage = () => {
   }, []);
 
   const filterValues: FilterCriteriaChecks = {
-    reference: "",
-    policyReference: "",
-    primeNetMin: "",
-    primeNetMax: "",
+    checkNumber: "",
+    lotNumber: "",
+    sinisterNumber: "",
+    checkStatusId: "",
   };
 
   return (

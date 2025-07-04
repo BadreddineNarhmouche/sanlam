@@ -9,6 +9,7 @@ export const mapChecksList = (checks: any): Check[] => {
         amount: check.amount,
         serviceName: check.serviceName,
         lotNumber: check.lotNumber,
+        sinisterNumber: check.sinisterNumber,
       }))
     : [];
 };

@@ -11,13 +11,18 @@ import {
   apiCallGetAllChecksSuccess,
   getAllChecks,
 } from "./getAllChecksSlice";
-import { apiCallGetCheckFailure, apiCallGetCheckSuccess, getCheckById } from "./getCheckByIdSlice";
+import {
+  apiCallGetCheckFailure,
+  apiCallGetCheckSuccess,
+  getCheckById,
+} from "./getCheckByIdSlice";
 
 const baseApiPath = process.env.REACT_APP_API_BASE_PATH;
 
 function* getAllCheckByCriteria({ payload }: { payload: any }): any {
+  console.log(payload);
   yield apiCallHandler({
-    apiPath: `/Checkes/GetAllByCriteria`,
+    apiPath: `/Checkes/GetAllByCriteria?CheckNumbers=${payload?.checkNumber}&LotNumber=${payload?.lotNumber}&SinisterNumber=${payload?.sinisterNumber}&StatusId=${payload?.checkStatusId}`,
     baseApiPath,
     dispatchSuccess: apiCallGetAllChecksByCriteriaSuccess,
     dispatchFailure: apiCallGetAllChecksByCriteriaFailure,

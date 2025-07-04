@@ -15,6 +15,7 @@ export const ROLES = [
 ];
 
 export const STATUS_TREATMENTS = {
+  Edited: "EDT",
   ReceiptByBusinessUnit: "REM",
   BoOut: "EB",
   BoIn: "RB",
