@@ -15,6 +15,8 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Repositories.Queries
 
         Task<int> CountAllByCriteriaAsync(List<int>? ids, List<string>? checkNumbers, int? branchId, int? serviceId, int? bankId, string? lotNumber, string? beneficiaryName);
 
+        Task<IEnumerable<Checks>> GetChecksWithLatestStatusAsync();
+
         #endregion Methods
     }
 }

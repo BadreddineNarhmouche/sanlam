@@ -126,9 +126,6 @@
   <data name="Assure" xml:space="preserve">
     <value>ASSURE</value>
   </data>
-  <data name="AffaireType" xml:space="preserve">
-    <value>Type d'affaire</value>
-  </data>
   <data name="Ferme" xml:space="preserve">
     <value>Ferme / Tacite</value>
   </data>
@@ -275,5 +272,23 @@
   </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
+  </data>
+  <data name="AmountRef" xml:space="preserve">
+    <value>Amount Ref</value>
+  </data>
+  <data name="CheckNumberRef" xml:space="preserve">
+    <value>N° de chèque</value>
+  </data>
+  <data name="LotNumberRef" xml:space="preserve">
+    <value>N° de Lot</value>
+  </data>
+  <data name="BeneficiaryNameRef" xml:space="preserve">
+    <value>Nom Béneficiaire</value>
+  </data>
+  <data name="CreationDateRef" xml:space="preserve">
+    <value>Date De Création</value>
+  </data>
+  <data name="RecipientNameRef" xml:space="preserve">
+    <value>Nom Destinataire</value>
   </data>
 </root>

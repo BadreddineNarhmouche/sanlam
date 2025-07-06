@@ -126,4 +126,7 @@
   <data name="TimelineFile" xml:space="preserve">
     <value>FichierEchéancier</value>
   </data>
+  <data name="Checks" xml:space="preserve">
+    <value>Checks</value>
+  </data>
 </root>

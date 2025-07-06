@@ -149,6 +149,20 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
                 .CountAsync();
         }
 
+        public async Task<IEnumerable<Checks>> GetChecksWithLatestStatusAsync()
+        {
+            var result = await (
+                from c in applicationContext.Checks
+                join t in applicationContext.Timelines on c.Id equals t.CheckId
+                join s in applicationContext.Statuses on t.StatusId equals s.Id
+                where t.DateOfPassage == applicationContext.Timelines
+                    .Where(t2 => t2.CheckId == c.Id)
+                    .Max(t2 => t2.DateOfPassage)
+                select c
+            ).ToListAsync();
+
+            return result;
+        }
         #endregion
     }
 }

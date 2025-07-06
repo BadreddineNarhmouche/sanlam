@@ -94,7 +94,6 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
             return grouped;
         }
 
-
         #endregion Methods 
     }
 }

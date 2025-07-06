@@ -7,6 +7,7 @@
             #region Fields
 
             public const string FolderLocalFullPath = "FolderLocalFullPath";
+            public const string MonthInterval = "MonthInterval";
 
             #endregion Fields
         }
