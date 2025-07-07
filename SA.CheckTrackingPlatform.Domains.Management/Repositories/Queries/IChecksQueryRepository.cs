@@ -1,6 +1,7 @@
 ﻿using SA.CheckTrackingPlatform.Domains.Common;
 using SA.CheckTrackingPlatform.Domains.Management.Entities;
 
+
 namespace SA.CheckTrackingPlatform.Domains.Management.Repositories.Queries
 {
     public interface IChecksQueryRepository : IQueryRepository<Checks>
@@ -16,6 +17,9 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Repositories.Queries
         Task<int> CountAllByCriteriaAsync(List<int>? ids, List<string>? checkNumbers, int? branchId, int? serviceId, int? bankId, string? lotNumber, string? beneficiaryName);
 
         Task<IEnumerable<Checks>> GetChecksWithLatestStatusAsync();
+        Task<Dictionary<string, int>> GetChecksWithLatestStatusGroupedByStatusAsync();
+
+        Task<IEnumerable<KPIItemShow>> GetChecksWithLatestStatusGroupedByStatusAsync(string statusCode);
 
         #endregion Methods
     }

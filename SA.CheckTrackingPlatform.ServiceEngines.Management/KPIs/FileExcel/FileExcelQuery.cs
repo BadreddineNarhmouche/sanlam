@@ -79,39 +79,61 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.FileExcel
 
                     if (response.IsSuccess)
                     {
-                        List<KPIItemShow> Checks = new List<KPIItemShow>();
-                        var checks = await checksQueryRepository.GetChecksWithLatestStatusAsync();
-                        byte[] fileExcel = await FileExcelKPIItemShow(checks);
+                        var checksByStatus = await checksQueryRepository.GetChecksWithLatestStatusGroupedByStatusAsync();
 
-                        // DEBUG: Sauvegarder le fichier localement
-                        string tempPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "DEBUG_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".xlsx");
-                        await File.WriteAllBytesAsync(tempPath, fileExcel);
-                        Console.WriteLine($"✅ Fichier sauvegardé ici : {tempPath}");
-
-                        // (optionnel) Lire et afficher dans la console
-                        using (var package = new ExcelPackage(new FileInfo(tempPath)))
+                        var kpiResponse = new GetKPIsCountResponse
                         {
-                            var worksheet = package.Workbook.Worksheets[0];
-                            int rows = worksheet.Dimension.Rows;
-                            int cols = worksheet.Dimension.Columns;
-
-                            for (int row = 1; row <= rows; row++)
+                            Data = new GetKPIsCountResponseByAllItem
                             {
-                                for (int col = 1; col <= cols; col++)
-                                {
-                                    Console.Write($"{worksheet.Cells[row, col].Text} \t");
-                                }
-                                Console.WriteLine();
+                                NumberOfChecksIssuedButNotAcknowledgedByTheBusinessUnit = checksByStatus.TryGetValue(Constants.TimelineStatusCodes.EditedCheck.ToLowerInvariant(), out var val1) ? val1 : 0,
+                                NumberOfChecksReceivedByBusinessUnitButNotByRegistryOffice = checksByStatus.TryGetValue(Constants.TimelineStatusCodes.ReceivedTrade.ToLowerInvariant(), out var val2) ? val2 : 0,
+                                NumberOfChecksReceivedByRegistryOfficeButNotSentToClient = checksByStatus.TryGetValue(Constants.TimelineStatusCodes.ReceivedOffice.ToLowerInvariant(), out var val3) ? val3 : 0,
+                                NumberOfReturnedChecksNotYetReceived = checksByStatus.TryGetValue(Constants.TimelineStatusCodes.ReturnClient.ToLowerInvariant(), out var val4) ? val4 : 0
                             }
+                        };
+
+
+                        const string ExportDateFormat = "yyyyMMdd_HHmmss";
+                        string timestamp = DateTime.Now.ToString(ExportDateFormat);
+
+
+                        var statusCodes = new Dictionary<string, string>
+{
+    { Constants.TimelineStatusCodes.EditedCheck, "ChecksIssuedButNotAcknowledged" },
+    { Constants.TimelineStatusCodes.ReceivedTrade, "ChecksReceivedByBusinessUnit" },
+    { Constants.TimelineStatusCodes.ReceivedOffice, "ChecksReceivedByRegistryOffice" },
+    { Constants.TimelineStatusCodes.ReturnClient, "ReturnedChecksNotYetReceived" }
+};
+
+  
+                        foreach (var kvp in statusCodes)
+                        {
+                            var statusCode = kvp.Key.ToLowerInvariant();
+                            var baseName = kvp.Value;
+
+
+                            var fileName = $"{baseName}_{timestamp}.xlsx"; 
+                            var checks = await checksQueryRepository.GetChecksWithLatestStatusGroupedByStatusAsync(statusCode);
+                            byte[] fileExcel = await FileExcelKPIItemShow(checks);
+
+
+                            string tempPath = Path.Combine(
+                                Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+                                fileName
+                            );
+
+                            await File.WriteAllBytesAsync(tempPath, fileExcel);
+                            Console.WriteLine($"✅ Fichier sauvegardé : {tempPath}");
                         }
 
                         response.Data = new FileExcelResponse
                         {
-                            Content = fileExcel,
-                            Name = string.Format("{0}_{1}{2}", DocumentNames.Checks, DateTime.Now.ToString(DateTimeFormats.ShortDateLongTimeWithoutSeparator), FileExtensions.ModernExcel),
-                            ContentType = Constants.ContentTypes.Excel
+                            Name = $"MultiExportStatusChecks_{timestamp}.xlsx", 
+                            ContentType = Constants.ContentTypes.Excel,
+                            Content = Array.Empty<byte>() 
                         };
                     }
+
                     #endregion Operations
 
                     return response;
@@ -119,7 +141,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.FileExcel
 
             }
 
-            private async Task<byte[]> FileExcelKPIItemShow(IEnumerable<Checks> checks)
+            private async Task<byte[]> FileExcelKPIItemShow(IEnumerable<KPIItemShow> checks) // type d'objet passer est <KPIItemShow>> et pas checks
             {
                 return await documentGenerator.GenerateCanvas(
                     new List<CanvasSheet<KPIItemShow>>()
@@ -147,15 +169,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.FileExcel
                         CanvasCellBorderThickness = CanvasCellBorderThickness.Thin,
                         BackgroundColor = (55, 118, 237)
                     },
-                    ItemModels = checks.Select(q => new KPIItemShow()
-                    {
-                        AmountRef = q.Amount,
-                        CheckNumberRef = q.CheckNumber,
-                        LotNumberRef = q.LotNumber,
-                        RecipientNameRef = q.RecipientName,
-                        BeneficiaryNameRef = q.BeneficiaryName,
-                        CreationDateRef = q.CreationDate,
-                    }),
+                    ItemModels = checks,
                     ItemModelsCanvasCellStyle = new CanvasCellStyle()
                     {
                         CanvasCellBorderThickness = CanvasCellBorderThickness.Thin
@@ -164,23 +178,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.FileExcel
             }
                     });
             }
-
             #endregion Methods 
-        }
-
-        public class KPIItemShow
-        {
-            #region properties 
-
-            public double AmountRef { get; set; }
-            public string? CheckNumberRef { get; set; }
-            public string? LotNumberRef { get; set; }
-            public string? RecipientNameRef { get; set; }
-            public string? BeneficiaryNameRef { get; set; }
-            public DateTime CreationDateRef { get; set; }
-
-
-            #endregion properties 
         }
     }
 }

@@ -3,6 +3,8 @@ using SA.CheckTrackingPlatform.Contexts.Management.Application;
 using SA.CheckTrackingPlatform.Domains.Management.Entities;
 using SA.CheckTrackingPlatform.Domains.Management.Repositories.Queries;
 using SA.CheckTrackingPlatform.Infrastructures.Management.Common;
+using SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses;
+using static SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.FileExcel.FileExcelQuery;
 
 namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queries
 {
@@ -163,6 +165,64 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
 
             return result;
         }
+        public async Task<Dictionary<string, int>> GetChecksWithLatestStatusGroupedByStatusAsync()
+        {
+            var latestTimelines = await (
+                from c in applicationContext.Checks
+                join t in applicationContext.Timelines on c.Id equals t.CheckId
+                join s in applicationContext.Statuses on t.StatusId equals s.Id
+                where t.DateOfPassage == applicationContext.Timelines
+                    .Where(t2 => t2.CheckId == c.Id)
+                    .Max(t2 => t2.DateOfPassage)
+                select new
+                {
+                    StatusLabel = s.Label.Trim().ToLowerInvariant()
+                }
+            ).ToListAsync();
+
+            return latestTimelines
+                .GroupBy(x => x.StatusLabel)
+                .ToDictionary(g => g.Key, g => g.Count());
+        }
+
+        public async Task<IEnumerable<KPIItemShow>> GetChecksWithLatestStatusGroupedByStatusAsync(string statusCode)
+        {
+            string normalizedStatusCode = statusCode.Trim().ToLower();
+
+            return await applicationContext.Checks
+                .Join(
+                    applicationContext.Timelines,
+                    c => c.Id,
+                    t => t.CheckId,
+                    (c, t) => new { Check = c, Timeline = t }
+                )
+                .Join(
+                    applicationContext.Statuses,
+                    ct => ct.Timeline.StatusId,
+                    s => s.Id,
+                    (ct, s) => new { ct.Check, ct.Timeline, Status = s }
+                )
+                .Where(x =>
+                    x.Timeline.DateOfPassage ==
+                        applicationContext.Timelines
+                            .Where(t2 => t2.CheckId == x.Check.Id)
+                            .Max(t2 => t2.DateOfPassage)
+                    &&
+                    x.Status.Label.Trim().ToLower() == normalizedStatusCode
+                )
+                .Select(x => new KPIItemShow
+                {
+                    AmountRef = x.Check.Amount,
+                    CheckNumberRef = x.Check.CheckNumber,
+                    LotNumberRef = x.Check.LotNumber,
+                    RecipientNameRef = x.Check.RecipientName,
+                    BeneficiaryNameRef = x.Check.BeneficiaryName,
+                    CreationDateRef = x.Check.CreationDate
+                })
+                .AsNoTracking()
+                .ToListAsync();
+        }
+
         #endregion
     }
 }
