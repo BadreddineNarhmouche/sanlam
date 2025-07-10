@@ -5,6 +5,7 @@ using SA.CheckTrackingPlatform.Domains.Management.Repositories.Queries;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Mapper;
 using System.Reflection;
+using static System.Constants;
 
 namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Queries
 {
@@ -29,15 +30,17 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Queries
 
         private readonly IChecksQueryRepository checksQueryRepository;
         private readonly IInternalUserQueryRepository internalUserQueryRepository;
+        private readonly IInternalUserInternalRoleQueryRepository internalUserInternalRoleQueryRepository;
 
         #endregion Fields 
 
         #region Constructors 
 
-        public GetAllByCriteriaQueryHandler(IChecksQueryRepository checksQueryRepository, IInternalUserQueryRepository internalUserQueryRepository)
+        public GetAllByCriteriaQueryHandler(IChecksQueryRepository checksQueryRepository, IInternalUserQueryRepository internalUserQueryRepository, IInternalUserInternalRoleQueryRepository internalUserInternalRoleQueryRepository)
         {
             this.checksQueryRepository = checksQueryRepository;
             this.internalUserQueryRepository = internalUserQueryRepository;
+            this.internalUserInternalRoleQueryRepository = internalUserInternalRoleQueryRepository;
         }
 
         #endregion Constructors 
@@ -70,15 +73,24 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Queries
 
                 if (response.IsSuccess)
                 {
+
+                    IEnumerable<InternalUserInternalRole> internalUserInternalRoles = await internalUserInternalRoleQueryRepository.GetAllByInternalUserElectronicAddressAsync(request.InternalUserElectronicAddress);
+                    bool IsUseService = false;
+
+                    if (!internalUserInternalRoles.IsNullOrEmpty() && internalUserInternalRoles.Any(c => c.InternalRole.Label == InternalRoleCodes.ReceiptByBusinessUnit || c.InternalRole.Label == InternalRoleCodes.BoOut))
+                    {
+                        IsUseService = true;
+                    }
+
                     var UserData = await internalUserQueryRepository.GetByElectronicAddressAsync(request.InternalUserElectronicAddress);
 
                     if (UserData.IsNotNull())
                     {
                         int totalCount = request.CalculateTotalCount ? await checksQueryRepository.CountAllByCriteriaAsync(request.CheckNumbers, request.LotNumber,
-                            request.SinisterNumber, request.StatusId, UserData.ServiceId) : 0;
+                            request.SinisterNumber, request.StatusId, IsUseService ? UserData.ServiceId : null) : 0;
 
                         IEnumerable<Checks> checks = await checksQueryRepository.GetByCriteriaAsync(request.CheckNumbers, request.LotNumber, request.SinisterNumber,
-                            request.StatusId, request.PageIndex, 50, UserData.ServiceId);
+                            request.StatusId, request.PageIndex, 50, IsUseService ? UserData.ServiceId : null);
 
                         if (checks.IsNotNull())
                         {

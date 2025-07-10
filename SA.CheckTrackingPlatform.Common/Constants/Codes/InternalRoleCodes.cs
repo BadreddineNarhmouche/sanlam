@@ -6,9 +6,13 @@
         {
             #region Fields
 
-            public const string User = "User";
-            public const string SupUser = "SuperUser";
-            public const string Admin = "Administrator";
+            public const string ReceiptByBusinessUnit = "ReceiptByBusinessUnit";
+            public const string BoOut = "BoOut";
+            public const string BoIn = "BoIn";
+            public const string ClientOut = "ClientOut";
+            public const string ClientIn = "ClientIn";
+            public const string BackToBusinessUnit = "BackToBusinessUnit";
+            public const string ReturnedCheckIn = "ReturnedCheckIn";
 
             #endregion Fields
         }
