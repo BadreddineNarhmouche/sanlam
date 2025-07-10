@@ -2,13 +2,13 @@
 using SA.CheckTrackingPlatform.Common.Resources.Messages;
 using SA.CheckTrackingPlatform.Domains.Management.Entities;
 using SA.CheckTrackingPlatform.Domains.Management.Repositories.Queries;
-using SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Mapper;
+using SA.CheckTrackingPlatform.ServiceEngines.Management.Documents.Responses;
 using System.Reflection;
 
-namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Queries
+namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Documents.Queries
 {
-    public class GetChecksByIdQuery : BaseRequest<GetChecksByIdResponse>
+    public class GenerateDocumentsQuery : BaseRequest<GenerateDocumentsResponse>
     {
         #region properties
 
@@ -18,32 +18,32 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Queries
     }
 
 
-    public class GetChecksByIdQueryHandler : IRequestHandler<GetChecksByIdQuery, GetChecksByIdResponse>
+    public class GenerateDocumentsQueryHandler : IRequestHandler<GenerateDocumentsQuery, GenerateDocumentsResponse>
     {
         #region Fields 
 
-        private readonly IChecksQueryRepository checksQueryRepository;
+        private readonly IStatusQueryRepository statusQueryRepository;
 
         #endregion Fields 
 
         #region Constructors 
 
-        public GetChecksByIdQueryHandler(IChecksQueryRepository checksQueryRepository)
+        public GenerateDocumentsQueryHandler(IStatusQueryRepository statusQueryRepository)
         {
-            this.checksQueryRepository = checksQueryRepository;
+            this.statusQueryRepository = statusQueryRepository;
         }
 
         #endregion Constructors 
 
         #region Methods 
 
-        public async Task<GetChecksByIdResponse> Handle(GetChecksByIdQuery request, CancellationToken cancellationToken)
+        public async Task<GenerateDocumentsResponse> Handle(GenerateDocumentsQuery request, CancellationToken cancellationToken)
         {
             return await ExecutionHelper.Proceed(async () =>
             {
                 #region Declarations
 
-                GetChecksByIdResponse response = new GetChecksByIdResponse();
+                GenerateDocumentsResponse response = new GenerateDocumentsResponse();
 
                 #endregion Declarations
 
@@ -72,15 +72,15 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Queries
                 if (response.IsSuccess)
                 {
 
-                    Checks checks = await checksQueryRepository.GetByIdAsync(request.Id);
+                    Status status = await statusQueryRepository.GetByIdAsync(request.Id);
 
-                    if (checks.IsNotNull())
+                    if (status.IsNotNull())
                     {
-                        response.Data = MappingConfiguration.Mapper.Map<GetChecksByIdResponse>(checks);
+                        response = MappingConfiguration.Mapper.Map<GenerateDocumentsResponse>(status);
                     }
 
                     response.IsSuccess = true;
-                    response.IsPopulated = checks.IsNotNull();
+                    response.IsPopulated = status.IsNotNull();
                     response.InformationMessage = InformationMessages.QuerySucceeded;
                 }
                 else

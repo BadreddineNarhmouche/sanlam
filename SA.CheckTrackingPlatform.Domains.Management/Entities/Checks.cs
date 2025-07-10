@@ -1,6 +1,6 @@
 ﻿
-using System.ComponentModel.DataAnnotations.Schema;
 using SA.CheckTrackingPlatform.Domains.Management.Common;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SA.CheckTrackingPlatform.Domains.Management.Entities
 {
@@ -31,7 +31,6 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
         public string TransactionNumber { get; set; }
         public string BeneficiaryName { get; set; }
 
-        // Navigation properties
         public Bank Bank { get; set; }
         public Branch Branch { get; set; }
         public Service Service { get; set; }

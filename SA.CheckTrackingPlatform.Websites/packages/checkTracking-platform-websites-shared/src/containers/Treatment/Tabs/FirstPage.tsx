@@ -69,7 +69,7 @@ export const FirstPage = ({
   } = useSelector((state: any) => state.TimelineUpdate);
 
   useEffect(() => {
-    if (TimelineUpdate?.isSuccess) {
+    if (TimelineUpdate.isSuccess) {
       setData([]);
     }
   }, [TimelineUpdate]);
@@ -228,7 +228,7 @@ export const FirstPage = ({
             open={displayAlert}
             anchorOrigin={{ vertical: "top", horizontal: "right" }}
             severity={"warning"}
-            message={"This is a success Alert inside a Snackbar!"}
+            message={intl.formatMessage({ id: "snackbar.message" })}
             handleClose={() => handleClose()}
           />
           <DialogTreatment

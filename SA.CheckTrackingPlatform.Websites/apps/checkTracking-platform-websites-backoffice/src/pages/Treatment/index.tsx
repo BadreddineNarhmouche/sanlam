@@ -10,7 +10,7 @@ import {
 import { IReasonMoveService } from "@checkTracking/helpers";
 import { Treatment } from "@checkTracking/shared";
 import { getAllChecksByCriteria } from "../../store/Checks/getAllChecksByCriteriaSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getAllChecks } from "../../store/Checks/getAllChecksSlice";
 import { AllReasonMove } from "../../store/ReasonMove/ReasonMoveAllSlice";
 import { CreateTimeline } from "../../store/timeline/TimelineCreateSlice";
@@ -35,7 +35,8 @@ const TreatmentPage = () => {
   };
 
   const TimeLineService: ITimeLineService = {
-    CreateTimeLine: (criteria: any) => dispatch(CreateTimeline(criteria)),
+    CreateTimeLine: (criteria: any) =>
+      dispatch(CreateTimeline(criteria)),
   };
 
   const filterValues: FilterFirstPageTreatment = {

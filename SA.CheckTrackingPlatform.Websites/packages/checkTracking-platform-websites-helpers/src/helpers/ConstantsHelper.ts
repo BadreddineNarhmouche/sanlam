@@ -17,7 +17,6 @@ export const InternalRoleCodeConstants = {
   BackToBusinessUnit: "BackToBusinessUnit",
   ReturnedCheckIn: "ReturnedCheckIn",
 };
-//#endregion InternalRoleCodeConstants
 
 //#region LocalStorageKeyConstants
 
@@ -35,27 +34,6 @@ export const HelpFilePaths = {
 };
 
 //#endregion HelpFilePaths
-
-//#region WorkFlowStepCodeConstants
-
-export const WorkFlowStepCodeConstants = {
-  treatSubscription: "TreatSubscription",
-  validateSubscription: "ValidateSubscription",
-};
-
-//#endregion WorkFlowStepCodeConstants
-
-//#region DocumentTypeCodeConstants
-
-export const DocumentTypeCodeConstants = {
-  honorDeclaration: "HonorDeclaration",
-  coverNote: "CoverNote",
-  settlementNote: "SettlementNote",
-  deliverySlipDetail: "DeliverySlipDetail",
-  other: "Other",
-};
-
-//#endregion DocumentTypeCodeConstants
 
 //#region GeneralConstants
 

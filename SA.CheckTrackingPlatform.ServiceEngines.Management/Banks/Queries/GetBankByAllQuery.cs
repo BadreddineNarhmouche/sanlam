@@ -21,7 +21,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.BanksFolder.Queries
         #region Fields 
 
         private readonly IBanksQueryRepository banksQueryRepository;
-        
+
 
         #endregion Fields 
 

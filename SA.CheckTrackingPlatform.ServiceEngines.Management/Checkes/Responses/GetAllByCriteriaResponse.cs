@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses
+﻿namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses
 {
     public class GetAllByCriteriaResponse : BasePagedResponse<List<GetAllByCriteriaItem>>
     {
-        
+
     }
-    // On peut renvoyer moins d'élements 
     public class GetAllByCriteriaItem
     {
         #region Properties 
@@ -20,6 +13,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses
         public string CheckNumber { get; set; }
         public string LotNumber { get; set; }
         public string BeneficiaryName { get; set; }
+        public string SinisterNumber { get; set; }
 
         #endregion Properties
     }

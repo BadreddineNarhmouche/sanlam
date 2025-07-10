@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Timelines.Responses
+﻿namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Timelines.Responses
 {
     public class GetTimelinesByCriteriaResponse : BaseResponse<List<GetTimelinesByCriteriaResponse>>
     {

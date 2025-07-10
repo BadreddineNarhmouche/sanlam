@@ -21,7 +21,7 @@ const baseApiPath = process.env.REACT_APP_API_BASE_PATH;
 
 function* getAllCheckByCriteria({ payload }: { payload: any }): any {
   yield apiCallHandler({
-    apiPath: `/Checkes/GetAllByCriteria`, // Ajout parametres 
+    apiPath: `/Checkes/GetAllByCriteria?CheckNumbers=${payload?.checkNumber}&LotNumber=${payload?.lotNumber}&SinisterNumber=${payload?.sinisterNumber}&StatusId=${payload?.checkStatusId}`,
     baseApiPath,
     dispatchSuccess: apiCallGetAllChecksByCriteriaSuccess,
     dispatchFailure: apiCallGetAllChecksByCriteriaFailure,

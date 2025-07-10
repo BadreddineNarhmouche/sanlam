@@ -2,8 +2,8 @@
 using SA.CheckTrackingPlatform.Common.Resources.Messages;
 using SA.CheckTrackingPlatform.Domains.Management.Entities;
 using SA.CheckTrackingPlatform.Domains.Management.Repositories.Queries;
-using SA.CheckTrackingPlatform.ServiceEngines.Management.StatusFolder.Responses;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Mapper;
+using SA.CheckTrackingPlatform.ServiceEngines.Management.StatusFolder.Responses;
 using System.Reflection;
 
 namespace SA.CheckTrackingPlatform.ServiceEngines.Management.StatusFolder.Queries

@@ -22,42 +22,42 @@ export default function HorizontalTimeline({ data }: { data: any }) {
       <Timeline position="alternate">
         {Checks.map((check: any, index: number) => {
           const formattedDate = format(
-            new Date(check.date),
+            new Date(check.creationDate),
             "dd/MM/yyyy HH:mm"
           );
           const color = dotColors[index % dotColors.length];
-          const label = check.statusItems.label;
-          const code = check.statusItems.code;
+          const label = check.status.label;
+          const code = check.status.code;
           return (
-            <TimelineItem
+            <motion.div
               key={index}
-              component={motion.div}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.15 }}
             >
-              <TimelineSeparator>
-                <TimelineDot color={color as any} />
-                {index < Checks.length - 1 && <TimelineConnector />}
-              </TimelineSeparator>
-
-              <TimelineContent
-                component={motion.div}
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.15 + 0.1 }}
-              >
-                <Typography
-                  variant="body2"
-                  sx={{ fontSize: "13px", fontWeight: 330 }}
+              <TimelineItem>
+                <TimelineSeparator>
+                  <TimelineDot color={color as any} />
+                  {index < Checks.length - 1 && <TimelineConnector />}
+                </TimelineSeparator>
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.15 + 0.1 }}
                 >
-                  {formattedDate} {check.internalUserItem.firstName}{" "}
-                  {check.internalUserItem.lastName}
-                </Typography>
-
-                <StatusLabelBox code={code} label={label} />
-              </TimelineContent>
-            </TimelineItem>
+                  <TimelineContent>
+                    <Typography
+                      variant="body2"
+                      sx={{ fontSize: "13px", fontWeight: 330 }}
+                    >
+                      {formattedDate} {check.user.firstName}{" "}
+                      {check.user.lastName}
+                    </Typography>
+                    <StatusLabelBox code={code} label={label} />
+                  </TimelineContent>
+                </motion.div>
+              </TimelineItem>
+            </motion.div>
           );
         })}
       </Timeline>

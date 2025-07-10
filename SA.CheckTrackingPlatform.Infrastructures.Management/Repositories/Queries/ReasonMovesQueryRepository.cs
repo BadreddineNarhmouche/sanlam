@@ -3,11 +3,6 @@ using SA.CheckTrackingPlatform.Contexts.Management.Application;
 using SA.CheckTrackingPlatform.Domains.Management.Entities;
 using SA.CheckTrackingPlatform.Domains.Management.Repositories.Queries;
 using SA.CheckTrackingPlatform.Infrastructures.Management.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queries
 {
@@ -37,12 +32,13 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
             return query;
         }
 
-        public async Task<IEnumerable<ReasonMove>> GetAllReasonMovesAsync()
+        public async Task<IEnumerable<ReasonMove>> GetAllReasonMovesAsync(string to)
         {
             return await Task.Run(async () =>
             {
                 IEnumerable<ReasonMove> query = await this.applicationContext.ReasonMoves
                  .AsNoTrackingWithIdentityResolution()
+                 .Where(o => o.To == to)
                  .ToListAsync();
 
                 return query;

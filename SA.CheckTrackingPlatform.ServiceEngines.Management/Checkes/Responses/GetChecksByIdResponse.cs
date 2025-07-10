@@ -1,5 +1,4 @@
 ﻿using SA.CheckTrackingPlatform.Domains.Management.Entities;
-using System.Collections;
 
 namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses
 {
@@ -32,19 +31,17 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses
         public InternalUser InternalUser { get; set; }
         public ReasonMoveItems ReasonMoveItems { get; set; }
 
-        // public ICollection<Timeline> Timelines { get; set; } // timeline contient status 
-        public ICollection<TimelineItems> Timelines { get; set; } // timeline contient status 
+        public ICollection<Timeline> Timelines { get; set; }
 
         #endregion 
     }
-      public class TimelineItems
+    public class TimelineItems
     {
-        public int id { get; set; }
+        public int Id { get; set; }
 
-        public DateTime date{ get; set; }
+        public DateTime Date { get; set; }
 
-        public int userId { get; set; }
-        public string comment { get; set; }
+        public int UserId { get; set; }
         public StatusItems StatusItems { get; set; }
 
         public InternalUserItems InternalUserItem { get; set; }
@@ -54,7 +51,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses
 
     public class StatusItems
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public string Code { get; set; }
         public string Label { get; set; }
     }
@@ -62,14 +59,14 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses
 
     public class InternalUserItems
     {
-        public int id { get; set; }
-        public string FirstName { get;set; }
+        public int Id { get; set; }
+        public string FirstName { get; set; }
         public string LastName { get; set; }
     }
 
     public class ReasonMoveItems
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public string Code { get; set; }
         public string Label { get; set; }
     }

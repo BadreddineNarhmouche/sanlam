@@ -62,12 +62,13 @@ export const frTranslationMessages = {
   "check.search.partnerUserCode": "Code intermédiaire",
   "check.search.partnerUserLabel": "Intermédiaire",
   "check.search.reinsurer": "Réassureur",
-  "check.search.checkNumber": "N Cheque",
-  "check.search.sin": "Sin",
-  "check.search.lot": "Lot",
+  "check.search.checkNumber": "Numéro de chèque",
+  "check.search.sin": "Numéro de Sinistre",
+  "check.search.lot": "Numéro de lot",
   "check.search.date": "Date",
   "File.global.search.startDate": "Date du",
   "File.global.search.endDate": "Au",
+  "File.global.search.comment": "Commentaire",
   "check_details.reference": "Police N° {reference}",
   "check_details.check_info": "Information affaire FAC",
   "check_details.check_policyReference": "N° de police",
@@ -135,6 +136,7 @@ export const frTranslationMessages = {
   "CheckTracking.confirm_dialogPopUp_title": "Valider les chèques",
   "CheckTracking.confirm_dialogPopUp_body":
     "Êtes-vous sûr de vouloir valider les chèques séléctionner",
+  "CheckTracking.reason_labe": "Motif",
   "CheckTracking.reason_label_1": "Applicable",
   "CheckTracking.reason_label_2": "Rendement",
   "CheckTracking.reason_label_3": "Imposable",
@@ -145,4 +147,5 @@ export const frTranslationMessages = {
   "check.kpi.receivedBUNotRegistry":
     "Chèques reçu au métier et non reçu par BO",
   "check.kpi.issuedNotAcknowledged": "Chèques édité et non reçu par Métier ",
+  "snackbar.message": "Test",
 };

@@ -1,10 +1,4 @@
 ﻿using SA.CheckTrackingPlatform.Domains.Management.Entities;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Timelines.Responses
 {
@@ -18,9 +12,6 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Timelines.Responses
         public string ReasonLabel { get; set; }
         public InternalUser InternalUserItems { get; set; }
 
-        // public ICollection<Status> Status { get; set; }
-
         #endregion Properties
-
     }
 }

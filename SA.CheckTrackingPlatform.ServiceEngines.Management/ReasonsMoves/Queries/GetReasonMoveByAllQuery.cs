@@ -4,19 +4,15 @@ using SA.CheckTrackingPlatform.Domains.Management.Entities;
 using SA.CheckTrackingPlatform.Domains.Management.Repositories.Queries;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Mapper;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Responses;
-using SA.CheckTrackingPlatform.ServiceEngines.Management.StatusFolder.Responses;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Queries
 {
     public class GetReasonMoveByAllQuery : BaseRequest<GetReasonMoveByAllResponse>
     {
         #region properties
+
+        public string To { get; set; }
 
         #endregion Properties 
     }
@@ -66,7 +62,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Queries
                 if (response.IsSuccess)
                 {
 
-                    IEnumerable<ReasonMove> ReasonMoves = await reasonMovesQueryRepository.GetAllReasonMovesAsync();
+                    IEnumerable<ReasonMove> ReasonMoves = await reasonMovesQueryRepository.GetAllReasonMovesAsync(request.To);
 
                     if (ReasonMoves.IsNotNull())
                     {
@@ -79,6 +75,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Queries
                 }
                 else
                 {
+                    response.IsPopulated = false;
                     response.WarningMessage = WarningMessages.QueryFailure;
                 }
 

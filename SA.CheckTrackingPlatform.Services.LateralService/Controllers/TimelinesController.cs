@@ -1,8 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Timelines.Commands;
-using SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Queries;
-using SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Timelines.Queries;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Timelines.Responses;
 using static System.CoreConstants;
@@ -53,6 +51,5 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
             return await _mediator.Send(command);
         }
         #endregion Methods
-        // remplissage null => date de system
     }
 }

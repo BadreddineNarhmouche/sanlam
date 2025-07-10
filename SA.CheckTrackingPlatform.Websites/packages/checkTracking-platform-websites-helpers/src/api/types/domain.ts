@@ -82,14 +82,10 @@ export interface InternalUser {
 
 export interface FilterCriteriaChecks {
   id?: string;
-  workFlowStepCode?: string;
-  policyReference?: string;
-  reference?: string;
+  checkNumber?: string;
+  lotNumber?: string;
+  sinisterNumber?: string;
   checkStatusId?: string;
-  externalcheckTrackingReference?: string;
-  primeNetMin?: string;
-  primeNetMax?: string;
-  externalClientName?: string;
   meta?: {
     pageIndex?: number;
     pageSize?: number;
@@ -121,4 +117,8 @@ export interface Check {
 export interface ReasonMove {
   label?: string;
   code?: string;
+}
+
+export interface DetailsCheck {
+  
 }

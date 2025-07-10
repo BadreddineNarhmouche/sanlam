@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SA.CheckTrackingPlatform.Domains.Management.Entities
 {
@@ -20,6 +20,7 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
         public int Id { get; protected set; }
         public string Code { get; set; }
         public string Label { get; set; }
+        public string To { get; set; }
 
         #endregion Properties
     }

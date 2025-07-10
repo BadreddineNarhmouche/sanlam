@@ -1,10 +1,10 @@
-﻿using System.Reflection;
-using MediatR;
+﻿using MediatR;
 using SA.CheckTrackingPlatform.Common.Resources.Messages;
 using SA.CheckTrackingPlatform.Domains.Management.Entities;
 using SA.CheckTrackingPlatform.Domains.Management.Repositories.Queries;
-using SA.CheckTrackingPlatform.ServiceEngines.Management.Mapper;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.BanksFolder.Responses;
+using SA.CheckTrackingPlatform.ServiceEngines.Management.Mapper;
+using System.Reflection;
 
 namespace SA.CheckTrackingPlatform.ServiceEngines.Management.BanksFolder.Queries
 {

@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using MediatR;
-using SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Queries;
-using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Authorization;
+using SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses;
+using static System.CoreConstants;
 
 namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
 {
@@ -24,22 +23,20 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
 
         #region Methods
 
-        // Récuperer un chéque par son identifiant        
-        [HttpGet]
+       [HttpGet]
         [Route(nameof(GetById))]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        //[CustomAuthorize(Constants.InternalRoleCodes.User)]
         public async Task<GetChecksByIdResponse> GetById([FromQuery] GetChecksByIdQuery query)
         {
             return await _mediator.Send(query);
         }
 
-        // Récuperer un chéque par des critères
-        [HttpGet]
+       [HttpGet]
         [Route(nameof(GetAllByCriteria))]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<GetAllByCriteriaResponse> GetAllByCriteria([FromQuery] GetAllByCriteriaQuery query)
         {
+            query.InternalUserElectronicAddress = User.FindFirst(KeycloakAttributes.InternalUserElectronicAddress).Value;
             return await _mediator.Send(query);
         }
 

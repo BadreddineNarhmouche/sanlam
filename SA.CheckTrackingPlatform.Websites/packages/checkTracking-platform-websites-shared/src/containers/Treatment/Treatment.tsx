@@ -61,7 +61,7 @@ export const Treatment = ({
       Status: GetNextStatusComponent(status),
       StatusNow: status,
     };
-
+    
     timeLineService.CreateTimeLine && timeLineService.CreateTimeLine(obj);
   };
 

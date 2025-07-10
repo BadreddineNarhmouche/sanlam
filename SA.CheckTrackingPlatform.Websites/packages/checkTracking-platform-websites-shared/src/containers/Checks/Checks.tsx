@@ -55,11 +55,10 @@ export const Checks = ({
   const handleSubmit = (values: FilterCriteriaChecks) => {
     const criteria = {
       ...values,
-      policyReference: values.policyReference,
-      reference: values.reference,
+      checkNumber: values.checkNumber,
+      lotNumber: values.lotNumber,
       checkStatusId: values.checkStatusId,
-      primeNetMin: values.primeNetMin,
-      primeNetMax: values.primeNetMax,
+      sinisterNumber: values.sinisterNumber,
     };
     services.getAllChecksByCriteria &&
       services.getAllChecksByCriteria(criteria);
@@ -80,11 +79,9 @@ export const Checks = ({
     error: errorChecksData,
   } = useSelector((state: any) => state.getAllChecksByCriteria);
 
-  const {
-    responseData: AllStatus,
-    isLoading: isLoadingStatusData,
-    error: errorStatusData,
-  } = useSelector((state: any) => state.AllStatus);
+  const { responseData: AllStatus } = useSelector(
+    (state: any) => state.AllStatus
+  );
 
   useEffect(() => {
     handleSubmit(initialFilterValues);
@@ -95,12 +92,10 @@ export const Checks = ({
     services.getAllChecksByCriteria &&
       services.getAllChecksByCriteria({
         ...filterValues,
-        policyReference: filterValues.policyReference,
-        reference: filterValues.reference,
+        checkNumber: filterValues.checkNumber,
+        lotNumber: filterValues.lotNumber,
         checkStatusId: filterValues.checkStatusId,
-        externalReinsuranceReference: filterValues.externalReinsuranceReference,
-        primeNetMin: filterValues.primeNetMin,
-        primeNetMax: filterValues.primeNetMax,
+        sinisterNumber: filterValues.sinisterNumber,
         meta: {
           pageIndex: page,
           pageSize: PAGINATION.PAGE_SIZE,
@@ -119,11 +114,10 @@ export const Checks = ({
     services.getAllChecksByCriteria &&
       services.getAllChecksByCriteria({
         ...initialFilterValues,
-        policyReference: initialFilterValues.policyReference,
-        reference: initialFilterValues.reference,
+        checkNumber: initialFilterValues.checkNumber,
+        lotNumber: initialFilterValues.lotNumber,
         checkStatusId: initialFilterValues.checkStatusId,
-        primeNetMin: initialFilterValues.primeNetMin,
-        primeNetMax: initialFilterValues.primeNetMax,
+        sinisterNumber: initialFilterValues.sinisterNumber,
       });
   };
 

@@ -1,12 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using AutoMapper;
-using System.Threading.Tasks;
-using SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses;
 using SA.CheckTrackingPlatform.Domains.Management.Entities;
-using SA.CheckTrackingPlatform.ServiceEngines.Management.InternalUsers.Responses;
+using SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses;
 
 namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes
 {
@@ -27,17 +21,16 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes
                 .ReverseMap();
 
             CreateMap<Timeline, TimelineItems>()
-             .ForMember(dest => dest.id, opt => opt.MapFrom(src => src.Id))
-             .ForMember(dest => dest.date, opt => opt.MapFrom(src => src.CreationDate))
-             .ForMember(dest => dest.userId, opt => opt.MapFrom(src => src.UserId))
-             .ForMember(dest => dest.comment, opt => opt.MapFrom(src => src.Comment))
+             .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+             .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.CreationDate))
+             .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
              .ForMember(dest => dest.StatusItems, opt => opt.MapFrom(src => src.Status))
              .ForMember(dest => dest.InternalUserItem, opt => opt.MapFrom(src => src.User))
              .ForMember(dest => dest.ReasonMoveItems, opt => opt.MapFrom(src => src.ReasonMove))
              .ReverseMap();
 
             CreateMap<Status, StatusItems>()
-                .ForMember(dest => dest.id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Label, opt => opt.MapFrom(src => src.Label))
                 .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
                 .ReverseMap();
@@ -50,7 +43,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes
             CreateMap<Checks, GetAllItem>().ReverseMap();
            
             CreateMap<ReasonMove, ReasonMoveItems>()
-               .ForMember(dest => dest.id, opt => opt.MapFrom(src => src.Id))
+               .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                .ForMember(dest => dest.Label, opt => opt.MapFrom(src => src.Label))
                .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
                .ReverseMap();

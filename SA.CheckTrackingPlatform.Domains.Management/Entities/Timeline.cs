@@ -1,7 +1,6 @@
 ﻿
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 using SA.CheckTrackingPlatform.Domains.Management.Common;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SA.CheckTrackingPlatform.Domains.Management.Entities
 {
@@ -19,18 +18,23 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
 
         [ForeignKey(nameof(Check))]
         public int CheckId { get; set; }
+
         [ForeignKey(nameof(User))]
         public int UserId { get; set; }
+
         [ForeignKey(nameof(Status))]
         public int StatusId { get; set; }
+
         [ForeignKey(nameof(ReasonMove))]
         public int? ReasonMoveId { get; set; }
         public string? Comment { get; set; }
         public DateTime DateOfPassage { get; set; }
+
+
         public Checks Check { get; set; }
         public InternalUser User { get; set; }
         public Status Status { get; set; }
-        public ReasonMove ReasonMove { get; set; }
+        public ReasonMove? ReasonMove { get; set; }
 
         #endregion Properties
     }

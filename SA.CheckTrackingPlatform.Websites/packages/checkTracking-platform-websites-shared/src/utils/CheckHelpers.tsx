@@ -17,19 +17,19 @@ const ColorCodes = {
 export const CheckByAllStatusComponent = (InternalRoleCode: string) => {
   switch (InternalRoleCode) {
     case InternalRoleCodeConstants.ReceiptByBusinessUnit:
-      return STATUS_TREATMENTS.ReceiptByBusinessUnit;
+      return STATUS_TREATMENTS.Edited;
     case InternalRoleCodeConstants.BoOut:
-      return STATUS_TREATMENTS.BoOut;
+      return STATUS_TREATMENTS.ReceiptByBusinessUnit;
     case InternalRoleCodeConstants.BoIn:
-      return STATUS_TREATMENTS.BoIn;
+      return STATUS_TREATMENTS.BoOut;
     case InternalRoleCodeConstants.ClientOut:
-      return STATUS_TREATMENTS.ClientOut;
+      return STATUS_TREATMENTS.BoIn;
     case InternalRoleCodeConstants.ClientIn:
-      return STATUS_TREATMENTS.ClientIn;
+      return STATUS_TREATMENTS.ClientOut;
     case InternalRoleCodeConstants.BackToBusinessUnit:
-      return STATUS_TREATMENTS.BackToBusinessUnit;
+      return STATUS_TREATMENTS.ClientIn;
     case InternalRoleCodeConstants.ReturnedCheckIn:
-      return STATUS_TREATMENTS.ReturnedCheckIn;
+      return STATUS_TREATMENTS.BackToBusinessUnit;
     default:
       return "";
   }
