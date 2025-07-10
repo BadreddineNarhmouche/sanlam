@@ -48,16 +48,10 @@ function* GetDocumentByDocumentTypeCodesSaga({
             type: data.contentType,
           }
         );
-        // test
-        console.log(store.getState());
-
         const link = document.createElement("a");
         link.href = window.URL.createObjectURL(blob);
         link.download = data.name;
         link.click();
-
-        // test
-        console.log(store.getState());
       } else {
         yield put({
           type: "exportDocumentKpiExcelSlice/callApiFailure",
