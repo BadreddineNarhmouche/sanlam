@@ -46,7 +46,7 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
 
             return query;
         }
-        public async Task<IEnumerable<Checks>> GetByCriteriaAsync(string? checkNumbers, string? lotNumber, string? SinisterNumber, int? StatusId, int? pageIndex, int? pageSize)
+        public async Task<IEnumerable<Checks>> GetByCriteriaAsync(string? checkNumbers, string? lotNumber, string? SinisterNumber, int? StatusId, int? pageIndex, int? pageSize, int? serviceId)
         {
             IQueryable<Checks> query = this.applicationContext.Checks
                 .Include(c => c.Timelines)
@@ -68,6 +68,9 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
                 query = query.Where(c => c.Timelines.Where(t =>
                    t.Status.Id == StatusId && t.DateOfPassage == applicationContext.Timelines.Where(t2 => t2.CheckId == c.Id).Max(t2 => t2.DateOfPassage)
                ).OrderByDescending(q => q.CreationDate).Any());
+
+            if (serviceId.IsNotNull())
+                query = query.Where(c => c.ServiceId == serviceId);
 
             if (pageIndex.HasValue && pageSize.HasValue)
             {
@@ -104,7 +107,7 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
                  .ToListAsync();
         }
 
-        public async Task<int> CountAllByCriteriaAsync(string? checkNumbers, string? lotNumber, string? SinisterNumber, int? StatusId)
+        public async Task<int> CountAllByCriteriaAsync(string? checkNumbers, string? lotNumber, string? SinisterNumber, int? StatusId, int? serviceId)
         {
             IQueryable<Checks> query = this.applicationContext.Checks
                .Include(c => c.Timelines)
@@ -126,6 +129,9 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
                 query = query.Where(c => c.Timelines.Where(t =>
                    t.Status.Id == StatusId && t.DateOfPassage == applicationContext.Timelines.Where(t2 => t2.CheckId == c.Id).Max(t2 => t2.DateOfPassage)
                ).OrderByDescending(q => q.CreationDate).Any());
+
+            if (serviceId.IsNotNull())
+                query = query.Where(c => c.ServiceId == serviceId);
 
             return await query
                  .AsNoTrackingWithIdentityResolution()

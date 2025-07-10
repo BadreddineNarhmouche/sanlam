@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Queries;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses;
+using static System.CoreConstants;
 
 namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
 {
@@ -35,6 +36,7 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<GetAllByCriteriaResponse> GetAllByCriteria([FromQuery] GetAllByCriteriaQuery query)
         {
+            query.InternalUserElectronicAddress = User.FindFirst(KeycloakAttributes.InternalUserElectronicAddress).Value;
             return await _mediator.Send(query);
         }
 

@@ -1,5 +1,6 @@
 ﻿
 using SA.CheckTrackingPlatform.Domains.Management.Common;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SA.CheckTrackingPlatform.Domains.Management.Entities
 {
@@ -17,6 +18,8 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
         public string ElectronicAddress { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        [ForeignKey(nameof(Service))]
+        public int? ServiceId { get; set; }
 
         // Navigation properties
         public ICollection<Timeline> Timelines { get; set; }
