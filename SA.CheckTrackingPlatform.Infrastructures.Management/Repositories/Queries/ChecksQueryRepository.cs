@@ -217,7 +217,7 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
                     LotNumberRef = x.Check.LotNumber,
                     RecipientNameRef = x.Check.RecipientName,
                     BeneficiaryNameRef = x.Check.BeneficiaryName,
-                    CreationDateRef = x.Check.CreationDate
+                    CreationDateRef = x.Check.CreationDate.ToShortDateString()
                 })
                 .AsNoTracking()
                 .ToListAsync();

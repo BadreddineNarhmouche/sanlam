@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using OfficeOpenXml;
 using Org.BouncyCastle.Crypto;
+using Org.BouncyCastle.Tls;
 using PdfSharpCore;
 using SA.CheckTrackingPlatform.Common.Resources;
 using SA.CheckTrackingPlatform.Common.Resources.Canvases;
@@ -109,22 +110,22 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.FileExcel
                         {
                             case Constants.DocumentTypeCodes.NumberOfChecksIssuedButNotAcknowledgedByTheBusinessUnit:
                                 statusCode = Constants.TimelineStatusCodes.EditedCheck.ToLowerInvariant();
-                                fileName = $"ChecksIssuedButNotAcknowledged_{timestamp}.xlsx";
+                                fileName = $"ChecksIssuedButNotAcknowledged_{timestamp}"+ FileExtensions.ModernExcel;
                                 break;
 
                             case Constants.DocumentTypeCodes.NumberOfChecksReceivedByBusinessUnitButNotByRegistryOffice:
                                 statusCode = Constants.TimelineStatusCodes.ReceivedTrade.ToLowerInvariant();
-                                fileName = $"ChecksReceivedByBusinessUnit_{timestamp}.xlsx";
+                                fileName = $"ChecksReceivedByBusinessUnit_{timestamp}"+ FileExtensions.ModernExcel;
                                 break;
 
                             case Constants.DocumentTypeCodes.NumberOfChecksReceivedByRegistryOfficeButNotSentToClient:
                                 statusCode = Constants.TimelineStatusCodes.ReceivedOffice.ToLowerInvariant();
-                                fileName = $"ChecksReceivedByRegistryOffice_{timestamp}.xlsx";
+                                fileName = $"ChecksReceivedByRegistryOffice_{timestamp}" + FileExtensions.ModernExcel;
                                 break;
 
                             case Constants.DocumentTypeCodes.NumberOfReturnedChecksNotYetReceived:
                                 statusCode = Constants.TimelineStatusCodes.ReturnClient.ToLowerInvariant();
-                                fileName = $"ReturnedChecksNotYetReceived_{timestamp}.xlsx";
+                                fileName = $"ReturnedChecksNotYetReceived_{timestamp}" + FileExtensions.ModernExcel;
                                 break;
 
                             default:

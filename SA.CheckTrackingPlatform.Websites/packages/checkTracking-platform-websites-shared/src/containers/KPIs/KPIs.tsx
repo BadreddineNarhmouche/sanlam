@@ -42,114 +42,106 @@ export const KPIs = ({
         fallback={
           <>
             {" "}
-            {numberOfChecksReceivedByBusinessUnitButNotByRegistryOffice !==
-              0 && (
-              <Grid item xs={3}>
-                <GenericKPI
-                  component={{
-                    title: "check.kpi.receivedBUNotRegistry",
-                    contents: [
-                      {
-                        code: "2",
-                        count:
-                          numberOfChecksReceivedByBusinessUnitButNotByRegistryOffice,
-                        countColor: "red",
-                        description: "Télécharger",
-                        onClick() {
-                          KPIService.exportDocumentKpiExcelSlice &&
-                            KPIService.exportDocumentKpiExcelSlice({
-                              documentTypeCode:
-                                "NumberOfChecksReceivedByBusinessUnitButNotByRegistryOffice",
-                            });
-                        },
-                        isHideButton: true,
+            <Grid item xs={3}>
+              <GenericKPI
+                component={{
+                  title: "check.kpi.receivedBUNotRegistry",
+                  contents: [
+                    {
+                      code: "2",
+                      count:
+                        numberOfChecksReceivedByBusinessUnitButNotByRegistryOffice,
+                      countColor: "red",
+                      description: "Télécharger",
+                      onClick() {
+                        KPIService.exportDocumentKpiExcelSlice &&
+                          KPIService.exportDocumentKpiExcelSlice({
+                            documentTypeCode:
+                              "NumberOfChecksReceivedByBusinessUnitButNotByRegistryOffice",
+                          });
                       },
-                    ],
-                  }}
-                />
-              </Grid>
-            )}{" "}
-            {numberOfChecksReceivedByRegistryOfficeButNotSentToClient !== 0 && (
-              <Grid item xs={3}>
-                <GenericKPI
-                  component={{
-                    title: "check.kpi.receivedRegistryNotClient",
-                    contents: [
-                      {
-                        code: "3",
-                        count:
-                          numberOfChecksReceivedByRegistryOfficeButNotSentToClient,
-                        countColor: "red",
-                        description: "Télécharger",
-                        onClick() {
-                          KPIService.exportDocumentKpiExcelSlice &&
-                            KPIService.exportDocumentKpiExcelSlice({
-                              documentTypeCode:
-                                "NumberOfChecksReceivedByRegistryOfficeButNotSentToClient",
-                            });
-                        },
-                        isHideButton: true,
+                      isHideButton: true,
+                    },
+                  ],
+                }}
+              />
+            </Grid>
+            <Grid item xs={3}>
+              <GenericKPI
+                component={{
+                  title: "check.kpi.receivedRegistryNotClient",
+                  contents: [
+                    {
+                      code: "3",
+                      count:
+                        numberOfChecksReceivedByRegistryOfficeButNotSentToClient,
+                      countColor: "red",
+                      description: "Télécharger",
+                      onClick() {
+                        KPIService.exportDocumentKpiExcelSlice &&
+                          KPIService.exportDocumentKpiExcelSlice({
+                            documentTypeCode:
+                              "NumberOfChecksReceivedByRegistryOfficeButNotSentToClient",
+                          });
                       },
-                    ],
-                  }}
-                />
-              </Grid>
-            )}
+                      isHideButton: true,
+                    },
+                  ],
+                }}
+              />
+            </Grid>
           </>
         }
       >
         <>
-          {numberOfChecksIssuedButNotAcknowledgedByTheBusinessUnit !== 0 && (
-            <Grid item xs={3}>
-              <GenericKPI
-                component={{
-                  title: "check.kpi.issuedNotAcknowledged",
-                  contents: [
-                    {
-                      code: "1",
-                      count:
-                        numberOfChecksIssuedButNotAcknowledgedByTheBusinessUnit,
-                      countColor: "red",
-                      description: "Télécharger",
-                      onClick() {
-                        KPIService.exportDocumentKpiExcelSlice &&
-                          KPIService.exportDocumentKpiExcelSlice({
-                            documentTypeCode:
-                              "NumberOfChecksIssuedButNotAcknowledgedByTheBusinessUnit",
-                          });
-                      },
-                      isHideButton: true,
+          <Grid item xs={3}>
+            <GenericKPI
+              component={{
+                title: "check.kpi.issuedNotAcknowledged",
+                contents: [
+                  {
+                    code: "1",
+                    count:
+                      numberOfChecksIssuedButNotAcknowledgedByTheBusinessUnit,
+                    countColor: "red",
+                    description: "Télécharger",
+                    onClick() {
+                      KPIService.exportDocumentKpiExcelSlice &&
+                        KPIService.exportDocumentKpiExcelSlice({
+                          documentTypeCode:
+                            "NumberOfChecksIssuedButNotAcknowledgedByTheBusinessUnit",
+                        });
                     },
-                  ],
-                }}
-              />
-            </Grid>
-          )}{" "}
-          {numberOfReturnedChecksNotYetReceived !== 0 && (
-            <Grid item xs={3}>
-              <GenericKPI
-                component={{
-                  title: "check.kpi.returnedNotYetReceived",
-                  contents: [
-                    {
-                      code: "4",
-                      count: numberOfReturnedChecksNotYetReceived,
-                      countColor: "red",
-                      description: "Télécharger",
-                      onClick() {
-                        KPIService.exportDocumentKpiExcelSlice &&
-                          KPIService.exportDocumentKpiExcelSlice({
-                            documentTypeCode:
-                              "NumberOfReturnedChecksNotYetReceived",
-                          });
-                      },
-                      isHideButton: true,
+                    isHideButton: true,
+                  },
+                ],
+              }}
+            />
+          </Grid>
+
+          <Grid item xs={3}>
+            <GenericKPI
+              component={{
+                title: "check.kpi.returnedNotYetReceived",
+                contents: [
+                  {
+                    code: "4",
+                    count: numberOfReturnedChecksNotYetReceived,
+                    countColor: "red",
+                    description: "Télécharger",
+                    onClick() {
+                      KPIService.exportDocumentKpiExcelSlice &&
+                        KPIService.exportDocumentKpiExcelSlice({
+                          documentTypeCode:
+                            "NumberOfReturnedChecksNotYetReceived",
+                        });
                     },
-                  ],
-                }}
-              />
-            </Grid>
-          )}
+                    isHideButton: true,
+                  },
+                ],
+              }}
+            />
+          </Grid>
         </>
       </RenderByRoles>
     </Grid>
