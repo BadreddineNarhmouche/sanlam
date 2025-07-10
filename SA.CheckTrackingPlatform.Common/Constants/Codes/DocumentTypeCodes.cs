@@ -7,19 +7,10 @@ namespace System
         public static class DocumentTypeCodes
         {
             #region Fields
-
-            public const string HonorDeclaration = "HonorDeclaration";
-
-            public const string CoverNote = "CoverNote";
-
-            public const string SettlementNote = "SettlementNote";
-
-            public const string DeliverySlipDetail = "DeliverySlipDetail";
-
-            public const string DebitNoticeReceived = "DebitNoticeReceived";
-
-            public const string Other = "Other";
-
+            public const string NumberOfChecksIssuedButNotAcknowledgedByTheBusinessUnit = "NumberOfChecksIssuedButNotAcknowledgedByTheBusinessUnit";
+            public const string NumberOfChecksReceivedByBusinessUnitButNotByRegistryOffice = "NumberOfChecksReceivedByBusinessUnitButNotByRegistryOffice";
+            public const string NumberOfChecksReceivedByRegistryOfficeButNotSentToClient = "NumberOfChecksReceivedByRegistryOfficeButNotSentToClient";
+            public const string NumberOfReturnedChecksNotYetReceived = "NumberOfReturnedChecksNotYetReceived";
             #endregion Fields
         }
     }
@@ -32,13 +23,21 @@ namespace System
         {
             switch (DocumentTypeCode)
             {
-                //case Constants.DocumentTypeCodes.CoverNote:
-                //    return DucumentTypeCodeLabels.CoverNote;
+                case Constants.DocumentTypeCodes.NumberOfChecksIssuedButNotAcknowledgedByTheBusinessUnit:
+                    return DucumentTypeCodeLabels.NumberOfChecksIssuedButNotAcknowledgedByTheBusinessUnit;
+
+                case Constants.DocumentTypeCodes.NumberOfChecksReceivedByBusinessUnitButNotByRegistryOffice:
+                    return DucumentTypeCodeLabels.NumberOfChecksReceivedByBusinessUnitButNotByRegistryOffice;
+
+                case Constants.DocumentTypeCodes.NumberOfChecksReceivedByRegistryOfficeButNotSentToClient:
+                    return DucumentTypeCodeLabels.NumberOfChecksReceivedByRegistryOfficeButNotSentToClient;
+
+                case Constants.DocumentTypeCodes.NumberOfReturnedChecksNotYetReceived:
+                    return DucumentTypeCodeLabels.NumberOfReturnedChecksNotYetReceived;
 
                 default: return DucumentTypeCodeLabels.NotDefined;
             }
         }
-
         #endregion Methods
     }
 }

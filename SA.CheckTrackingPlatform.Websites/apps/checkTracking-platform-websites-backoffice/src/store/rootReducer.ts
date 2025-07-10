@@ -27,6 +27,10 @@ import AllReasonMoveReducer from "./ReasonMove/ReasonMoveAllSlice";
 
 import CheckTrackingKPIReducer from "./KPIs/CheckTrackingKPISlice";
 
+// Documents
+
+import ExportDocumentKpiExcelSliceReducer from "./KPIs/ExportDocumentKpiExcelSlice";
+
 export const rootReducer = combineReducers({
   notifications: notificationsListReducer,
   notificationsUpdate: notificationsUpdateReducer,
@@ -40,4 +44,5 @@ export const rootReducer = combineReducers({
   TimelineUpdate: TimelineCreateReducer,
   AllReasonMove: AllReasonMoveReducer,
   CheckTrackingKPI: CheckTrackingKPIReducer,
+  ExportDocumentKpiExcel: ExportDocumentKpiExcelSliceReducer,
 });

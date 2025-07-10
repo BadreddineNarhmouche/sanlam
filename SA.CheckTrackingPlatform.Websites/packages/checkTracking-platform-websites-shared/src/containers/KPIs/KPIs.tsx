@@ -55,7 +55,13 @@ export const KPIs = ({
                           numberOfChecksReceivedByBusinessUnitButNotByRegistryOffice,
                         countColor: "red",
                         description: "Télécharger",
-                        onClick() {},
+                        onClick() {
+                          KPIService.exportDocumentKpiExcelSlice &&
+                            KPIService.exportDocumentKpiExcelSlice({
+                              documentTypeCode:
+                                "NumberOfChecksReceivedByBusinessUnitButNotByRegistryOffice",
+                            });
+                        },
                         isHideButton: true,
                       },
                     ],
@@ -75,7 +81,13 @@ export const KPIs = ({
                           numberOfChecksReceivedByRegistryOfficeButNotSentToClient,
                         countColor: "red",
                         description: "Télécharger",
-                        onClick() {},
+                        onClick() {
+                          KPIService.exportDocumentKpiExcelSlice &&
+                            KPIService.exportDocumentKpiExcelSlice({
+                              documentTypeCode:
+                                "NumberOfChecksReceivedByRegistryOfficeButNotSentToClient",
+                            });
+                        },
                         isHideButton: true,
                       },
                     ],
@@ -99,7 +111,13 @@ export const KPIs = ({
                         numberOfChecksIssuedButNotAcknowledgedByTheBusinessUnit,
                       countColor: "red",
                       description: "Télécharger",
-                      onClick() {},
+                      onClick() {
+                        KPIService.exportDocumentKpiExcelSlice &&
+                          KPIService.exportDocumentKpiExcelSlice({
+                            documentTypeCode:
+                              "NumberOfChecksIssuedButNotAcknowledgedByTheBusinessUnit",
+                          });
+                      },
                       isHideButton: true,
                     },
                   ],
@@ -118,7 +136,13 @@ export const KPIs = ({
                       count: numberOfReturnedChecksNotYetReceived,
                       countColor: "red",
                       description: "Télécharger",
-                      onClick() {},
+                      onClick() {
+                        KPIService.exportDocumentKpiExcelSlice &&
+                          KPIService.exportDocumentKpiExcelSlice({
+                            documentTypeCode:
+                              "NumberOfReturnedChecksNotYetReceived",
+                          });
+                      },
                       isHideButton: true,
                     },
                   ],

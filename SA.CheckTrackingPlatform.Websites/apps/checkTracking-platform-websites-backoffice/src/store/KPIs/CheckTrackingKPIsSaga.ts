@@ -1,10 +1,16 @@
-import { apiCallHandler } from "@checkTracking/helpers";
-import { takeEvery } from "redux-saga/effects";
+import { apiCallHandler, GeneralHelper } from "@checkTracking/helpers";
+import { takeEvery, put } from "redux-saga/effects";
+import store from "../store";
 import {
   GetCheckTrackingKPIs,
   GetCheckTrackingKPIsSuccess,
   GetCheckTrackingKPIsFailure,
 } from "./CheckTrackingKPISlice";
+import {
+  exportDocumentKpiExcelSlice,
+  exportDocumentKpiExcelSliceSuccess,
+  exportDocumentKpiExcelSliceFailure,
+} from "./ExportDocumentKpiExcelSlice";
 
 const baseApiPath = process.env.REACT_APP_API_BASE_PATH;
 
@@ -17,8 +23,56 @@ function* GetAllCheckTracking(): any {
   });
 }
 
+function* GetDocumentByDocumentTypeCodesSaga({
+  payload,
+}: {
+  payload: any;
+}): any {
+  const requestOptions = {
+    method: "Get",
+  };
+
+  yield apiCallHandler({
+    apiPath: `/KPIs/ExportFileExcel?DocumentTypeCode=${payload.documentTypeCode}`,
+    baseApiPath,
+    requestOptions,
+    dispatchSuccess: exportDocumentKpiExcelSliceSuccess,
+    dispatchFailure: exportDocumentKpiExcelSliceFailure,
+    successCallback: function* () {
+      const state = store.getState();
+      const data = state?.ExportDocumentKpiExcel?.responseData;
+      if (data && data?.content) {
+        const blob = new Blob(
+          [GeneralHelper.base64ToUint8Array(data?.content)],
+          {
+            type: data.contentType,
+          }
+        );
+        // test
+        console.log(store.getState());
+
+        const link = document.createElement("a");
+        link.href = window.URL.createObjectURL(blob);
+        link.download = data.name;
+        link.click();
+
+        // test
+        console.log(store.getState());
+      } else {
+        yield put({
+          type: "exportDocumentKpiExcelSlice/callApiFailure",
+        });
+      }
+    },
+  });
+}
+
 function* CheckTrackingKPIsSaga() {
   yield takeEvery(GetCheckTrackingKPIs, GetAllCheckTracking);
+  yield takeEvery(
+    exportDocumentKpiExcelSlice,
+    GetDocumentByDocumentTypeCodesSaga
+  );
 }
 
 export default CheckTrackingKPIsSaga;

@@ -12,6 +12,7 @@ import { getAllChecksByCriteria } from "../../store/Checks/getAllChecksByCriteri
 import { PAGES } from "../../config/navigation";
 import { AllStatus } from "../../store/Status/StatusAllSlice";
 import { GetCheckTrackingKPIs } from "../../store/KPIs/CheckTrackingKPISlice";
+import { exportDocumentKpiExcelSlice } from "../../store/KPIs/ExportDocumentKpiExcelSlice";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -27,6 +28,9 @@ const HomePage = () => {
 
   const KPIsService: IKPIService = {
     GetKPIs: () => dispatch(GetCheckTrackingKPIs()),
+    exportDocumentKpiExcelSlice: (payload: any) => {
+      dispatch(exportDocumentKpiExcelSlice(payload));
+    },
   };
 
   useEffect(() => {

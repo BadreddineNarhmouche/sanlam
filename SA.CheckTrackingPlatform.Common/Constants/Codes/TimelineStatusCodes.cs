@@ -15,7 +15,7 @@ namespace System
 
             public static readonly string SendClient = "Envoie client".Trim().ToLowerInvariant();
 
-            public static readonly string ReturnClient = "Retour Client".Trim().ToLowerInvariant(); 
+            public static readonly string ReturnClient = "Retour Client".Trim().ToLowerInvariant();
 
             public static readonly string EditedCheck = "Edité".Trim().ToLowerInvariant();
 

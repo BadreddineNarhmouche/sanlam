@@ -14,7 +14,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.Responses
 
         public string ContentType { get; set; }
 
-        public byte[] Content { get;set; }  
+        public byte[] Content { get; set; }
 
         #endregion Properties
     }

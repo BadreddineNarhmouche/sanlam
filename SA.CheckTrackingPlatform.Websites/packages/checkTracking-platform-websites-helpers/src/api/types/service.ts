@@ -39,4 +39,5 @@ export interface ITimeLineService {
 
 export interface IKPIService {
   GetKPIs: () => void;
+  exportDocumentKpiExcelSlice?: (payload: { documentTypeCode: string }) => void;
 }

@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="NotDefined" xml:space="preserve">
+    <value>Non défini</value>
+  </data>
   <data name="CoverNote" xml:space="preserve">
     <value>Note de couverture</value>
   </data>
@@ -126,13 +129,22 @@
   <data name="HonorDeclaration" xml:space="preserve">
     <value>Déclaration sur l'honneur</value>
   </data>
-  <data name="NotDefined" xml:space="preserve">
-    <value>Non défini</value>
-  </data>
   <data name="Other" xml:space="preserve">
     <value>Autre</value>
   </data>
   <data name="SettlementNote" xml:space="preserve">
     <value>Note de règlement</value>
+  </data>
+  <data name="NumberOfChecksIssuedButNotAcknowledgedByTheBusinessUnit" xml:space="preserve">
+    <value>Nombre de chèque émis et non reçu par métier</value>
+  </data>
+  <data name="NumberOfChecksReceivedByBusinessUnitButNotByRegistryOffice" xml:space="preserve">
+    <value>Nombre de chèques reçu par métier et non envoyés au Burreau d'ordre</value>
+  </data>
+  <data name="NumberOfChecksReceivedByRegistryOfficeButNotSentToClient" xml:space="preserve">
+    <value>Nombre de chèques reçu par Burreau d'ordre et non envoyées aux clients</value>
+  </data>
+  <data name="NumberOfReturnedChecksNotYetReceived" xml:space="preserve">
+    <value>Nombre de chèque reetourné et non envoyées </value>
   </data>
 </root>

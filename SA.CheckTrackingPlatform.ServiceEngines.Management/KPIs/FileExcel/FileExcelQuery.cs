@@ -25,6 +25,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.FileExcel
         #region Properties 
 
         FileExcelResponse response = new FileExcelResponse();
+        public string DocumentTypeCode { get; set; }
 
         #endregion Properties
 
@@ -35,6 +36,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.FileExcel
             private readonly IInternalUserQueryRepository internalUserQueryRepository;
             private readonly IChecksQueryRepository checksQueryRepository;
             private readonly IDocumentGenerator documentGenerator;
+            private readonly IMediator mediator;
 
             #endregion Fields 
 
@@ -43,11 +45,13 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.FileExcel
             public FileExcelQueryHandler(
                 IInternalUserQueryRepository internalUserQueryRepository,
                 IChecksQueryRepository checksQueryRepository,
-                IDocumentGenerator documentGenerator)
+                IDocumentGenerator documentGenerator,
+                IMediator mediator)
             {
                 this.checksQueryRepository = checksQueryRepository;
                 this.internalUserQueryRepository = internalUserQueryRepository;
                 this.documentGenerator = documentGenerator;
+                this.mediator = mediator;
             }
 
             #endregion Constructors 
@@ -79,6 +83,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.FileExcel
 
                     if (response.IsSuccess)
                     {
+
                         var checksByStatus = await checksQueryRepository.GetChecksWithLatestStatusGroupedByStatusAsync();
 
                         var kpiResponse = new GetKPIsCountResponse
@@ -96,41 +101,46 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.FileExcel
                         const string ExportDateFormat = "yyyyMMdd_HHmmss";
                         string timestamp = DateTime.Now.ToString(ExportDateFormat);
 
+                        string fileName = "";
+                        byte[] fileExcel = Array.Empty<byte>();
+                        string statusCode = "";
 
-                        var statusCodes = new Dictionary<string, string>
-{
-    { Constants.TimelineStatusCodes.EditedCheck, "ChecksIssuedButNotAcknowledged" },
-    { Constants.TimelineStatusCodes.ReceivedTrade, "ChecksReceivedByBusinessUnit" },
-    { Constants.TimelineStatusCodes.ReceivedOffice, "ChecksReceivedByRegistryOffice" },
-    { Constants.TimelineStatusCodes.ReturnClient, "ReturnedChecksNotYetReceived" }
-};
-
-  
-                        foreach (var kvp in statusCodes)
+                        switch (request.DocumentTypeCode)
                         {
-                            var statusCode = kvp.Key.ToLowerInvariant();
-                            var baseName = kvp.Value;
+                            case Constants.DocumentTypeCodes.NumberOfChecksIssuedButNotAcknowledgedByTheBusinessUnit:
+                                statusCode = Constants.TimelineStatusCodes.EditedCheck.ToLowerInvariant();
+                                fileName = $"ChecksIssuedButNotAcknowledged_{timestamp}.xlsx";
+                                break;
 
+                            case Constants.DocumentTypeCodes.NumberOfChecksReceivedByBusinessUnitButNotByRegistryOffice:
+                                statusCode = Constants.TimelineStatusCodes.ReceivedTrade.ToLowerInvariant();
+                                fileName = $"ChecksReceivedByBusinessUnit_{timestamp}.xlsx";
+                                break;
 
-                            var fileName = $"{baseName}_{timestamp}.xlsx"; 
-                            var checks = await checksQueryRepository.GetChecksWithLatestStatusGroupedByStatusAsync(statusCode);
-                            byte[] fileExcel = await FileExcelKPIItemShow(checks);
+                            case Constants.DocumentTypeCodes.NumberOfChecksReceivedByRegistryOfficeButNotSentToClient:
+                                statusCode = Constants.TimelineStatusCodes.ReceivedOffice.ToLowerInvariant();
+                                fileName = $"ChecksReceivedByRegistryOffice_{timestamp}.xlsx";
+                                break;
 
+                            case Constants.DocumentTypeCodes.NumberOfReturnedChecksNotYetReceived:
+                                statusCode = Constants.TimelineStatusCodes.ReturnClient.ToLowerInvariant();
+                                fileName = $"ReturnedChecksNotYetReceived_{timestamp}.xlsx";
+                                break;
 
-                            string tempPath = Path.Combine(
-                                Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
-                                fileName
-                            );
-
-                            await File.WriteAllBytesAsync(tempPath, fileExcel);
-                            Console.WriteLine($"✅ Fichier sauvegardé : {tempPath}");
+                            default:
+                                response.IsSuccess = false;
+                                response.WarningMessage = "Type de document non reconnu.";
+                                return response;
                         }
+
+                        var checks = await checksQueryRepository.GetChecksWithLatestStatusGroupedByStatusAsync(statusCode);
+                        fileExcel = await FileExcelKPIItemShow(checks);
 
                         response.Data = new FileExcelResponse
                         {
-                            Name = $"MultiExportStatusChecks_{timestamp}.xlsx", 
+                            Name = fileName,
                             ContentType = Constants.ContentTypes.Excel,
-                            Content = Array.Empty<byte>() 
+                            Content = fileExcel
                         };
                     }
 
