@@ -1,9 +1,9 @@
 .timeline-container {
-  display: flex;
-  position: relative;
-  padding-left: 24px;
-  border-left: 0.1125px solid #d3d3d3; 
-  height: 100%;
+    display: flex;
+    position: relative;
+    padding-left: 24px;
+    border-left: 0.1125px solid #d3d3d3;
+    height: 100%;
 }
 
 
@@ -14,9 +14,7 @@
     font-size: 12px;
     font-weight: 500;
     width: fit-content;
-  
     border: 1px solid currentColor;
     background-color: transparent;
     border-radius: 20px;
-  }
-  
+}

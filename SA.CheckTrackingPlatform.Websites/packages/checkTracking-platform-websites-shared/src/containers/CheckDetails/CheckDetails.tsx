@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import {
     IDetailsChecksService,
     DetailsCheck as DetailsDTO,
+    TimelineItem,
 } from "@checkTracking/helpers";
 
 import {
@@ -11,6 +12,9 @@ import {
     Grid,
     Skeleton,
     Typography,
+    Box,
+    Alert,
+    Timeline,
 } from "@checkTracking/ui-kit";
 import Header from "./Header";
 import OutlinedTimeline from "./OutlinedTimeline";
@@ -26,6 +30,10 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
 }) => {
     const intl = useIntl();
 
+    useEffect(() => {
+        services.getCheckById?.(checkId);
+    }, [checkId, services]);
+
     const {
         responseData: data,
         isLoading,
@@ -34,7 +42,11 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
 
 
     const labels: Record<Exclude<keyof DetailsDTO, "timelines">, string> = {
+        // id: intl.formatMessage({ id: "File.global.dialog.title" }),
         amount: intl.formatMessage({ id: "quittance_details.policy_payment_info" }),
+        // bankId: intl.formatMessage({ id: "N° banque" }),
+        // branchId: intl.formatMessage({ id: "N° branche" }),
+        // serviceId: intl.formatMessage({ id: "N° service" }),
         serviceName: intl.formatMessage({
             id: "quittance_details.policy_payment_net_premium",
         }),
@@ -44,6 +56,9 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
         branchName: intl.formatMessage({
             id: "quittance_details.policy_payment_accessory",
         }),
+        // creationDate: intl.formatMessage({ id: "Date de création" }),
+        // checkNumber: intl.formatMessage({ id: "N° chèque" }),
+        // statusId: intl.formatMessage({ id: "N° status" }),
         lotNumber: intl.formatMessage({
             id: "quittance_details.policy_payment_commission",
         }),
@@ -65,6 +80,8 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
         transactionNumber: intl.formatMessage({
             id: "payment_details.payment_Number",
         }),
+        // code: intl.formatMessage({ id: "Code" }),
+        // label: intl.formatMessage({ id: "Label" }),
     };
 
     const formatValue = (key: keyof DetailsDTO, obj: DetailsDTO) => {
@@ -100,6 +117,7 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
         <>
             <Header checkNumber={data.checkNumber} timelines={data.timelines} />
             <Grid container sx={{ height: "400", mt: "0.015cm" }}>
+                {/* --- Colonne de gauche */}
                 <Grid item xs={12} md={8}>
                     <Grid container spacing={4}>
                         {(Object.keys(labels) as Array<keyof typeof labels>).map((key) => (
@@ -125,9 +143,11 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
                     alignItems="flex-end"
                     sx={{ height: "100%", pt: 5, pr: 2 }}
                 >
-                    <OutlinedTimeline data={data} />
+                    <OutlinedTimeline data={data} /> {/* inspetion API champs */}
+                    {/* revu de code à changer */}
                 </Grid>
             </Grid>
+            {/* Props Children */}
         </>
     );
 };

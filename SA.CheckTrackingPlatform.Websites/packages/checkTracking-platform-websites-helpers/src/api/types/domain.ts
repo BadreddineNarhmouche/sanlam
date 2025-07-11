@@ -122,3 +122,8 @@ export interface ReasonMove {
 export interface DetailsCheck {
   
 }
+
+
+export interface TimelineItem {
+  
+}

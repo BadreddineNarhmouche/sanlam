@@ -82,6 +82,7 @@ export const CHECK_DETAILS_TABLE_COLUMNS = (option: any) => {
     return [
         { ...BankId, gridOccupancy: 3, isHeader: true },
         { ...BranchId, gridOccupancy: 2, isHeader: true },
+        //{ ...ServicesId(option), gridOccupancy: 3, isHeader: true },
         { ...Amount, gridOccupancy: 2, isHeader: true },
         { ...ServicesId, gridOccupancy: 2, isHeader: true },
         { ...CheckNumber, gridOccupancy: 2, isHeader: true },
@@ -92,6 +93,7 @@ export const CHECK_DETAILS_TABLE_COLUMNS = (option: any) => {
         { ...RegisterOrderNumber, gridOccupancy: 2, isHeader: true },
         { ...TransactionNumber, gridOccupancy: 2, isHeader: true },
         { ...BeneficiaryName, gridOccupancy: 2, isHeader: true },
+        // { ...FIELD_PRIME_MAX, gridOccupancy: 2, isHeader: true },
     ];
 };
 
@@ -101,5 +103,5 @@ export const FIRST_PAGE_QUITTANCE_TABLE_COLUMNS_DEFAULT = [
     { title: "Type de garantie" },
     { title: "N° de police" },
     { title: "Code partenaire" },
-    { title: "Nom du client" },
+    { title: "Nom du client" }, // { title: "Branche" },
 ];

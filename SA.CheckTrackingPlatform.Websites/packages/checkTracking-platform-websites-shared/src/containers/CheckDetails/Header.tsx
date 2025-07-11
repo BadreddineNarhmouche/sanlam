@@ -13,8 +13,8 @@ import { StatusLabelBox } from "../../utils/StatusLabelBox";
 interface HeaderProps {
     checkNumber: string;
     timelines?: Array<{
-        date: string;
-        statusItems: {
+        creationDate: string;
+        status: {
             code: string;
             label: string;
         };
@@ -28,9 +28,9 @@ export const Header: React.FC<HeaderProps> = ({ checkNumber, timelines }) => {
         timelines && timelines.length > 0
             ? [...timelines]
                 .sort(
-                    (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+                    (a, b) => new Date(a.creationDate).getTime() - new Date(b.creationDate).getTime()
                 )
-                .at(-1)?.statusItems
+                .at(-1)?.status
             : undefined;
 
     return (
