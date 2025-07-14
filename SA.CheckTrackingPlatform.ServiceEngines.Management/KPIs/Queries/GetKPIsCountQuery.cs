@@ -2,10 +2,7 @@
 using SA.CheckTrackingPlatform.Common.Resources.Messages;
 using SA.CheckTrackingPlatform.Domains.Management.Repositories.Queries;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.Responses;
-using Microsoft.Extensions.Configuration;
-using SixLabors.ImageSharp;
 using System.Reflection;
-using Microsoft.EntityFrameworkCore;
 
 namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.Queries
 {
@@ -28,7 +25,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.Queries
 
         #region Constructors 
 
-        public GetKPIsCountQueryHandler(ITimelinesQueryRepository timelinesQueryRepository , IMediator mediator)
+        public GetKPIsCountQueryHandler(ITimelinesQueryRepository timelinesQueryRepository, IMediator mediator)
         {
             this.timelinesQueryRepository = timelinesQueryRepository;
             this.mediator = mediator;

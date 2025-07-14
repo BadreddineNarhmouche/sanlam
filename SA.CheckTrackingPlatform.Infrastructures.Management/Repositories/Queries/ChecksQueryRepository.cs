@@ -3,8 +3,6 @@ using SA.CheckTrackingPlatform.Contexts.Management.Application;
 using SA.CheckTrackingPlatform.Domains.Management.Entities;
 using SA.CheckTrackingPlatform.Domains.Management.Repositories.Queries;
 using SA.CheckTrackingPlatform.Infrastructures.Management.Common;
-using SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes.Responses;
-using static SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.FileExcel.FileExcelQuery;
 
 namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queries
 {

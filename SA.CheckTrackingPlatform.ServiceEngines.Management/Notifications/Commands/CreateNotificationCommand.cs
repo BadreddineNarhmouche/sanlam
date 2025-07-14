@@ -40,8 +40,6 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Notifications.Comma
         private readonly INotificationTypeQueryRepository notificationTypeQueryRepository;
         private readonly IInternalUserQueryRepository internalUserQueryRepository;
         private readonly IInternalRoleQueryRepository internalRoleQueryRepository;
-        //private readonly IQuittanceQueryRepository quittanceQueryRepository;
-        //private readonly IDeliverySlipQueryRepository deliverySlipQueryRepository;
 
 
         #endregion Fields
@@ -53,16 +51,12 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Notifications.Comma
              INotificationTypeQueryRepository notificationTypeQueryRepository,
              IInternalUserQueryRepository internalUserQueryRepository,
              IInternalRoleQueryRepository internalRoleQueryRepository
-            //IQuittanceQueryRepository quittanceQueryRepository,
-            //IDeliverySlipQueryRepository deliverySlipQueryRepository
             )
         {
             this.notificationCommandRepository = notificationCommandRepository;
             this.notificationTypeQueryRepository = notificationTypeQueryRepository;
             this.internalUserQueryRepository = internalUserQueryRepository;
             this.internalRoleQueryRepository = internalRoleQueryRepository;
-            //this.quittanceQueryRepository = quittanceQueryRepository;
-            //this.deliverySlipQueryRepository = deliverySlipQueryRepository;
         }
 
         #endregion Constructors
@@ -170,14 +164,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Notifications.Comma
                     notificationToCreate.Subject = request.Subject;
                     notificationToCreate.Body = request.Body;
                     notificationToCreate.IsSeen = 0;
-                    //if (request.QuittanceId.HasValue)
-                    //{
-                    //    notificationToCreate.QuittanceId = request.QuittanceId.Value;
-                    //}
-                    //if (request.DeliverySlipId.HasValue)
-                    //{
-                    //    notificationToCreate.DeliverySlipId = request.DeliverySlipId.Value;
-                    //}
+
                     if (request.CreatedForInternalUserId.HasValue)
                     {
                         notificationToCreate.InternalUserId = request.CreatedForInternalUserId.Value;

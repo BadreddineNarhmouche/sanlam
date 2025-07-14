@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SA.CheckTrackingPlatform.Domains.Management.Entities
+﻿namespace SA.CheckTrackingPlatform.Domains.Management.Entities
 {
     public class CheckObject
     {
@@ -16,7 +10,7 @@ namespace SA.CheckTrackingPlatform.Domains.Management.Entities
 
         public string RecipientName { get; set; }
 
-        public string SinisterName {  get; set; }
+        public string SinisterName { get; set; }
 
         public string AccountNumber { get; set; }
 

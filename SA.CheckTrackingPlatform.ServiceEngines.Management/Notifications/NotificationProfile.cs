@@ -28,9 +28,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.Mapper
                 .ForMember(destination => destination.NotificationTypeCode, option => option.MapFrom(source => source.NotificationType.Code))
                 .ReverseMap();
 
-            CreateMap<Notification, UpdateNotificationResponse>()
-                //.ForMember(destination => destination.ModificationDate, option => option.MapFrom(source => !source.ModificationDate.HasValue ? string.Empty : source.ModificationDate.Value.ToString()))
-                .ReverseMap();
+            CreateMap<Notification, UpdateNotificationResponse>().ReverseMap();
         }
 
         #endregion Constructors

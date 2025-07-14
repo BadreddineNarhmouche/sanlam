@@ -1,14 +1,9 @@
-﻿using Dapper;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Diagnostics;
-using PdfSharpCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using SA.CheckTrackingPlatform.Contexts.Management.Application;
 using SA.CheckTrackingPlatform.Domains.Management.Entities;
 using SA.CheckTrackingPlatform.Domains.Management.Repositories.Queries;
 using SA.CheckTrackingPlatform.Infrastructures.Management.Common;
-using SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.Responses;
-using Microsoft.Extensions.Configuration;
-using Oracle.ManagedDataAccess.Client;
 
 namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queries
 {
@@ -34,14 +29,14 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
 
         public async Task<Timeline> GetTimelineByIdAsync(int id)
         {
-            Timeline query = await this.applicationContext.Timelines 
+            Timeline query = await this.applicationContext.Timelines
                     .AsNoTrackingWithIdentityResolution()
                     .SingleOrDefaultAsync(o => o.Id == id);
 
             return query;
         }
 
-        public async Task<IEnumerable<Timeline>> GetTimelinesByCriteriaAsync(List<int>? ids, List<int>? ChecksIds, List<int>? UserIds, int? statusId, string? reasonlabel , int? pageIndex = null, int? pageSize = null)
+        public async Task<IEnumerable<Timeline>> GetTimelinesByCriteriaAsync(List<int>? ids, List<int>? ChecksIds, List<int>? UserIds, int? statusId, string? reasonlabel, int? pageIndex = null, int? pageSize = null)
         {
             IQueryable<Timeline> query = this.applicationContext.Timelines
                 .AsNoTrackingWithIdentityResolution();
@@ -58,9 +53,6 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
 
             if (statusId.HasValue)
                 query = query.Where(c => c.StatusId == statusId.Value);
-
-            //if (!string.IsNullOrWhiteSpace(reasonlabel))
-            //    query = query.Where(c => c.ReasonLabel == reasonlabel);
 
 
             if (pageIndex.HasValue && pageSize.HasValue)

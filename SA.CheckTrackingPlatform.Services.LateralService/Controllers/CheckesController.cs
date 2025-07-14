@@ -23,7 +23,7 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
 
         #region Methods
 
-       [HttpGet]
+        [HttpGet]
         [Route(nameof(GetById))]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<GetChecksByIdResponse> GetById([FromQuery] GetChecksByIdQuery query)
@@ -31,7 +31,7 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
             return await _mediator.Send(query);
         }
 
-       [HttpGet]
+        [HttpGet]
         [Route(nameof(GetAllByCriteria))]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<GetAllByCriteriaResponse> GetAllByCriteria([FromQuery] GetAllByCriteriaQuery query)

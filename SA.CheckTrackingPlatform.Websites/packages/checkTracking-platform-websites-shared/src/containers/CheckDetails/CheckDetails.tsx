@@ -42,11 +42,7 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
 
 
     const labels: Record<Exclude<keyof DetailsDTO, "timelines">, string> = {
-        // id: intl.formatMessage({ id: "File.global.dialog.title" }),
         amount: intl.formatMessage({ id: "quittance_details.policy_payment_info" }),
-        // bankId: intl.formatMessage({ id: "N° banque" }),
-        // branchId: intl.formatMessage({ id: "N° branche" }),
-        // serviceId: intl.formatMessage({ id: "N° service" }),
         serviceName: intl.formatMessage({
             id: "quittance_details.policy_payment_net_premium",
         }),
@@ -56,9 +52,6 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
         branchName: intl.formatMessage({
             id: "quittance_details.policy_payment_accessory",
         }),
-        // creationDate: intl.formatMessage({ id: "Date de création" }),
-        // checkNumber: intl.formatMessage({ id: "N° chèque" }),
-        // statusId: intl.formatMessage({ id: "N° status" }),
         lotNumber: intl.formatMessage({
             id: "quittance_details.policy_payment_commission",
         }),
@@ -80,8 +73,6 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
         transactionNumber: intl.formatMessage({
             id: "payment_details.payment_Number",
         }),
-        // code: intl.formatMessage({ id: "Code" }),
-        // label: intl.formatMessage({ id: "Label" }),
     };
 
     const formatValue = (key: keyof DetailsDTO, obj: DetailsDTO) => {
@@ -143,11 +134,9 @@ export const CheckDetails: React.FC<CheckDetailsProps> = ({
                     alignItems="flex-end"
                     sx={{ height: "100%", pt: 5, pr: 2 }}
                 >
-                    <OutlinedTimeline data={data} /> {/* inspetion API champs */}
-                    {/* revu de code à changer */}
+                    <OutlinedTimeline data={data} /> 
                 </Grid>
             </Grid>
-            {/* Props Children */}
         </>
     );
 };

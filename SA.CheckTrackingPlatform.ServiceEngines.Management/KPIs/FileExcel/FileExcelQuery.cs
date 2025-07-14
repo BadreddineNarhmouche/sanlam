@@ -1,22 +1,10 @@
 ﻿using MediatR;
-using OfficeOpenXml;
-using Org.BouncyCastle.Crypto;
-using Org.BouncyCastle.Tls;
-using PdfSharpCore;
-using SA.CheckTrackingPlatform.Common.Resources;
 using SA.CheckTrackingPlatform.Common.Resources.Canvases;
 using SA.CheckTrackingPlatform.Common.Resources.Messages;
 using SA.CheckTrackingPlatform.Domains.Management.Entities;
 using SA.CheckTrackingPlatform.Domains.Management.Repositories.Queries;
-using SA.CheckTrackingPlatform.ServiceEngines.Management.Checkes;
 using SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.Responses;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 using static System.CoreConstants;
 
 namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.FileExcel
@@ -110,12 +98,12 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.FileExcel
                         {
                             case Constants.DocumentTypeCodes.NumberOfChecksIssuedButNotAcknowledgedByTheBusinessUnit:
                                 statusCode = Constants.TimelineStatusCodes.EditedCheck.ToLowerInvariant();
-                                fileName = $"ChecksIssuedButNotAcknowledged_{timestamp}"+ FileExtensions.ModernExcel;
+                                fileName = $"ChecksIssuedButNotAcknowledged_{timestamp}" + FileExtensions.ModernExcel;
                                 break;
 
                             case Constants.DocumentTypeCodes.NumberOfChecksReceivedByBusinessUnitButNotByRegistryOffice:
                                 statusCode = Constants.TimelineStatusCodes.ReceivedTrade.ToLowerInvariant();
-                                fileName = $"ChecksReceivedByBusinessUnit_{timestamp}"+ FileExtensions.ModernExcel;
+                                fileName = $"ChecksReceivedByBusinessUnit_{timestamp}" + FileExtensions.ModernExcel;
                                 break;
 
                             case Constants.DocumentTypeCodes.NumberOfChecksReceivedByRegistryOfficeButNotSentToClient:
@@ -152,7 +140,7 @@ namespace SA.CheckTrackingPlatform.ServiceEngines.Management.KPIs.FileExcel
 
             }
 
-            private async Task<byte[]> FileExcelKPIItemShow(IEnumerable<KPIItemShow> checks) // type d'objet passer est <KPIItemShow>> et pas checks
+            private async Task<byte[]> FileExcelKPIItemShow(IEnumerable<KPIItemShow> checks)
             {
                 return await documentGenerator.GenerateCanvas(
                     new List<CanvasSheet<KPIItemShow>>()

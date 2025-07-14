@@ -35,14 +35,12 @@ const initKeycloak = (
         console.log("you are connected");
         LocalStorageHelper.clear();
         await getCurrentInternalUser();
-        //    keycloak.redirectUri = window.location.origin;
       }
       onAuthenticatedCallback();
     })
     .catch((error) => {
       console.log("error authentication", error);
       onAuthenticatedFailedCallback();
-      // alert('auth server error')
     });
 };
 

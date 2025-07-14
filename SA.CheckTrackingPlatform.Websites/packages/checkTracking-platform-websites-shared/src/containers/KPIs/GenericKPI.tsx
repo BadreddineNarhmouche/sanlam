@@ -44,6 +44,13 @@ const KPICard = ({
   selectedTab,
   setSelectedTab,
 }: PropsKPI) => {
+
+    const {
+    responseData: ExportDocumentKpiExcel,
+    isLoading,
+    error,
+  } = useSelector((state: any) => state.ExportDocumentKpiExcel);
+
   const renderTabs = () =>
     tabs &&
     setSelectedTab && (
@@ -74,11 +81,11 @@ const KPICard = ({
               endIcon={<Icons.Download />}
               px={2}
               onClick={() => content.onClick && content.onClick()}
-              // disabled={isLoading}
+              disabled={isLoading}
             >
-              {/* {isLoading && (
+               {/* {isLoading && (
                 <CircularProgress color="primary" size={24} sx={{ mr: 1 }} />
-              )} */}
+              )}  */}
               {content.description}
             </Button>
           ) : null}

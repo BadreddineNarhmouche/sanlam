@@ -87,18 +87,6 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
                     .Where(o => o.IsSeen == isSeen.Value);
             }
 
-            //if (deliverySlipId.IsNotNull())
-            //{
-            //    query = query
-            //        .Where(o => o.DeliverySlipId == deliverySlipId);
-            //}
-
-            //if (quittanceId.IsNotNull())
-            //{
-            //    query = query
-            //        .Where(o => o.QuittanceId == quittanceId);
-            //}
-
             query = query.OrderByDescending(o => o.CreationDate);
 
             if (pageIndex.HasValue && pageSize.HasValue)
@@ -163,18 +151,6 @@ namespace SA.CheckTrackingPlatform.Infrastructures.Management.Repositories.Queri
                 query = query
                     .Where(o => o.IsSeen == isSeen.Value);
             }
-
-            //if (deliverySlipId.IsNotNull())
-            //{
-            //    query = query
-            //        .Where(o => o.DeliverySlipId == deliverySlipId);
-            //}
-
-            //if (quittanceId.IsNotNull())
-            //{
-            //    query = query
-            //        .Where(o => o.QuittanceId == quittanceId);
-            //}
 
             return await query
                     .AsNoTrackingWithIdentityResolution()
