@@ -55,7 +55,4 @@
       <HintPath>..\Libraries\SA.Framework.Services\SA.Framework.Services.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\PublishProfiles\" />
-  </ItemGroup>
 </Project>
