@@ -147,5 +147,5 @@ export const frTranslationMessages = {
   "check.kpi.receivedBUNotRegistry":
     "Chèques reçu au métier et non reçu par BO",
   "check.kpi.issuedNotAcknowledged": "Chèques édité et non reçu par Métier ",
-  "snackbar.message": "Test",
+  "snackbar.message": "Le chèque est introuvable !",
 };

@@ -46,20 +46,13 @@ export const FIRST_PAGE_CHECK_FORM_SEARCH_FIELDS = (option: any) => {
   ];
 };
 
-/* export const FIRST_PAGE_CHECK_TABLE_COLUMNS_DEFAULT = [
+export const FIRST_PAGE_CHECK_TABLE_COLUMNS_DEFAULT = [
   { title: "Bénéficiaire" },
   { title: "Numéro de chèque" },
   { title: "Montant" },
   { title: "Service" },
   { title: "Numéro de lot" },
-]; */
-
-export const FIRST_PAGE_CHECK_TABLE_COLUMNS_DEFAULT = [
-  { title: "Bénéficiaire", accessor: "beneficiaryName" },
-  { title: "Numéro de chèque", accessor: "checkNumber" },
-  { title: "Montant", accessor: "amount" },
-  { title: "Service", accessor: "serviceName" },
-  { title: "Numéro de lot", accessor: "lotNumber" },
+  { title: "Numéro de Sinistre" },
 ];
 
 export const FIRST_PAGE_CHECK_TABLE_HIDDEN_COLUMNS_DEFAULT = ["id"];
