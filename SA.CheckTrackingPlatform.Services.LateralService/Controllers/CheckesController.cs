@@ -36,7 +36,7 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<GetAllByCriteriaResponse> GetAllByCriteria([FromQuery] GetAllByCriteriaQuery query)
         {
-            query.InternalUserElectronicAddress = User.FindFirst(KeycloakAttributes.InternalUserElectronicAddress).Value;
+            query.InternalUserElectronicAddress ??= User.FindFirst(KeycloakAttributes.InternalUserElectronicAddress)?.Value;
             return await _mediator.Send(query);
         }
 

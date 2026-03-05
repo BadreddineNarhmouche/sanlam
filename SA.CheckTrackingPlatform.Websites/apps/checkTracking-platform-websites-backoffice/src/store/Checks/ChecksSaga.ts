@@ -1,5 +1,5 @@
-import { apiCallHandler } from "@checkTracking/helpers";
-import { takeEvery } from "redux-saga/effects";
+import { apiCallHandler, UserService } from "@checkTracking/helpers";
+import { call, takeEvery } from "redux-saga/effects";
 import {
   apiCallGetAllChecksByCriteriaFailure,
   apiCallGetAllChecksByCriteriaSuccess,
@@ -16,16 +16,28 @@ import {
   apiCallGetCheckSuccess,
   getCheckById,
 } from "./getCheckByIdSlice";
+import {
+  devMockChecks,
+  getDevMockCheckDetails,
+  isDevelopmentOffline,
+} from "../devMocks";
 
 const baseApiPath = process.env.REACT_APP_API_BASE_PATH;
 
 function* getAllCheckByCriteria({ payload }: { payload: any }): any {
+  const internalUser = yield call(UserService.getCurrentInternalUser);
+  const internalUserElectronicAddress =
+    payload?.internalUserElectronicAddress || internalUser?.electronicAddress || "";
+  const pageIndex = payload?.meta?.pageIndex || 1;
+
   yield apiCallHandler({
-    apiPath: `/Checkes/GetAllByCriteria?CheckNumbers=${payload?.checkNumber}&LotNumber=${payload?.lotNumber}&SinisterNumber=${payload?.sinisterNumber}&StatusId=${payload?.checkStatusId}`,
+    apiPath: `/Checkes/GetAllByCriteria?CheckNumbers=${payload?.checkNumber || ""}&LotNumber=${payload?.lotNumber || ""}&SinisterNumber=${payload?.sinisterNumber || ""}&StatusId=${payload?.checkStatusId || ""}&InternalUserElectronicAddress=${encodeURIComponent(internalUserElectronicAddress)}&PageIndex=${pageIndex}`,
     baseApiPath,
     dispatchSuccess: apiCallGetAllChecksByCriteriaSuccess,
     dispatchFailure: apiCallGetAllChecksByCriteriaFailure,
     mapper: mapChecksList,
+    offlineMode: isDevelopmentOffline,
+    offlineCall: () => devMockChecks,
   });
 }
 
@@ -36,6 +48,8 @@ function* getAllCheck({ payload }: { payload: any }): any {
     dispatchSuccess: apiCallGetAllChecksSuccess,
     dispatchFailure: apiCallGetAllChecksFailure,
     mapper: mapAllChecksList,
+    offlineMode: isDevelopmentOffline,
+    offlineCall: () => devMockChecks,
   });
 }
 
@@ -45,6 +59,8 @@ function* GetCheckById({ payload }: { payload: string }): any {
     baseApiPath,
     dispatchSuccess: apiCallGetCheckSuccess,
     dispatchFailure: apiCallGetCheckFailure,
+    offlineMode: isDevelopmentOffline,
+    offlineCall: () => getDevMockCheckDetails(payload),
   });
 }
 

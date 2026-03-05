@@ -1,13 +1,4 @@
-export enum ROLE {
-    // SUBSCRIPTIONS_EXECUTOR = 'TSTe',
-    // SUBSCRIPTIONS_MANAGER = 'SubscriptionsManager',
-    // RECOVERIES_EXECUTOR = 'RecoveriesExecutor',
-    // RECOVERIES_MANAGER = 'RecoveriesManager',
-    // checkTrackingS_EXECUTOR = 'checkTrackingsExecutor',
-    // checkTrackingS_MANAGER = 'checkTrackingsManager',
-    // ACCOUNTING_EXECUTOR = 'AccountingExecutor',
-    // ACCOUNTING_MANAGER = 'AccountingManager',
-};
+export type ROLE = string;
 
 export enum SCOPE {
   CAN_VIEW_MENU = 'CAN_VIEW_MENU',
@@ -24,14 +15,14 @@ export const PERMISSIONS: any = {
     // [ROLE.ACCOUNTING_MANAGER]: [SCOPE.CAN_VIEW_MENU],
 };
 
-export const MANAGER_ROLES = [
+export const MANAGER_ROLES: ROLE[] = [
     // ROLE.SUBSCRIPTIONS_MANAGER,
     // ROLE.RECOVERIES_MANAGER,
     // ROLE.checkTrackingS_MANAGER,
     // ROLE.ACCOUNTING_MANAGER,
 ];
 
-export const EXECUTOR_ROLES = [
+export const EXECUTOR_ROLES: ROLE[] = [
     // ROLE.SUBSCRIPTIONS_EXECUTOR,
     // ROLE.RECOVERIES_EXECUTOR,
     // ROLE.checkTrackingS_EXECUTOR,

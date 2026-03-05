@@ -5,6 +5,10 @@ import {
   apiCallGetAllDetailsCheckSliceSFailure,
   getAllDetailsCheck,
 } from "./getAllDetailsCheckSlice";
+import {
+  getDevMockCheckDetails,
+  isDevelopmentOffline,
+} from "../devMocks";
 
 const baseApiPath = process.env.REACT_APP_API_BASE_PATH;
 
@@ -14,6 +18,8 @@ function* getAllDetailsChecks({ payload }: { payload: any }): any {
     baseApiPath,
     dispatchSuccess:   apiCallGetAllDetailsCheckSliceSuccess,
     dispatchFailure:     apiCallGetAllDetailsCheckSliceSFailure,
+    offlineMode: isDevelopmentOffline,
+    offlineCall: () => getDevMockCheckDetails(payload?.id),
   });
 }
 

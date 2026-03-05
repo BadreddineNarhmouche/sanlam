@@ -58,6 +58,8 @@ export const TreatmentLabelComponent = (InternalRoleCode: string) => {
 
 export const GetNextStatusComponent = (InternalRoleCode: string) => {
   switch (InternalRoleCode) {
+    case STATUS_TREATMENTS.Edited:
+      return STATUS_TREATMENTS.ReceiptByBusinessUnit;
     case STATUS_TREATMENTS.ReceiptByBusinessUnit:
       return STATUS_TREATMENTS.BoOut;
     case STATUS_TREATMENTS.BoOut:

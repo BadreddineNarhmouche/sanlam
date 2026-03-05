@@ -5,6 +5,10 @@ import {
   apiCallReasonMoveAllSuccess,
   apiCallReasonMoveAllFailure,
 } from "./ReasonMoveAllSlice";
+import {
+  devMockReasonMoves,
+  isDevelopmentOffline,
+} from "../devMocks";
 
 const baseApiPath = process.env.REACT_APP_API_BASE_PATH;
 
@@ -14,6 +18,8 @@ function* GetAllReasonMove({ payload }: { payload: any }): any {
     baseApiPath,
     dispatchSuccess: apiCallReasonMoveAllSuccess,
     dispatchFailure: apiCallReasonMoveAllFailure,
+    offlineMode: isDevelopmentOffline,
+    offlineCall: () => devMockReasonMoves,
   });
 }
 

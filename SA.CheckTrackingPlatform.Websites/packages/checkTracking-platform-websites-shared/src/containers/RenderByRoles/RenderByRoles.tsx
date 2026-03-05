@@ -11,7 +11,11 @@ export const RenderByRoles = ({
   internalRoleCodes,
   children,
   fallback,
-}: Props) => {
+}: Props): ReactElement | null => {
+  if (process.env.NODE_ENV === "development") {
+    return <>{children}</>;
+  }
+
   const [isAuthorized, setIsAuthorized] = useState(() => {
     return false;
   });
@@ -31,5 +35,5 @@ export const RenderByRoles = ({
     });
   }, [internalRoleCodes]);
 
-  return isAuthorized ? children : fallback;
+  return isAuthorized ? <>{children}</> : fallback ?? null;
 };

@@ -5,6 +5,10 @@ import {
   getCheckById,
 } from "./getByIdChecksSlice";
 import { takeEvery } from "redux-saga/effects";
+import {
+  getDevMockCheckDetails,
+  isDevelopmentOffline,
+} from "../devMocks";
 
 const baseApiPath = process.env.REACT_APP_API_BASE_PATH;
 
@@ -15,6 +19,8 @@ function* getChecksById({ payload }: { payload: any }): any {
     baseApiPath,
     dispatchSuccess: apiCallGetAllChecksSuccess,
     dispatchFailure: apiCallGetAllChecksFailure,
+    offlineMode: isDevelopmentOffline,
+    offlineCall: () => getDevMockCheckDetails(payload),
   });
 }
 

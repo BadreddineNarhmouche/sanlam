@@ -125,8 +125,6 @@ export const Checks = ({
     setChecksData(getAllChecksByCriteria);
   }, [getAllChecksByCriteria]);
 
-  console.log("DATA CHANGED", getAllChecksByCriteria);
-
   useEffect(() => {
     setStatusData(AllStatus);
   }, [AllStatus]);
@@ -203,7 +201,7 @@ export const Checks = ({
           />
         </CardContainer>
       )}
-      <Backdrop open={true} />
+      <Backdrop open={isLoadingChecksData} />
     </Grid>
   );
 };

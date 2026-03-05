@@ -29,35 +29,40 @@ export default function HorizontalTimeline({ data }: { data: any }) {
                     const label = check.status.label;
                     const code = check.status.code;
                     return (
-                        <TimelineItem
+                        <motion.div
                             key={index}
-                            component={motion.div}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: index * 0.15 }}
                         >
-                            <TimelineSeparator>
-                                <TimelineDot color={color as any} />
-                                {index < Checks.length - 1 && <TimelineConnector />}
-                            </TimelineSeparator>
+                            <TimelineItem>
+                                <TimelineSeparator>
+                                    <TimelineDot color={color as any} />
+                                    {index < Checks.length - 1 && <TimelineConnector />}
+                                </TimelineSeparator>
 
-                            <TimelineContent
-                                component={motion.div}
-                                initial={{ opacity: 0, x: 30 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.5, delay: index * 0.15 + 0.1 }}
-                            >
-                                <Typography
-                                    variant="body2"
-                                    sx={{ fontSize: "13px", fontWeight: 330 }}
-                                >
-                                    {formattedDate} {check.user.firstName}{" "}
-                                    {check.user.lastName}
-                                </Typography>
+                                <TimelineContent>
+                                    <motion.div
+                                        initial={{ opacity: 0, x: 30 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{
+                                            duration: 0.5,
+                                            delay: index * 0.15 + 0.1,
+                                        }}
+                                    >
+                                        <Typography
+                                            variant="body2"
+                                            sx={{ fontSize: "13px", fontWeight: 330 }}
+                                        >
+                                            {formattedDate} {check.user.firstName}{" "}
+                                            {check.user.lastName}
+                                        </Typography>
 
-                                <StatusLabelBox code={code} label={label} />
-                            </TimelineContent>
-                        </TimelineItem>
+                                        <StatusLabelBox code={code} label={label} />
+                                    </motion.div>
+                                </TimelineContent>
+                            </TimelineItem>
+                        </motion.div>
                     );
                 })}
             </Timeline>

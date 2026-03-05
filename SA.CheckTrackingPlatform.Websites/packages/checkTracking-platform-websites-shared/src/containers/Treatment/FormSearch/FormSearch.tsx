@@ -49,9 +49,10 @@ const Form = (props: any) => {
   const inputRefs = useRef<{ [key: string]: HTMLInputElement | null }>({});
 
   useEffect(() => {
-    if (inputRefs.current[keyInput]) {
-      inputRefs.current[keyInput]?.focus();
-      inputRefs.current[keyInput].value = "";
+    const activeInput = inputRefs.current[keyInput];
+    if (activeInput) {
+      activeInput.focus();
+      activeInput.value = "";
 
       return;
     }

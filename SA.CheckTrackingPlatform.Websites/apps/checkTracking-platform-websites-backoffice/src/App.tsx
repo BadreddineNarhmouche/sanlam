@@ -18,7 +18,12 @@ const App: React.FC = (): JSX.Element => {
         messages={get(messages, DEFAULT_LANGUAGE)}
       >
         <RoleProvider>
-          <Router>
+          <Router
+            future={{
+              v7_startTransition: true,
+              v7_relativeSplatPath: true,
+            }}
+          >
             <Suspense
               fallback={
                 <>

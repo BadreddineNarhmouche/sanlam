@@ -9,8 +9,10 @@ const style = {
 };
 
 const BackdropComponent = (props: any) => {
+  const isOpen = props.open ?? props.loading ?? false;
+
   return (
-      <Modal hideBackdrop open={props.loading}>
+      <Modal hideBackdrop open={isOpen}>
           <Box sx={{ ...style }}>
               <Grid container direction="column" justifyContent="center" alignItems="center" >
                   <Grid item xs={6}>

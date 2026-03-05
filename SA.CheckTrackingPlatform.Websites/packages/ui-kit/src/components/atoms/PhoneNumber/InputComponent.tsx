@@ -1,16 +1,16 @@
-import { forwardRef } from 'react';
+import { forwardRef, type ForwardedRef } from 'react';
 import TextField from '../TextField/TextField';
 
 export interface InputProps {
-  name: string;
+  name?: string;
   label?: string;
   placeholder?: string;
-  value: string | number;
+  value?: string | number;
   [key: string]: any;
   onPaste?: any;
 }
 
-const InputComponent = (props: InputProps, ref: any) => {
+const InputComponent = (props: InputProps, ref: ForwardedRef<HTMLInputElement>) => {
   const { error, label, width } = props;
 
   return (
@@ -27,4 +27,4 @@ const InputComponent = (props: InputProps, ref: any) => {
   );
 };
 
-export default forwardRef(InputComponent);
+export default forwardRef<HTMLInputElement, InputProps>(InputComponent);

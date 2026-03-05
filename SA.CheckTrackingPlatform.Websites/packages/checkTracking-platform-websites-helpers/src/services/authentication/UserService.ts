@@ -11,6 +11,7 @@ const initOptions: any = {
 };
 
 const keycloak = new Keycloak(initOptions);
+const useDevelopmentMocks = process.env.REACT_APP_USE_DEV_MOCKS === "true";
 
 const initKeycloak = (
   onAuthenticatedCallback: (args?: any) => any,
@@ -157,10 +158,32 @@ const isAuthorized = (internalRoleCodes) => {
   }
 };
 
+const getDevelopmentInternalUser = () => {
+  const tokenParsed: any = getTokenParsed() || {};
+  const preferredUsername = tokenParsed.preferred_username || "";
+  const electronicAddress =
+    getCurrentInternalUserElectronicAddress() || "dev.user@sanlam.local";
+  const derivedFirstName =
+    tokenParsed.given_name ||
+    (preferredUsername.includes("@")
+      ? preferredUsername.split("@")[0]
+      : "Dev");
+
+  return {
+    firstName: derivedFirstName,
+    lastName: tokenParsed.family_name || "User",
+    electronicAddress,
+  };
+};
+
 const getCurrentInternalUserElectronicAddress = () => {
   const tokenParsed: any = getTokenParsed();
   if (GeneralHelper.isObjectNotNull(tokenParsed)) {
-    return tokenParsed.email;
+    return (
+      tokenParsed.email ||
+      tokenParsed.preferred_username ||
+      tokenParsed.upn
+    );
   }
 };
 
@@ -178,6 +201,24 @@ const getCurrentInternalUser = (): Promise<any> => {
           electronicAddress: internalUser["electronicAddress"],
         });
       } else {
+        if (process.env.NODE_ENV === "development" && useDevelopmentMocks) {
+          const internalUser = getDevelopmentInternalUser();
+          LocalStorageHelper.add(
+            LocalStorageKeyConstants.internalUser,
+            internalUser
+          );
+
+          resolve({
+            isSuccess: true,
+            informationMessage: "",
+            warningMessage: "",
+            firstName: internalUser.firstName,
+            lastName: internalUser.lastName,
+            electronicAddress: internalUser.electronicAddress,
+          });
+          return;
+        }
+
         const headers = {
           Authorization: `Bearer ${getToken()}`,
           "Content-Type": "application/json",

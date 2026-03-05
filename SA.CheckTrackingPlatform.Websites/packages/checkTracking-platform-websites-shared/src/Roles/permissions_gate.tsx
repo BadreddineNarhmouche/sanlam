@@ -74,6 +74,10 @@ export function PermissionsGate({
     delegatedNoAccessProps = null,
     roles = [],
 }: PermissionsGateProps) {
+    if (process.env.NODE_ENV === 'development') {
+        return <>{children}</>;
+    }
+
     const [internalRoles] = useRole();
 
     const permissionGranted = internalRoles.some(role => {

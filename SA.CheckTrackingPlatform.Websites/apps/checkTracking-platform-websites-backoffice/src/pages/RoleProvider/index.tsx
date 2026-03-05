@@ -8,19 +8,21 @@ import {
   Skeleton,
   Stack,
 } from "@checkTracking/ui-kit";
-import { PropsWithChildren, useEffect, useState } from "react";
+import { PropsWithChildren, useEffect, useRef, useState } from "react";
 import { useIntl } from "react-intl";
 import { useDispatch, useSelector } from "react-redux";
 import { getInternalRolesByInternalUserElectronicAddress } from "../../store/InternalRoles/internalRolesSlice";
 import { UserService } from "@checkTracking/helpers";
 
 export default function RoleProvider({ children }: PropsWithChildren<any>) {
+  const shouldBypassRoleGuards = process.env.NODE_ENV === "development";
   const intl = useIntl();
   const dispatch = useDispatch();
   const [allowRender, setAllowRender] = useState(false);
-  const [isDispatched, setIsDispatched] = useState(false);
+  const hasRequestedRoles = useRef(false);
 
   const [currentRoles, setLocalStoredUserRoles] = useRole();
+  const currentRolesSignature = currentRoles.join("|");
   const {
     responseData: internalRoles,
     isLoading: isLoadingRole,
@@ -28,19 +30,25 @@ export default function RoleProvider({ children }: PropsWithChildren<any>) {
   } = useSelector((state: any) => state.internalRoles);
 
   useEffect(() => {
-    if (currentRoles.length === 0 && !isErrorRole && !isDispatched) {
+    if (currentRoles.length === 0 && !isErrorRole && !hasRequestedRoles.current) {
+      hasRequestedRoles.current = true;
       dispatch(getInternalRolesByInternalUserElectronicAddress({}));
-      setIsDispatched(true);
     } else {
       setAllowRender(true);
     }
-  }, [currentRoles]);
+  }, [currentRoles.length, dispatch, isErrorRole]);
 
   useEffect(() => {
     if (!internalRoles || internalRoles?.length === 0) return;
     const roleCodes = internalRoles.map((role: any) => role.internalRoleCode);
+    const roleCodesSignature = roleCodes.join("|");
+
+    if (roleCodesSignature === currentRolesSignature) {
+      return;
+    }
+
     setLocalStoredUserRoles(roleCodes);
-  }, [internalRoles]);
+  }, [currentRolesSignature, internalRoles, setLocalStoredUserRoles]);
 
   if (isLoadingRole || (!currentRoles && !allowRender)) {
     return (
@@ -51,6 +59,10 @@ export default function RoleProvider({ children }: PropsWithChildren<any>) {
   }
 
   if (isErrorRole) {
+    if (shouldBypassRoleGuards) {
+      return children;
+    }
+
     return (
       <CardContainer mt={3}>
         <EmptyState
@@ -83,6 +95,10 @@ export default function RoleProvider({ children }: PropsWithChildren<any>) {
   }
 
   if (!internalRoles || internalRoles?.length === 0) {
+    if (shouldBypassRoleGuards) {
+      return children;
+    }
+
     return (
       <CardContainer mt={3}>
         <EmptyState

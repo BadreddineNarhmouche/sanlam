@@ -11,6 +11,11 @@ import {
   exportDocumentKpiExcelSliceSuccess,
   exportDocumentKpiExcelSliceFailure,
 } from "./ExportDocumentKpiExcelSlice";
+import {
+  devMockExportedKpiFile,
+  devMockKpis,
+  isDevelopmentOffline,
+} from "../devMocks";
 
 const baseApiPath = process.env.REACT_APP_API_BASE_PATH;
 
@@ -20,6 +25,8 @@ function* GetAllCheckTracking(): any {
     baseApiPath,
     dispatchSuccess: GetCheckTrackingKPIsSuccess,
     dispatchFailure: GetCheckTrackingKPIsFailure,
+    offlineMode: isDevelopmentOffline,
+    offlineCall: () => devMockKpis,
   });
 }
 
@@ -38,6 +45,8 @@ function* GetDocumentByDocumentTypeCodesSaga({
     requestOptions,
     dispatchSuccess: exportDocumentKpiExcelSliceSuccess,
     dispatchFailure: exportDocumentKpiExcelSliceFailure,
+    offlineMode: isDevelopmentOffline,
+    offlineCall: () => devMockExportedKpiFile,
     successCallback: function* () {
       const state = store.getState();
       const data = state?.ExportDocumentKpiExcel?.responseData;

@@ -40,7 +40,7 @@ namespace SA.CheckTrackingPlatform.Services.LateralService.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<GetAllInternalUserInternalRolesByInternalUserElectronicAddressResponse> GetAllByInternalUserElectronicAddress([FromQuery] GetAllInternalUserInternalRolesByInternalUserElectronicAddressQuery query)
         {
-            query.InternalUserElectronicAddress = User.FindFirst(KeycloakAttributes.InternalUserElectronicAddress).Value;
+            query.InternalUserElectronicAddress ??= User.FindFirst(KeycloakAttributes.InternalUserElectronicAddress)?.Value;
             return await this.mediator.Send(query);
         }
 

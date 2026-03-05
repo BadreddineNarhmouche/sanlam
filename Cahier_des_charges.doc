@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Cahier des charges - SA.CheckTrackingPlatform</title>
+</head>
+<body>
+<h1>Cahier des charges détaillé</h1>
+<p><strong>Projet :</strong> SA.CheckTrackingPlatform — Plateforme de suivi des chèques</p>
+<p><strong>Date :</strong> 25 février 2026</p>
+<hr/>
+<h2>1. Contexte et objectifs</h2>
+<p>La plateforme SA.CheckTrackingPlatform permet la gestion complète du cycle de vie des chèques : réception, traitement, suivi historique, notifications, génération de documents et intégration avec des partenaires externes. Le système vise à industrialiser le traitement des chèques, assurer la traçabilité, réduire les délais de traitement et fournir des tableaux de bord/KPIs aux équipes opérationnelles.</p>
+
+<h2>2. Portée</h2>
+<ul>
+<li>Enregistrement et import batch des chèques</li>
+<li>Consultation avancée (filtres multi-critères, pagination)</li>
+<li>Workflow de traitement (statuts successifs via timeline)</li>
+<li>Actions utilisateurs (validation, rejet, assignation)</li>
+<li>Gestion documentaire (upload, stockage, génération PDF)</li>
+<li>Notifications internes et externes</li>
+<li>Rapports et KPIs</li>
+<li>Exposition d'API sécurisées pour partenaires</li>
+</ul>
+
+<h2>3. Architecture générale</h2>
+<p>Le projet est structuré en couches (proche d'une Clean Architecture) :</p>
+<ul>
+<li><strong>Services</strong> (API ASP.NET Core) : `LateralService`, `PartnersExternalService`, `PartnersFrontalService`</li>
+<li><strong>ServiceEngines</strong> : logique métier, handlers MediatR, mappings AutoMapper</li>
+<li><strong>Domains</strong> : entités métier (Checks, Bank, Branch, Timeline, InternalUser, Status, ReasonMove...)</li>
+<li><strong>Infrastructures</strong> : implémentation des repositories (Query/Command), accès BD via EF Core</li>
+<li><strong>Contexts</strong> : `ApplicationContext` (DbContext EF Core)</li>
+</ul>
+
+<h2>4. Principales entités</h2>
+<p>Résumé des tables/objets principaux :</p>
+<ul>
+<li><strong>Checks</strong> (Id, Amount, CheckNumber, LotNumber, BankId, BranchId, ServiceId, AccountNumber, BeneficiaryName, CreationDate, CreatedBy...)</li>
+<li><strong>Timeline</strong> (Id, CheckId, StatusId, ReasonMoveId, UserId, DateOfPassage, Comment, CreationDate)</li>
+<li><strong>Bank</strong>, <strong>Branch</strong>, <strong>Service</strong>, <strong>Status</strong>, <strong>ReasonMove</strong></li>
+<li><strong>InternalUser</strong>, <strong>InternalRole</strong></li>
+<li><strong>Document</strong> (métadonnées, chemin/URL, type, taille)</li>
+<li><strong>Notification</strong> (événements à notifier, destinataires, statut envoi)</li>
+</ul>
+
+<h2>5. Cas d'utilisation principaux</h2>
+<ol>
+<li>Créer / importer des chèques (manuel & batch)</li>
+<li>Rechercher des chèques par numéro, lot, sinistre, statut, période, service</li>
+<li>Voir le détail d'un chèque (incluant timelines triées)</li>
+<li>Effectuer une action métier : changer statut + ajouter timeline + option commentaire</li>
+<li>Assigner un chèque à un utilisateur ou un rôle</li>
+<li>Uploader / télécharger des documents attachés au chèque</li>
+<li>Générer un PDF du dossier chèque (Wkhtmltopdf)</li>
+<li>Consulter KPIs et exporter les résultats</li>
+<li>Exposer / consommer API partenaires sécurisées</li>
+</ol>
+
+<h2>6. Exigences fonctionnelles (sélection)</h2>
+<ul>
+<li>FR1 : Endpoint `GET /api/checks/GetById?id={id}` → retourne `GetChecksByIdResponse`.</li>
+<li>FR2 : Endpoint `GET /api/checks/GetAllByCriteria` → filtres `checkNumbers`, `lotNumber`, `SinisterNumber`, `StatusId`, `pageIndex`, `pageSize`, `serviceId`.</li>
+<li>FR3 : Lors d'un changement de statut, créer automatiquement la ligne `Timeline` associée (horodatage + utilisateur + raison).</li>
+<li>FR4 : Uploads de documents liés aux chèques, accessibles via URLs sécurisées et référencées en BD.</li>
+<li>FR5 : Notifications déclenchées par événements (ex : changement de statut critique), capables d'envoyer email et/ou webhook.</li>
+<li>FR6 : Export CSV / Excel des listes filtrées.</li>
+<li>FR7 : Gestion des rôles et permissions (RBAC) pour restreindre les actions sensibles.</li>
+</ul>
+
+<h2>7. Exigences non-fonctionnelles</h2>
+<ul>
+<li>Performance : Requêtes de listing répondent < 2s sur ensembles volumineux (10k+), pagination côté BD.</li>
+<li>Scalabilité : Services API conçus pour scale-out (stateless quand possible).</li>
+<li>Sécurité : TLS, JWT pour auth, validation des tokens, expiration et refresh tokens supportés.</li>
+<li>Localisation : Support AR/FR/EN, formats date/numériques selon culture.</li>
+<li>Disponibilité : SLA visé 99.5% en production.</li>
+<li>Conservation logs : conservation des logs d'audit minimum 1 an.</li>
+</ul>
+
+<h2>8. API & intégrations</h2>
+<ul>
+<li>Swagger/OpenAPI exposé pour chaque service.</li>
+<li>IAM/Keycloak pour gestion des utilisateurs et claims (ex : `InternalUserElectronicAddress`).</li>
+<li>Webhooks pour événements importants destinés aux partenaires.</li>
+<li>Import/export CSV/Excel pour batch processing.</li>
+<li>Connexion à la base SQL Server via EF Core et migrations EF pour gérer le schéma.</li>
+</ul>
+
+<h2>9. Sécurité détaillée</h2>
+<ul>
+<li>JWT Bearer avec validation issuer/audience et signature forte.</li>
+<li>Controles d'accès via Policies et Rôles (`InternalRole`).</li>
+<li>Validation stricte des entrées DTO pour éviter injections et données corrompues.</li>
+<li>Stockage sécurisé des documents (chemins non prédictibles, permissions d'accès).</li>
+</ul>
+
+<h2>10. Tests & recette</h2>
+<ul>
+<li>Unit tests : handlers, services métiers, mapping.</li>
+<li>Integration tests : repositories + DbContext (utiliser une DB de test ou in-memory/containeur).</li>
+<li>End-to-end API tests : Postman/Newman ou outils équivalents.</li>
+<li>Performance tests : endpoints critiques (listing, import batch).</li>
+<li>Security tests : scans vulnérabilités, tests d'auth/autorisation.</li>
+</ul>
+
+<h2>11. Livrables & planning proposé</h2>
+<ol>
+<li>Phase 0 (1 sem) : Analyse détaillée + cahier des charges validé (document actuel)</li>
+<li>Phase 1 (2-3 sem) : API core — CRUD checks, repos, endpoints GET/POST de base</li>
+<li>Phase 2 (2-3 sem) : Workflow statuts (Timeline) + notifications</li>
+<li>Phase 3 (2 sem) : API partenaires + sécurité & RBAC</li>
+<li>Phase 4 (1-2 sem) : KPIs, rapports, génération PDF</li>
+<li>Phase 5 (1 sem) : Tests, QA, déploiement pilote</li>
+</ol>
+
+<h2>12. Critères d'acceptation</h2>
+<ul>
+<li>Endpoints fonctionnent et passent tests d'intégration.</li>
+<li>Actions restreintes par rôle ne sont pas exécutables sans permission.</li>
+<li>KPIs et exports conformes aux exigences métier.</li>
+<li>Migrations DB appliquées sans perte de données en environnement de recette.</li>
+</ul>
+
+<h2>13. Risques & contraintes</h2>
+<ul>
+<li>Qualité / format des données historiques — nécessité de scripts de nettoyage/migration.</li>
+<li>Dépendances IAM/Keycloak et intégrations externes pouvant retarder le projet.</li>
+<li>Volume et gestion des documents (coûts de stockage).</li>
+</ul>
+
+<h2>14. Maintenance & support</h2>
+<ul>
+<li>Migrations EF Core documentées et versionnées.</li>
+<li>Plan de sauvegarde/restauration BD.</li>
+<li>Monitoring : centralisation logs, alerting et métriques.</li>
+<li>Procédures rotation clés et gestion certificats.</li>
+</ul>
+
+<hr/>
+<p><strong>Prochaine étape :</strong> validation du contenu. Si vous validez, je génère un PDF/Word formaté final et je peux ajouter les diagrammes (ER et séquence) demandés.</p>
+</body>
+</html>

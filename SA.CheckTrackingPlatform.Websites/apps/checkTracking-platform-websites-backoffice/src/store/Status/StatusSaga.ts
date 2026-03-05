@@ -5,6 +5,10 @@ import {
   apiCallStatusAllFailure,
   apiCallStatusAllSuccess,
 } from "./StatusAllSlice";
+import {
+  devMockStatuses,
+  isDevelopmentOffline,
+} from "../devMocks";
 
 const baseApiPath = process.env.REACT_APP_API_BASE_PATH;
 
@@ -14,6 +18,8 @@ function* GetAllStatus(): any {
     baseApiPath,
     dispatchSuccess: apiCallStatusAllSuccess,
     dispatchFailure: apiCallStatusAllFailure,
+    offlineMode: isDevelopmentOffline,
+    offlineCall: () => devMockStatuses,
   });
 }
 

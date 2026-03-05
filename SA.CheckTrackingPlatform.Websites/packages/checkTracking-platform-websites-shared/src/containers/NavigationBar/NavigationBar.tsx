@@ -1,7 +1,6 @@
 import { INotificationService } from "@checkTracking/helpers";
 import {
   AppBar,
-  Badge,
   Box,
   Container,
   IconButton,
@@ -12,7 +11,7 @@ import {
   assets,
 } from "@checkTracking/ui-kit";
 import AppsIcon from "@mui/icons-material/Apps";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { User } from "../Layout";
 import styles from "./styles";
@@ -35,33 +34,16 @@ interface Props {
 export const NavigationBar: React.FC<Props> = (props, theme) => {
   const navigate = useNavigate();
   const { navItems } = props;
-  const [[, currentRoot]] = useLocation().pathname.matchAll(/^(\/[^/]*)/g);
-  const [tabsValue, setTabsValue] = useState(currentRoot);
-
-  const currentRootInNavItems = navItems.links?.find(
-    (link) => link.to === currentRoot
-  );
-
-  useEffect(() => {
-    setTabsValue(currentRoot);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentRoot]);
+  const { pathname } = useLocation();
+  const currentRoot = pathname.split("/")[1] ? `/${pathname.split("/")[1]}` : "/";
+  const selectedTabValue = navItems.links?.some((link) => link.to === currentRoot)
+    ? currentRoot
+    : undefined;
 
   const handleTabsChange = (
     event: any,
     value: React.SetStateAction<string>
-  ) => {
-    setTabsValue(value);
-  };
-
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const open = Boolean(anchorEl);
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  ) => {};
 
   return (
     <>
@@ -96,7 +78,7 @@ export const NavigationBar: React.FC<Props> = (props, theme) => {
             <Box sx={styles.boxTabs}>
               {props.showNavigationBar && (
                 <Tabs
-                  {...(currentRootInNavItems ? { value: tabsValue } : {})}
+                  value={selectedTabValue}
                   onChange={handleTabsChange}
                   tabs={navItems.links}
                 ></Tabs>

@@ -1,4 +1,3 @@
-import { FilterCriteriaService } from '@checkTracking/helpers';
 import { IntlShape } from 'react-intl';
 
 interface FieldOption {
@@ -19,7 +18,7 @@ export interface FormProps {
   initialValues: Object;
   handleSubmit: (values: any) => any;
   handleResetFilter: () => any;
-  resetedValues?: FilterCriteriaService;
+  resetedValues?: Record<string, any>;
   URLcheckStatusDescriptionID?: number;
   fieldsToDisplay?: Field[];
   isLoading: boolean;

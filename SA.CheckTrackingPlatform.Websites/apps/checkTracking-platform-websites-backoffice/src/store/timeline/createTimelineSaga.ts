@@ -1,5 +1,5 @@
-import { apiCallHandler, GeneralHelper } from "@checkTracking/helpers";
-import { takeEvery } from "redux-saga/effects";
+import { apiCallHandler, GeneralHelper, UserService } from "@checkTracking/helpers";
+import { call, takeEvery } from "redux-saga/effects";
 import {
   CreateTimeline,
   TimelineCreatedSuccess,
@@ -10,12 +10,25 @@ import {
   apiCallGetAllChecksSuccess,
 } from "../DetailsCh/getByIdChecksSlice";
 import { mapAllChecksList } from "../Checks/mapper";
+import {
+  devMockChecks,
+  devMockTimelineResponse,
+  isDevelopmentOffline,
+} from "../devMocks";
 
 const baseApiPath = process.env.REACT_APP_API_BASE_PATH;
 
-function* CreateTimelineFunction({ payload }: { payload: any }) {
+function* CreateTimelineFunction({ payload }: { payload: any }): any {
+  const internalUser = yield call(UserService.getCurrentInternalUser);
   const bodyFormData: any = new FormData();
-  GeneralHelper.appendObjectToFormData(payload, bodyFormData);
+  GeneralHelper.appendObjectToFormData(
+    {
+      ...payload,
+      InternalUserElectronicAddress:
+        payload?.InternalUserElectronicAddress || internalUser?.electronicAddress || "",
+    },
+    bodyFormData
+  );
 
   const requestOptions = {
     method: "POST",
@@ -29,6 +42,8 @@ function* CreateTimelineFunction({ payload }: { payload: any }) {
     requestOptions,
     dispatchSuccess: TimelineCreatedSuccess,
     dispatchFailure: TimelineCreatedFailure,
+    offlineMode: isDevelopmentOffline,
+    offlineCall: () => devMockTimelineResponse,
 
     successCallback: function* () {
       yield apiCallHandler({
@@ -37,6 +52,8 @@ function* CreateTimelineFunction({ payload }: { payload: any }) {
         dispatchSuccess: apiCallGetAllChecksSuccess,
         dispatchFailure: apiCallGetAllChecksFailure,
         mapper: mapAllChecksList,
+        offlineMode: isDevelopmentOffline,
+        offlineCall: () => devMockChecks,
       });
     },
   });
